@@ -234,7 +234,7 @@ public class TrackSection {
 	
 	private void createSectionPoints() 
 	{
-		//Create points for allowing movement for train in smooth gaps 
+		//Create points for allowing movement for train in smooth gap
 		
 		int length = (int)endPoint.getX() - (int)startPoint.getX();
 		
