@@ -2,6 +2,8 @@ package RenderingElements.Tracks;
 
 import java.awt.Graphics2D;
 
+import RenderingElements.Tracks.TrackSection.trackType;
+
 public  class TrackStationDesign {
 	
 	/*
@@ -80,19 +82,7 @@ public  class TrackStationDesign {
 	
 	
 	
-	public enum trackType
-	{
-		UP,  				   //tracks above center of canvas going from left to right 
-		
-		DOWN, 				   //tracks below center of canvas going  from right to left 
-		
-		CHANGE_FOR_UP_START,   //change from up to down or up to up, goes **left to right** start of station
-		CHANGE_FOR_UP_END,	   //At end of station , from down loop to main line 
-		
-		CHANGE_FOR_DOWN_START, //change from down to up or down to down , goes from **right to left**
-		CHANGE_FOR_DOWN_END    //at end , change from up loop to main line 
-				
-	}
+	
 	
 	
 	

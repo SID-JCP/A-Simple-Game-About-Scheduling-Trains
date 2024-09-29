@@ -7,7 +7,6 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import RenderingElements.Tracks.TrackStationDesign.trackType;
 
 public class TrackSection {
 	
@@ -55,6 +54,21 @@ public class TrackSection {
 	
 	//Use this for all tracks that are points and make in spline format 
 	public LinkedList<Point2D> splinePoints = new LinkedList<>();
+	
+	
+	public enum trackType
+	{
+		UP,  				   //tracks above center of canvas going from left to right 
+		
+		DOWN, 				   //tracks below center of canvas going  from right to left 
+		
+		CHANGE_FOR_UP_START,   //change from up to down or up to up, goes **left to right** start of station
+		CHANGE_FOR_UP_END,	   //At end of station , from down loop to main line 
+		
+		CHANGE_FOR_DOWN_START, //change from down to up or down to down , goes from **right to left**
+		CHANGE_FOR_DOWN_END    //at end , change from up loop to main line 
+				
+	}
 	
 	
 	/*
@@ -358,30 +372,30 @@ public class TrackSection {
 		
 		//for main or loop lines Points for train navigation
 		
-//		if(this.track.equals(trackType.UP) || this.track.equals(trackType.DOWN)) 
-//		{
-//			for(Point2D p : sectionPoints) 
-//			{
-//				g.setColor(Color.green);
-//				g.drawOval( (int)p.getX()- 1 , (int)p.getY() - 1 , 2 ,2 );
-//			}
-//		}
+		if(this.track.equals(trackType.UP) || this.track.equals(trackType.DOWN)) 
+		{
+			for(Point2D p : sectionPoints) 
+			{
+				g.setColor(Color.green);
+				g.drawOval( (int)p.getX()- 1 , (int)p.getY() - 1 , 2 ,2 );
+			}
+		}
 		
 		
 		//for track change lines train navigation , draws control point for spline
 		
-//		if(this.track.equals(trackType.CHANGE_FOR_DOWN_START) || 
-//		   this.track.equals(trackType.CHANGE_FOR_DOWN_END) || 
-//           this.track.equals(trackType.CHANGE_FOR_UP_START)|| 
-//           this.track.equals(trackType.CHANGE_FOR_UP_END)) 
-//		{
-//			
-//			for(Point2D p : sectionPoints) 
-//			{
-//				g.setColor(Color.green);
-//				g.drawOval( (int)p.getX()- 1 , (int)p.getY() - 1 , 2 ,2);
-//			}
-//		}
+		if(this.track.equals(trackType.CHANGE_FOR_DOWN_START) || 
+		   this.track.equals(trackType.CHANGE_FOR_DOWN_END) || 
+           this.track.equals(trackType.CHANGE_FOR_UP_START)|| 
+           this.track.equals(trackType.CHANGE_FOR_UP_END)) 
+		{
+			
+			for(Point2D p : splinePoints) 
+			{
+				g.setColor(Color.red);
+				g.drawOval( (int)p.getX()- 1 , (int)p.getY() - 1 , 2 ,2);
+			}
+		}
 		
 		
 		
