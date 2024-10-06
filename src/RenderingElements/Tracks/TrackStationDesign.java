@@ -95,9 +95,7 @@ public  class TrackStationDesign {
 		
 		loopUp1.drawSection(g);	
 		changeUp1.drawSection(g);
-		changeUpDown1.drawSection(g);
-		
-		
+		changeUpDown1.drawSection(g);		
 		
 		
 		mainDown1.drawSection(g);

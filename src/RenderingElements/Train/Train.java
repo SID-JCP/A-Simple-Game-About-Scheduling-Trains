@@ -16,6 +16,23 @@ public class Train {
 	public boolean enteredPoint = false;
 	
 	
+	/* TRAIN META DATA */
+	
+	private int Delay  = 0;
+	
+	private boolean hasStoppage = true;
+	
+	private int timeForStoppage = 0;
+	
+	private int arrivalTime = 0;
+	
+	private int departureTime = 0;
+	
+	
+	
+	
+	
+	
 	/*
 	 * |-------------------- What this class do ------------------------|
 	 * 

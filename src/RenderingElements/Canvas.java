@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 
 import InputManager.KeyBoardInputManager;
 import InputManager.MouseInputManager;
+import RenderingElements.Controller.gameClock;
+
 import RenderingElements.StationElementManager.StationElementDraw;
 
 public class Canvas extends JPanel implements Runnable {
@@ -42,7 +44,9 @@ public class Canvas extends JPanel implements Runnable {
 	
 	Thread thread = new Thread(this);
 	
-	StationElementDraw station1 = new StationElementDraw();
+	StationElementDraw stationElement = new StationElementDraw();
+	
+	gameClock gClock = new gameClock();
 	
 	
 	
@@ -64,6 +68,7 @@ public class Canvas extends JPanel implements Runnable {
 	public void startThread() 
 	{
 		thread.start();
+		gClock.clockStart();
 	}
 	
 	
@@ -121,6 +126,8 @@ public class Canvas extends JPanel implements Runnable {
 		moveX = mouseInput.getMoveX();
 		moveY = mouseInput.getMoveY();
 		
+		stationElement.update(gameClock.secondsOfDay);
+		
 	}
 	
 	
@@ -128,8 +135,7 @@ public class Canvas extends JPanel implements Runnable {
 	public void paintComponent(Graphics g) 
 	{
 		super.paintComponent(g);		
-		Graphics2D graphic2D = (Graphics2D) g;
-		
+		Graphics2D graphic2D = (Graphics2D) g;		
 		graphic2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 		        					RenderingHints.VALUE_ANTIALIAS_ON);
 			
@@ -142,7 +148,7 @@ public class Canvas extends JPanel implements Runnable {
 							 " Mouse Y: " + String.valueOf(moveY)
 							, 20, 60);
 		
-		station1.draw(graphic2D);
+		stationElement.draw(graphic2D);
 		
 		
 		
