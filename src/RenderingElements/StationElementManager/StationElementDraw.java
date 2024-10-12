@@ -27,6 +27,7 @@ public class StationElementDraw {
 	//Update TSP COntroller with the CANVAS THREAD 
 	public void update(long clockTime) 
 	{
+		//update tspController and trains , points and switches inside it 
 		oneMainController.update(clockTime);
 	}
 	

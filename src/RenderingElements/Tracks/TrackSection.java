@@ -372,30 +372,30 @@ public class TrackSection {
 		
 		//for main or loop lines Points for train navigation
 		
-		if(this.track.equals(trackType.UP) || this.track.equals(trackType.DOWN)) 
-		{
-			for(Point2D p : sectionPoints) 
-			{
-				g.setColor(Color.green);
-				g.drawOval( (int)p.getX()- 1 , (int)p.getY() - 1 , 2 ,2 );
-			}
-		}
+//		if(this.track.equals(trackType.UP) || this.track.equals(trackType.DOWN)) 
+//		{
+//			for(Point2D p : sectionPoints) 
+//			{
+//				g.setColor(Color.green);
+//				g.drawOval( (int)p.getX()- 1 , (int)p.getY() - 1 , 2 ,2 );
+//			}
+//		}
 		
 		
 		//for track change lines train navigation , draws control point for spline
 		
-		if(this.track.equals(trackType.CHANGE_FOR_DOWN_START) || 
-		   this.track.equals(trackType.CHANGE_FOR_DOWN_END) || 
-           this.track.equals(trackType.CHANGE_FOR_UP_START)|| 
-           this.track.equals(trackType.CHANGE_FOR_UP_END)) 
-		{
-			
-			for(Point2D p : splinePoints) 
-			{
-				g.setColor(Color.red);
-				g.drawOval( (int)p.getX()- 1 , (int)p.getY() - 1 , 2 ,2);
-			}
-		}
+//		if(this.track.equals(trackType.CHANGE_FOR_DOWN_START) || 
+//		   this.track.equals(trackType.CHANGE_FOR_DOWN_END) || 
+//           this.track.equals(trackType.CHANGE_FOR_UP_START)|| 
+//           this.track.equals(trackType.CHANGE_FOR_UP_END)) 
+//		{
+//			
+//			for(Point2D p : splinePoints) 
+//			{
+//				g.setColor(Color.red);
+//				g.drawOval( (int)p.getX()- 1 , (int)p.getY() - 1 , 2 ,2);
+//			}
+//		}
 		
 		
 		

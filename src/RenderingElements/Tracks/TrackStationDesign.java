@@ -2,6 +2,7 @@ package RenderingElements.Tracks;
 
 import java.awt.Graphics2D;
 
+import RenderingElements.Point.Point;
 import RenderingElements.Tracks.TrackSection.trackType;
 
 public  class TrackStationDesign {
@@ -52,6 +53,8 @@ public  class TrackStationDesign {
 	
 	//change between down and up before start of station
 	TrackSection changeDownUpMainStart = new TrackSection(900 , -20 , vCenter , hCenter , trackType.CHANGE_FOR_UP_START , 40);
+	
+	
 	TrackSection changeUpDownMainStart = new TrackSection(-800 , -20 , vCenter , hCenter , trackType.CHANGE_FOR_UP_END , 40);
 	
 	//Up Loop Line
@@ -79,7 +82,7 @@ public  class TrackStationDesign {
 	
 	
 	
-	
+	Point downUpMainPoint = new Point(100 , 320 , Point.pointType.DOWN_UP_START , changeDownUpMainStart , changeDownUpMainEnd);
 	
 	
 	
@@ -107,6 +110,8 @@ public  class TrackStationDesign {
 		changeDown1.drawSection(g);
 		changeDownUp1.drawSection(g);
 		
+		
+		downUpMainPoint.draw(g);
 	}
 	
 	

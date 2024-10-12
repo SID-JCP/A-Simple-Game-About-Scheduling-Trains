@@ -96,21 +96,19 @@ public class Canvas extends JPanel implements Runnable {
 			deltaTime = timeEnd - timeStart ;
 		
 			
-			timeLeftToWait = deltaTime/nano;			
-			
-			
-			
-			
-			try {
-				Thread.sleep((long)timeLeftToWait);
-			} catch (InterruptedException e) {
+			if(actualRunTime > deltaTime) 
+			{
+				timeLeftToWait  = actualRunTime - deltaTime;
 				
-				e.printStackTrace();
+								
+				try {
+					Thread.sleep((long)timeLeftToWait/1000000);
+				} catch (InterruptedException e) {
+					
+					e.printStackTrace();
+				}
 			}
-			
-			
-			//use for monitoring frames per second 
-			
+						
 			
 			
 		}
@@ -141,6 +139,9 @@ public class Canvas extends JPanel implements Runnable {
 			
 		
 		graphic2D.setColor(Color.white);
+		
+		
+		gClock.drawClock(graphic2D);
 		
 		//FPS and mouse position debug display
 		graphic2D.drawString("Ms " + String.valueOf(timeLeftToWait), 20, 30);		

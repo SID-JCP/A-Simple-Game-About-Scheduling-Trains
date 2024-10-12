@@ -9,8 +9,7 @@ import RenderingElements.Train.Train;
 
 public class tspController {
 	
-	// t = train , s = signal , p = point
-	
+	// t = train , s = signal , p = point	
 	
 	public static List<Train> allTrain = new LinkedList<>();
 	public static List<Signal> allSignals = new LinkedList<>();
@@ -29,7 +28,13 @@ public class tspController {
 	{
 		tspController.secondsOfDay = time;
 		
-		System.out.println("Time in controller: " + tspController.secondsOfDay);
+//		if(!tspController.allTrain.isEmpty()) 
+//		{
+//			System.out.println(tspController.allTrain);
+//		}
+		
+		System.out.println(tspController.allTrain);
+		
 	}
 	
 	

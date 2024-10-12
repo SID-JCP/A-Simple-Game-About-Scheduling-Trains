@@ -1,5 +1,6 @@
 package RenderingElements.Train;
 
+import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 import java.util.LinkedList;
 import java.util.Stack;
@@ -11,8 +12,7 @@ public class Train {
 	
 	public int movingDirection = 1; //1 -> front , 0 -> reverse
 	
-	public boolean moving = true;
-	
+	public boolean moving = true;	
 	public boolean enteredPoint = false;
 	
 	
@@ -40,7 +40,7 @@ public class Train {
 	 * stack
 	 * 
 	 * increment or decrement according speed to the rate of addition or
-	 * substraction of linked list element window
+	 * subtraction of linked list element window
 	 * 
 	 * the controller will provide the section to traverse using the stack , follow
 	 * the stack top
@@ -60,8 +60,13 @@ public class Train {
 		
 	}
 	
+	public void updateTrainPosition() 
+	{
+		
+	}
 	
-	public void drawTrain() 
+	
+	public void drawTrain(Graphics2D g2d) 
 	{
 		move();
 	}
