@@ -11,7 +11,7 @@ import java.util.LinkedList;
 public class TrackSection {
 	
 	/*
-	 * |-----------  What this class needs to do ---------------|
+	 * |--------------------  What this class needs to do -------------------------|
 	 * 
 	 * Have start and end of track coordinates 
 	 * Store the type of track using enum 
@@ -75,7 +75,7 @@ public class TrackSection {
 	 * Draw a main line from one end to another 
 	 * start point and end point
 	 * 
-	 * USE THIS FOR MAIL LINE 
+	 * USE THIS FOR MAIN LINE 
 	 */
 	
 	public TrackSection(int x1 , int y1 , int x2 , int y2 , trackType track) 
@@ -86,8 +86,7 @@ public class TrackSection {
 		
 		createSectionPoints();
 				
-	}	
-	
+	}		
 	
 	/*
 	 * from track number find distance from center by multiplying to trackGap find x
@@ -384,18 +383,18 @@ public class TrackSection {
 		
 		//for track change lines train navigation , draws control point for spline
 		
-//		if(this.track.equals(trackType.CHANGE_FOR_DOWN_START) || 
-//		   this.track.equals(trackType.CHANGE_FOR_DOWN_END) || 
-//           this.track.equals(trackType.CHANGE_FOR_UP_START)|| 
-//           this.track.equals(trackType.CHANGE_FOR_UP_END)) 
-//		{
-//			
-//			for(Point2D p : splinePoints) 
-//			{
-//				g.setColor(Color.red);
-//				g.drawOval( (int)p.getX()- 1 , (int)p.getY() - 1 , 2 ,2);
-//			}
-//		}
+		if(this.track.equals(trackType.CHANGE_FOR_DOWN_START) || 
+		   this.track.equals(trackType.CHANGE_FOR_DOWN_END) || 
+           this.track.equals(trackType.CHANGE_FOR_UP_START)|| 
+           this.track.equals(trackType.CHANGE_FOR_UP_END)) 
+		{
+			
+			for(Point2D p : sectionPoints) 
+			{
+				g.setColor(Color.red);
+				g.drawOval( (int)p.getX()- 1 , (int)p.getY() - 1 , 2 ,2);
+			}
+		}
 		
 		
 		

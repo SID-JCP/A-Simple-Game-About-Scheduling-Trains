@@ -54,38 +54,42 @@ public class Point {
 	private final int pointSize = 10;
 	
 	
-	TrackSection currentTrackSection;
-	TrackSection changableTrackSection;
+	TrackSection trackRoute1;
+	TrackSection trackRoute2;
 	
-	public Point(int xPos , int yPos , pointType type , TrackSection currentTrackSection , TrackSection changableTrackSection) 
+	
+	TrackSection changeTrack;
+	
+
+	/* GET THE LAST AND FIRST DOTS OF THE CHANGE TRACK AND DRAW POINT ON THEM */
+	
+	public Point(TrackSection changeTrack , TrackSection trackRoute1 , TrackSection trackRoute2 , pointType point) 
 	{
-		
-		
-		
-		//Down up start , the point should be on the top of track
-		if (type.equals(pointType.DOWN_UP_START)) 
+		//draw above track
+		if(point.equals(pointType.DOWN_UP_START)) 
 		{
-			pos = new Point2D.Double(xPos - pointTrackGap , yPos - pointTrackGap);
+//			(int)changeTrack.sectionPoints.getFirst().getX();
 		}
-	
-		//Down up end , point below track
-		if (type.equals(pointType.DOWN_UP_END)) 
+		
+		//draw below track 
+		if(point.equals(pointType.DOWN_UP_END)) 
 		{
-			pos = new Point2D.Double(xPos + pointTrackGap , yPos + pointTrackGap);
+//			(int)changeTrack.sectionPoints.getFirst().getX();
 		}
 		
 		
-		//Up down start , below track
-		if (type.equals(pointType.UP_DOWN_START)) 
+		//draw below track
+		if(point.equals(pointType.UP_DOWN_START)) 
 		{
-			pos = new Point2D.Double(xPos - pointTrackGap , yPos + pointTrackGap);
+//			(int)changeTrack.sectionPoints.getFirst().getX();
 		}
-			
-		//Up down up end , point above track
-		if (type.equals(pointType.UP_DOWN_END)) 
+		
+		//draw above track 
+		if(point.equals(pointType.UP_DOWN_END)) 
 		{
-			pos = new Point2D.Double(xPos + pointTrackGap , yPos - pointTrackGap);
+//			(int)changeTrack.sectionPoints.getFirst().getX();
 		}
+		
 		
 	}
 	

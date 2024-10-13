@@ -1,8 +1,9 @@
-package RenderingElements.Tracks;
+package RenderingElements.Tracks.Maps.Example;
 
 import java.awt.Graphics2D;
 
 import RenderingElements.Point.Point;
+import RenderingElements.Tracks.TrackSection;
 import RenderingElements.Tracks.TrackSection.trackType;
 
 public  class TrackStationDesign {
@@ -19,6 +20,8 @@ public  class TrackStationDesign {
 	 * 
 	 * 
 	 */
+	
+	
 	
 	private int MAX_WIDTH = 1500; //Canvas Width Max 
 	private int MAX_HEIGHT = 600; //Canvas Height Max 
@@ -82,7 +85,7 @@ public  class TrackStationDesign {
 	
 	
 	
-	Point downUpMainPoint = new Point(100 , 320 , Point.pointType.DOWN_UP_START , changeDownUpMainStart , changeDownUpMainEnd);
+	
 	
 	
 	
@@ -111,7 +114,7 @@ public  class TrackStationDesign {
 		changeDownUp1.drawSection(g);
 		
 		
-		downUpMainPoint.draw(g);
+		
 	}
 	
 	

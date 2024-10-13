@@ -3,11 +3,11 @@ package RenderingElements.StationElementManager;
 import java.awt.Graphics2D;
 
 import RenderingElements.Controller.tspController;
-import RenderingElements.Tracks.TrackStationDesign;
+import RenderingElements.Tracks.Maps.Example.TrackStationDesign;
 
 public class StationElementDraw {
 
-	//Maps For all stations 
+	//Default Map design 
 	TrackStationDesign defaultStation = new TrackStationDesign();
 	
 	

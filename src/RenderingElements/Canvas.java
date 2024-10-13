@@ -18,7 +18,8 @@ import RenderingElements.Controller.gameClock;
 
 import RenderingElements.StationElementManager.StationElementDraw;
 
-public class Canvas extends JPanel implements Runnable {
+public class Canvas extends JPanel implements Runnable 
+{
 	
 	/**
 	 * IDK WHAT IS THIS....Eclipse said so i did it 
