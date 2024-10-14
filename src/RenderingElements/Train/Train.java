@@ -1,14 +1,18 @@
 package RenderingElements.Train;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
+
+import RenderingElements.Tracks.TrackSection;
 
 public class Train {
 	
 	
-	public Stack<LinkedList<Point2D>> trainCurrentTrackSection = new Stack<>();
+
 	
 	public int movingDirection = 1; //1 -> front , 0 -> reverse
 	
@@ -29,9 +33,20 @@ public class Train {
 	private int departureTime = 0;
 	
 	
+	//coordinates of head of train
+	private int xPos = 0;
+	private int yPos = 0;
+	
+	//length of section linked list and the distance travelled 
+	private int sectionLength = 0;
+	private int sectionLengthTraversed = 0;
+	
+	boolean reachedSectionEnd = false;
 	
 	
 	
+	
+	public TrackSection currentSection = null;
 	
 	/*
 	 * |-------------------- What this class do ------------------------|
@@ -52,23 +67,48 @@ public class Train {
 	 */
 	
 	
-	
-	
-	
-	private void move() 
+	public void assignSection(TrackSection freeSection) 
 	{
-		
+		currentSection = freeSection;
+		sectionLength = currentSection.sectionPoints.size();
 	}
+	
+	
+	public boolean hasSection() 
+	{
+		if(currentSection == null) 
+		{
+			return false;
+		}
+		
+		return true;
+	}
+	
+	
+	
 	
 	public void updateTrainPosition() 
 	{
+		if(sectionLengthTraversed < sectionLength) 
+		{
+			xPos = (int)currentSection.sectionPoints.get(sectionLengthTraversed).getX();
+			yPos = (int)currentSection.sectionPoints.get(sectionLengthTraversed).getY();
+			sectionLengthTraversed++;
+			return;
+		}
 		
+		reachedSectionEnd = true;
 	}
 	
 	
 	public void drawTrain(Graphics2D g2d) 
 	{
-		move();
+		if(hasSection()) 
+		{
+			g2d.setColor(Color.orange);
+			g2d.fillOval(xPos, yPos, 20, 20);
+		}
+		
 	}
 
 }

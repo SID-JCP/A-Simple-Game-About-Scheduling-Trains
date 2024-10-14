@@ -1,6 +1,9 @@
 package RenderingElements.Tracks.Maps.Example;
 
 import java.awt.Graphics2D;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 import RenderingElements.Point.Point;
 import RenderingElements.Tracks.TrackSection;
@@ -34,6 +37,8 @@ public  class TrackStationDesign {
 	private int trackGap = 20; //gap between parallel tracks 
 	private int platfromGap = 50; //gap between parallel tracks for platform 
 	
+	
+	private List<TrackSection> allSection = new LinkedList<>();
 	
 	
 	/*
@@ -85,7 +90,25 @@ public  class TrackStationDesign {
 	
 	
 	
-	
+	public List<TrackSection> getSections() 
+	{
+		Collections.addAll(allSection , 
+				mainUp1,
+				changeDownUpMainStart,
+				changeUpDownMainStart,
+				loopUp1,
+				changeUp1,
+				changeUpDown1,
+				mainDown1,
+				changeDownUpMainEnd,
+				changeUpDownMainEnd,
+				loopDown1,
+				changeDown1,
+				changeDownUp1
+				);
+		
+		return allSection;
+	}
 	
 	
 	
@@ -94,6 +117,8 @@ public  class TrackStationDesign {
 	
 	public void drawTracks(Graphics2D g) 
 	{
+		
+		
 		mainUp1.drawSection(g);
 		
 		changeDownUpMainStart.drawSection(g);

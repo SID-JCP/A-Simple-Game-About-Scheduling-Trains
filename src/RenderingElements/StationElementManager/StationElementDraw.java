@@ -11,17 +11,12 @@ public class StationElementDraw {
 	TrackStationDesign defaultStation = new TrackStationDesign();
 	
 	
+	
 	//One controller for all trains , points and signals . For all different maps use this only 
 	tspController oneMainController = new tspController();
 	
 	
-	//draw method which will draw the tracks , signals , platform from the provided data 
-	//into the paint class for the canvas [This is cap is imp fr]
-	public void draw(Graphics2D g2d) 
-	{
-		
-		defaultStation.drawTracks(g2d);
-	}
+	
 	
 	
 	//Update TSP COntroller with the CANVAS THREAD 
@@ -29,6 +24,23 @@ public class StationElementDraw {
 	{
 		//update tspController and trains , points and switches inside it 
 		oneMainController.update(clockTime);
+		
+		
+		
+	}
+	
+	
+	
+	//draw method which will draw the tracks , signals , platform from the provided data 
+		//into the paint class for the canvas [This is cap is imp fr]
+	public void draw(Graphics2D g2d) 
+	{
+			
+		defaultStation.drawTracks(g2d);
+		
+		
+		
+		oneMainController.drawTrain();
 	}
 	
 

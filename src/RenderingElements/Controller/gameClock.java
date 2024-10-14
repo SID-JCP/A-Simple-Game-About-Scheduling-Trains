@@ -179,7 +179,7 @@ public class gameClock implements Runnable{
 		if(gameClock.secondsOfDay == 100) 
 		{
 			tspController.allTrain.add(new Train());			
-			System.out.println("Added Train");
+			
 		}
 		
 	}

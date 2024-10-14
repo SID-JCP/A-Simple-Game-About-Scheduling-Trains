@@ -28,12 +28,20 @@ public class tspController {
 	{
 		tspController.secondsOfDay = time;
 		
-//		if(!tspController.allTrain.isEmpty()) 
-//		{
-//			System.out.println(tspController.allTrain);
-//		}
+		if(!tspController.allTrain.isEmpty()) 
+		{
+			for(Train train : allTrain) 
+			{
+				if(!train.hasSection()) 
+				{
+					train.assignSection();
+				}
+				
+				
+			}
+		}
 		
-		System.out.println(tspController.allTrain);
+		
 		
 	}
 	
