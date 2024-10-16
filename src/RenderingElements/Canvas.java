@@ -92,8 +92,7 @@ public class Canvas extends JPanel implements Runnable
 			
 			timeEnd = System.nanoTime();
 			
-			//IN nano seconds 
-			
+			//IN nano seconds			
 			deltaTime = timeEnd - timeStart ;
 		
 			

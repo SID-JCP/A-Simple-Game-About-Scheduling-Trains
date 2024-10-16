@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import RenderingElements.Controller.tspController;
 import RenderingElements.Point.Point;
 import RenderingElements.Tracks.TrackSection;
 import RenderingElements.Tracks.TrackSection.trackType;
@@ -107,11 +108,15 @@ public  class TrackStationDesign {
 				changeDownUp1
 				);
 		
+		
 		return allSection;
 	}
 	
 	
-	
+	public void getController() 
+	{
+		tspController.trackSection = allSection;
+	}
 	
 	
 	

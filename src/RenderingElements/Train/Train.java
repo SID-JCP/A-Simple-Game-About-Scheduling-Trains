@@ -106,7 +106,7 @@ public class Train {
 		if(hasSection()) 
 		{
 			g2d.setColor(Color.orange);
-			g2d.fillOval(xPos, yPos, 20, 20);
+			g2d.fillOval(xPos - 10, yPos - 10 , 20, 20);
 		}
 		
 	}

@@ -15,6 +15,8 @@ public class StationElementDraw {
 	//One controller for all trains , points and signals . For all different maps use this only 
 	tspController oneMainController = new tspController();
 	
+	private int mapSelected = 0;
+	
 	
 	
 	
@@ -22,8 +24,25 @@ public class StationElementDraw {
 	//Update TSP COntroller with the CANVAS THREAD 
 	public void update(long clockTime) 
 	{
-		//update tspController and trains , points and switches inside it 
-		oneMainController.update(clockTime);
+		
+		switch(mapSelected) 
+		{
+			case 0:
+				defaultStation.getSections();
+				defaultStation.getController();
+				
+				
+				//update tspController and trains , points and switches inside it 
+				oneMainController.update(clockTime);
+				
+				break;
+			case 2: 
+				break;
+		}
+		
+		
+		
+		
 		
 		
 		
@@ -35,12 +54,11 @@ public class StationElementDraw {
 		//into the paint class for the canvas [This is cap is imp fr]
 	public void draw(Graphics2D g2d) 
 	{
-			
+		
+		
 		defaultStation.drawTracks(g2d);
 		
-		
-		
-		oneMainController.drawTrain();
+		oneMainController.drawTrain(g2d);
 	}
 	
 
