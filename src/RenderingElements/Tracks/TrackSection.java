@@ -35,7 +35,7 @@ public class TrackSection {
 	
 	
 	
-	private int distanceBetweenControlPoints = 10; //Distance between Control Points
+	private int distanceBetweenControlPoints = 2; //Distance between Control Points
 	
 	
 	
@@ -46,13 +46,13 @@ public class TrackSection {
 	
 	
 	private int trackWidth = 3; //width of track	
-	private trackType track; //type of track (up  , down , change ...)	
+	private trackType track;
 	
 	
-	//Use this for all tracks other than changes 
+	//Use this for all tracks , to store their smooth points 
 	public LinkedList<Point2D> sectionPoints = new LinkedList<>();
 	
-	//Use this for all tracks that are points and make in spline format 
+	//Stores the control points for making the smooth section point only for change 
 	public LinkedList<Point2D> splinePoints = new LinkedList<>();
 	
 	
@@ -68,6 +68,29 @@ public class TrackSection {
 		CHANGE_FOR_DOWN_START, //change from down to up or down to down , goes from **right to left**
 		CHANGE_FOR_DOWN_END    //at end , change from up loop to main line 
 				
+	}
+	
+	
+	
+	/* Draws section points for mainLines and loopLines , not for change sections */
+	
+	private void createSectionPoints() 
+	{
+		//Create points for allowing movement for train in smooth gap		
+		int length = (int)endPoint.getX() - (int)startPoint.getX();
+		
+		Point2D lastPoint = null;
+		
+		sectionPoints.add(startPoint);
+		
+		for(int i = 0; i < length/distanceBetweenControlPoints ; i++) 
+		{
+			lastPoint = sectionPoints.getLast();
+			sectionPoints.add(new Point2D.Double(lastPoint.getX() + distanceBetweenControlPoints, lastPoint.getY()));
+		}
+		
+		
+		sectionPoints.add(endPoint);
 	}
 	
 	
@@ -156,7 +179,8 @@ public class TrackSection {
 		this.track = track;
 		
 		createSectionPoints();
-		}
+		
+	}
 	
 	
 	/*
@@ -245,25 +269,7 @@ public class TrackSection {
 	
 	
 	
-	private void createSectionPoints() 
-	{
-		//Create points for allowing movement for train in smooth gap
-		
-		int length = (int)endPoint.getX() - (int)startPoint.getX();
-		
-		Point2D lastPoint = null;
-		
-		sectionPoints.add(startPoint);
-		
-		for(int i = 0; i < length/distanceBetweenControlPoints ; i++) 
-		{
-			lastPoint = sectionPoints.getLast();
-			sectionPoints.add(new Point2D.Double(lastPoint.getX() + distanceBetweenControlPoints, lastPoint.getY()));
-		}
-		
-		
-		sectionPoints.add(endPoint);
-	}
+	
 	
 	
 	
@@ -280,16 +286,16 @@ public class TrackSection {
 		int extraControlPointOffset = 30; 
 		
 		//adding start to list 
-		sectionPoints.add(startPoint);	
+		splinePoints.add(startPoint);	
 		
 		if(tt.equals(trackType.CHANGE_FOR_UP_START) || tt.equals(trackType.CHANGE_FOR_DOWN_START)) 
 		{
-			sectionPoints.add(new Point2D.Double(sectionPoints.getFirst().getX() + extraControlPointOffset ,sectionPoints.getFirst().getY()));
+			splinePoints.add(new Point2D.Double(splinePoints.getFirst().getX() + extraControlPointOffset ,splinePoints.getFirst().getY()));
 			
-			sectionPoints.add(endPoint);
+			splinePoints.add(endPoint);
 			
 			//add control point after end of change
-			sectionPoints.add(new Point2D.Double(sectionPoints.getLast().getX() - extraControlPointOffset ,sectionPoints.getLast().getY() ));
+			splinePoints.add(new Point2D.Double(splinePoints.getLast().getX() - extraControlPointOffset ,splinePoints.getLast().getY() ));
 						
 						
 		}
@@ -298,12 +304,12 @@ public class TrackSection {
 		
 		if(tt.equals(trackType.CHANGE_FOR_UP_END) || tt.equals(trackType.CHANGE_FOR_DOWN_END)) 
 		{
-			sectionPoints.add(new Point2D.Double(sectionPoints.getFirst().getX() - extraControlPointOffset ,sectionPoints.getFirst().getY()));
+			splinePoints.add(new Point2D.Double(splinePoints.getFirst().getX() - extraControlPointOffset ,splinePoints.getFirst().getY()));
 			
-			sectionPoints.add(endPoint);
+			splinePoints.add(endPoint);
 			
 			//add control point after end of change
-			sectionPoints.add(new Point2D.Double(sectionPoints.getLast().getX() + extraControlPointOffset ,sectionPoints.getLast().getY() ));						
+			splinePoints.add(new Point2D.Double(splinePoints.getLast().getX() + extraControlPointOffset ,splinePoints.getLast().getY() ));						
 						
 		}
 		
@@ -319,29 +325,29 @@ public class TrackSection {
 		 *|-------------------------  SPLINE MATH --------------------------|
 		 */
 		
-		double P0X = sectionPoints.get(1).getX();
-		double P0Y = sectionPoints.get(1).getY();
+		double P0X = splinePoints.get(1).getX();
+		double P0Y = splinePoints.get(1).getY();
 		
-		double P1X = sectionPoints.get(0).getX();
-		double P1Y = sectionPoints.get(0).getY();
+		double P1X = splinePoints.get(0).getX();
+		double P1Y = splinePoints.get(0).getY();
 		
-		double P2X = sectionPoints.get(2).getX();
-		double P2Y = sectionPoints.get(2).getY();
+		double P2X = splinePoints.get(2).getX();
+		double P2Y = splinePoints.get(2).getY();
 		
-		double P3X = sectionPoints.get(3).getX();
-		double P3Y = sectionPoints.get(3).getY();
+		double P3X = splinePoints.get(3).getX();
+		double P3Y = splinePoints.get(3).getY();
 		
 		double QX;
 		double QY;
 		
 				
 		
-		for (double t = 0; t <= 1.0; t+= 0.1) 
+		for (double t = 0; t <= 1.0; t+= 0.02) 
 		{
 			QX = 0.5 * ((2*P1X) + (-P0X + P2X)*t + (2*P0X - 5*P1X + 4*P2X - P3X)*t*t + (3*P1X - 3*P2X - P0X + P3X)*t*t*t);
 			QY = 0.5 * ((2*P1Y) + (-P0Y + P2Y)*t + (2*P0Y - 5*P1Y + 4*P2Y - P3Y)*t*t + (3*P1Y - 3*P2Y - P0Y + P3Y)*t*t*t);
 			
-			splinePoints.add(new Point2D.Double(QX,QY));
+			sectionPoints.add(new Point2D.Double(QX,QY));
 		}
 		
 		
@@ -383,18 +389,18 @@ public class TrackSection {
 		
 		//for track change lines train navigation , draws control point for spline
 		
-		if(this.track.equals(trackType.CHANGE_FOR_DOWN_START) || 
-		   this.track.equals(trackType.CHANGE_FOR_DOWN_END) || 
-           this.track.equals(trackType.CHANGE_FOR_UP_START)|| 
-           this.track.equals(trackType.CHANGE_FOR_UP_END)) 
-		{
-			
-			for(Point2D p : sectionPoints) 
-			{
-				g.setColor(Color.red);
-				g.drawOval( (int)p.getX()- 1 , (int)p.getY() - 1 , 2 ,2);
-			}
-		}
+//		if(this.track.equals(trackType.CHANGE_FOR_DOWN_START) || 
+//		   this.track.equals(trackType.CHANGE_FOR_DOWN_END) || 
+//           this.track.equals(trackType.CHANGE_FOR_UP_START)|| 
+//           this.track.equals(trackType.CHANGE_FOR_UP_END)) 
+//		{
+//			
+//			for(Point2D p : sectionPoints) 
+//			{
+//				g.setColor(Color.red);
+//				g.drawOval( (int)p.getX()- 1 , (int)p.getY() - 1 , 2 ,2);
+//			}
+//		}
 		
 		
 		

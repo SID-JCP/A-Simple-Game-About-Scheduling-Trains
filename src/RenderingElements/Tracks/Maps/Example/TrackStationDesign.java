@@ -7,6 +7,7 @@ import java.util.List;
 
 import RenderingElements.Controller.tspController;
 import RenderingElements.Point.Point;
+import RenderingElements.Point.Point.pointType;
 import RenderingElements.Tracks.TrackSection;
 import RenderingElements.Tracks.TrackSection.trackType;
 
@@ -91,9 +92,14 @@ public  class TrackStationDesign {
 	
 	
 	
+	Point pointDownUp1 = new Point(changeDownUpMainStart , mainUp1  ,loopUp1 , pointType.DOWN_UP);
+	
+	
 	public List<TrackSection> getSections() 
 	{
 		Collections.addAll(allSection , 
+				
+				
 				mainUp1,
 				changeDownUpMainStart,
 				changeUpDownMainStart,
@@ -143,7 +149,7 @@ public  class TrackStationDesign {
 		changeDown1.drawSection(g);
 		changeDownUp1.drawSection(g);
 		
-		
+		pointDownUp1.draw(g);
 		
 	}
 	

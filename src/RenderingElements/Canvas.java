@@ -43,6 +43,7 @@ public class Canvas extends JPanel implements Runnable
 	public  int moveX;
 	public  int moveY;
 	
+		
 	Thread thread = new Thread(this);
 	
 	StationElementDraw stationElement = new StationElementDraw();
@@ -94,6 +95,7 @@ public class Canvas extends JPanel implements Runnable
 			
 			//IN nano seconds			
 			deltaTime = timeEnd - timeStart ;
+			
 		
 			
 			if(actualRunTime > deltaTime) 
@@ -144,7 +146,7 @@ public class Canvas extends JPanel implements Runnable
 		gClock.drawClock(graphic2D);
 		
 		//FPS and mouse position debug display
-		graphic2D.drawString("Ms " + String.valueOf(timeLeftToWait), 20, 30);		
+		graphic2D.drawString("MS: " + String.valueOf(deltaTime), 20, 30);		
 		graphic2D.drawString("Mouse X: " + String.valueOf(moveX) + 
 							 " Mouse Y: " + String.valueOf(moveY)
 							, 20, 60);

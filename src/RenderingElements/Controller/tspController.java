@@ -35,14 +35,14 @@ public class tspController {
 			{
 				if(!train.hasSection()) 
 				{
-					train.assignSection(trackSection.get(3));
+					//assign section to train on start , determined by the direction of train and if its alive or not 
+					train.assignSection(trackSection.get(1));
 				}
 				
 				train.updateTrainPosition();
 			}
 		}
 		
-//		System.out.println(trackSection);
 		
 	}
 	
@@ -52,10 +52,11 @@ public class tspController {
 
 		if(!tspController.allTrain.isEmpty()) 
 		{
-			for(Train train : allTrain) 
+			allTrain.forEach(train -> 
 			{
 				train.drawTrain(g2d);
-			}
+			});
+			
 		}
 	}
 

@@ -7,12 +7,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
+import RenderingElements.Canvas;
 import RenderingElements.Tracks.TrackSection;
 
 public class Train {
 	
-	
-
 	
 	public int movingDirection = 1; //1 -> front , 0 -> reverse
 	
@@ -21,30 +20,26 @@ public class Train {
 	
 	
 	/* TRAIN META DATA */
-	
-	private int Delay  = 0;
-	
 	private boolean hasStoppage = true;
-	
-	private int timeForStoppage = 0;
-	
-	private int arrivalTime = 0;
-	
+	private int Delay  = 0;	
+	private int timeForStoppage = 0;	
+	private int arrivalTime = 0;	
 	private int departureTime = 0;
+	
+	
+	private double speed = 0.5;	
 	
 	
 	//coordinates of head of train
 	private int xPos = 0;
 	private int yPos = 0;
+
 	
 	//length of section linked list and the distance travelled 
-	private int sectionLength = 0;
-	private int sectionLengthTraversed = 0;
+	private double sectionPointIndex = 0;
+	private int sectionPointLastIndex = 0;
 	
-	boolean reachedSectionEnd = false;
-	
-	
-	
+	boolean reachedSectionEnd = false;		
 	
 	public TrackSection currentSection = null;
 	
@@ -70,7 +65,7 @@ public class Train {
 	public void assignSection(TrackSection freeSection) 
 	{
 		currentSection = freeSection;
-		sectionLength = currentSection.sectionPoints.size();
+		sectionPointLastIndex = currentSection.sectionPoints.size();
 	}
 	
 	
@@ -79,8 +74,7 @@ public class Train {
 		if(currentSection == null) 
 		{
 			return false;
-		}
-		
+		}		
 		return true;
 	}
 	
@@ -89,11 +83,12 @@ public class Train {
 	
 	public void updateTrainPosition() 
 	{
-		if(sectionLengthTraversed < sectionLength) 
+		if(sectionPointIndex < sectionPointLastIndex) 
 		{
-			xPos = (int)currentSection.sectionPoints.get(sectionLengthTraversed).getX();
-			yPos = (int)currentSection.sectionPoints.get(sectionLengthTraversed).getY();
-			sectionLengthTraversed++;
+			xPos = (int)currentSection.sectionPoints.get((int)sectionPointIndex).getX();
+			yPos = (int)currentSection.sectionPoints.get((int)sectionPointIndex).getY();
+			
+			sectionPointIndex += 0.5;		
 			return;
 		}
 		
@@ -105,7 +100,7 @@ public class Train {
 	{
 		if(hasSection()) 
 		{
-			g2d.setColor(Color.orange);
+			g2d.setColor(Color.BLUE);
 			g2d.fillOval(xPos - 10, yPos - 10 , 20, 20);
 		}
 		

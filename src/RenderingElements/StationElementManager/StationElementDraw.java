@@ -13,7 +13,7 @@ public class StationElementDraw {
 	
 	
 	//One controller for all trains , points and signals . For all different maps use this only 
-	tspController oneMainController = new tspController();
+	tspController Controller = new tspController();
 	
 	private int mapSelected = 0;
 	
@@ -33,7 +33,7 @@ public class StationElementDraw {
 				
 				
 				//update tspController and trains , points and switches inside it 
-				oneMainController.update(clockTime);
+				Controller.update(clockTime);
 				
 				break;
 			case 2: 
@@ -56,9 +56,8 @@ public class StationElementDraw {
 	{
 		
 		
-		defaultStation.drawTracks(g2d);
-		
-		oneMainController.drawTrain(g2d);
+		defaultStation.drawTracks(g2d);		
+		Controller.drawTrain(g2d);
 	}
 	
 

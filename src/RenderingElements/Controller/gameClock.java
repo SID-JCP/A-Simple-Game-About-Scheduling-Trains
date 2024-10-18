@@ -176,7 +176,7 @@ public class gameClock implements Runnable{
 	private void createTrainOnTime() 
 	{
 		//check the timings of trains available , if any match , create and add to tspController List 
-		if(gameClock.secondsOfDay == 100) 
+		if(gameClock.secondsOfDay == 50) 
 		{
 			tspController.allTrain.add(new Train());			
 			

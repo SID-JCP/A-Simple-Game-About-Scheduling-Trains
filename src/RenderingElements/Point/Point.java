@@ -33,25 +33,39 @@ public class Point {
 	 * 
 	 */
 	
+	/*
+	 * POSITIONING OF POINT
+	 * 
+	 * point is at start or end of section
+	 * 
+	 * provide the section to change to or from and draw the point using the first
+	 * or last point from that sectin
+	 */
+	
+	
+	
 	public static enum pointType
 	{
-		DOWN_UP_START,
-		DOWN_UP_END,
-		UP_DOWN_START,
-		UP_DOWN_END
+		DOWN_UP,
+		UP_DOWN
 		
 	}
 
-	//coordinate of the exact start of the track change 
+	//coordinate of first or last point of track change section 
+	
 	private Point2D pos;
+	
+//	coordinates of the point calculated from pos 
+	int xPos;
+	int yPos;
 	
 	//route = 0 if no change in line 
 	//route = 1 if change in line 
 	public int route = 0; 
 	
 	
-	private final int pointTrackGap = 20;
-	private final int pointSize = 10;
+	private final int pointTrackGap = 5;
+	private final int pointSize = 15;
 	
 	
 	TrackSection trackRoute1;
@@ -66,30 +80,30 @@ public class Point {
 	public Point(TrackSection changeTrack , TrackSection trackRoute1 , TrackSection trackRoute2 , pointType point) 
 	{
 		//draw above track
-		if(point.equals(pointType.DOWN_UP_START)) 
+		if(point.equals(pointType.DOWN_UP)) 
 		{
-//			(int)changeTrack.sectionPoints.getFirst().getX();
+			/*
+			 * get the first point for the change track
+			 * 
+			 * draw the point some distance above the first coordinate
+			 */
+			
+			//first for down to up 
+			pos = changeTrack.sectionPoints.getFirst();
+			
+			xPos = (int)pos.getX() - (pointTrackGap - pointSize/2);
+			yPos = (int)pos.getY() - (pointTrackGap - pointSize/2);
+			
 		}
-		
-		//draw below track 
-		if(point.equals(pointType.DOWN_UP_END)) 
-		{
-//			(int)changeTrack.sectionPoints.getFirst().getX();
-		}
+
 		
 		
 		//draw below track
-		if(point.equals(pointType.UP_DOWN_START)) 
+		if(point.equals(pointType.UP_DOWN)) 
 		{
-//			(int)changeTrack.sectionPoints.getFirst().getX();
+
 		}
-		
-		//draw above track 
-		if(point.equals(pointType.UP_DOWN_END)) 
-		{
-//			(int)changeTrack.sectionPoints.getFirst().getX();
-		}
-		
+
 		
 	}
 	
@@ -101,7 +115,7 @@ public class Point {
 		
 		g.setColor(Color.RED);
 		
-		g.fillRect((int)pos.getX() , (int)pos.getY(),pointSize , pointSize);
+		g.fillRect(xPos , yPos, pointSize , pointSize);
 		
 	}
 }
