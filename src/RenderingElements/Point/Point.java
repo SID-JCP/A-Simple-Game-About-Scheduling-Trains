@@ -80,29 +80,29 @@ public class Point {
 	public Point(TrackSection changeTrack , TrackSection trackRoute1 , TrackSection trackRoute2 , pointType point) 
 	{
 		//draw above track
-		if(point.equals(pointType.DOWN_UP)) 
-		{
-			/*
-			 * get the first point for the change track
-			 * 
-			 * draw the point some distance above the first coordinate
-			 */
-			
-			//first for down to up 
-			pos = changeTrack.sectionPoints.getFirst();
-			
-			xPos = (int)pos.getX() - (pointTrackGap - pointSize/2);
-			yPos = (int)pos.getY() - (pointTrackGap - pointSize/2);
-			
-		}
-
-		
-		
-		//draw below track
-		if(point.equals(pointType.UP_DOWN)) 
-		{
-
-		}
+//		if(point.equals(pointType.DOWN_UP)) 
+//		{
+//			/*
+//			 * get the first point for the change track
+//			 * 
+//			 * draw the point some distance above the first coordinate
+//			 */
+//			
+//			//first for down to up 
+//			pos = changeTrack.sectionPoints.getFirst();
+//			
+//			xPos = (int)pos.getX() - (pointTrackGap - pointSize/2);
+//			yPos = (int)pos.getY() - (pointTrackGap - pointSize/2);
+//			
+//		}
+//
+//		
+//		
+//		//draw below track
+//		if(point.equals(pointType.UP_DOWN)) 
+//		{
+//
+//		}
 
 		
 	}
@@ -113,9 +113,9 @@ public class Point {
 	public void draw(Graphics2D g) 
 	{
 		
-		g.setColor(Color.RED);
-		
-		g.fillRect(xPos , yPos, pointSize , pointSize);
+//		g.setColor(Color.RED);
+//		
+//		g.fillRect(xPos , yPos, pointSize , pointSize);
 		
 	}
 }

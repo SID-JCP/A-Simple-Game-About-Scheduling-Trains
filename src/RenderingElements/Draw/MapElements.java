@@ -1,5 +1,6 @@
 package RenderingElements.Draw;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 import RenderingElements.Controller.MapController;
@@ -21,14 +22,22 @@ public class MapElements {
 	private int WIDTH = 0;
 	private int HEIGHT = 0;
 	
+	private int trackOffset = 20;
+	
 	
 	/*
 	 *  1 - THE COUNT OF MAX NO OF TRACKS SIDE BY SIDE WHICH CAN BE ON SCREEN
 	 *  
 	 *  2 - THE COUNT OF MAX NO OF SIGNALS / POINTS WHICH CAN BE ON SCREEN 
+	 *  
+	 *  MAX VERITICAL ELEMENTS SHOULD BE EVEN 
 	 */
-	private int MAX_VERTICAL_ELM =  11;	
-	private int MAX_HORIZONTAL_ELM  = 11;
+	private int MAX_VERTICAL_ELM =  4;	
+	private int MAX_HORIZONTAL_ELM  = 12;
+	
+	
+	private int xCENTER;
+	private int yCENTER;
 	
 	
 	
@@ -41,12 +50,15 @@ public class MapElements {
 		this.WIDTH = WIDTH;
 		this.HEIGHT = HEIGHT;
 		
+		xCENTER = (int)WIDTH/2;
+		yCENTER = (int)HEIGHT/2;
+		
 		switch(mapSelected) 
 		{
 			case 0:
 				
-				defaultStation.getSections();
-				defaultStation.getController();
+				
+				defaultStation.addListToController();
 				
 				
 				
@@ -68,35 +80,45 @@ public class MapElements {
 	
 	private void positionGrid(Graphics2D g2d) 
 	{
-		int vGap = (int)HEIGHT/MAX_VERTICAL_ELM;
+		
+		
 		int hGap = (int)WIDTH/MAX_HORIZONTAL_ELM;
-		
 		int xPos = 0;
-		int yPos = 0;
 		
+		
+		
+		int yCenter = (int)HEIGHT/2;
+		int xCenter = (int)WIDTH/2;
+		
+		
+		//Center Lines 
+		g2d.drawLine(0, yCenter, WIDTH, yCenter);
+		g2d.drawLine(xCenter , 0 , xCenter, HEIGHT);
+		
+		//Horizontal line for drawing points and fixing length of station tracks 
+		g2d.setColor(Color.green);
 		for(int j = 0 ; j < MAX_HORIZONTAL_ELM; j++) 
 		{
 			g2d.drawLine(xPos , 0 , xPos, HEIGHT);
 			xPos += hGap;
 		}
-		
-		for(int i = 0 ; i < MAX_VERTICAL_ELM; i++) 
-		{
-			g2d.drawLine(0, yPos, WIDTH, yPos);
-			yPos += vGap;
-		}
+
 	}
 	
 	
 	
 	
 	//draw method which will draw the tracks , signals , platform from the provided data 
-		//into the paint class for the canvas [This is cap is imp fr]
+	//into the paint class for the canvas [This is cap is imp fr]
+	
 	public void draw(Graphics2D g2d) 
 	{
+		//debug
 		positionGrid(g2d);
 		
-		defaultStation.drawTracks(g2d);		
+		
+		
+		Controller.drawTracks(xCENTER , yCENTER , WIDTH , HEIGHT ,  trackOffset , g2d);
 		Controller.drawTrain(g2d);
 	}
 	

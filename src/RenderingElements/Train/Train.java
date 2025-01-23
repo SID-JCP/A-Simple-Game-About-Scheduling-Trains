@@ -62,48 +62,48 @@ public class Train {
 	 */
 	
 	
-	public void assignSection(TrackSection freeSection) 
-	{
-		currentSection = freeSection;
-		sectionPointLastIndex = currentSection.sectionPoints.size();
-	}
-	
-	
-	public boolean hasSection() 
-	{
-		if(currentSection == null) 
-		{
-			return false;
-		}		
-		return true;
-	}
-	
-	
-	
-	
-	public void updateTrainPosition() 
-	{
-		if(sectionPointIndex < sectionPointLastIndex) 
-		{
-			xPos = (int)currentSection.sectionPoints.get((int)sectionPointIndex).getX();
-			yPos = (int)currentSection.sectionPoints.get((int)sectionPointIndex).getY();
-			
-			sectionPointIndex += 0.5;		
-			return;
-		}
-		
-		reachedSectionEnd = true;
-	}
-	
-	
-	public void drawTrain(Graphics2D g2d) 
-	{
-		if(hasSection()) 
-		{
-			g2d.setColor(Color.BLUE);
-			g2d.fillOval(xPos - 10, yPos - 10 , 20, 20);
-		}
-		
-	}
+//	public void assignSection(TrackSection freeSection) 
+//	{
+//		currentSection = freeSection;
+//		sectionPointLastIndex = currentSection.sectionPoints.size();
+//	}
+//	
+//	
+//	public boolean hasSection() 
+//	{
+//		if(currentSection == null) 
+//		{
+//			return false;
+//		}		
+//		return true;
+//	}
+//	
+//	
+//	
+//	
+//	public void updateTrainPosition() 
+//	{
+//		if(sectionPointIndex < sectionPointLastIndex) 
+//		{
+//			xPos = (int)currentSection.sectionPoints.get((int)sectionPointIndex).getX();
+//			yPos = (int)currentSection.sectionPoints.get((int)sectionPointIndex).getY();
+//			
+//			sectionPointIndex += 0.5;		
+//			return;
+//		}
+//		
+//		reachedSectionEnd = true;
+//	}
+//	
+//	
+//	public void drawTrain(Graphics2D g2d) 
+//	{
+//		if(hasSection()) 
+//		{
+//			g2d.setColor(Color.BLUE);
+//			g2d.fillOval(xPos - 10, yPos - 10 , 20, 20);
+//		}
+//		
+//	}
 
 }
