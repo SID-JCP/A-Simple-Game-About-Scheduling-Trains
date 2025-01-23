@@ -9,7 +9,7 @@ import RenderingElements.Signal.Signal;
 import RenderingElements.Tracks.TrackSection;
 import RenderingElements.Train.Train;
 
-public class tspController {
+public class MapController {
 	
 	// t = train , s = signal , p = point	
 	
@@ -27,9 +27,9 @@ public class tspController {
 	
 	public void update(long time) 
 	{
-		tspController.secondsOfDay = time;
+		MapController.secondsOfDay = time;
 		
-		if(!tspController.allTrain.isEmpty()) 
+		if(!MapController.allTrain.isEmpty()) 
 		{
 			for(Train train : allTrain) 
 			{
@@ -50,7 +50,7 @@ public class tspController {
 	public void drawTrain(Graphics2D g2d) 
 	{
 
-		if(!tspController.allTrain.isEmpty()) 
+		if(!MapController.allTrain.isEmpty()) 
 		{
 			allTrain.forEach(train -> 
 			{

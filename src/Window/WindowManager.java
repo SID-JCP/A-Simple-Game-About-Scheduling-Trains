@@ -19,7 +19,7 @@ public class WindowManager {
 //		window.setResizable(false);
 		
 		
-		Canvas canvas = new Canvas();
+		Canvas canvas = new Canvas(window);
 		canvas.startThread();
 		window.add(canvas);
 		window.setVisible(true);

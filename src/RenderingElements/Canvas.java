@@ -14,9 +14,8 @@ import javax.swing.JPanel;
 
 import InputManager.KeyBoardInputManager;
 import InputManager.MouseInputManager;
-import RenderingElements.Controller.gameClock;
-
-import RenderingElements.StationElementManager.StationElementDraw;
+import RenderingElements.Controller.InGameClock;
+import RenderingElements.Draw.MapElements;
 
 public class Canvas extends JPanel implements Runnable 
 {
@@ -26,12 +25,14 @@ public class Canvas extends JPanel implements Runnable
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private long deltaTime = 0l;
+	private long deltaTime = 0l;	
 	private long timeStart = 0l;
 	private long timeEnd = 0l;
+	
 	private long nano = 1000000000;
 	
 	private double timeLeftToWait = 0;
+	
 	
 	/* |---------- FPS ---------------| */
 	private int FPS =  30;
@@ -43,18 +44,26 @@ public class Canvas extends JPanel implements Runnable
 	public  int moveX;
 	public  int moveY;
 	
+	
+	private int SCREEN_WIDTH = 0;
+	private int SCREEN_HEIGHT = 0;
+	
+	
+	private JFrame window;
+	
 		
 	Thread thread = new Thread(this);
 	
-	StationElementDraw stationElement = new StationElementDraw();
+	MapElements elements = new MapElements();
 	
-	gameClock gClock = new gameClock();
+	InGameClock gClock = new InGameClock();
 	
 	
 	
 
-	public Canvas() 
+	public Canvas(JFrame window) 
 	{
+		this.window = window;
 		this.setBackground(Color.BLACK);
 		
 		this.setDoubleBuffered(true);
@@ -85,6 +94,9 @@ public class Canvas extends JPanel implements Runnable
 		
 		while(thread != null)
 		{
+			
+			SCREEN_WIDTH = window.getWidth();
+			SCREEN_HEIGHT = window.getHeight();
 			
 			timeStart = System.nanoTime();
 			
@@ -126,7 +138,7 @@ public class Canvas extends JPanel implements Runnable
 		moveX = mouseInput.getMoveX();
 		moveY = mouseInput.getMoveY();
 		
-		stationElement.update(gameClock.secondsOfDay);
+		elements.update(InGameClock.secondsOfDay , SCREEN_WIDTH , SCREEN_HEIGHT);
 		
 	}
 	
@@ -145,13 +157,20 @@ public class Canvas extends JPanel implements Runnable
 		
 		gClock.drawClock(graphic2D);
 		
-		//FPS and mouse position debug display
+		/*
+		 * DEBUG ELEMETS 
+		 */
+		
+		
 		graphic2D.drawString("MS: " + String.valueOf(deltaTime), 20, 30);		
 		graphic2D.drawString("Mouse X: " + String.valueOf(moveX) + 
 							 " Mouse Y: " + String.valueOf(moveY)
 							, 20, 60);
 		
-		stationElement.draw(graphic2D);
+		graphic2D.drawString("WIDTH: " + SCREEN_WIDTH + " "+
+							 "HEIGHT: " + SCREEN_HEIGHT, 20, 90);
+		
+		elements.draw(graphic2D);
 		
 		
 		

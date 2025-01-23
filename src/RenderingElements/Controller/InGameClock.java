@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 
 import RenderingElements.Train.Train;
 
-public class gameClock implements Runnable{
+public class InGameClock implements Runnable{
 
 	
 	
@@ -142,14 +142,14 @@ public class gameClock implements Runnable{
 	
 	private void setHour() 
 	{
-		HOUR = (int) gameClock.secondsOfDay/3600;
+		HOUR = (int) InGameClock.secondsOfDay/3600;
 	}
 	
 	private void setMinute() 
 	{
 		 
 		
-		if(gameClock.secondsOfDay % 60 == 0) 
+		if(InGameClock.secondsOfDay % 60 == 0) 
 		{
 			MINUTES++;
 		}
@@ -176,9 +176,9 @@ public class gameClock implements Runnable{
 	private void createTrainOnTime() 
 	{
 		//check the timings of trains available , if any match , create and add to tspController List 
-		if(gameClock.secondsOfDay == 50) 
+		if(InGameClock.secondsOfDay == 50) 
 		{
-			tspController.allTrain.add(new Train());			
+			MapController.allTrain.add(new Train());			
 			
 		}
 		

@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import RenderingElements.Controller.tspController;
+import RenderingElements.Controller.MapController;
 import RenderingElements.Point.Point;
 import RenderingElements.Point.Point.pointType;
 import RenderingElements.Tracks.TrackSection;
@@ -121,7 +121,7 @@ public  class TrackStationDesign {
 	
 	public void getController() 
 	{
-		tspController.trackSection = allSection;
+		MapController.trackSection = allSection;
 	}
 	
 	
