@@ -22,7 +22,8 @@ public class MapElements {
 	private int WIDTH = 0;
 	private int HEIGHT = 0;
 	
-	private int trackOffset = 20;
+	private int trackOffset = 50;
+	private int lengthOffset = 0;
 	
 	
 	/*
@@ -53,15 +54,14 @@ public class MapElements {
 		xCENTER = (int)WIDTH/2;
 		yCENTER = (int)HEIGHT/2;
 		
+		lengthOffset = (int)WIDTH/MAX_HORIZONTAL_ELM;
+		
 		switch(mapSelected) 
 		{
 			case 0:
 				
 				
-				defaultStation.addListToController();
-				
-				
-				
+				defaultStation.addListToController();				
 				Controller.update(clockTime);
 				
 				break;
@@ -81,7 +81,7 @@ public class MapElements {
 	private void positionGrid(Graphics2D g2d) 
 	{
 		
-		
+		lengthOffset = (int)WIDTH/MAX_HORIZONTAL_ELM;
 		int hGap = (int)WIDTH/MAX_HORIZONTAL_ELM;
 		int xPos = 0;
 		
@@ -118,7 +118,7 @@ public class MapElements {
 		
 		
 		
-		Controller.drawTracks(xCENTER , yCENTER , WIDTH , HEIGHT ,  trackOffset , g2d);
+		Controller.drawTracks(xCENTER , yCENTER , WIDTH , HEIGHT ,  trackOffset , lengthOffset ,  g2d);
 		Controller.drawTrain(g2d);
 	}
 	

@@ -41,9 +41,19 @@ public  class TrackStationDesign {
 	//Main Up Line
 	TrackSection mainUp1 = new TrackSection(trackType.UP , 1 , -1);
 	
+	//loop Up Line 
+	TrackSection loopUp1 = new TrackSection(trackType.UP , 2 , 5);
+	
+	TrackSection switchMainUp1_loopUp1 = new TrackSection(trackType.UP_START , mainUp1 , loopUp1 , 3);
+	
+	
+	
 	
 	//Main Down Line
 	TrackSection mainDown1 = new TrackSection(trackType.DOWN , 1 , -1);
+	
+	//loop Down Line 
+	TrackSection loopDown1 = new TrackSection(trackType.DOWN , 2 , 5);
 	
 	
 
@@ -58,8 +68,12 @@ public  class TrackStationDesign {
 		Collections.addAll(listOfTrackSections , 
 				
 				
-				mainUp1,				
-				mainDown1
+				mainUp1,
+				loopUp1,
+				switchMainUp1_loopUp1,
+				mainDown1,
+				loopDown1
+				
 				
 				
 				);

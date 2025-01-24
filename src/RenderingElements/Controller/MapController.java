@@ -53,7 +53,7 @@ public class MapController {
 	}
 	
 	
-	public void drawTracks(int xCenter , int yCenter , int width , int height ,  int trackOffset , Graphics2D g2d) 
+	public void drawTracks(int xCenter , int yCenter , int width , int height ,  int trackOffset , int lengthOffset , Graphics2D g2d) 
 	{
 		
 		if(!listOfTrackSections.isEmpty()) 
@@ -65,32 +65,96 @@ public class MapController {
 				
 				if(trackSection.getTrackType() == TrackSection.trackType.UP) 
 				{
-					//its main line 
-					if(trackSection.getTrackNum() == - 1) 
+					//its main line , length is full
+					if(trackSection.getTrackLength() == - 1) 
 					{
-						y = yCenter - (trackOffset);
+						y = yCenter - (trackOffset * trackSection.getTrackNum());
 						x1 = 0;
 						x2 = width;
+						
+						
+						trackSection.setX1(x1);
+						trackSection.setY1(y);
+						trackSection.setX2(x2);
+						trackSection.setY2(y);
 						
 					}else {
 						
 						
 						y = yCenter - (trackSection.getTrackNum() * trackOffset);
 						
-						x1 = xCenter - ((int)trackSection.getTrackLength() / 2);
-						x2 = xCenter + ((int)trackSection.getTrackLength() / 2);
+						x1 = xCenter - (int)((trackSection.getTrackLength() / 2) * lengthOffset);
+						x2 = xCenter + (int)((trackSection.getTrackLength() / 2) * lengthOffset);
 						
+						trackSection.setX1(x1);
+						trackSection.setY1(y);
+						trackSection.setX2(x2);
+						trackSection.setY2(y);
 					
 					}
 					
 					
 					g2d.setColor(Color.GRAY);
-					g2d.setStroke(new BasicStroke(3));
+					g2d.setStroke(new BasicStroke(TrackSection.trackWidth));
 					g2d.drawLine(x1, y, x2, y);
 					
 					
 					
 				}
+				
+				
+				if(trackSection.getTrackType() == TrackSection.trackType.DOWN) 
+				{
+					if(trackSection.getTrackLength() == - 1) 
+					{
+						y = yCenter + (trackOffset * trackSection.getTrackNum());
+						x1 = 0;
+						x2 = width;
+						
+						trackSection.setX1(x1);
+						trackSection.setY1(y);
+						trackSection.setX2(x2);
+						trackSection.setY2(y);
+					}else {
+						
+						y = yCenter + (trackSection.getTrackNum() * trackOffset);
+						
+						x1 = xCenter - (int)((trackSection.getTrackLength() / 2) * lengthOffset);
+						x2 = xCenter + (int)((trackSection.getTrackLength() / 2) * lengthOffset);
+						
+						trackSection.setX1(x1);
+						trackSection.setY1(y);
+						trackSection.setX2(x2);
+						trackSection.setY2(y);
+					}
+					
+					g2d.setColor(Color.GRAY.darker());
+					g2d.setStroke(new BasicStroke(TrackSection.trackWidth));
+					g2d.drawLine(x1, y, x2, y);
+				}
+				
+				
+				
+				if(trackSection.getTrackType() == TrackSection.trackType.UP_START) 
+				{
+					trackSection.setX1((int)(trackSection.getStartBlockNo() * lengthOffset));
+					trackSection.setY1(  trackSection.getS1().getY1() );
+					
+					trackSection.setX2(trackSection.getS2().getX1());
+					trackSection.setY2(  trackSection.getS2().getY1() );
+					
+					
+					g2d.setColor(Color.RED);
+					
+					g2d.setStroke(new BasicStroke(TrackSection.trackWidth));
+					g2d.drawLine(trackSection.getX1(), 
+								trackSection.getY1(), 
+								trackSection.getX2(),
+								trackSection.getY2());
+					
+				} 
+				
+				if(trackSection.getTrackType() == TrackSection.trackType.UP_END) {} 
 				
 				
 				
