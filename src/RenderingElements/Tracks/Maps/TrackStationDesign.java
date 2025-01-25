@@ -1,6 +1,7 @@
-package RenderingElements.Tracks.Maps.Example;
+package RenderingElements.Tracks.Maps;
 
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,16 +26,9 @@ public  class TrackStationDesign {
 	 * 
 	 * 
 	 */
-	
-	
 
 	
-	
-	private int trackGap = 20; //gap between parallel tracks 
-	private int platfromGap = 50; //gap between parallel tracks for platform 
-	
-	
-	private List<TrackSection> listOfTrackSections = new LinkedList<>();
+	private List<TrackSection> listOfTrackSections = new ArrayList<>();
 	
 	
 	
@@ -117,13 +111,6 @@ public  class TrackStationDesign {
 	
 	
 	
-	public void drawTracks(Graphics2D g) 
-	{
-		
-		
-		
-		
-	}
 	
 	
 

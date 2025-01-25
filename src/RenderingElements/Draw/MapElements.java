@@ -4,12 +4,15 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import RenderingElements.Controller.MapController;
-import RenderingElements.Tracks.Maps.Example.TrackStationDesign;
+import RenderingElements.Tracks.Maps.TestTrackDesign;
+import RenderingElements.Tracks.Maps.TrackStationDesign;
 
 public class MapElements {
 
 	//Default Map design 
 	TrackStationDesign defaultStation = new TrackStationDesign();
+	
+	TestTrackDesign testTrack = new TestTrackDesign();
 	
 	
 	
@@ -18,7 +21,7 @@ public class MapElements {
 	
 	
 	
-	private int mapSelected = 0;
+	private int mapSelected = 1;
 	private int WIDTH = 0;
 	private int HEIGHT = 0;
 	
@@ -65,8 +68,13 @@ public class MapElements {
 				Controller.update(clockTime);
 				
 				break;
-			case 2: 
+			case 1: 
+				
+				testTrack.addListToController();
+				Controller.update(clockTime);
+				
 				break;
+				
 		}
 		
 		
