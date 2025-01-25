@@ -58,8 +58,14 @@ public class MapController {
 		
 		if(!listOfTrackSections.isEmpty()) 
 		{
-			listOfTrackSections.forEach(trackSection -> 
+			TrackSection trackSection;
+			
+			
+			for(int i = 0; i < listOfTrackSections.size(); i++)
 			{
+				
+				
+				trackSection = listOfTrackSections.get(i);
 				
 				int y , x1 , x2;
 				
@@ -137,11 +143,30 @@ public class MapController {
 				
 				if(trackSection.getTrackType() == TrackSection.trackType.UP_START) 
 				{
-					trackSection.setX1((int)(trackSection.getStartBlockNo() * lengthOffset));
-					trackSection.setY1(  trackSection.getS1().getY1() );
 					
-					trackSection.setX2(trackSection.getS2().getX1());
-					trackSection.setY2(  trackSection.getS2().getY1() );
+					
+					if(trackSection.getS1().getTrackLength() == -1 && trackSection.getS2().getTrackLength() == -1) 
+					{
+						
+						trackSection.setX1((int)(trackSection.getStartBlockNo() * lengthOffset));
+						trackSection.setY1(  trackSection.getS1().getY1() );
+						
+						trackSection.setX2((int)((trackSection.getStartBlockNo()  + 1 ) * lengthOffset));
+						trackSection.setY2(  trackSection.getS2().getY1() );
+						
+						
+						
+						
+					}else{
+						
+						trackSection.setX1((int)(trackSection.getStartBlockNo() * lengthOffset));
+						trackSection.setY1(  trackSection.getS1().getY1() );
+						
+						trackSection.setX2(trackSection.getS2().getX1());
+						trackSection.setY2(  trackSection.getS2().getY1() );
+						
+					}
+					
 					
 					
 					g2d.setColor(Color.RED);
@@ -154,12 +179,113 @@ public class MapController {
 					
 				} 
 				
-				if(trackSection.getTrackType() == TrackSection.trackType.UP_END) {} 
+				if(trackSection.getTrackType() == TrackSection.trackType.UP_END) 
+				{
+					if(trackSection.getS1().getTrackLength() == -1 && trackSection.getS2().getTrackLength() == -1) 
+					{
+						trackSection.setX1((int)(trackSection.getStartBlockNo() * lengthOffset));
+						trackSection.setY1(  trackSection.getS1().getY1() );
+						
+						trackSection.setX2((int)((trackSection.getStartBlockNo()  + 1 ) * lengthOffset));
+						trackSection.setY2(  trackSection.getS2().getY1() );
+						
+					}else {
+						
+						trackSection.setX1(trackSection.getS1().getX2());
+						trackSection.setY1(  trackSection.getS1().getY2() );
+						
+						trackSection.setX2((int)(trackSection.getStartBlockNo() * lengthOffset));
+						trackSection.setY2(  trackSection.getS2().getY1() );
+						
+					}
+					
+					
+					g2d.setColor(Color.RED);
+					
+					g2d.setStroke(new BasicStroke(TrackSection.trackWidth));
+					g2d.drawLine(trackSection.getX1(), 
+								trackSection.getY1(), 
+								trackSection.getX2(),
+								trackSection.getY2());
+					
+				} 
 				
 				
 				
 				
-			});
+				if(trackSection.getTrackType() == TrackSection.trackType.DOWN_START) 
+				{
+					if(trackSection.getS1().getTrackLength() == -1 && trackSection.getS2().getTrackLength() == -1) 
+					{
+						
+						trackSection.setX1((int)(trackSection.getStartBlockNo() * lengthOffset));
+						trackSection.setY1(  trackSection.getS1().getY1() );
+						
+						trackSection.setX2((int)((trackSection.getStartBlockNo()  + 1 ) * lengthOffset));
+						trackSection.setY2(  trackSection.getS2().getY1() );
+						
+						
+					}else {
+						
+						trackSection.setX1((int)(trackSection.getStartBlockNo() * lengthOffset));
+						trackSection.setY1(  trackSection.getS1().getY1() );
+						
+						trackSection.setX2(trackSection.getS2().getX1());
+						trackSection.setY2(  trackSection.getS2().getY1() );				
+						
+					}
+					
+					
+					g2d.setColor(Color.RED);
+					
+					g2d.setStroke(new BasicStroke(TrackSection.trackWidth));
+					g2d.drawLine(trackSection.getX1(), 
+								trackSection.getY1(), 
+								trackSection.getX2(),
+								trackSection.getY2());
+				}
+				
+				
+				if(trackSection.getTrackType() == TrackSection.trackType.DOWN_END) 
+				{
+					
+					
+					
+					if(trackSection.getS1().getTrackLength() == -1 && trackSection.getS2().getTrackLength() == -1) 
+					{
+						
+						trackSection.setX1((int)(trackSection.getStartBlockNo() * lengthOffset));
+						trackSection.setY1(  trackSection.getS1().getY1() );
+						
+						trackSection.setX2((int)((trackSection.getStartBlockNo()  + 1 ) * lengthOffset));
+						trackSection.setY2(  trackSection.getS2().getY1() );
+						
+						
+						
+					}else {
+						
+						
+						trackSection.setX1( trackSection.getS1().getX2() );
+						trackSection.setY1(  trackSection.getS1().getY2() );
+						
+						trackSection.setX2( (int)(trackSection.getStartBlockNo() * lengthOffset)   );
+						trackSection.setY2(  trackSection.getS2().getY1() );	
+						
+					}
+					
+					
+					g2d.setColor(Color.RED);
+					
+					g2d.setStroke(new BasicStroke(TrackSection.trackWidth));
+					g2d.drawLine(trackSection.getX1(), 
+								trackSection.getY1(), 
+								trackSection.getX2(),
+								trackSection.getY2());
+					
+				}
+				
+				
+			}
 			
 			
 

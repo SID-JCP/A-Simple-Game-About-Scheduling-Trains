@@ -44,7 +44,11 @@ public  class TrackStationDesign {
 	//loop Up Line 
 	TrackSection loopUp1 = new TrackSection(trackType.UP , 2 , 5);
 	
-	TrackSection switchMainUp1_loopUp1 = new TrackSection(trackType.UP_START , mainUp1 , loopUp1 , 3);
+	TrackSection switchMainUp1_loopUp1 = new TrackSection(trackType.UP_START , mainUp1 , loopUp1 , 5);
+	
+	TrackSection switchloopUp1_MainUp1 = new TrackSection(trackType.UP_END , loopUp1 , mainUp1 , 11);
+	
+	
 	
 	
 	
@@ -55,13 +59,26 @@ public  class TrackStationDesign {
 	//loop Down Line 
 	TrackSection loopDown1 = new TrackSection(trackType.DOWN , 2 , 5);
 	
+	TrackSection switchMainDown1_LoopDown1 = new TrackSection(trackType.DOWN_START , mainDown1 , loopDown1 , 5);
 	
-
+	TrackSection switchLoopDown1_MainDown1 = new TrackSection(trackType.DOWN_END , loopDown1 , mainDown1 , 11);
 	
 	
 	
-//	Point pointDownUp1 = new Point(changeDownUpMainStart , mainUp1  ,loopUp1 , pointType.DOWN_UP);
-//	
+	
+	
+	
+	TrackSection switchMainUp_MainDown_L = new TrackSection(trackType.UP_END , mainUp1 , mainDown1 ,  1);
+	
+	TrackSection switchMainDown_MainUp_L = new TrackSection(trackType.DOWN_END , mainDown1 ,  mainUp1 , 3);
+	
+	
+	TrackSection switchMainUp_MainDown_R = new TrackSection(trackType.UP_END , mainUp1 , mainDown1 ,  12);
+	
+	TrackSection switchMainDown_MainUp_R = new TrackSection(trackType.DOWN_END , mainDown1 ,  mainUp1 , 14);
+	
+	
+	
 	
 	private List<TrackSection> getSections() 
 	{
@@ -72,7 +89,17 @@ public  class TrackStationDesign {
 				loopUp1,
 				switchMainUp1_loopUp1,
 				mainDown1,
-				loopDown1
+				loopDown1,				
+				switchloopUp1_MainUp1,				
+				switchMainDown1_LoopDown1,
+				switchLoopDown1_MainDown1,
+				
+				switchMainUp_MainDown_L,
+				switchMainDown_MainUp_L,
+				
+				switchMainUp_MainDown_R,
+				switchMainDown_MainUp_R
+				
 				
 				
 				

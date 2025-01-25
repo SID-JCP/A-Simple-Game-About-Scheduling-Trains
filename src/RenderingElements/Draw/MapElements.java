@@ -34,7 +34,7 @@ public class MapElements {
 	 *  MAX VERITICAL ELEMENTS SHOULD BE EVEN 
 	 */
 	private int MAX_VERTICAL_ELM =  4;	
-	private int MAX_HORIZONTAL_ELM  = 12;
+	private int MAX_HORIZONTAL_ELM  = 16;
 	
 	
 	private int xCENTER;
@@ -114,7 +114,7 @@ public class MapElements {
 	public void draw(Graphics2D g2d) 
 	{
 		//debug
-		positionGrid(g2d);
+//		positionGrid(g2d);
 		
 		
 		
