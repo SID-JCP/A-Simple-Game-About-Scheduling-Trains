@@ -41,11 +41,11 @@ public class TrackSection {
 		
 		DOWN, 				   //tracks below center of canvas going  from right to left 
 		
-		UP_START,   //change from up to down or up to up, goes **left to right** start of station
-		UP_END,	   //At end of station , from down loop to main line 
+		UP_START,   		//change from up to down or up to up, goes **left to right** start of station
+		UP_END,	   			//At end of station , from down loop to main line 
 		
-		DOWN_START, //change from down to up or down to down , goes from **right to left**
-		DOWN_END    //at end , change from up loop to main line 
+		DOWN_START, 		//change from down to up or down to down , goes from **right to left**
+		DOWN_END    		//at end , change from up loop to main line 
 				
 	}
 	

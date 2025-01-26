@@ -24,6 +24,7 @@ public class MapController {
 	
 	
 	public static List<TrackSection> listOfTrackSections;
+	public static List<Signal> listOfSignals;
 	
 	
 	private static long secondsOfDay = 0l;
@@ -290,6 +291,24 @@ public class MapController {
 			
 
 		}
+		
+	}
+	
+	
+	public void drawSignals(Graphics2D g2d) 
+	{
+		if(!listOfSignals.isEmpty()) 
+		{
+			Signal signal;
+			
+			for(int i = 0; i < listOfSignals.size(); i++) 
+			{
+				signal = listOfSignals.get(i);
+				
+				signal.draw(g2d);
+			}
+		}
+		
 		
 	}
 	

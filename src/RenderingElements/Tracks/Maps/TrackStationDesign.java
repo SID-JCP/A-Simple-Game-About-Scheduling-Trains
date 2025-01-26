@@ -9,6 +9,7 @@ import java.util.List;
 import RenderingElements.Controller.MapController;
 import RenderingElements.Point.Point;
 import RenderingElements.Point.Point.pointType;
+import RenderingElements.Signal.Signal;
 import RenderingElements.Tracks.TrackSection;
 import RenderingElements.Tracks.TrackSection.trackType;
 
@@ -30,6 +31,8 @@ public  class TrackStationDesign {
 	
 	private List<TrackSection> listOfTrackSections = new ArrayList<>();
 	
+	private List<Signal> listOfSignals = new ArrayList<>();
+	
 	
 	
 	//Main Up Line
@@ -39,6 +42,9 @@ public  class TrackStationDesign {
 	TrackSection loopUp1 = new TrackSection(trackType.UP , 2 , 5);
 	
 	TrackSection switchMainUp1_loopUp1 = new TrackSection(trackType.UP_START , mainUp1 , loopUp1 , 5);
+	
+//	Signal signal1_R = new Signal(Signal.signalType.HOME , switchMainUp1_loopUp1 , 1 , -1);
+//	Signal signal1_L = new Signal(Signal.signalType.HOME , switchMainUp1_loopUp1 , -1 , -1);
 	
 	TrackSection switchloopUp1_MainUp1 = new TrackSection(trackType.UP_END , loopUp1 , mainUp1 , 11);
 	
@@ -63,6 +69,14 @@ public  class TrackStationDesign {
 	
 	
 	TrackSection switchMainUp_MainDown_L = new TrackSection(trackType.UP_END , mainUp1 , mainDown1 ,  1);
+	
+	Signal signal_1_L_S = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_L , -1 , 1 , 0);
+	Signal signal_1_R_S = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_L , 1 , 1 , 0);
+	
+	Signal signal_1_L_E = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_L , -1 , -1 , 1);
+	Signal signal_1_R_E = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_L , 1 , -1 , 1);
+	
+	
 	
 	TrackSection switchMainDown_MainUp_L = new TrackSection(trackType.DOWN_END , mainDown1 ,  mainUp1 , 3);
 	
@@ -104,9 +118,27 @@ public  class TrackStationDesign {
 	}
 	
 	
+	private List<Signal> getSignals()
+	{
+		
+		Collections.addAll(listOfSignals , 
+				
+				signal_1_L_S,
+				signal_1_R_S,
+				signal_1_L_E,
+				signal_1_R_E
+				
+				);
+		
+		
+		return listOfSignals;
+	}
+	
+	
 	public void addListToController() 
 	{
 		MapController.listOfTrackSections = getSections();
+		MapController.listOfSignals = getSignals();
 	}
 	
 	
