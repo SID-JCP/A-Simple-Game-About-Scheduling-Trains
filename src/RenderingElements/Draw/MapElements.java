@@ -44,6 +44,9 @@ public class MapElements {
 	private int yCENTER;
 	
 	
+	private boolean trackElementsCompiled = false;
+	
+	
 	
 	//Update Controller with the CANVAS THREAD 
 	
@@ -63,14 +66,35 @@ public class MapElements {
 		{
 			case 0:
 				
-				
-				defaultStation.addListToController();				
+				if(!trackElementsCompiled) 
+				{
+					defaultStation.addListToController();	
+					//..
+					//..
+					//..
+					
+					trackElementsCompiled = true;
+					
+					
+				}
+							
 				Controller.update(clockTime);
 				
 				break;
 			case 1: 
 				
-				testTrack.addListToController();
+				if(!trackElementsCompiled) 
+				{
+					testTrack.addListToController();
+					//..
+					//..
+					//..
+					
+					trackElementsCompiled = true;
+					
+					
+				}
+				
 				Controller.update(clockTime);
 				
 				break;
