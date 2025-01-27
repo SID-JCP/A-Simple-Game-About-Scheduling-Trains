@@ -80,6 +80,11 @@ public  class TrackStationDesign {
 	
 	TrackSection switchMainDown_MainUp_L = new TrackSection(trackType.DOWN_END , mainDown1 ,  mainUp1 , 3);
 	
+	Signal signal_2_L_S = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_L , -1 , -1 , 0);
+	Signal signal_2_R_S = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_L , 1 , -1 , 0);
+	
+	Signal signal_2_L_E = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_L , -1 , 1 , 1);
+	Signal signal_2_R_E = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_L , 1 , 1 , 1);
 	
 	TrackSection switchMainUp_MainDown_R = new TrackSection(trackType.UP_END , mainUp1 , mainDown1 ,  12);
 	
@@ -126,7 +131,13 @@ public  class TrackStationDesign {
 				signal_1_L_S,
 				signal_1_R_S,
 				signal_1_L_E,
-				signal_1_R_E
+				signal_1_R_E,
+				
+				
+				signal_2_L_S,
+				signal_2_R_S,
+				signal_2_L_E,
+				signal_2_R_E
 				
 				);
 		

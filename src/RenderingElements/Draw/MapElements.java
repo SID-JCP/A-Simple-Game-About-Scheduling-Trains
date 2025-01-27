@@ -21,7 +21,7 @@ public class MapElements {
 	
 	
 	
-	private int mapSelected = 0;
+	private int mapSelected = 1;
 	private int WIDTH = 0;
 	private int HEIGHT = 0;
 	
@@ -151,7 +151,7 @@ public class MapElements {
 		
 		
 		Controller.drawTracks(xCENTER , yCENTER , WIDTH , HEIGHT ,  trackOffset , lengthOffset ,  g2d);
-		Controller.drawSignals(g2d);
+		Controller.drawSignals(g2d , lengthOffset);
 		
 		
 		Controller.drawTrain(g2d);

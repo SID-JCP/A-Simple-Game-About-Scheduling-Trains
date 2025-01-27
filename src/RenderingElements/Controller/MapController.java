@@ -9,6 +9,7 @@ import java.util.List;
 
 import RenderingElements.Point.Point;
 import RenderingElements.Signal.Signal;
+import RenderingElements.Signal.Signal.signalType;
 import RenderingElements.Tracks.TrackSection;
 import RenderingElements.Train.Train;
 
@@ -17,8 +18,7 @@ public class MapController {
 	// t = train , s = signal , p = point	
 	
 	public static List<Train> allTrain = new LinkedList<>();
-	public static List<Signal> allSignals = new LinkedList<>();
-	public static List<Point> allPoints = new LinkedList<>();
+	
 	
 	
 	
@@ -295,7 +295,7 @@ public class MapController {
 	}
 	
 	
-	public void drawSignals(Graphics2D g2d) 
+	public void drawSignals(Graphics2D g2d , int lengthOffset) 
 	{
 		if(!listOfSignals.isEmpty()) 
 		{
@@ -304,6 +304,11 @@ public class MapController {
 			for(int i = 0; i < listOfSignals.size(); i++) 
 			{
 				signal = listOfSignals.get(i);
+				
+				if(signal.signal.equals(signalType.BLOCK)) 
+				{
+					signal.setBlockOffset(lengthOffset);
+				}
 				
 				signal.draw(g2d);
 			}
