@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import InputManager.KeyBoardInputManager;
 import InputManager.MouseInputManager;
 import RenderingElements.Controller.InGameClock;
-import RenderingElements.Draw.MapElements;
+import RenderingElements.Draw.StationSelector;
 
 public class Canvas extends JPanel implements Runnable 
 {
@@ -44,6 +44,8 @@ public class Canvas extends JPanel implements Runnable
 	public  int moveX;
 	public  int moveY;
 	
+	public  int clickX;
+	public  int clickY;
 	
 	private int SCREEN_WIDTH = 0;
 	private int SCREEN_HEIGHT = 0;
@@ -54,7 +56,7 @@ public class Canvas extends JPanel implements Runnable
 		
 	Thread thread = new Thread(this);
 	
-	MapElements elements = new MapElements();
+	StationSelector elements = new StationSelector();
 	
 	InGameClock gClock = new InGameClock();
 	
@@ -71,6 +73,7 @@ public class Canvas extends JPanel implements Runnable
 		
 //		this.addKeyListener(keyInput);
 		this.addMouseMotionListener(mouseInput);
+		this.addMouseListener(mouseInput);
 		this.setFocusable(true);
 		
 	
@@ -138,7 +141,10 @@ public class Canvas extends JPanel implements Runnable
 		moveX = mouseInput.getMoveX();
 		moveY = mouseInput.getMoveY();
 		
-		elements.update(InGameClock.secondsOfDay , SCREEN_WIDTH , SCREEN_HEIGHT);
+		clickX = mouseInput.getClickX();
+		clickY = mouseInput.getClickY();
+		
+		elements.update(InGameClock.secondsOfDay , SCREEN_WIDTH , SCREEN_HEIGHT , moveX , moveY , clickX , clickY);
 		
 	}
 	
@@ -157,10 +163,12 @@ public class Canvas extends JPanel implements Runnable
 		
 		gClock.drawClock(graphic2D);
 		
-		/*
-		 * DEBUG ELEMETS 
-		 */
 		
+		
+		
+		/*
+		 * -----------------------------------------------DEBUG ELEMETS---------------------------
+		 */
 		
 		graphic2D.drawString("MS: " + String.valueOf(deltaTime), 20, 30);		
 		graphic2D.drawString("Mouse X: " + String.valueOf(moveX) + 
@@ -170,11 +178,15 @@ public class Canvas extends JPanel implements Runnable
 		graphic2D.drawString("WIDTH: " + SCREEN_WIDTH + " "+
 							 "HEIGHT: " + SCREEN_HEIGHT, 20, 90);
 		
+		
+		graphic2D.drawString("Mouse X: " + String.valueOf(clickX) + 
+				 " Mouse Y: " + String.valueOf(clickY)
+				, 20, 120);
+		
+		
+		graphic2D.fillOval(moveX, moveY, 10, 10);
+		
 		elements.draw(graphic2D);
-		
-		
-		
-		
 		
 
 		

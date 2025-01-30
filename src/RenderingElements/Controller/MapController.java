@@ -15,7 +15,7 @@ import RenderingElements.Train.Train;
 
 public class MapController {
 	
-	// t = train , s = signal , p = point	
+		
 	
 	public static List<Train> allTrain = new LinkedList<>();
 	
@@ -29,12 +29,52 @@ public class MapController {
 	
 	private static long secondsOfDay = 0l;
 	
+	private int mouseMoveX , mouseMoveY;
+	private int clickX = 0, clickY = 0;
 	
+	private boolean newClick = false;
 	
-	
-	public void update(long time) 
+	public void update(long time , int mouseMoveX , int mouseMoveY , int mouseClickX , int mouseClickY) 
 	{
 		MapController.secondsOfDay = time;
+		
+		this.mouseMoveX = mouseMoveX;
+		this.mouseMoveY = mouseMoveY;
+		
+		if(this.clickX == mouseClickX && this.clickY == mouseClickY) 
+		{
+			newClick = false;
+		}else {newClick = true;}
+		
+		this.clickX = mouseClickX;
+		this.clickY = mouseClickY;
+		
+		
+		
+		
+		if(!listOfSignals.isEmpty()) 
+		{
+			Signal signal;
+			
+			for(int i = 0; i < listOfSignals.size(); i++) 
+			{
+				signal = listOfSignals.get(i);
+				
+				if(signal.isCursorInside(mouseClickX, mouseClickY) && newClick) 
+				{
+					signal.clock();
+					continue;
+				}
+				
+				
+			}
+			
+			newClick = false;
+		}
+		
+		
+		
+		
 		
 //		if(!MapController.allTrain.isEmpty()) 
 //		{
@@ -305,6 +345,8 @@ public class MapController {
 			{
 				signal = listOfSignals.get(i);
 				
+				signal.isCursorInside(mouseMoveX, mouseMoveY);
+				
 				if(signal.signal.equals(signalType.BLOCK)) 
 				{
 					signal.setBlockOffset(lengthOffset);
@@ -313,6 +355,10 @@ public class MapController {
 				signal.draw(g2d);
 			}
 		}
+		
+		
+		
+		
 		
 		
 	}

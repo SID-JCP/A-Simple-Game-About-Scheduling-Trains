@@ -3,6 +3,7 @@ package RenderingElements.Signal;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import InputManager.MouseInputManager;
 import RenderingElements.Tracks.TrackSection;
 
 public class Signal {
@@ -47,11 +48,13 @@ public class Signal {
 	 */
 	
 	//signal states , green = 0, double yellow = 1 , yellow = 2 , red =  3
-	private int STATE  = 3;
+	private int STATE  = 0;
 	
 	private int blockNo;
 	private int blockOffset;
 
+	
+	private boolean hover = false;
 
 	private Signal prevSignal;
 	
@@ -77,9 +80,16 @@ public class Signal {
 	
 	
 	
+		
 	public void clock() 
 	{
+		if(STATE <= 3 && STATE != 0) {STATE--;}else {STATE = 3;}
 		
+		
+		if(prevSignal != null) 
+		{
+			
+		}
 	}
 	
 	
@@ -141,12 +151,70 @@ public class Signal {
 	
 	
 	
+	
+	
+	//display hint such as showing a box around to show mouse is hovering over the singal 
+	public boolean isCursorInside(int mouseX , int mouseY) 
+	{
+		
+		int x1 = sigX;
+		int y1 = sigY;
+		
+		int x2 = sigX + containerLength;
+		int y2 = sigY;
+		
+		int x3 = sigX + containerLength;
+		int y3 = sigY + containerWidth;
+		
+		int x4 = sigX;
+		int y4 = sigY + containerWidth;
+		
+		// Vectors AB and AD
+        int ABx = x2 - x1;
+        int ABy = y2 - y1;
+        int ADx = x4 - x1;
+        int ADy = y4 - y1;
+        
+        // Vector AM
+        int AMx = mouseX - x1;
+        int AMy = mouseY - y1;
+		
+        
+        
+        int AM_AB = AMx * ABx + AMy * ABy;
+        int AB_AB = ABx * ABx + ABy * ABy;
+        int AM_AD = AMx * ADx + AMy * ADy;
+        int AD_AD = ADx * ADx + ADy * ADy;
+        
+        
+        
+        
+        if((0 <= AM_AB && AM_AB <= AB_AB) && (0 <= AM_AD && AM_AD <= AD_AD))
+        {
+        	hover = true;
+        	
+        	return true;
+        	
+        }else {hover = false;}
+        
+      return false;
+	}
+	
+	
 	public void draw(Graphics2D g2d) 
 	{
 		computeRectangel();
 		
+		if(hover) 
+		{
+			g2d.setColor(Color.WHITE.darker());
+			g2d.fillRoundRect(sigX - 2 , sigY - 2, containerLength + 4, containerWidth + 3, 15 ,15);
+		}
+		
 		g2d.setColor(Color.DARK_GRAY);
 		g2d.fillRoundRect(sigX, sigY, containerLength, containerWidth , 10 ,10);
+		
+		
 		
 		
 		int recVerticalGap = containerWidth/2;
@@ -219,7 +287,13 @@ public class Signal {
 		}
 		
 		
+		
+		
 	}
+	
+	
+	
+	
 	
 	
 	public int getSigX() {

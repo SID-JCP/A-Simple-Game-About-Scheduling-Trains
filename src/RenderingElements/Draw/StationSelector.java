@@ -7,7 +7,7 @@ import RenderingElements.Controller.MapController;
 import RenderingElements.Tracks.Maps.TestTrackDesign;
 import RenderingElements.Tracks.Maps.TrackStationDesign;
 
-public class MapElements {
+public class StationSelector {
 
 	//Default Map design 
 	TrackStationDesign defaultStation = new TrackStationDesign();
@@ -21,12 +21,12 @@ public class MapElements {
 	
 	
 	
-	private int mapSelected = 1;
+	private int mapSelected = 0;
 	private int WIDTH = 0;
 	private int HEIGHT = 0;
 	
 	private int trackOffset = 50;
-	private int lengthOffset = 0;
+	private int blockOffset = 0;
 	
 	
 	/*
@@ -50,7 +50,7 @@ public class MapElements {
 	
 	//Update Controller with the CANVAS THREAD 
 	
-	public void update(long clockTime , int WIDTH , int HEIGHT) 
+	public void update(long clockTime , int WIDTH , int HEIGHT , int mouseMoveX , int mouseMoveY , int mouseClickX , int mouseClickY) 
 	{
 		// Case 0 to N where the N is the map number 
 		
@@ -60,7 +60,7 @@ public class MapElements {
 		xCENTER = (int)WIDTH/2;
 		yCENTER = (int)HEIGHT/2;
 		
-		lengthOffset = (int)WIDTH/MAX_HORIZONTAL_ELM;
+		blockOffset = (int)WIDTH/MAX_HORIZONTAL_ELM;
 		
 		switch(mapSelected) 
 		{
@@ -78,7 +78,7 @@ public class MapElements {
 					
 				}
 							
-				Controller.update(clockTime);
+				
 				
 				break;
 			case 1: 
@@ -95,7 +95,7 @@ public class MapElements {
 					
 				}
 				
-				Controller.update(clockTime);
+				
 				
 				break;
 				
@@ -103,7 +103,7 @@ public class MapElements {
 		
 		
 		
-		
+		Controller.update(clockTime , mouseMoveX , mouseMoveY ,  mouseClickX ,  mouseClickY);
 		
 		
 		
@@ -113,7 +113,7 @@ public class MapElements {
 	private void positionGrid(Graphics2D g2d) 
 	{
 		
-		lengthOffset = (int)WIDTH/MAX_HORIZONTAL_ELM;
+		blockOffset = (int)WIDTH/MAX_HORIZONTAL_ELM;
 		int hGap = (int)WIDTH/MAX_HORIZONTAL_ELM;
 		int xPos = 0;
 		
@@ -150,8 +150,8 @@ public class MapElements {
 		
 		
 		
-		Controller.drawTracks(xCENTER , yCENTER , WIDTH , HEIGHT ,  trackOffset , lengthOffset ,  g2d);
-		Controller.drawSignals(g2d , lengthOffset);
+		Controller.drawTracks(xCENTER , yCENTER , WIDTH , HEIGHT ,  trackOffset , blockOffset ,  g2d);
+		Controller.drawSignals(g2d , blockOffset);
 		
 		
 		Controller.drawTrain(g2d);
