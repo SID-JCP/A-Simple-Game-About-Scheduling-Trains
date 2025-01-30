@@ -74,22 +74,22 @@ public class MapController {
 		
 		
 		
+		if(!listOfTrackSections.isEmpty()) 
+		{
+			TrackSection trackSection;
+			
+			
+			for(int i = 0; i < listOfTrackSections.size(); i++)
+			{
+				trackSection = listOfTrackSections.get(i);
+				
+				trackSection.isCursorInside(mouseMoveX, mouseMoveY);
+				
+			}
+			
+		}
 		
-		
-//		if(!MapController.allTrain.isEmpty()) 
-//		{
-//			for(Train train : allTrain) 
-//			{
-//				if(!train.hasSection()) 
-//				{
-//					//assign section to train on start , determined by the direction of train and if its alive or not 
-//					train.assignSection(trackSection.get(1));
-//				}
-//				
-//				train.updateTrainPosition();
-//			}
-//		}
-		
+
 		
 	}
 	
@@ -210,13 +210,7 @@ public class MapController {
 					
 					
 					
-					g2d.setColor(Color.RED);
 					
-					g2d.setStroke(new BasicStroke(TrackSection.trackWidth));
-					g2d.drawLine(trackSection.getX1(), 
-								trackSection.getY1(), 
-								trackSection.getX2(),
-								trackSection.getY2());
 					
 				} 
 				
@@ -241,13 +235,7 @@ public class MapController {
 					}
 					
 					
-					g2d.setColor(Color.RED);
 					
-					g2d.setStroke(new BasicStroke(TrackSection.trackWidth));
-					g2d.drawLine(trackSection.getX1(), 
-								trackSection.getY1(), 
-								trackSection.getX2(),
-								trackSection.getY2());
 					
 				} 
 				
@@ -277,13 +265,7 @@ public class MapController {
 					}
 					
 					
-					g2d.setColor(Color.RED);
 					
-					g2d.setStroke(new BasicStroke(TrackSection.trackWidth));
-					g2d.drawLine(trackSection.getX1(), 
-								trackSection.getY1(), 
-								trackSection.getX2(),
-								trackSection.getY2());
 				}
 				
 				
@@ -315,6 +297,37 @@ public class MapController {
 					}
 					
 					
+					
+				}
+				
+				
+				
+				
+				
+				if(trackSection.getTrackType() == TrackSection.trackType.DOWN_END || 
+					trackSection.getTrackType() == TrackSection.trackType.DOWN_START ||
+					trackSection.getTrackType() == TrackSection.trackType.UP_END || 
+					trackSection.getTrackType() == TrackSection.trackType.UP_START) 
+				{
+					
+					
+					
+					
+					
+					if(trackSection.isCursorInside(mouseMoveX, mouseMoveY)) 
+					{
+						g2d.setColor(Color.DARK_GRAY);
+						
+						int cirX = trackSection.getXc() - trackSection.getRadius();
+						int cirY = trackSection.getYc() - trackSection.getRadius();
+						
+						
+						g2d.fillOval(cirX, cirY, trackSection.getRadius() * 2, trackSection.getRadius() * 2);
+						
+						
+					}
+					
+					
 					g2d.setColor(Color.RED);
 					
 					g2d.setStroke(new BasicStroke(TrackSection.trackWidth));
@@ -323,7 +336,13 @@ public class MapController {
 								trackSection.getX2(),
 								trackSection.getY2());
 					
-				}
+				} 
+				
+				
+				
+				
+				
+				
 				
 				
 			}

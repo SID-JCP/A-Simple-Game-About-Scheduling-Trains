@@ -11,15 +11,6 @@ import java.util.LinkedList;
 public class TrackSection {
 	
 	/*
-	 * |--------------------  What this class needs to do -------------------------|
-	 * 
-	 *  
-	 * 
-	 * 
-	 */
-	 
-	
-	/*
 	 * |---------------------  Types of tracks need to be drawn  ------------------|
 	 * 
 	 * 1. Main lines that are starting from start to end 
@@ -83,15 +74,38 @@ public class TrackSection {
 	//start of the switch from right of the screen
 	private int startBlockNo;
 	
+	// 0 = means not active train can get on , 1 = active train can pass 
+	private int STATE = 0; 
 	
+	//center of the hover area circle
+	private int Xc , Yc = 0;
+	
+	
+
+
+	//hover area circle 
+	private int radius = 20;
 	
 	
 	//-------------COMMON-----------------
 	//coordinates of start and end of the line which is drawn 
 	private int x1,y1,x2,y2 = 0;
+	
+	
+	
+	
 	 
+	//--------------WORKING ELEMENTS-------------------
+	private boolean hover = false;
 	
 	
+	
+	
+	
+	
+	
+
+
 	//For normal straight tracks 
 	public TrackSection(trackType type , int trackNum , int trackLength) 
 	{
@@ -110,6 +124,35 @@ public class TrackSection {
 		this.startBlockNo = startBlockNo;
 		
 	}
+	
+	
+	public boolean isCursorInside(int mouseX , int mouseY) 
+	{
+		
+        
+		Xc = (int)(x2 + x1)/2;
+		Yc = (int)(y2 + y1)/2;
+		
+		int dx = mouseX - Xc;
+		int dy = mouseY - Yc;
+		int distanceSquared = dx * dx + dy * dy;
+		
+		
+        
+		if( distanceSquared <= radius * radius   )
+        {
+        	hover = true;
+        	
+        	return true;
+        	
+        }else {hover = false;}
+        
+      return false;
+	}
+	
+	
+	
+	
 	
 	public trackType getTrackType() {
 		return track;
@@ -195,10 +238,42 @@ public class TrackSection {
 	}
 
 	
+	public boolean isHover() {
+		return hover;
+	}
+
+
+	public void setHover(boolean hover) {
+		this.hover = hover;
+	}
 	
+	public int getXc() {
+		return Xc;
+	}
+
+
+	public void setXc(int xc) {
+		Xc = xc;
+	}
+
+
+	public int getYc() {
+		return Yc;
+	}
+
+
+	public void setYc(int yc) {
+		Yc = yc;
+	}
 	
-	
-	
-	
+	public int getRadius() {
+		return radius;
+	}
+
+
+	public void setRadius(int radius) {
+		this.radius = radius;
+	}
+
 
 }
