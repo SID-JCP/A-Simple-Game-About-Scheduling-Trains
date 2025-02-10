@@ -13,9 +13,11 @@ import RenderingElements.Tracks.TrackSection.trackType;
 
 public class TestTrackDesign implements TrackControllerRequirments{
 	
-	
+	//|-----------------------------LIST OF TRACK SECTIONS  CREATE IN ALL CLASES--------------------------------------|
 	public List<TrackSection> listOfTrackSections = new ArrayList<>();
 	
+
+	//|-------------------------------LIST OF SIGNALS CREATE IN ALL CLASES-------------------------------------------------|
 	private List<Signal> listOfSignals = new ArrayList<>();
 	
 	
@@ -82,6 +84,7 @@ public class TestTrackDesign implements TrackControllerRequirments{
 				signal_3_mainUP,
 				signal_4_mainUP,
 				signal_MainUp2_S_L
+
 				);
 		
 		
@@ -93,6 +96,9 @@ public class TestTrackDesign implements TrackControllerRequirments{
 	@Override
 	public void addListToController() {
 		
+
+		//|--------------------------------------------------RUN PRIVATE METHODS TO ADD VALUE TO LISTS FOR BOTH SIGNALS AND TRACK SECTIONS------------------------------------------------|
+
 		MapController.listOfTrackSections = getSections();
 		MapController.listOfSignals = getSignals();
 	}

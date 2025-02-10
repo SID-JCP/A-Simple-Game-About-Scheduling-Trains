@@ -10,21 +10,13 @@ import java.util.LinkedList;
 
 public class TrackSection {
 	
-	/*
-	 * |---------------------  Types of tracks need to be drawn  ------------------|
-	 * 
-	 * 1. Main lines that are starting from start to end 
-	 * - draw a straignt line from start to end 
-	 * 
-	 * 2. Section of line like part of main line till point then another part (for signal simplification)
-	 * 
-	 * 3. Section with a tilt depending upon the track to join at and taking argument of the 
-	 * 	  start point to determine the position of the point o9lli8o9o
-	 */
 
-	
-	public static int trackWidth = 3; //width of track	
-	public static int switchTrackWidth = 2; //width of track of switch part 
+
+	 //width of track
+	public static int trackWidth = 3;	
+
+	 //width of track of switch part 
+	public static int switchTrackWidth = 2;
 	
 	public static enum trackType
 	{

@@ -15,18 +15,7 @@ import RenderingElements.Tracks.TrackSection.trackType;
 
 public  class TrackStationDesign {
 	
-	/*
-	 * |-----------  What this class needs to do ---------------|
-	 * 
-	 * This class will also have the draw spline functionality from track section data 
-	 * Will be used by train spline to draw the train spline for that need to store all the 
-	 * spline point data such that the train class can choose any type or direction of section
-	 * required 
-	 * 
-	 * Create track sections with specification of coordinates and type of tracks 
-	 * 
-	 * 
-	 */
+	
 
 	
 	private List<TrackSection> listOfTrackSections = new ArrayList<>();
