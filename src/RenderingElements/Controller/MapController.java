@@ -38,6 +38,10 @@ public class MapController {
 	{
 		MapController.secondsOfDay = time;
 		
+		
+		
+		//---------------------------- Get Click ----------------------------------
+		
 		this.mouseMoveX = mouseMoveX;
 		this.mouseMoveY = mouseMoveY;
 		
@@ -45,6 +49,8 @@ public class MapController {
 		{
 			newClick = false;
 		}else {newClick = true;}
+		
+		
 		
 		this.clickX = mouseClickX;
 		this.clickY = mouseClickY;
@@ -62,14 +68,14 @@ public class MapController {
 				
 				if(signal.isCursorInside(mouseClickX, mouseClickY) && newClick) 
 				{
-					signal.clock();
+					signal.clock(3 , 0);
 					continue;
 				}
 				
 				
 			}
 			
-			newClick = false;
+			
 		}
 		
 		
@@ -83,14 +89,19 @@ public class MapController {
 			{
 				trackSection = listOfTrackSections.get(i);
 				
-				trackSection.isCursorInside(mouseMoveX, mouseMoveY);
+				if(trackSection.isCursorInside(mouseMoveX, mouseMoveY) && newClick) 
+				{
+					trackSection.clock();
+					continue;
+				}
+				
 				
 			}
 			
 		}
 		
 
-		
+		newClick = false;
 	}
 	
 	
@@ -328,7 +339,17 @@ public class MapController {
 					}
 					
 					
-					g2d.setColor(Color.RED);
+					
+					if(trackSection.getSTATE() == 0) 
+					{
+						g2d.setColor(Color.RED);
+						
+					}else {
+						
+						g2d.setColor(Color.GRAY);
+					}
+					
+					
 					
 					g2d.setStroke(new BasicStroke(TrackSection.trackWidth));
 					g2d.drawLine(trackSection.getX1(), 

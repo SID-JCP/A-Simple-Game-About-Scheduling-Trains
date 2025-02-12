@@ -69,6 +69,7 @@ public class StationSelector {
 				if(!trackElementsCompiled) 
 				{
 					defaultStation.addListToController();	
+					defaultStation.initializeInterlocking();
 					//..
 					//..
 					//..

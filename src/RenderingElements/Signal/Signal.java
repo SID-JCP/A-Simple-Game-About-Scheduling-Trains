@@ -49,7 +49,8 @@ public class Signal {
 	
 	//signal states , green = 0, double yellow = 1 , yellow = 2 , red =  3
 	private int STATE  = 0;
-	
+
+
 	private int blockNo;
 	private int blockOffset;
 
@@ -81,15 +82,74 @@ public class Signal {
 	
 	
 		
-	public void clock() 
+	public void clock(int flag , int nextSignalState) 
 	{
-		if(STATE <= 3 && STATE != 0) {STATE--;}else {STATE = 3;}
+	
 		
-		
-		if(prevSignal != null) 
+		if(signal.equals(signalType.HOME)) 
 		{
+			//gets clicked
+			if(flag == 3) 
+			{
+				if(STATE <= 3 && STATE != 0) {STATE--;}else {STATE = 3;}
+			}else {STATE = 3;}
 			
 		}
+		
+		
+		if(signal.equals(signalType.BLOCK)) 
+		{
+			//train passes , clocked by a train 
+			if(flag == 0) 
+			{
+				STATE = 3;
+				
+				if(prevSignal != null) 
+				{
+					
+					prevSignal.clock(1 , STATE);
+				}
+				
+			}
+			
+			//gets clocked by the next signal 
+			if(flag == 1){
+				
+				if(nextSignalState == 2 && STATE == 3) 
+				{
+					
+				}else {
+//					if(STATE <= 3 && STATE != 0) {STATE--;}else {STATE = 3;}
+					
+					STATE--;
+					
+					if(STATE == -1) {STATE = 0;}
+					
+					if(prevSignal != null && STATE != 0) 
+					{
+						
+						prevSignal.clock(1 , STATE);
+					}
+				
+				}
+				
+			}
+		} 
+		
+		
+		
+		
+		
+//		if(prevSignal != null && signal.equals(signalType.BLOCK))
+//		{
+//			
+//			if(STATE != 0) 
+//			{
+//				prevSignal.clock();	
+//			}
+//			
+//		} 
+		
 	}
 	
 	
@@ -205,6 +265,8 @@ public class Signal {
 	{
 		computeRectangel();
 		
+		
+		
 		if(hover) 
 		{
 			g2d.setColor(Color.WHITE.darker());
@@ -287,7 +349,7 @@ public class Signal {
 		}
 		
 		
-		
+	
 		
 	}
 	
@@ -335,5 +397,14 @@ public class Signal {
 
 	public void setBlockOffset(int blockOffset) {
 		this.blockOffset = blockOffset;
+	}
+	
+	public int getSTATE() {
+		return STATE;
+	}
+
+
+	public void setSTATE(int sTATE) {
+		STATE = sTATE;
 	}
 }

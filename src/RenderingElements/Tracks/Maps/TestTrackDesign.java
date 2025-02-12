@@ -5,9 +5,9 @@ import java.util.Collections;
 import java.util.List;
 
 import RenderingElements.Controller.MapController;
+import RenderingElements.Controller.TrackControllerRequirments;
 import RenderingElements.Signal.Signal;
 import RenderingElements.Signal.Signal.signalType;
-import RenderingElements.Tracks.TrackControllerRequirments;
 import RenderingElements.Tracks.TrackSection;
 import RenderingElements.Tracks.TrackSection.trackType;
 
@@ -21,6 +21,9 @@ public class TestTrackDesign implements TrackControllerRequirments{
 	private List<Signal> listOfSignals = new ArrayList<>();
 	
 	
+	
+	
+	//|--------------------------------TRACK OBJECTS--------------------------------------|
 	TrackSection mainUp1 = new TrackSection(trackType.UP , 1 , -1);
 	TrackSection mainUp2 = new TrackSection(trackType.UP , 2 , -1);
 	
@@ -32,16 +35,23 @@ public class TestTrackDesign implements TrackControllerRequirments{
 	TrackSection mainDown2 = new TrackSection(trackType.DOWN , 2 , -1);
 
 	
-	Signal signal_1_mainUP = new Signal(signalType.BLOCK , mainUp1 , null , 1 , 1 , -1);
-	Signal signal_2_mainUP = new Signal(signalType.BLOCK , mainUp1 , null , 3 , 1 , -1);
-	Signal signal_3_mainUP = new Signal(signalType.BLOCK , mainUp1 , null , 5 , 1 , -1);
-	Signal signal_4_mainUP = new Signal(signalType.BLOCK , mainUp1 , null , 7 , 1 , -1);
-	
 	TrackSection switchMainUp2_loopUp1 = new TrackSection(trackType.UP_START , mainUp2 , loopUp1 , 1);
 	TrackSection switchLoopUp1_loopUp2 = new TrackSection(trackType.UP_START , loopUp1 , loopUp2 , 3);
 	
 	
+	
+	//|--------------------------------SIGNAL OBJECTS------------------------------------
+	Signal mainUP_1 = new Signal(signalType.BLOCK , mainUp1 , null , 1 , 1 , -1);
+	Signal mainUP_2 = new Signal(signalType.BLOCK , mainUp1 , mainUP_1 , 3 , 1 , -1);
+	Signal mainUP_3 = new Signal(signalType.BLOCK , mainUp1 , mainUP_2 , 5 , 1 , -1);
+	Signal mainUP_4 = new Signal(signalType.BLOCK , mainUp1 , mainUP_3 , 7 , 1 , -1);
+	Signal mainUP_5 = new Signal(signalType.BLOCK , mainUp1 , mainUP_4 , 9 , 1 , -1);
+	Signal mainUP_6 = new Signal(signalType.BLOCK , mainUp1 , mainUP_5 , 11 , 1 , -1);
+	Signal mainUP_7 = new Signal(signalType.BLOCK , mainUp1 , mainUP_6 , 13 , 1 , -1);
+	
 	Signal signal_MainUp2_S_L = new Signal(signalType.HOME , switchMainUp2_loopUp1 , -1 , -1 , 0);
+	
+	
 	
 	@Override
 	public List<TrackSection> getSections() {
@@ -79,10 +89,13 @@ public class TestTrackDesign implements TrackControllerRequirments{
 		
 		Collections.addAll(listOfSignals , 
 				
-				signal_1_mainUP,
-				signal_2_mainUP,
-				signal_3_mainUP,
-				signal_4_mainUP,
+				mainUP_1,
+				mainUP_2,
+				mainUP_3,
+				mainUP_4,
+				mainUP_5,
+				mainUP_6,
+				mainUP_7,
 				signal_MainUp2_S_L
 
 				);

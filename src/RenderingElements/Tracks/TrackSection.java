@@ -7,6 +7,8 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import RenderingElements.Signal.Signal;
+
 
 public class TrackSection {
 	
@@ -66,9 +68,12 @@ public class TrackSection {
 	//start of the switch from right of the screen
 	private int startBlockNo;
 	
-	// 0 = means not active train can get on , 1 = active train can pass 
+	// 0 = means not active train can not change , 1 = active train can change 
 	private int STATE = 0; 
 	
+	
+
+
 	//center of the hover area circle
 	private int Xc , Yc = 0;
 	
@@ -92,7 +97,10 @@ public class TrackSection {
 	
 	
 	
-	
+	private Signal startSignal;
+	private Signal endSignal;
+	private Signal StartReverseSignal;
+	private Signal endReverseSignal;
 	
 	
 	
@@ -143,6 +151,29 @@ public class TrackSection {
 	}
 	
 	
+	public void clock() 
+	{
+		
+		//----------------------------changing state---------------------
+		if (STATE == 0) 
+		{
+			STATE = 1;
+		}else {STATE = 0;}
+		
+		//|---------------------------CHANGING SIGNALS----------------------
+		
+		startSignal.setSTATE(2);
+		StartReverseSignal.setSTATE(3);
+	}
+	
+	
+	public void setSignals(Signal start , Signal end , Signal startRev , Signal endRev) 
+	{
+		this.startSignal = start;
+		this.endSignal = end;
+		this.StartReverseSignal = startRev;
+		this.endReverseSignal = endRev;
+	}
 	
 	
 	
@@ -265,6 +296,16 @@ public class TrackSection {
 
 	public void setRadius(int radius) {
 		this.radius = radius;
+	}
+
+	
+	public int getSTATE() {
+		return STATE;
+	}
+
+
+	public void setSTATE(int sTATE) {
+		STATE = sTATE;
 	}
 
 

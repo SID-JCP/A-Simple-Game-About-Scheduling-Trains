@@ -30,16 +30,15 @@ public  class TrackStationDesign {
 	//loop Up Line 
 	TrackSection loopUp1 = new TrackSection(trackType.UP , 2 , 5);
 	
+	//switch from main UP line to loop 
 	TrackSection switchMainUp1_loopUp1 = new TrackSection(trackType.UP_START , mainUp1 , loopUp1 , 5);
 	
-//	Signal signal1_R = new Signal(Signal.signalType.HOME , switchMainUp1_loopUp1 , 1 , -1);
-//	Signal signal1_L = new Signal(Signal.signalType.HOME , switchMainUp1_loopUp1 , -1 , -1);
-	
+	//switch from loop to main Up line 
 	TrackSection switchloopUp1_MainUp1 = new TrackSection(trackType.UP_END , loopUp1 , mainUp1 , 11);
 	
 	
 	
-	
+	//------------------------- CENTER--------------------------------
 	
 	
 	//Main Down Line
@@ -54,10 +53,21 @@ public  class TrackStationDesign {
 	
 	
 	
+	//-----------------------MAIN LINE SWITCHES---------------------------
 	
 	
 	
-	TrackSection switchMainUp_MainDown_L = new TrackSection(trackType.UP_END , mainUp1 , mainDown1 ,  1);
+	TrackSection switchMainUp_MainDown_L = new TrackSection(trackType.UP_END , mainUp1 , mainDown1 ,  1);	
+	
+	TrackSection switchMainDown_MainUp_L = new TrackSection(trackType.DOWN_END , mainDown1 ,  mainUp1 , 3);
+	
+	TrackSection switchMainUp_MainDown_R = new TrackSection(trackType.UP_END , mainUp1 , mainDown1 ,  12);
+	
+	TrackSection switchMainDown_MainUp_R = new TrackSection(trackType.DOWN_END , mainDown1 ,  mainUp1 , 14);
+	
+	
+	
+	//-------------------------------SIGNALS-------------------------------------------
 	
 	Signal signal_1_L_S = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_L , -1 , 1 , 0);
 	Signal signal_1_R_S = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_L , 1 , 1 , 0);
@@ -67,17 +77,11 @@ public  class TrackStationDesign {
 	
 	
 	
-	TrackSection switchMainDown_MainUp_L = new TrackSection(trackType.DOWN_END , mainDown1 ,  mainUp1 , 3);
-	
 	Signal signal_2_L_S = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_L , -1 , -1 , 0);
 	Signal signal_2_R_S = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_L , 1 , -1 , 0);
 	
 	Signal signal_2_L_E = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_L , -1 , 1 , 1);
 	Signal signal_2_R_E = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_L , 1 , 1 , 1);
-	
-	TrackSection switchMainUp_MainDown_R = new TrackSection(trackType.UP_END , mainUp1 , mainDown1 ,  12);
-	
-	TrackSection switchMainDown_MainUp_R = new TrackSection(trackType.DOWN_END , mainDown1 ,  mainUp1 , 14);
 	
 	
 	
@@ -143,7 +147,10 @@ public  class TrackStationDesign {
 	
 	
 	
-	
+	public void initializeInterlocking() 
+	{
+		switchMainUp_MainDown_L.setSignals(signal_1_L_S, signal_1_R_S, signal_1_R_E, signal_1_L_E);
+	}
 	
 
 	
