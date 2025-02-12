@@ -23,11 +23,11 @@
 
 # ```NEXT MAIN ELEMENTS NEEDED NEXT```
 
--### Train : A train class needs to be created which would move on the provided track section and would change according to the switch . The train needs to get the data of the next signal on the section to change it's speed accordingly or stop.
+- ### Train : A train class needs to be created which would move on the provided track section and would change according to the switch . The train needs to get the data of the next signal on the section to change it's speed accordingly or stop.
  
--### Dispatch System : Similar to the map objects where different track objects are created and put in a list for the controller to manage and draw them , a similar system needs to be creared to construct trains and specify there attribues like departure time , has a stop or not and others . Which would also be updated and drawn by the controller .
+- ### Dispatch System : Similar to the map objects where different track objects are created and put in a list for the controller to manage and draw them , a similar system needs to be creared to construct trains and specify there attribues like departure time , has a stop or not and others . Which would also be updated and drawn by the controller .
 
--### Interaction : Train dispatch would depend on the game clock , movement by the controller . Similarly all other elements are managed by the controller , there needs to be an interction system to properly allow them to work such as train stop on a signal .
+- ### Interaction : Train dispatch would depend on the game clock , movement by the controller . Similarly all other elements are managed by the controller , there needs to be an interction system to properly allow them to work such as train stop on a signal .
 
 
 
