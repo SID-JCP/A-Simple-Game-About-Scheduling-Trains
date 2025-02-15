@@ -21,7 +21,7 @@ public class StationSelector {
 	
 	
 	
-	private int mapSelected = 0;
+	private int mapSelected = 1;
 	private int WIDTH = 0;
 	private int HEIGHT = 0;
 	

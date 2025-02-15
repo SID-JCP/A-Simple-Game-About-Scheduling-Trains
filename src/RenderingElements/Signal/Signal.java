@@ -27,7 +27,7 @@ public class Signal {
 	private TrackSection track;
 	
 	private int verticlPosFlag = 1;    // 1 = above the tracks , -1 = below the tracks  
-	private int horizontalPosFlag = 1; // 1 = facing toward right, -1 = facing toward left 
+	private int horizontalPosFlag = 1; // 1 = left of switch for up direction , - 1 = right of switch for down line 
 	private int startEndFlag = 0;      //0 = start of the switch from right , 1 = end of switch 
 	
 	
@@ -59,6 +59,8 @@ public class Signal {
 
 	private Signal prevSignal;
 	
+	
+	//home signals
 	public Signal(signalType signal , TrackSection track , int horizontalPosFlag , int verticlPosFlag , int startEndFlag) 
 	{
 		this.signal = signal;
@@ -181,28 +183,20 @@ public class Signal {
 			
 		}
 		
+		if(horizontalPosFlag == 1) 
+		{	
+			sigX = trackX - hGap - containerLength;		
+		}else {				
+			sigX = trackX + hGap;		
+		}
+		
 		
 		
 		if(verticlPosFlag == 1) 
 		{
-			if(horizontalPosFlag == 1) 
-			{				
-				sigX = trackX + hGap;				
-			}else {				
-				sigX = trackX - hGap - containerLength;
-			}
-						
 			sigY = trackY - vGap - containerWidth;
 						
-			
 		}else {
-			
-			if(horizontalPosFlag == 1) 
-			{				
-				sigX = trackX + hGap;				
-			}else {				
-				sigX = trackX - hGap - containerLength;
-			}
 			
 			sigY = trackY + vGap;
 			
@@ -269,12 +263,22 @@ public class Signal {
 		
 		if(hover) 
 		{
-			g2d.setColor(Color.WHITE.darker());
+			g2d.setColor(Color.WHITE);
 			g2d.fillRoundRect(sigX - 2 , sigY - 2, containerLength + 4, containerWidth + 3, 15 ,15);
 		}
 		
-		g2d.setColor(Color.DARK_GRAY);
-		g2d.fillRoundRect(sigX, sigY, containerLength, containerWidth , 10 ,10);
+		if(horizontalPosFlag == 1) 
+		{
+			g2d.setColor(Color.GRAY);
+			g2d.fillRoundRect(sigX, sigY, containerLength, containerWidth , 10 ,10);
+			
+		}else {
+			
+			g2d.setColor(Color.GRAY.darker());
+			g2d.fillRoundRect(sigX, sigY, containerLength, containerWidth , 10 ,10);
+			
+		}
+		
 		
 		
 		

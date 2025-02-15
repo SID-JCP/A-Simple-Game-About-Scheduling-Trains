@@ -344,6 +344,11 @@ public class MapController {
 					{
 						g2d.setColor(Color.RED);
 						
+					}else 
+						
+					if(trackSection.getSTATE() == 1){
+						
+						g2d.setColor(Color.GRAY.darker());
 					}else {
 						
 						g2d.setColor(Color.GRAY);

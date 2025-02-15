@@ -22,9 +22,9 @@ public class TrackSection {
 	
 	public static enum trackType
 	{
-		UP,  				   //tracks above center of canvas going from left to right 
+		UP,  				//tracks above center of canvas going from left to right 
 		
-		DOWN, 				   //tracks below center of canvas going  from right to left 
+		DOWN, 				//tracks below center of canvas going  from right to left 
 		
 		UP_START,   		//change from up to down or up to up, goes **left to right** start of station
 		UP_END,	   			//At end of station , from down loop to main line 
@@ -68,7 +68,7 @@ public class TrackSection {
 	//start of the switch from right of the screen
 	private int startBlockNo;
 	
-	// 0 = means not active train can not change , 1 = active train can change 
+	// 0 = means not active train can not change , 1 = train change from Up to Down , 2 = train change from Down to Up
 	private int STATE = 0; 
 	
 	
@@ -99,7 +99,7 @@ public class TrackSection {
 	
 	private Signal startSignal;
 	private Signal endSignal;
-	private Signal StartReverseSignal;
+	private Signal startReverseSignal;
 	private Signal endReverseSignal;
 	
 	
@@ -146,6 +146,7 @@ public class TrackSection {
         	return true;
         	
         }else {hover = false;}
+		
         
       return false;
 	}
@@ -155,24 +156,77 @@ public class TrackSection {
 	{
 		
 		//----------------------------changing state---------------------
-		if (STATE == 0) 
+		
+		
+		if(STATE == 2) 
 		{
-			STATE = 1;
-		}else {STATE = 0;}
+			STATE  = 0;
+			
+		}else {STATE++;}
 		
 		//|---------------------------CHANGING SIGNALS----------------------
 		
-		startSignal.setSTATE(2);
-		StartReverseSignal.setSTATE(3);
+		
+		if(STATE == 1) 
+		{
+			if(track.equals(trackType.UP_START)) 
+			{
+				startSignal.setSTATE(3);
+				endSignal.setSTATE(2);
+				endReverseSignal.setSTATE(2);
+				startReverseSignal.setSTATE(3);
+			}
+			
+			if(track.equals(trackType.UP_END)) 
+			{
+				startSignal.setSTATE(3);
+				endSignal.setSTATE(2);
+				
+				startReverseSignal.setSTATE(3);
+				endReverseSignal.setSTATE(2);
+			} 
+		}
+		
+		
+		if(STATE == 2) 
+		{
+			if(track.equals(trackType.UP_START)) 
+			{
+				startSignal.setSTATE(3);
+				endSignal.setSTATE(2);
+				endReverseSignal.setSTATE(2);
+				startReverseSignal.setSTATE(3);
+			}
+			
+			if(track.equals(trackType.UP_END)) 
+			{
+				startSignal.setSTATE(2);
+				endSignal.setSTATE(3);
+				
+				startReverseSignal.setSTATE(2);
+				endReverseSignal.setSTATE(3);
+			} 
+		}
+		
+		if(STATE == 0) 
+		{
+			startSignal.setSTATE(2);
+			endSignal.setSTATE(2);
+			
+			startReverseSignal.setSTATE(2);
+			endReverseSignal.setSTATE(2);
+		} 
+		
 	}
 	
 	
-	public void setSignals(Signal start , Signal end , Signal startRev , Signal endRev) 
+	public void setSignals(Signal left_1 , Signal right_1 , Signal left_2 , Signal right_2) 
 	{
-		this.startSignal = start;
-		this.endSignal = end;
-		this.StartReverseSignal = startRev;
-		this.endReverseSignal = endRev;
+		this.startSignal = left_1;
+		this.endSignal = right_1;
+		
+		this.startReverseSignal = left_2;
+		this.endReverseSignal = right_2;
 	}
 	
 	
