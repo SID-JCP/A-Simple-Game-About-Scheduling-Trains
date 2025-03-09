@@ -71,19 +71,23 @@ public  class TrackStationDesign {
 	
 	
 	//MAIN LINES BEFORE PLATFORM 
-	Signal signal_mainUp_mainDown_S_L = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_L , -1 , 1 , 0);
-	Signal signal_mainUp_mainDown_S_R = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_L , 1 , 1 , 0);
-	
-	Signal signal_mainUp_mainDown_E_L = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_L , -1 , -1 , 1);
-	Signal signal_mainUp_mainDown_E_R = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_L , 1 , -1 , 1);
+	Signal signal_mainUp_mainDown_U_L = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_L , 1 , 1 , 0);
+	Signal signal_mainUp_mainDown_U_R = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_L , -1 , 1 , 0);
 	
 	
+	Signal signal_mainUp_mainDown_D_R = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_L , -1 , -1 , 1);
+	Signal signal_mainUp_mainDown_D_L = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_L , 1 , -1 , 1);
 	
-	Signal signal_mainDown_mainUp_S_L = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_L , -1 , -1 , 0);
-	Signal signal_mainDown_mainUp_S_R = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_L , 1 , -1 , 0);
 	
-	Signal signal_mainDown_mainUp_E_L = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_L , -1 , 1 , 1);
-	Signal signal_mainDown_mainUp_E_R = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_L , 1 , 1 , 1);
+	
+	
+	Signal signal_mainDown_mainUp_U_L = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_L , -1 , 1 , 1);
+	Signal signal_mainDown_mainUp_U_R = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_L , 1 , 1 , 1);
+	
+	
+	Signal signal_mainDown_mainUp_D_L = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_L , -1 , -1 , 0);
+	Signal signal_mainDown_mainUp_D_R = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_L , 1 , -1 , 0);
+	
 	
 	
 	
@@ -110,21 +114,37 @@ public  class TrackStationDesign {
 	
 	
 	//Loop line up start 
+	Signal signal_mainUp1_loopUp1_U_L = new Signal(Signal.signalType.HOME , switchMainUp1_loopUp1 , -1 , 1 , 1);
+	Signal signal_mainUp1_loopUp1_U_R = new Signal(Signal.signalType.HOME , switchMainUp1_loopUp1 , 1 , 1 , 1);
 	
-	Signal signal_mainUp1_loopUp1_S_L = new Signal(Signal.signalType.HOME , switchMainUp1_loopUp1 , -1 , -1 , 0);
-	Signal signal_mainUp1_loopUp1_S_R = new Signal(Signal.signalType.HOME , switchMainUp1_loopUp1 , 1 , -1 , 0);
-	
-	Signal signal_mainUp1_loopUp1_E_L = new Signal(Signal.signalType.HOME , switchMainUp1_loopUp1 , -1 , 1 , 1);
-	Signal signal_mainUp1_loopUp1_E_R = new Signal(Signal.signalType.HOME , switchMainUp1_loopUp1 , 1 , 1 , 1);
+	Signal signal_mainUp1_loopUp1_D_L = new Signal(Signal.signalType.HOME , switchMainUp1_loopUp1 , -1 , -1 , 0);
+	Signal signal_mainUp1_loopUp1_D_R = new Signal(Signal.signalType.HOME , switchMainUp1_loopUp1 , 1 , -1 , 0);
 	
 	
-	//loop line end 
+	//loop line up end 
+	Signal signal_loopUp1_mainUp1_U_L = new Signal(Signal.signalType.HOME , switchloopUp1_MainUp1 , -1 , 1 , 0);
+	Signal signal_loopUp1_mainUp1_U_R = new Signal(Signal.signalType.HOME , switchloopUp1_MainUp1 , 1 , 1 , 0);
 	
-	Signal signal_loopUp1_mainUp1_S_L = new Signal(Signal.signalType.HOME , switchloopUp1_MainUp1 , -1 , 1 , 0);
-	Signal signal_loopUp1_mainUp1_S_R = new Signal(Signal.signalType.HOME , switchloopUp1_MainUp1 , 1 , 1 , 0);
+	Signal signal_loopUp1_mainUp1_D_L = new Signal(Signal.signalType.HOME , switchloopUp1_MainUp1 , -1 , -1 , 1);
+	Signal signal_loopUp1_mainUp1_D_R = new Signal(Signal.signalType.HOME , switchloopUp1_MainUp1 , 1 , -1 , 1);
 	
-	Signal signal_loopUp1_mainUp1_E_L = new Signal(Signal.signalType.HOME , switchloopUp1_MainUp1 , -1 , -1 , 1);
-	Signal signal_loopUp1_mainUp1_E_R = new Signal(Signal.signalType.HOME , switchloopUp1_MainUp1 , 1 , -1 , 1);
+	
+	
+	
+	//loop line down start
+	Signal signal_mainDown1_loopDown1_U_L = new Signal(Signal.signalType.HOME , switchMainDown1_LoopDown1 , -1 , 1 , 0);
+	Signal signal_mainDown1_loopDown1_U_R = new Signal(Signal.signalType.HOME , switchMainDown1_LoopDown1 , 1 , 1 , 0);
+	
+	Signal signal_mainDown1_loopDown1_D_L = new Signal(Signal.signalType.HOME , switchMainDown1_LoopDown1 , -1 , -1 , 1);
+	Signal signal_mainDown1_loopDown1_D_R = new Signal(Signal.signalType.HOME , switchMainDown1_LoopDown1 , 1 , -1 , 1);
+	
+	
+	//loop line down end 
+	Signal signal_loopDown1_mainDown1_U_L = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown1 , -1 , -1 , 0);
+	Signal signal_loopDown1_mainDown1_U_R = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown1 , 1 , -1 , 0);
+	
+	Signal signal_loopDown1_mainDown1_D_L = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown1 , -1 , 1 , 1);
+	Signal signal_loopDown1_mainDown1_D_R = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown1 , 1 , 1 , 1);
 	
 	
 	private List<TrackSection> getSections() 
@@ -147,9 +167,6 @@ public  class TrackStationDesign {
 				switchMainUp_MainDown_R,
 				switchMainDown_MainUp_R
 				
-				
-				
-				
 				);
 		
 		
@@ -162,16 +179,16 @@ public  class TrackStationDesign {
 		
 		Collections.addAll(listOfSignals , 
 				
-				signal_mainUp_mainDown_S_L,
-				signal_mainUp_mainDown_S_R,
-				signal_mainUp_mainDown_E_L,
-				signal_mainUp_mainDown_E_R,
+				signal_mainUp_mainDown_U_L,
+				signal_mainUp_mainDown_U_R,
+				signal_mainUp_mainDown_D_L,
+				signal_mainUp_mainDown_D_R,
 				
 				
-				signal_mainDown_mainUp_S_L,
-				signal_mainDown_mainUp_S_R,
-				signal_mainDown_mainUp_E_L,
-				signal_mainDown_mainUp_E_R,
+				signal_mainDown_mainUp_U_L,
+				signal_mainDown_mainUp_U_R,
+				signal_mainDown_mainUp_D_L,
+				signal_mainDown_mainUp_D_R,
 				
 				
 				Fin_signal_mainUp_mainDown_S_L,
@@ -185,16 +202,28 @@ public  class TrackStationDesign {
 				Fin_signal_mainDown_mainUp_E_L,
 				Fin_signal_mainDown_mainUp_E_R,
 				
+								
+				signal_mainUp1_loopUp1_U_L,
+				signal_mainUp1_loopUp1_U_R,
+				signal_mainUp1_loopUp1_D_L,
+				signal_mainUp1_loopUp1_D_R,
 				
-				signal_mainUp1_loopUp1_S_L,
-				signal_mainUp1_loopUp1_S_R,
-				signal_mainUp1_loopUp1_E_L,
-				signal_mainUp1_loopUp1_E_R,
+				signal_loopUp1_mainUp1_U_L,
+				signal_loopUp1_mainUp1_U_R,
+				signal_loopUp1_mainUp1_D_L,
+				signal_loopUp1_mainUp1_D_R,
 				
-				signal_loopUp1_mainUp1_S_L,
-				signal_loopUp1_mainUp1_S_R,
-				signal_loopUp1_mainUp1_E_L,
-				signal_loopUp1_mainUp1_E_R
+				
+				signal_mainDown1_loopDown1_U_L,
+				signal_mainDown1_loopDown1_U_R,
+				signal_mainDown1_loopDown1_D_L,
+				signal_mainDown1_loopDown1_D_R,
+				
+				
+				signal_loopDown1_mainDown1_U_L,
+				signal_loopDown1_mainDown1_U_R,
+				signal_loopDown1_mainDown1_D_L,
+				signal_loopDown1_mainDown1_D_R
 				
 				);
 		
@@ -213,15 +242,29 @@ public  class TrackStationDesign {
 	
 	public void initializeInterlocking() 
 	{
-		switchMainUp_MainDown_L.setSignals(signal_mainUp_mainDown_S_L, 
-				signal_mainUp_mainDown_S_R, 
-				signal_mainUp_mainDown_E_L, 
-				signal_mainUp_mainDown_E_R);
+		switchMainUp_MainDown_L.setSignals(
+				signal_mainUp_mainDown_U_L, 
+				signal_mainUp_mainDown_U_R, 
+				signal_mainUp_mainDown_D_L, 
+				signal_mainUp_mainDown_D_R);
 		
-		switchMainDown_MainUp_L.setSignals(signal_mainDown_mainUp_S_L, 
-				signal_mainDown_mainUp_S_R,
-				signal_mainDown_mainUp_E_L, 
-				signal_mainDown_mainUp_E_R);
+		switchMainDown_MainUp_L.setSignals(
+				signal_mainDown_mainUp_U_L, 
+				signal_mainDown_mainUp_U_R, 
+				signal_mainDown_mainUp_D_L, 
+				signal_mainDown_mainUp_D_R);
+		
+		switchMainUp1_loopUp1.setSignals(
+				signal_mainUp1_loopUp1_U_L, 
+				signal_mainUp1_loopUp1_U_R, 
+				signal_mainUp1_loopUp1_D_L, 
+				signal_mainUp1_loopUp1_D_R);
+		
+		switchloopUp1_MainUp1.setSignals(
+				signal_loopUp1_mainUp1_U_L, 
+				signal_loopUp1_mainUp1_U_R, 
+				signal_loopUp1_mainUp1_D_L, 
+				signal_loopUp1_mainUp1_D_R);
 	}
 	
 

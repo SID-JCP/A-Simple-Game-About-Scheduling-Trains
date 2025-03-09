@@ -68,6 +68,7 @@ public class MapController {
 				
 				if(signal.isCursorInside(mouseClickX, mouseClickY) && newClick) 
 				{
+					//clock(flag , nextSignalState)
 					signal.clock(3 , 0);
 					continue;
 				}

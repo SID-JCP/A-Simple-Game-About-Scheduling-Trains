@@ -13,6 +13,22 @@ import RenderingElements.Tracks.TrackSection.trackType;
 
 public class TestTrackDesign implements TrackControllerRequirments{
 	
+	
+	
+	//|-------------------------Naming Convention For Switches [Use of Enum]----------------------------------|
+	
+	
+	/*
+	 * If Switch goes from *UP to UP* or *DOWN to UP* then its UP_START
+	 * If Switch goes from *UP to DOWN* OR *UP to lower UP* then its UP_END
+	 * 
+	 * If Switch goes from *Down to Down* or *UP to DOWN* then its DOWN_START
+	 * If Switch goes from *DOWN to UP* OR *DOWN to Upper DOWN* then its DOWN_END
+	 * 
+	 */
+	
+
+	
 	//|-----------------------------LIST OF TRACK SECTIONS  CREATE IN ALL CLASES--------------------------------------|
 	public List<TrackSection> listOfTrackSections = new ArrayList<>();
 	
