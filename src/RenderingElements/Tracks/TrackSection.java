@@ -175,7 +175,7 @@ public class TrackSection {
 				Signal_right_up.setSTATE(3);
 				
 				Signal_left_down.setSTATE(3);
-				Signal_right_down.setSTATE(2);
+				Signal_right_down.setSTATE(3);
 			}
 			
 			// opposite direction 
@@ -185,7 +185,7 @@ public class TrackSection {
 				Signal_right_up.setSTATE(3);
 				
 				Signal_left_down.setSTATE(3);
-				Signal_right_down.setSTATE(2);
+				Signal_right_down.setSTATE(3);
 			}
 		}
 		
@@ -196,7 +196,7 @@ public class TrackSection {
 			
 			if(track.equals(trackType.UP_END) || track.equals(trackType.DOWN_START)) 
 			{
-				Signal_left_up.setSTATE(2);
+				Signal_left_up.setSTATE(3);
 				Signal_right_up.setSTATE(3);
 				
 				Signal_left_down.setSTATE(3);
@@ -206,7 +206,7 @@ public class TrackSection {
 			
 			if(track.equals(trackType.UP_START) || track.equals(trackType.DOWN_END)) 
 			{
-				Signal_left_up.setSTATE(2);
+				Signal_left_up.setSTATE(3);
 				Signal_right_up.setSTATE(3);
 				
 				Signal_left_down.setSTATE(3);
