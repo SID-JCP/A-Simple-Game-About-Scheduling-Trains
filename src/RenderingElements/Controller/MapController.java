@@ -313,9 +313,6 @@ public class MapController {
 				}
 				
 				
-				
-				
-				
 				if(trackSection.getTrackType() == TrackSection.trackType.DOWN_END || 
 					trackSection.getTrackType() == TrackSection.trackType.DOWN_START ||
 					trackSection.getTrackType() == TrackSection.trackType.UP_END || 
@@ -364,12 +361,6 @@ public class MapController {
 								trackSection.getY2());
 					
 				} 
-				
-				
-				
-				
-				
-				
 				
 				
 			}

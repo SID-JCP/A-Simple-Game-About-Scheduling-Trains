@@ -123,13 +123,22 @@ public class TestTrackDesign implements TrackControllerRequirments{
 	}
 
 	@Override
-	public void addListToController() {
+	public void addListToController()
+	{
 		
 
 		//|--------------------------------------------------RUN PRIVATE METHODS TO ADD VALUE TO LISTS FOR BOTH SIGNALS AND TRACK SECTIONS------------------------------------------------|
 
 		MapController.listOfTrackSections = getSections();
 		MapController.listOfSignals = getSignals();
+	}
+
+
+	@Override
+	public void initializeInterlocking() 
+	{
+		
+		
 	}
 
 	
