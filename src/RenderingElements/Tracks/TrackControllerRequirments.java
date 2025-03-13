@@ -1,11 +1,10 @@
-package RenderingElements.Controller;
+package RenderingElements.Tracks;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import RenderingElements.Signal.Signal;
-import RenderingElements.Tracks.TrackSection;
 
 public interface TrackControllerRequirments {
 	
@@ -18,6 +17,11 @@ public interface TrackControllerRequirments {
 	 * 
 	 */
 	
+	// CREATE THESE LISTS 
+	
+	//private List<TrackSection> listOfTrackSections = new ArrayList<>();
+	
+	//private List<Signal> listOfSignals = new ArrayList<>();
 	
 	List<TrackSection> getSections();
 	

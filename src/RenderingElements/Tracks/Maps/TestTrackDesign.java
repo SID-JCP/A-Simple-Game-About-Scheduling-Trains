@@ -5,9 +5,9 @@ import java.util.Collections;
 import java.util.List;
 
 import RenderingElements.Controller.MapController;
-import RenderingElements.Controller.TrackControllerRequirments;
 import RenderingElements.Signal.Signal;
 import RenderingElements.Signal.Signal.signalType;
+import RenderingElements.Tracks.TrackControllerRequirments;
 import RenderingElements.Tracks.TrackSection;
 import RenderingElements.Tracks.TrackSection.trackType;
 

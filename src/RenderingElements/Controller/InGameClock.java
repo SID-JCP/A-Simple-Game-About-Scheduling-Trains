@@ -126,10 +126,7 @@ public class InGameClock implements Runnable{
 		
 		setHour();
 		setMinute();
-		
-	
-		
-		createTrainOnTime();
+
 	}
 	
 	
@@ -137,7 +134,7 @@ public class InGameClock implements Runnable{
 	public void clockStart() 
 	{
 		clockThread.start();
-		readTrainFile();
+		
 	}
 	
 	private void setHour() 
@@ -164,25 +161,7 @@ public class InGameClock implements Runnable{
 	
 	
 	
-	private void readTrainFile() 
-	{
-		
-	}
-	
-	
-	
-	
-	
-	private void createTrainOnTime() 
-	{
-		//check the timings of trains available , if any match , create and add to tspController List 
-		if(InGameClock.secondsOfDay == 50) 
-		{
-			MapController.allTrain.add(new Train());			
-			
-		}
-		
-	}
+
 	
 	//design a clock and show time in a graphical manner 	
 	public void drawClock(Graphics2D g2) 

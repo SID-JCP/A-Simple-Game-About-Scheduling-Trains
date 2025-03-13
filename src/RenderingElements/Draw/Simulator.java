@@ -6,8 +6,9 @@ import java.awt.Graphics2D;
 import RenderingElements.Controller.MapController;
 import RenderingElements.Tracks.Maps.TestTrackDesign;
 import RenderingElements.Tracks.Maps.TrackStationDesign;
+import RenderingElements.Train.Traffic.Traffic;
 
-public class StationSelector {
+public class Simulator {
 
 	//Default Map design 
 	TrackStationDesign defaultStation = new TrackStationDesign();
@@ -19,9 +20,13 @@ public class StationSelector {
 	//One controller for all trains , points and signals . For all different maps use this only 
 	MapController Controller = new MapController();
 	
+	Traffic traffic = new Traffic();
+	
 	
 	
 	private int mapSelected = 0;
+	private int trafficSelected = 0;
+	
 	private int WIDTH = 0;
 	private int HEIGHT = 0;
 	
@@ -62,45 +67,37 @@ public class StationSelector {
 		
 		blockOffset = (int)WIDTH/MAX_HORIZONTAL_ELM;
 		
-		switch(mapSelected) 
+		if(!trackElementsCompiled) 
 		{
-			case 0:
-				
-				if(!trackElementsCompiled) 
-				{
+			switch(mapSelected) 
+			{
+				case 0:
+					
 					defaultStation.addListToController();	
 					defaultStation.initializeInterlocking();
+					traffic.addTrafficListToController(trafficSelected);
 					//..
 					//..
 					//..
+						
 					
-					trackElementsCompiled = true;
+					break;
+				case 1: 
 					
 					
-				}
-							
-				
-				
-				break;
-			case 1: 
-				
-				if(!trackElementsCompiled) 
-				{
 					testTrack.addListToController();
 					//..
 					//..
-					//..
+
+					break;
 					
-					trackElementsCompiled = true;
-					
-					
-				}
-				
-				
-				
-				break;
-				
+			}
+			
+			
+			trackElementsCompiled = true;
 		}
+		
+		
 		
 		
 		

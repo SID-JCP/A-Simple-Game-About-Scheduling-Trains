@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import InputManager.KeyBoardInputManager;
 import InputManager.MouseInputManager;
 import RenderingElements.Controller.InGameClock;
-import RenderingElements.Draw.StationSelector;
+import RenderingElements.Draw.Simulator;
 
 public class Canvas extends JPanel implements Runnable 
 {
@@ -56,7 +56,7 @@ public class Canvas extends JPanel implements Runnable
 		
 	Thread thread = new Thread(this);
 	
-	StationSelector elements = new StationSelector();
+	Simulator elements = new Simulator();
 	
 	InGameClock gClock = new InGameClock();
 	

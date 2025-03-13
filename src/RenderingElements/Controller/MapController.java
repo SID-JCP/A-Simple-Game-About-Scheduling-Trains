@@ -17,12 +17,7 @@ public class MapController {
 	
 		
 	
-	public static List<Train> allTrain = new LinkedList<>();
-	
-	
-	
-	
-	
+	public static List<Train> listOfTrainTraffic;
 	public static List<TrackSection> listOfTrackSections;
 	public static List<Signal> listOfSignals;
 	
@@ -40,7 +35,7 @@ public class MapController {
 		
 		
 		
-		//---------------------------- Get Click ----------------------------------
+		//---------------------------- Get Click Position----------------------------------
 		
 		this.mouseMoveX = mouseMoveX;
 		this.mouseMoveY = mouseMoveY;
@@ -57,6 +52,7 @@ public class MapController {
 		
 		
 		
+		//-----------------------------IF A SIGNAL IS CLICKED------------------------------------------
 		
 		if(!listOfSignals.isEmpty()) 
 		{
@@ -80,6 +76,7 @@ public class MapController {
 		}
 		
 		
+		//---------------------------------IF A TRACK SWITCH IS CLICKED---------------------------------------
 		
 		if(!listOfTrackSections.isEmpty()) 
 		{
@@ -371,7 +368,6 @@ public class MapController {
 		
 	}
 	
-	
 	public void drawSignals(Graphics2D g2d , int lengthOffset) 
 	{
 		if(!listOfSignals.isEmpty()) 
@@ -403,14 +399,11 @@ public class MapController {
 	public void drawTrain(Graphics2D g2d) 
 	{
 
-//		if(!MapController.allTrain.isEmpty()) 
-//		{
-//			allTrain.forEach(train -> 
-//			{
-//				train.drawTrain(g2d);
-//			});
-//			
-//		}
+		if(!listOfTrainTraffic.isEmpty()) 
+		{
+			
+			
+		}
 	}
 
 }
