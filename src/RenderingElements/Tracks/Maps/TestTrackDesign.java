@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import RenderingElements.Controller.MapController;
+import RenderingElements.Controller.SimulationController;
 import RenderingElements.Signal.Signal;
 import RenderingElements.Signal.Signal.signalType;
 import RenderingElements.Tracks.TrackControllerRequirments;
@@ -129,8 +129,11 @@ public class TestTrackDesign implements TrackControllerRequirments{
 
 		//|--------------------------------------------------RUN PRIVATE METHODS TO ADD VALUE TO LISTS FOR BOTH SIGNALS AND TRACK SECTIONS------------------------------------------------|
 
-		MapController.listOfTrackSections = getSections();
-		MapController.listOfSignals = getSignals();
+		SimulationController.listOfTrackSections = getSections();
+		SimulationController.listOfSignals = getSignals();
+		
+		
+		
 	}
 
 

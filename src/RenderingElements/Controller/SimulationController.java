@@ -13,7 +13,7 @@ import RenderingElements.Signal.Signal.signalType;
 import RenderingElements.Tracks.TrackSection;
 import RenderingElements.Train.Train;
 
-public class MapController {
+public class SimulationController {
 	
 		
 	
@@ -21,6 +21,11 @@ public class MapController {
 	public static List<TrackSection> listOfTrackSections;
 	public static List<Signal> listOfSignals;
 	
+	//for drawing train which are for up line during deployment
+	public static TrackSection upMainLine;
+	
+	//for drawing train which are for down line during deployment
+	public static TrackSection downMainLine;
 	
 	private static long secondsOfDay = 0l;
 	
@@ -29,9 +34,9 @@ public class MapController {
 	
 	private boolean newClick = false;
 	
-	public void update(long time , int mouseMoveX , int mouseMoveY , int mouseClickX , int mouseClickY) 
+	public void update( long deltaTime , long time , int mouseMoveX , int mouseMoveY , int mouseClickX , int mouseClickY) 
 	{
-		MapController.secondsOfDay = time;
+		secondsOfDay = time;
 		
 		
 		
@@ -99,6 +104,27 @@ public class MapController {
 		}
 		
 
+		
+		
+		
+		//|----------------------------------MOVE THE TRAIN----------------------------------------------------
+		
+		if(!listOfTrainTraffic.isEmpty()) 
+		{
+			for(int i = 0; i < listOfTrainTraffic.size(); i++) 
+			{
+				Train train = listOfTrainTraffic.get(i);
+				
+				if(train.getDeployState() == 1) 
+				{
+					train.move(deltaTime);
+				}
+				
+			}
+			
+		}
+		
+		
 		newClick = false;
 	}
 	
@@ -398,10 +424,56 @@ public class MapController {
 	
 	public void drawTrain(Graphics2D g2d) 
 	{
-
+		
+		
 		if(!listOfTrainTraffic.isEmpty()) 
 		{
-			
+			for(int i = 0; i < listOfTrainTraffic.size(); i++) 
+			{
+				Train train = listOfTrainTraffic.get(i);
+				
+				if(train.getDeployState() == 2) {continue;}
+				
+				if(train.getDeployState() == 0) 
+				{
+					if(train.getDeployTime()  <= secondsOfDay) 
+					{
+						train.setDeployState(1);
+						
+						//0 = up line
+						if(train.getMoveDirection() ==  0) 
+						{
+							train.setCurrentSection(upMainLine);
+							train.x1 = train.getCurrentSection().getX1();
+							train.y1 = train.getCurrentSection().getY1();
+							
+						}else{
+							
+							train.setCurrentSection(downMainLine);
+														
+							
+						}
+						
+					}
+				}
+				
+				
+				//active train 
+				if(train.getDeployState() == 1) 
+				{
+					if(train.getMoveDirection() == 0) {g2d.setColor(Color.PINK);}else {g2d.setColor(Color.red);}
+					
+					//move train , provide section all that
+					g2d.fillOval(
+							(int)train.x1, 
+							(int)train.y1,
+							50,
+							50);
+					
+				}
+				
+				
+			}
 			
 		}
 	}

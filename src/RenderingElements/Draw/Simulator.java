@@ -3,7 +3,7 @@ package RenderingElements.Draw;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import RenderingElements.Controller.MapController;
+import RenderingElements.Controller.SimulationController;
 import RenderingElements.Tracks.Maps.TestTrackDesign;
 import RenderingElements.Tracks.Maps.TrackStationDesign;
 import RenderingElements.Train.Traffic.Traffic;
@@ -18,7 +18,7 @@ public class Simulator {
 	
 	
 	//One controller for all trains , points and signals . For all different maps use this only 
-	MapController Controller = new MapController();
+	SimulationController Controller = new SimulationController();
 	
 	Traffic traffic = new Traffic();
 	
@@ -55,7 +55,7 @@ public class Simulator {
 	
 	//Update Controller with the CANVAS THREAD 
 	
-	public void update(long clockTime , int WIDTH , int HEIGHT , int mouseMoveX , int mouseMoveY , int mouseClickX , int mouseClickY) 
+	public void update(long deltaTime , long clockTime , int WIDTH , int HEIGHT , int mouseMoveX , int mouseMoveY , int mouseClickX , int mouseClickY) 
 	{
 		// Case 0 to N where the N is the map number 
 		
@@ -101,7 +101,7 @@ public class Simulator {
 		
 		
 		
-		Controller.update(clockTime , mouseMoveX , mouseMoveY ,  mouseClickX ,  mouseClickY);
+		Controller.update( deltaTime ,clockTime , mouseMoveX , mouseMoveY ,  mouseClickX ,  mouseClickY);
 		
 		
 		

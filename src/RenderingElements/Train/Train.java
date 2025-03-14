@@ -13,53 +13,77 @@ import RenderingElements.Tracks.TrackSection;
 public class Train {
 	
 	
-	public int movingDirection = 1; //1 -> front , 0 -> reverse
 	
-	public boolean moving = true;	
-	public boolean enteredPoint = false;
-	
-	
-	/* TRAIN META DATA */
-	private boolean hasStoppage = true;
-	private int Delay  = 0;	
-	private int timeForStoppage = 0;	
-	private int arrivalTime = 0;	
-	private int departureTime = 0;
-	
-	
-	private double speed = 0.5;	
-	
-	
-	//coordinates of head of train
-	private int xPos = 0;
-	private int yPos = 0;
+	public int deployState = 0;   // 0 = not deployed , 1 = deployed , 2 = deployment done and exited screen
 
+	public long deployTime = 0l;  // time at which train need to be deployed
 	
-	//length of section linked list and the distance travelled 
-	private double sectionPointIndex = 0;
-	private int sectionPointLastIndex = 0;
+	public int moveDirection = 0; // 0 = up line , 1 = down line 
 	
-	boolean reachedSectionEnd = false;		
+	public TrackSection currentSection;
 	
-	public TrackSection currentSection = null;
 	
-	/*
-	 * |-------------------- What this class do ------------------------|
-	 * 
-	 * move the train in the direction of the linked list provided according to
-	 * stack
-	 * 
-	 * increment or decrement according speed to the rate of addition or
-	 * subtraction of linked list element window
-	 * 
-	 * the controller will provide the section to traverse using the stack , follow
-	 * the stack top
-	 * 
-	 * CHECK IF ENTERING A POINT , SET STATUS ACCORDING TO THAT 
-	 * 
-	 * CHECK IF ENTERING A SIGNAL CHANGE SPEED ACCORDING TO THAT 
-	 * 
-	 */
+	//|--------------------------Movement Data--------------------------------|
+	
+	//left side of the train
+	public double x1,y1;
+	
+	//right side of the train 
+	public int x2,y2;
+	
+	
+	private double speed = 20.0;
+	
+	
+	public Train(int movingDirection , long deployTime)
+	{
+		this.moveDirection = movingDirection;
+		this.deployTime = deployTime;
+	}
+	
+	
+	public void move(long deltaTime) 
+	{
+		x1 = x1 + (speed * deltaTime/1000000000);
+		
+//		x1 += 5;
+	}
+	
+	
+	public int getMoveDirection() {
+		return moveDirection;
+	}
+
+	public void setMoveDirection(int moveDirection) {
+		this.moveDirection = moveDirection;
+	}
+
+	public TrackSection getCurrentSection() {
+		return currentSection;
+	}
+
+	public void setCurrentSection(TrackSection currentSection) {
+		this.currentSection = currentSection;
+	}
+
+	public long getDeployTime() {
+		return deployTime;
+	}
+
+	public void setDeployTime(long deployTime) {
+		this.deployTime = deployTime;
+	}
+
+
+	public int getDeployState() {
+		return deployState;
+	}
+
+	public void setDeployState(int deployState) {
+		this.deployState = deployState;
+	}
+	
+	
 	
 	
 //	public void assignSection(TrackSection freeSection) 

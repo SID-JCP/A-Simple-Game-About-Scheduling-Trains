@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 
 import InputManager.KeyBoardInputManager;
 import InputManager.MouseInputManager;
-import RenderingElements.Controller.InGameClock;
+import RenderingElements.Controller.SimulatorClock;
 import RenderingElements.Draw.Simulator;
 
 public class Canvas extends JPanel implements Runnable 
@@ -31,11 +31,11 @@ public class Canvas extends JPanel implements Runnable
 	
 	private long nano = 1000000000;
 	
-	private double timeLeftToWait = 0;
+	private long timeLeftToWait = 0;
 	
 	
 	/* |---------- FPS ---------------| */
-	private int FPS =  30;
+	private int FPS =  30; //30 is default
 	
 	private MouseInputManager mouseInput = new MouseInputManager();
 	private KeyBoardInputManager keyInput = new KeyBoardInputManager();
@@ -56,9 +56,9 @@ public class Canvas extends JPanel implements Runnable
 		
 	Thread thread = new Thread(this);
 	
-	Simulator elements = new Simulator();
+	Simulator simulation = new Simulator();
 	
-	InGameClock gClock = new InGameClock();
+	SimulatorClock clock = new SimulatorClock();
 	
 	
 	
@@ -82,7 +82,7 @@ public class Canvas extends JPanel implements Runnable
 	public void startThread() 
 	{
 		thread.start();
-		gClock.clockStart();
+		clock.clockStart();
 	}
 	
 	
@@ -144,8 +144,8 @@ public class Canvas extends JPanel implements Runnable
 		clickX = mouseInput.getClickX();
 		clickY = mouseInput.getClickY();
 		
-		elements.update(InGameClock.secondsOfDay , SCREEN_WIDTH , SCREEN_HEIGHT , moveX , moveY , clickX , clickY);
-		
+		simulation.update(timeLeftToWait ,SimulatorClock.secondsOfDay , SCREEN_WIDTH , SCREEN_HEIGHT , moveX , moveY , clickX , clickY);
+		clock.update(SCREEN_WIDTH, SCREEN_HEIGHT);
 	}
 	
 	
@@ -161,7 +161,7 @@ public class Canvas extends JPanel implements Runnable
 		graphic2D.setColor(Color.white);
 		
 		
-		gClock.drawClock(graphic2D);
+		clock.drawClock(graphic2D);
 		
 		
 		
@@ -169,6 +169,9 @@ public class Canvas extends JPanel implements Runnable
 		/*
 		 * -----------------------------------------------DEBUG ELEMETS---------------------------
 		 */
+		
+		graphic2D.setColor(Color.red);
+		graphic2D.setFont(new Font("Arial" , Font.BOLD , 24));
 		
 		graphic2D.drawString("MS: " + String.valueOf(deltaTime), 20, 30);		
 		graphic2D.drawString("Mouse X: " + String.valueOf(moveX) + 
@@ -186,7 +189,7 @@ public class Canvas extends JPanel implements Runnable
 		
 		graphic2D.fillOval(moveX, moveY, 10, 10);
 		
-		elements.draw(graphic2D);
+		simulation.draw(graphic2D);
 		
 
 		

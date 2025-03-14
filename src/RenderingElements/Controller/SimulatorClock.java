@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 
 import RenderingElements.Train.Train;
 
-public class InGameClock implements Runnable{
+public class SimulatorClock implements Runnable{
 
 	
 	
@@ -59,17 +59,26 @@ public class InGameClock implements Runnable{
 	private long timeStart = 0l;
 	private long timeEnd = 0l;
 	
-	private int countsPerSecond =  15;
+	private int countsPerSecond =  15; //15 is default 
 	private long nano = 1000000000;	
 	
 	private double timeLeftToWait = 0;	
 	
-	private int HOUR = 0;	
+	private int HOUR = 8;	//start everyday at morning 8'O clock 
 	private int MINUTES = 0;
+	
+	//UI elements 
+	private int horizontalCenter = 0;
+	private int clockBannerWidth = 0;
+	private int clockBannerHeight = 0;
 	
 	
 
-	
+	public void clockStart() 
+	{
+		clockThread.start();
+		
+	}
 
 	
 	@Override
@@ -120,33 +129,22 @@ public class InGameClock implements Runnable{
 		if(secondsOfDay >= 86400) 
 		{
 			secondsOfDay = 0;
+			setMinute();
+
 			return;
 		}
-		secondsOfDay++;
-		
-		setHour();
+		secondsOfDay++;		
 		setMinute();
 
 	}
 	
-	
-	
-	public void clockStart() 
-	{
-		clockThread.start();
-		
-	}
-	
-	private void setHour() 
-	{
-		HOUR = (int) InGameClock.secondsOfDay/3600;
-	}
+
 	
 	private void setMinute() 
 	{
 		 
 		
-		if(InGameClock.secondsOfDay % 60 == 0) 
+		if(SimulatorClock.secondsOfDay % 60 == 0) 
 		{
 			MINUTES++;
 		}
@@ -154,25 +152,42 @@ public class InGameClock implements Runnable{
 		if(MINUTES == 59) 
 		{
 			MINUTES = 0;
+			if(HOUR == 23) {HOUR = 0;}else{
+				HOUR++;
+			};
+			
 		}
 	}
 	
 	
 	
+	public void update(int screenWidth , int screenHeight) 
+	{
+		horizontalCenter = screenWidth/2;
+		clockBannerWidth = screenWidth/5;
+		clockBannerHeight = screenHeight/8;
+	}
 	
 	
-
 	
 	//design a clock and show time in a graphical manner 	
 	public void drawClock(Graphics2D g2) 
 	{
-		g2.setColor(Color.orange);
-		g2.drawRoundRect(650, 10, 200, 50 , 15 ,15);		
+		g2.setColor(Color.DARK_GRAY);
+		g2.fillRoundRect(horizontalCenter - clockBannerWidth/2 , 20, clockBannerWidth, clockBannerHeight , 100 ,100);		
 		
-		g2.setColor(Color.red);
+		g2.setColor(Color.WHITE);
 		
-		g2.setFont(new Font("Arial" , Font.BOLD , 24));
-		g2.drawString("TIME: " + HOUR + ":" + MINUTES, 700, 42);		
+		String hour = "";
+		String mins = "";
+		
+		if(HOUR < 10) {hour +=  "0" + HOUR;}else {hour += HOUR;}
+		if(MINUTES < 10) {mins +=  "0" + MINUTES;}else {mins += MINUTES;}
+		
+		g2.setFont(new Font("Arial" , Font.BOLD , 50));
+		g2.drawString(hour + ":" + mins, horizontalCenter - 62, clockBannerHeight - clockBannerHeight/6);		
+		
+		
 		
 	}
 	

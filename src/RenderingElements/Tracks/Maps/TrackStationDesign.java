@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import RenderingElements.Controller.MapController;
+import RenderingElements.Controller.SimulationController;
 import RenderingElements.Point.Point;
 import RenderingElements.Point.Point.pointType;
 import RenderingElements.Signal.Signal;
@@ -236,8 +236,12 @@ public  class TrackStationDesign {
 	
 	public void addListToController() 
 	{
-		MapController.listOfTrackSections = getSections();
-		MapController.listOfSignals = getSignals();
+		SimulationController.listOfTrackSections = getSections();
+		SimulationController.listOfSignals = getSignals();
+		
+		//create a seperate method later
+		SimulationController.upMainLine = mainUp1;
+		SimulationController.downMainLine = mainDown1;
 	}
 	
 	
