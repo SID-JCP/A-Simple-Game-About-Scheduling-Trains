@@ -35,7 +35,7 @@ public class Canvas extends JPanel implements Runnable
 	
 	
 	/* |---------- FPS ---------------| */
-	private int FPS =  30; //30 is default
+	private int FPS =  60; //30 is default
 	
 	private MouseInputManager mouseInput = new MouseInputManager();
 	private KeyBoardInputManager keyInput = new KeyBoardInputManager();

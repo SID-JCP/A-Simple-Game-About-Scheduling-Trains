@@ -118,6 +118,51 @@ public class SimulationController {
 				if(train.getDeployState() == 1) 
 				{
 					train.move(deltaTime);
+					
+					//up direction
+					if(train.getMoveDirection() == 0) 
+					{
+						int trainFrontX = (int)train.x2;
+						int trainFrontY = (int)train.y2;
+						
+						int trainBackX = (int)train.x1;
+						int trainBackY = (int)train.y1;
+						
+						if(!listOfSignals.isEmpty()) 
+						{
+							Signal signal;
+							
+							for(int j = 0; j < listOfSignals.size(); j++) 
+							{
+								signal = listOfSignals.get(j);
+								
+								//signal is for up line
+								if(signal.getHorizontalPosFlag() == 1) 
+								{
+									if(signal.detectTrain(trainFrontX , trainFrontY)) 
+									{
+										train.setNextSignal(signal);
+										
+									}
+									
+									if(signal.detectTrain(trainBackX , trainBackY)) 
+									{
+										signal.setSTATE(3);
+										
+									}
+								}
+								
+								continue;
+							}
+							
+						}
+					}
+					
+					
+					
+					
+					
+					
 				}
 				
 			}
@@ -444,7 +489,7 @@ public class SimulationController {
 						if(train.getMoveDirection() ==  0) 
 						{
 							train.setCurrentSection(upMainLine);
-							train.x1 = train.getCurrentSection().getX1();
+							train.x1 = train.getCurrentSection().getX1() - 50;
 							train.y1 = train.getCurrentSection().getY1();
 							
 						}else{
@@ -461,14 +506,7 @@ public class SimulationController {
 				//active train 
 				if(train.getDeployState() == 1) 
 				{
-					if(train.getMoveDirection() == 0) {g2d.setColor(Color.PINK);}else {g2d.setColor(Color.red);}
-					
-					//move train , provide section all that
-					g2d.fillOval(
-							(int)train.x1, 
-							(int)train.y1,
-							50,
-							50);
+					train.draw(g2d);
 					
 				}
 				

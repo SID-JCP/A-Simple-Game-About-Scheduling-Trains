@@ -15,6 +15,8 @@ public class Signal {
 		BLOCK  //to be used for main routes 
 				
 	}
+
+	
 	
 	/*
 	 * -----------------------size specifications--------------------------
@@ -23,11 +25,18 @@ public class Signal {
 	
 	private int trackX,trackY; //coordinates of the point of the track where it is drawn 
 	
+	private int trackCircuitDistance = 50; //the gap between signal and train detect area on left or right
+	
+	private int detectBoxSize = 15; //size of the box for visual purpos
+	
+	
 	public signalType signal;
 	private TrackSection track;
 	
 	private int verticlPosFlag = 1;    // 1 = above the tracks , -1 = below the tracks  
 	private int horizontalPosFlag = 1; // 1 = left of switch for up direction , - 1 = right of switch for down line 
+
+
 	private int startEndFlag = 0;      //0 = start of the switch from right , 1 = end of switch 
 	
 	
@@ -41,6 +50,9 @@ public class Signal {
 	
 	//light circle radius 
 	private int radius = 6;
+	
+	//train detect box
+	private int x1,y1,x2,y2,x3,y3,x4,y4;
 	
 	
 	/*
@@ -254,6 +266,75 @@ public class Signal {
       return false;
 	}
 	
+	public boolean detectTrain(int x , int y) 
+	{
+		
+		
+		
+		if(horizontalPosFlag == 1) 
+		{
+			 x1 = trackX - trackCircuitDistance - detectBoxSize/2;
+			 y1 = trackY - detectBoxSize/2;
+			
+			 x2 = x1 + detectBoxSize;
+			 y2 = y1;
+			
+			 x3 = x1 + detectBoxSize;
+			 y3 = y1 + detectBoxSize;
+			
+			 x4 = x1;
+			 y4 = y1 + detectBoxSize;
+			
+		}else{
+			
+			 x1 = trackX + trackCircuitDistance - detectBoxSize/2;
+			 y1 = trackY - detectBoxSize/2;
+			
+			 x2 = x1 + detectBoxSize;
+			 y2 = y1;
+			
+			 x3 = x1 + detectBoxSize;
+			 y3 = y1 + detectBoxSize;
+			
+			 x4 = x1;
+			 y4 = y1 + detectBoxSize;
+			
+		}
+		
+		
+		// Vectors AB and AD
+        int ABx = x2 - x1;
+        int ABy = y2 - y1;
+        int ADx = x4 - x1;
+        int ADy = y4 - y1;
+        
+        // Vector AM
+        int AMx = x - x1;
+        int AMy = y - y1;
+		
+        
+        
+        int AM_AB = AMx * ABx + AMy * ABy;
+        int AB_AB = ABx * ABx + ABy * ABy;
+        int AM_AD = AMx * ADx + AMy * ADy;
+        int AD_AD = ADx * ADx + ADy * ADy;
+        
+        
+		
+		
+        if((0 <= AM_AB && AM_AB <= AB_AB) && (0 <= AM_AD && AM_AD <= AD_AD))
+        {
+        	
+        	
+        	return true;
+        	
+        }
+        
+        return false;
+	}
+	
+
+	
 	
 	public void draw(Graphics2D g2d) 
 	{
@@ -267,10 +348,12 @@ public class Signal {
 			g2d.fillRoundRect(sigX - 2 , sigY - 2, containerLength + 4, containerWidth + 3, 15 ,15);
 		}
 		
+		//up line signal 
 		if(horizontalPosFlag == 1) 
 		{
 			g2d.setColor(Color.GRAY);
 			g2d.fillRoundRect(sigX, sigY, containerLength, containerWidth , 10 ,10);
+			
 			
 		}else {
 			
@@ -296,6 +379,13 @@ public class Signal {
 			
 			if(horizontalPosFlag == 1) 
 			{
+				g2d.setColor(Color.red.darker().darker());
+				g2d.fillRect(
+						x1, 
+						y1,
+						detectBoxSize,
+						detectBoxSize);
+				
 				if(STATE == 0 && i == 3) 
 				{
 					g2d.setColor(Color.GREEN);
@@ -321,7 +411,15 @@ public class Signal {
 				
 				
 				
+				
 			}else {
+				
+//				g2d.setColor(Color.red.brighter().brighter());
+//				g2d.fillRect(
+//						trackX + trackCircuitDistance - detectBoxSize/2, 
+//						trackY - detectBoxSize/2,
+//						detectBoxSize,
+//						detectBoxSize);
 				
 				if(STATE == 0 && i == 1) 
 				{
@@ -410,5 +508,14 @@ public class Signal {
 
 	public void setSTATE(int sTATE) {
 		STATE = sTATE;
+	}
+	
+	public int getHorizontalPosFlag() {
+		return horizontalPosFlag;
+	}
+
+
+	public void setHorizontalPosFlag(int horizontalPosFlag) {
+		this.horizontalPosFlag = horizontalPosFlag;
 	}
 }
