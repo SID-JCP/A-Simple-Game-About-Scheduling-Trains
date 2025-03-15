@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 
 import InputManager.MouseInputManager;
 import RenderingElements.Tracks.TrackSection;
+import RenderingElements.Train.Train;
 
 public class Signal {
 	
@@ -31,6 +32,7 @@ public class Signal {
 	
 	
 	public signalType signal;
+	
 	private TrackSection track;
 	
 	private int verticlPosFlag = 1;    // 1 = above the tracks , -1 = below the tracks  
@@ -71,6 +73,8 @@ public class Signal {
 
 	private Signal prevSignal;
 	
+	private Train clockTrain;
+	
 	
 	//home signals
 	public Signal(signalType signal , TrackSection track , int horizontalPosFlag , int verticlPosFlag , int startEndFlag) 
@@ -96,7 +100,7 @@ public class Signal {
 	
 	
 		
-	public void clock(int flag , int nextSignalState) 
+	public void clock(int flag, Train currectTrain) 
 	{
 	
 		
@@ -118,51 +122,38 @@ public class Signal {
 			{
 				STATE = 3;
 				
+				//set the clock by the train which passed over it 
+				clockTrain = currectTrain;
+				
 				if(prevSignal != null) 
 				{
+					prevSignal.clock(1  , clockTrain);
 					
-					prevSignal.clock(1 , STATE);
 				}
 				
 			}
 			
 			//gets clocked by the next signal 
-			if(flag == 1){
+			if(flag == 1)
+			{
 				
-				if(nextSignalState == 2 && STATE == 3) 
+				
+				if(clockTrain == currectTrain) 
 				{
+					if(STATE != 0) {STATE--;}
 					
-				}else {
-//					if(STATE <= 3 && STATE != 0) {STATE--;}else {STATE = 3;}
-					
-					STATE--;
-					
-					if(STATE == -1) {STATE = 0;}
-					
-					if(prevSignal != null && STATE != 0) 
+					if(prevSignal != null) 
 					{
+						prevSignal.clock(1  , clockTrain);
 						
-						prevSignal.clock(1 , STATE);
 					}
-				
+					
 				}
-				
+		
 			}
-		} 
-		
-		
-		
-		
-		
-//		if(prevSignal != null && signal.equals(signalType.BLOCK))
-//		{
-//			
-//			if(STATE != 0) 
-//			{
-//				prevSignal.clock();	
-//			}
-//			
-//		} 
+			
+		}
+
 		
 	}
 	

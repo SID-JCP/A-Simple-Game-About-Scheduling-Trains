@@ -24,7 +24,7 @@ public class Simulator {
 	
 	
 	
-	private int mapSelected = 0;
+	private int mapSelected = 1;
 	private int trafficSelected = 0;
 	
 	private int WIDTH = 0;
@@ -86,8 +86,8 @@ public class Simulator {
 					
 					
 					testTrack.addListToController();
-					//..
-					//..
+					testTrack.initializeInterlocking();
+					traffic.addTrafficListToController(trafficSelected);
 
 					break;
 					

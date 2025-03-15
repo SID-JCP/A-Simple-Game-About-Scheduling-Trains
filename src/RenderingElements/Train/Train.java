@@ -49,10 +49,16 @@ public class Train {
 	
 	private double currentSpeed = Gspeed;
 	
+	
+	private int trainFrontX , trainFrontY , trainBackX , trainBackY;
+	
 	//--------------------------SIGNAL AND SECTION related data----------------------|
 	
-	
+	//signal to see
 	Signal nextSignal;
+	
+	
+	Signal lastClockedSignal;
 	
 	
 	public Train(int movingDirection , long deployTime)
@@ -78,27 +84,119 @@ public class Train {
 			//yellow signal
 			if(nextSignal.getSTATE() == 2) 
 			{
-				currentSpeed = (currentSpeed > Yspeed) ? Math.max(Yspeed, currentSpeed - 0.2) : currentSpeed;
+				currentSpeed = (currentSpeed > Yspeed) 
+					    ? Math.max(Yspeed, currentSpeed - 0.3) 
+					    : Math.min(Yspeed, currentSpeed + 0.3);
+
+					
+					if (Math.abs(currentSpeed - Yspeed) < 0.2) {
+					    currentSpeed = Yspeed;
+					}
 
 			}
 			
 			
 			//double yellow signal
-			if(nextSignal.getSTATE() == 2) 
+			if(nextSignal.getSTATE() == 1) 
 			{
-				currentSpeed = (currentSpeed > YYspeed) ? Math.max(YYspeed, currentSpeed - 0.1) : currentSpeed;
+				if (currentSpeed > YYspeed) {
+				    currentSpeed = Math.max(YYspeed, currentSpeed - 0.2);
+				} else {
+				    currentSpeed = Math.min(YYspeed, currentSpeed + 0.2);
+				}
 
 			}
 			
+			if(nextSignal.getSTATE() == 0) 
+			{
+				if(currentSpeed < Gspeed) 
+				{
+					currentSpeed += 0.3;
+				}else {currentSpeed = Gspeed;}
+			} 
+			
 			
 		}
+		
+		
 		x1 = x1 + (currentSpeed * deltaTime/1000000000);
 		
-//		x1 += 5;
+
 	}
 	
 	
-	public void setNextSignal(Signal signal) 
+	
+	public void signalLookout(List<Signal> listOfSignals) 
+	{
+		
+		
+		
+		if(moveDirection == 0) 
+		{
+			trainFrontX = (int)x2;
+			trainFrontY = (int)y2;
+			
+			trainBackX = (int)x1;
+			trainBackY = (int)y1;
+			
+		}else {
+			
+			trainFrontX = (int)x1;
+			trainFrontY = (int)y1;
+			
+			trainBackX = (int)x2;
+			trainBackY = (int)y2;
+		}
+		
+		
+		if(!listOfSignals.isEmpty()) 
+		{
+			Signal signal;
+			
+			for(int j = 0; j < listOfSignals.size(); j++) 
+			{
+				signal = listOfSignals.get(j);
+				
+				//signal is for up line
+				if(signal.getHorizontalPosFlag() == 1) 
+				{
+					if(signal.detectTrain(trainBackX , trainBackY)) 
+					{
+						setNextSignal(null);
+						
+						if(signal.signal.equals(Signal.signalType.HOME)){signal.setSTATE(3);}else 
+						{
+							if(lastClockedSignal == null || lastClockedSignal != signal) 
+							{
+								// clock flag , train which clocks 
+								signal.clock(0, this);
+								lastClockedSignal = signal;
+							}
+							
+						}
+						
+						
+					}
+					
+					
+					if(signal.detectTrain(trainFrontX , trainFrontY)) 
+					{
+						setNextSignal(signal);
+						
+					}
+					
+					
+				}
+				
+				continue;
+			}
+			
+		}
+	}
+	
+	
+	
+	private void setNextSignal(Signal signal) 
 	{
 		this.nextSignal = signal;
 	}

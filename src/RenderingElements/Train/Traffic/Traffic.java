@@ -16,8 +16,8 @@ public class Traffic {
 	
 	private List<Train> traffic1 = new ArrayList<>();
 	Train train11 = new Train(0 , 10);
-//	Train train12 = new Train(0 , 100);
-	
+	Train train12 = new Train(0 , 120);
+	Train train13 = new Train(0 , 250);
 	
 	private List<Train> traffic2 = new ArrayList<>();
 	
@@ -26,7 +26,8 @@ public class Traffic {
 	private void createTraffic() 
 	{
 		traffic1.add(train11);
-//		traffic1.add(train12);
+		traffic1.add(train12);
+		traffic1.add(train13);
 		
 		
 		

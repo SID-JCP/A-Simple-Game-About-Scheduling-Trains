@@ -133,7 +133,8 @@ public class TestTrackDesign implements TrackControllerRequirments{
 		SimulationController.listOfSignals = getSignals();
 		
 		
-		
+		SimulationController.upMainLine = mainUp1;
+		SimulationController.downMainLine = mainDown1;
 	}
 
 

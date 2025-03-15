@@ -69,8 +69,8 @@ public class SimulationController {
 				
 				if(signal.isCursorInside(mouseClickX, mouseClickY) && newClick) 
 				{
-					//clock(flag , nextSignalState)
-					signal.clock(3 , 0);
+					//clock(flag , clocked by train (null for click))
+					signal.clock(3  , null);
 					continue;
 				}
 				
@@ -119,49 +119,8 @@ public class SimulationController {
 				{
 					train.move(deltaTime);
 					
-					//up direction
-					if(train.getMoveDirection() == 0) 
-					{
-						int trainFrontX = (int)train.x2;
-						int trainFrontY = (int)train.y2;
-						
-						int trainBackX = (int)train.x1;
-						int trainBackY = (int)train.y1;
-						
-						if(!listOfSignals.isEmpty()) 
-						{
-							Signal signal;
-							
-							for(int j = 0; j < listOfSignals.size(); j++) 
-							{
-								signal = listOfSignals.get(j);
-								
-								//signal is for up line
-								if(signal.getHorizontalPosFlag() == 1) 
-								{
-									if(signal.detectTrain(trainFrontX , trainFrontY)) 
-									{
-										train.setNextSignal(signal);
-										
-									}
-									
-									if(signal.detectTrain(trainBackX , trainBackY)) 
-									{
-										signal.setSTATE(3);
-										
-									}
-								}
-								
-								continue;
-							}
-							
-						}
-					}
-					
-					
-					
-					
-					
+					//looks at signals and changes speed accordingly
+					train.signalLookout(listOfSignals);
 					
 				}
 				
