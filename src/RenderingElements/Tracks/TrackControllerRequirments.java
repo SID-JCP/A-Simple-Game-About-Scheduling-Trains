@@ -23,7 +23,16 @@ public interface TrackControllerRequirments {
 	
 	//private List<Signal> listOfSignals = new ArrayList<>();
 	
+	//private  List<TrackSection> deployMainUpLine = new ArrayList<>();
+	//private  List<TrackSection> deployMainDownLine = new ArrayList<>();
+	
+
+	//private  List<Signal> upLineStartSignals = new ArrayList<>();
+	//private  List<Signal> downLineStartSignals = new ArrayList<>();
+	
 	List<TrackSection> getSections();
+	
+	void initialiseDeployList();
 	
 	List<Signal> getSignals();
 

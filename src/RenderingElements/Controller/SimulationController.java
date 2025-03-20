@@ -21,6 +21,14 @@ public class SimulationController {
 	public static List<TrackSection> listOfTrackSections;
 	public static List<Signal> listOfSignals;
 	
+	//|------------------------List of main lines up or down on which train is to be spawned-----------|
+	public static List<TrackSection> deployMainUpLine;
+	public static List<TrackSection> deployMainDownLine;
+	
+	//|-------------------------List of Signals for up or down line which is first visible one---------|
+	public static List<Signal> upLineStartSignals;
+	public static List<Signal> downLineStartSignals;
+	
 	//for drawing train which are for up line during deployment
 	public static TrackSection upMainLine;
 	
@@ -70,6 +78,7 @@ public class SimulationController {
 				if(signal.isCursorInside(mouseClickX, mouseClickY) && newClick) 
 				{
 					//clock(flag , clocked by train (null for click))
+					//3 means user
 					signal.clock(3  , null);
 					continue;
 				}
@@ -117,10 +126,12 @@ public class SimulationController {
 				
 				if(train.getDeployState() == 1) 
 				{
-					train.move(deltaTime);
-					
 					//looks at signals and changes speed accordingly
 					train.signalLookout(listOfSignals);
+					
+					train.move(deltaTime);
+					
+					
 					
 				}
 				
@@ -419,12 +430,10 @@ public class SimulationController {
 			}
 		}
 		
-		
-		
-		
-		
-		
+
 	}
+	
+	
 	
 	public void drawTrain(Graphics2D g2d) 
 	{
@@ -436,7 +445,7 @@ public class SimulationController {
 			{
 				Train train = listOfTrainTraffic.get(i);
 				
-				if(train.getDeployState() == 2) {continue;}
+				
 				
 				if(train.getDeployState() == 0) 
 				{
@@ -444,31 +453,61 @@ public class SimulationController {
 					{
 						train.setDeployState(1);
 						
-						//0 = up line
-						if(train.getMoveDirection() ==  0) 
-						{
-							train.setCurrentSection(upMainLine);
-							train.x1 = train.getCurrentSection().getX1() - 50;
-							train.y1 = train.getCurrentSection().getY1();
+							int lineSignalIndex = train.trackNumber;
+
+							int startSignalState = 0;
 							
-						}else{
+							if(lineSignalIndex > 0) 
+							{
+								//get the line on which train need to be deployed
+								train.setCurrentSection(deployMainUpLine.get(lineSignalIndex - 1));
+								//get the first signal of that line 
+								startSignalState = upLineStartSignals.get(lineSignalIndex - 1).getSTATE();
+	
+								
+							}else {
+								
+								//get line for down
+								train.setCurrentSection(deployMainDownLine.get(lineSignalIndex * - 1 - 1));
+								//get first down line signal 
+								startSignalState = downLineStartSignals.get(lineSignalIndex * -1 -1).getSTATE();
+							}
 							
-							train.setCurrentSection(downMainLine);
-														
+
 							
-						}
+							switch(startSignalState) 
+							{
+								//green 
+								case 0:
+									train.setStartSpeed(Train.Gspeed);
+									train.setCurrentSignalState(0);
+									break;
+								case 1:
+									train.setStartSpeed(Train.YYspeed);
+									train.setCurrentSignalState(1);
+									break;
+								case 2:
+									train.setStartSpeed(Train.Yspeed);
+									train.setCurrentSignalState(2);
+									break;
+								case 3:
+									train.setStartSpeed(Train.Yspeed);
+									train.setCurrentSignalState(2);
+									break;
+							}
+
+						
+						train.initialize();
 						
 					}
 				}
 				
 				
-				//active train 
-				if(train.getDeployState() == 1) 
-				{
-					train.draw(g2d);
-					
-				}
+				//active train [Draw it]
+				if(train.getDeployState() == 1) {train.draw(g2d);}
 				
+				//passive train [Crossed the screen  , no need to draw ]
+				if(train.getDeployState() == 2) {continue;}
 				
 			}
 			

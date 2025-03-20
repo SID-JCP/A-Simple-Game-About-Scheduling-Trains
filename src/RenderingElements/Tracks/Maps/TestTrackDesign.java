@@ -36,6 +36,14 @@ public class TestTrackDesign implements TrackControllerRequirments{
 	//|-------------------------------LIST OF SIGNALS CREATE IN ALL CLASES-------------------------------------------------|
 	private List<Signal> listOfSignals = new ArrayList<>();
 	
+	//|-------------------------------Deploy Up and Down Lines--------------------------------------------------------------|
+	private  List<TrackSection> deployMainUpLine = new ArrayList<>();
+	private  List<TrackSection> deployMainDownLine = new ArrayList<>();
+	
+	//|-------------------------------First signl of all Up and Down lines ---------------------------------------------------|
+	private  List<Signal> upLineStartSignals = new ArrayList<>();
+	private  List<Signal> downLineStartSignals = new ArrayList<>();
+	
 	
 	
 	
@@ -92,6 +100,7 @@ public class TestTrackDesign implements TrackControllerRequirments{
 				);
 		
 		
+		
 		return listOfTrackSections;
 		
 		
@@ -133,8 +142,8 @@ public class TestTrackDesign implements TrackControllerRequirments{
 		SimulationController.listOfSignals = getSignals();
 		
 		
-		SimulationController.upMainLine = mainUp1;
-		SimulationController.downMainLine = mainDown1;
+		
+		initialiseDeployList();
 	}
 
 
@@ -142,6 +151,38 @@ public class TestTrackDesign implements TrackControllerRequirments{
 	public void initializeInterlocking() 
 	{
 		
+		
+	}
+
+
+	@Override
+	public void initialiseDeployList() {
+		
+		Collections.addAll(deployMainUpLine, 
+				
+				mainUp1,
+				mainUp2);
+		
+		SimulationController.deployMainUpLine = deployMainUpLine;
+		
+		Collections.addAll(deployMainDownLine, 
+				
+				mainDown1,
+				mainDown2);
+		
+		SimulationController.deployMainDownLine = deployMainDownLine;
+		
+		Collections.addAll(upLineStartSignals, 
+				
+				mainUP_1);
+		
+		SimulationController.upLineStartSignals = upLineStartSignals;
+		
+//		Collections.addAll(downLineStartSignals, 
+//				
+//				null);
+		
+		SimulationController.downLineStartSignals = downLineStartSignals;
 		
 	}
 

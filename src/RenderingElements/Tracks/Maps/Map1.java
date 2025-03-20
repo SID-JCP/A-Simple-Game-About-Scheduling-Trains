@@ -32,4 +32,10 @@ public class Map1 implements TrackControllerRequirments{
 		
 	}
 
+	@Override
+	public void initialiseDeployList() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

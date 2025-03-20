@@ -15,12 +15,15 @@ import RenderingElements.Tracks.TrackSection;
 public class Train {
 	
 	
+	public static final double deployGap = 150.0; // the distance before a signal where the train is to be spawned 
 	
 	public int deployState = 0;   // 0 = not deployed , 1 = deployed , 2 = deployment done and exited screen
 
 	public long deployTime = 0l;  // time at which train need to be deployed
 	
 	public int moveDirection = 0; // 0 = left to right , 1 = right to left
+	
+	public int trackNumber = 1; // 1 to N denote Up main line tracks , -1 to -N denote Down line tracks 
 	
 	public TrackSection currentSection; //current track on which train is 
 	
@@ -31,23 +34,26 @@ public class Train {
 	//|--------------------------Movement Data--------------------------------|
 	
 	//left side of the train
-	public double x1,y1;
+	private double x1,y1;
 	
 	//right side of the train 
-	public double x2,y2;
+	private double x2,y2;
+	
+	//Distance between front and back points of train 
+	private double trainLength = 80.0;
 	
 	//green signal speed
-	private double Gspeed = 35.0;
+	public static double Gspeed = 35.0;
 	
 	//double yellow speed 
-	private double YYspeed = 20.0;
+	public static double YYspeed = 20.0;
 	
 	//single yellow speed
-	private double Yspeed = 10.0;
+	public static double Yspeed = 10.0;
 	
 	//|--------red is zero-------|
 	
-	private double currentSpeed = Gspeed;
+	private double currentSpeed = Yspeed;
 	
 	
 	private int trainFrontX , trainFrontY , trainBackX , trainBackY;
@@ -57,32 +63,62 @@ public class Train {
 	//signal to see
 	Signal nextSignal;
 	
-	
+	//signal which is just passed
 	Signal lastClockedSignal;
 	
+	//state of the signal which was before the train passed
+	int currentSignalState = 0;
 	
+	
+	
+
 	public Train(int movingDirection , long deployTime)
 	{
 		this.moveDirection = movingDirection;
 		this.deployTime = deployTime;
 	}
 	
+	public Train(int movingDirection , int trackNumber  , long deployTime  , boolean hault)
+	{
+		this.moveDirection = movingDirection;
+		this.deployTime = deployTime;
+		this.trackNumber = trackNumber;
+		this.hasHault = hault;
+	}
+	
+	public void initialize() 
+	{
+		if(moveDirection == 0) 
+		{
+			x1 = currentSection.getX1() - Train.deployGap;
+			y1 = currentSection.getY1();
+			
+			
+		}else {
+			
+			x1 = currentSection.getX2() + Train.deployGap;
+			y1 = currentSection.getY1();
+			
+		}
+		
+		
+	}
+	
 	
 	public void move(long deltaTime) 
 	{
-		//signal states , green = 0, double yellow = 1 , yellow = 2 , red =  3
+			//signal states => green = 0, double yellow = 1 , yellow = 2 , red =  3
+			if(hasHault) {System.out.println(currentSpeed);}
 		
-		if(nextSignal != null) 
-		{
 			//red signal
-			if(nextSignal.getSTATE() == 3) 
+			if(currentSignalState == 3) 
 			{
 				currentSpeed = (currentSpeed > 0) ? Math.max(0, currentSpeed - 0.5) : currentSpeed;
 
 			}
 			
 			//yellow signal
-			if(nextSignal.getSTATE() == 2) 
+			if(currentSignalState == 2) 
 			{
 				currentSpeed = (currentSpeed > Yspeed) 
 					    ? Math.max(Yspeed, currentSpeed - 0.3) 
@@ -97,7 +133,7 @@ public class Train {
 			
 			
 			//double yellow signal
-			if(nextSignal.getSTATE() == 1) 
+			if(currentSignalState == 1) 
 			{
 				if (currentSpeed > YYspeed) {
 				    currentSpeed = Math.max(YYspeed, currentSpeed - 0.2);
@@ -107,7 +143,7 @@ public class Train {
 
 			}
 			
-			if(nextSignal.getSTATE() == 0) 
+			if(currentSignalState == 0) 
 			{
 				if(currentSpeed < Gspeed) 
 				{
@@ -116,7 +152,7 @@ public class Train {
 			} 
 			
 			
-		}
+		
 		
 		
 		x1 = x1 + (currentSpeed * deltaTime/1000000000);
@@ -129,8 +165,7 @@ public class Train {
 	public void signalLookout(List<Signal> listOfSignals) 
 	{
 		
-		
-		
+	
 		if(moveDirection == 0) 
 		{
 			trainFrontX = (int)x2;
@@ -160,33 +195,47 @@ public class Train {
 				//signal is for up line
 				if(signal.getHorizontalPosFlag() == 1) 
 				{
-					if(signal.detectTrain(trainBackX , trainBackY)) 
+
+					if(signal.detectTrain(trainFrontX, trainFrontY)) 
 					{
-						setNextSignal(null);
-						
-						if(signal.signal.equals(Signal.signalType.HOME)){signal.setSTATE(3);}else 
+
+						if(lastClockedSignal == null || lastClockedSignal != signal) 
 						{
-							if(lastClockedSignal == null || lastClockedSignal != signal) 
-							{
-								// clock flag , train which clocks 
-								signal.clock(0, this);
-								lastClockedSignal = signal;
-							}
+							currentSignalState = signal.getSTATE();
 							
+							lastClockedSignal =  signal;
+							
+							if(currentSignalState != 3) 
+							{
+								signal.clock(0, this);
+							}
+
+						}else 
+							
+						if(lastClockedSignal == signal) 
+						{
+							if(signal.getSTATE() == 2 && currentSignalState == 3) 
+							{
+								currentSignalState = 2;
+								
+							}
 						}
 						
-						
 					}
 					
-					
-					if(signal.detectTrain(trainFrontX , trainFrontY)) 
+					if(signal.detectTrain(trainBackX, trainBackY)) 
 					{
-						setNextSignal(signal);
-						
+						if(signal.getSTATE() != 3) 
+						{
+							signal.clock(0, this);
+						}
 					}
-					
-					
+
 				}
+				
+				
+				
+				
 				
 				continue;
 			}
@@ -204,7 +253,15 @@ public class Train {
 	
 	public void draw(Graphics2D g2d) 
 	{
-		x2 = x1 + 80.0;
+		if(moveDirection == 0) 
+		{
+			x2 = x1 + trainLength;
+			
+		}else {
+			
+			x2 = x1 - trainLength;
+		}
+		
 		y2 = y1;
 		
 		
@@ -255,7 +312,19 @@ public class Train {
 	public void setDeployState(int deployState) {
 		this.deployState = deployState;
 	}
+
+	public void setStartSpeed(double speed) {
+		
+		this.currentSpeed = speed;
+	}
 	
+	public int getCurrentSignalState() {
+		return currentSignalState;
+	}
+
+	public void setCurrentSignalState(int currentSignalState) {
+		this.currentSignalState = currentSignalState;
+	}
 	
 	
 	

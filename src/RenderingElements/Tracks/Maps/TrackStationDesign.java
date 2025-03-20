@@ -19,9 +19,15 @@ public  class TrackStationDesign {
 
 	
 	private List<TrackSection> listOfTrackSections = new ArrayList<>();
-	
 	private List<Signal> listOfSignals = new ArrayList<>();
 	
+	
+	private  List<TrackSection> deployMainUpLine = new ArrayList<>();
+	private  List<TrackSection> deployMainDownLine = new ArrayList<>();
+	
+
+	private  List<Signal> upLineStartSignals = new ArrayList<>();
+	private  List<Signal> downLineStartSignals = new ArrayList<>();
 	
 	
 	//Main Up Line
@@ -71,6 +77,8 @@ public  class TrackStationDesign {
 	
 	
 	//MAIN LINES BEFORE PLATFORM 
+	
+	//|------------UP LINE START SIGNAL----------------|
 	Signal signal_mainUp_mainDown_U_L = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_L , 1 , 1 , 0);
 	Signal signal_mainUp_mainDown_U_R = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_L , -1 , 1 , 0);
 	
@@ -102,6 +110,7 @@ public  class TrackStationDesign {
 	
 	
 	Signal Fin_signal_mainDown_mainUp_U_L = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_R , -1 , 1 , 1);
+	//|---------------DOWN LINE START SIGNAL-------------------------|
 	Signal Fin_signal_mainDown_mainUp_U_R = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_R , 1 , 1 , 1);
 	
 	Signal Fin_signal_mainDown_mainUp_D_L = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_R , -1 , -1 , 0);
@@ -171,10 +180,30 @@ public  class TrackStationDesign {
 				
 				);
 		
+		initialiseDeployList();
 		
 		return listOfTrackSections;
 	}
 	
+	
+	private void initialiseDeployList() 
+	{
+		Collections.addAll(deployMainUpLine, 
+				
+				mainUp1);
+		
+		Collections.addAll(deployMainDownLine, 
+				
+				mainDown1);
+		
+		Collections.addAll(upLineStartSignals, 
+				
+				signal_mainUp_mainDown_U_L);
+		
+		Collections.addAll(downLineStartSignals, 
+				
+				Fin_signal_mainDown_mainUp_U_R);
+	}
 	
 	private List<Signal> getSignals()
 	{
@@ -239,7 +268,7 @@ public  class TrackStationDesign {
 		SimulationController.listOfTrackSections = getSections();
 		SimulationController.listOfSignals = getSignals();
 		
-		//create a seperate method later
+		//create a seprate method later
 		SimulationController.upMainLine = mainUp1;
 		SimulationController.downMainLine = mainDown1;
 	}

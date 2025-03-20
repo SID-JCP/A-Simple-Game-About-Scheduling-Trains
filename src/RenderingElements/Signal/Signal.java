@@ -149,7 +149,13 @@ public class Signal {
 					}
 					
 				}
+
 		
+			}
+			
+			if(flag == 3) 
+			{
+				if(STATE == 3){STATE = 2;}
 			}
 			
 		}
