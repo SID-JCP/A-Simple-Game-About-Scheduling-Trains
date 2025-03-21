@@ -153,6 +153,7 @@ public class Signal {
 		
 			}
 			
+			//clicked the the person 
 			if(flag == 3) 
 			{
 				if(STATE == 3){STATE = 2;}
@@ -376,12 +377,12 @@ public class Signal {
 			
 			if(horizontalPosFlag == 1) 
 			{
-				g2d.setColor(Color.red.darker().darker());
-				g2d.fillRect(
-						x1, 
-						y1,
-						detectBoxSize,
-						detectBoxSize);
+//				g2d.setColor(Color.red.darker().darker());
+//				g2d.fillRect(
+//						x1, 
+//						y1,
+//						detectBoxSize,
+//						detectBoxSize);
 				
 				if(STATE == 0 && i == 3) 
 				{

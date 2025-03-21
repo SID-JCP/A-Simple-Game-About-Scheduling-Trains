@@ -4,8 +4,10 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 import RenderingElements.Point.Point;
 import RenderingElements.Signal.Signal;
@@ -15,7 +17,9 @@ import RenderingElements.Train.Train;
 
 public class SimulationController {
 	
-		
+	
+
+	
 	
 	public static List<Train> listOfTrainTraffic;
 	public static List<TrackSection> listOfTrackSections;
@@ -34,6 +38,11 @@ public class SimulationController {
 	
 	//for drawing train which are for down line during deployment
 	public static TrackSection downMainLine;
+	
+	//train which is just deployed and is occupying the section 
+	private Train deployedTrain;
+	//the start signal of that section 
+	private Signal startSignal;
 	
 	private static long secondsOfDay = 0l;
 	
@@ -445,63 +454,56 @@ public class SimulationController {
 			{
 				Train train = listOfTrainTraffic.get(i);
 				
+				//the track number on which the train is to be deployed
+				int lineSignalIndex = train.trackNumber;
+
+				//the state of that signal 
+				int startSignalState = 0;
+				
 				
 				
 				if(train.getDeployState() == 0) 
 				{
 					if(train.getDeployTime()  <= secondsOfDay) 
 					{
-						train.setDeployState(1);
-						
-							int lineSignalIndex = train.trackNumber;
 
-							int startSignalState = 0;
 							
-							if(lineSignalIndex > 0) 
-							{
-								//get the line on which train need to be deployed
-								train.setCurrentSection(deployMainUpLine.get(lineSignalIndex - 1));
-								//get the first signal of that line 
-								startSignalState = upLineStartSignals.get(lineSignalIndex - 1).getSTATE();
+						if(lineSignalIndex > 0) 
+						{
+							//get the line on which train need to be deployed
+							train.setCurrentSection(deployMainUpLine.get(lineSignalIndex - 1));
+							//get the first signal of that line 
+							startSignal = upLineStartSignals.get(lineSignalIndex - 1);
+							startSignalState = startSignal.getSTATE();
 	
 								
-							}else {
+						}else {
 								
-								//get line for down
-								train.setCurrentSection(deployMainDownLine.get(lineSignalIndex * - 1 - 1));
-								//get first down line signal 
-								startSignalState = downLineStartSignals.get(lineSignalIndex * -1 -1).getSTATE();
-							}
-							
-
-							
-							switch(startSignalState) 
-							{
-								//green 
-								case 0:
-									train.setStartSpeed(Train.Gspeed);
-									train.setCurrentSignalState(0);
-									break;
-								case 1:
-									train.setStartSpeed(Train.YYspeed);
-									train.setCurrentSignalState(1);
-									break;
-								case 2:
-									train.setStartSpeed(Train.Yspeed);
-									train.setCurrentSignalState(2);
-									break;
-								case 3:
-									train.setStartSpeed(Train.Yspeed);
-									train.setCurrentSignalState(2);
-									break;
-							}
-
+							//get line for down
+							train.setCurrentSection(deployMainDownLine.get(lineSignalIndex * - 1 - 1));
+							//get first down line signal 
+							startSignal = downLineStartSignals.get(lineSignalIndex * -1 - 1);
+							startSignalState = startSignal.getSTATE();
+						}
 						
-						train.initialize();
 						
+						if(deployedTrain == null) 
+						{
+							deployTrain(train , startSignalState);
+							deployedTrain = train;
+							
+						}else 
+							
+						if(deployedTrain.getClockCount() > 0) 
+						{
+							deployTrain(train , startSignalState);
+							deployedTrain = train;
+						}
+
+
 					}
 				}
-				
+
 				
 				//active train [Draw it]
 				if(train.getDeployState() == 1) {train.draw(g2d);}
@@ -512,6 +514,39 @@ public class SimulationController {
 			}
 			
 		}
+	}
+	
+	
+	
+	private void deployTrain(Train train , int startSignalState) 
+	{
+		switch(startSignalState) 
+		{
+			//green 
+			case 0:
+				train.setCurrentSignalState(0);
+				break;
+			//double yellow 
+			case 1:
+				train.setCurrentSignalState(1);
+				break;
+			//yellow
+			case 2:
+				train.setCurrentSignalState(2);
+				break;
+			//red 
+			case 3:
+				train.setCurrentSignalState(2);
+				break;
+			
+			
+		}
+		
+		
+		train.setDeployState(1);
+		train.initialize();
+		
+		return;
 	}
 
 }

@@ -17,7 +17,7 @@ public class Train {
 	
 	public static final double deployGap = 150.0; // the distance before a signal where the train is to be spawned 
 	
-	public int deployState = 0;   // 0 = not deployed , 1 = deployed , 2 = deployment done and exited screen
+	public int deployState = 0;   // 0 = not deployed , 1 = deployed , 2 = deployment done and exited screen , 3 = in wait queue
 
 	public long deployTime = 0l;  // time at which train need to be deployed
 	
@@ -31,8 +31,12 @@ public class Train {
 	
 	public boolean hasHault = true; // if the train should stop at the station or not 
 	
+	public boolean nextSectionClear = true; // to be used for deployment of the train , check if the train before has passed 
+	
 	//|--------------------------Movement Data--------------------------------|
 	
+	
+
 	//left side of the train
 	private double x1,y1;
 	
@@ -66,6 +70,9 @@ public class Train {
 	//signal which is just passed
 	Signal lastClockedSignal;
 	
+	//no of signals the train has passed 
+	public int clockCount = 0;
+
 	//state of the signal which was before the train passed
 	int currentSignalState = 0;
 	
@@ -108,7 +115,7 @@ public class Train {
 	public void move(long deltaTime) 
 	{
 			//signal states => green = 0, double yellow = 1 , yellow = 2 , red =  3
-			if(hasHault) {System.out.println(currentSpeed);}
+			
 		
 			//red signal
 			if(currentSignalState == 3) 
@@ -208,6 +215,7 @@ public class Train {
 							if(currentSignalState != 3) 
 							{
 								signal.clock(0, this);
+								clockCount++;
 							}
 
 						}else 
@@ -228,6 +236,7 @@ public class Train {
 						if(signal.getSTATE() != 3) 
 						{
 							signal.clock(0, this);
+							clockCount++;
 						}
 					}
 
@@ -318,12 +327,36 @@ public class Train {
 		this.currentSpeed = speed;
 	}
 	
+	public int getClockCount() {
+		return clockCount;
+	}
+
+	public void setClockCount(int clockCount) {
+		this.clockCount = clockCount;
+	}
+	
 	public int getCurrentSignalState() {
 		return currentSignalState;
 	}
 
 	public void setCurrentSignalState(int currentSignalState) {
 		this.currentSignalState = currentSignalState;
+	}
+	
+	public boolean isNextSectionClear() {
+		return nextSectionClear;
+	}
+
+	public void setNextSectionClear(boolean nextSectionClear) {
+		this.nextSectionClear = nextSectionClear;
+	}
+	
+	public Signal getLastClockedSignal() {
+		return lastClockedSignal;
+	}
+
+	public void setLastClockedSignal(Signal lastClockedSignal) {
+		this.lastClockedSignal = lastClockedSignal;
 	}
 	
 	

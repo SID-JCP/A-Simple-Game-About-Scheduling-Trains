@@ -17,9 +17,11 @@ public class Traffic {
 	private List<Train> traffic1 = new ArrayList<>();
 	
 	Train train11 = new Train(0 ,1 , 10 , false);
-	Train train12 = new Train(0 ,1 , 80 , true);
-	Train train13 = new Train(0 ,1 , 250, false);
-	Train train14 = new Train(0 ,1 , 530, false);
+	Train train12 = new Train(0 ,1 , 100 , true);
+	Train train13 = new Train(0 ,1 , 190, false);
+	Train train14 = new Train(0 ,1 , 280, false);
+	Train train15 = new Train(0 ,1 , 370, false);
+	Train train16 = new Train(0 ,1 , 460, false);
 	
 	private List<Train> traffic2 = new ArrayList<>();
 	
@@ -31,6 +33,8 @@ public class Traffic {
 		traffic1.add(train12);
 		traffic1.add(train13);
 		traffic1.add(train14);
+		traffic1.add(train15);
+		traffic1.add(train16);
 		
 		
 	}
