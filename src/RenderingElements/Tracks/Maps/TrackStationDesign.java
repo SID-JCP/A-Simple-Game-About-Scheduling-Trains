@@ -110,10 +110,10 @@ public  class TrackStationDesign {
 	
 	
 	Signal Fin_signal_mainDown_mainUp_U_L = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_R , -1 , 1 , 1);
-	//|---------------DOWN LINE START SIGNAL-------------------------|
 	Signal Fin_signal_mainDown_mainUp_U_R = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_R , 1 , 1 , 1);
 	
 	Signal Fin_signal_mainDown_mainUp_D_L = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_R , -1 , -1 , 0);
+	//|---------------DOWN LINE START SIGNAL-------------------------|
 	Signal Fin_signal_mainDown_mainUp_D_R = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_R , 1 , -1 , 0);
 	
 
@@ -180,7 +180,7 @@ public  class TrackStationDesign {
 				
 				);
 		
-		initialiseDeployList();
+		
 		
 		return listOfTrackSections;
 	}
@@ -202,7 +202,12 @@ public  class TrackStationDesign {
 		
 		Collections.addAll(downLineStartSignals, 
 				
-				Fin_signal_mainDown_mainUp_U_R);
+				Fin_signal_mainDown_mainUp_D_L);
+		
+		SimulationController.deployMainUpLine = deployMainUpLine;
+		SimulationController.deployMainDownLine = deployMainDownLine;
+		SimulationController.upLineStartSignals = upLineStartSignals;
+		SimulationController.downLineStartSignals = downLineStartSignals;
 	}
 	
 	private List<Signal> getSignals()
@@ -268,9 +273,7 @@ public  class TrackStationDesign {
 		SimulationController.listOfTrackSections = getSections();
 		SimulationController.listOfSignals = getSignals();
 		
-		//create a seprate method later
-		SimulationController.upMainLine = mainUp1;
-		SimulationController.downMainLine = mainDown1;
+		initialiseDeployList();
 	}
 	
 	

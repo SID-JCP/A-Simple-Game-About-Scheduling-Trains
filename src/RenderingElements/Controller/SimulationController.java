@@ -32,13 +32,7 @@ public class SimulationController {
 	//|-------------------------List of Signals for up or down line which is first visible one---------|
 	public static List<Signal> upLineStartSignals;
 	public static List<Signal> downLineStartSignals;
-	
-	//for drawing train which are for up line during deployment
-	public static TrackSection upMainLine;
-	
-	//for drawing train which are for down line during deployment
-	public static TrackSection downMainLine;
-	
+		
 	//train which is just deployed and is occupying the section 
 	private Train deployedTrain;
 	//the start signal of that section 
@@ -484,6 +478,8 @@ public class SimulationController {
 							//get first down line signal 
 							startSignal = downLineStartSignals.get(lineSignalIndex * -1 - 1);
 							startSignalState = startSignal.getSTATE();
+							
+							System.out.println(startSignalState);
 						}
 						
 						

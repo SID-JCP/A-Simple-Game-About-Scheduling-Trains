@@ -24,7 +24,7 @@ public class Simulator {
 	
 	
 	
-	private int mapSelected = 1;
+	private int mapSelected = 0;
 	private int trafficSelected = 0;
 	
 	private int WIDTH = 0;

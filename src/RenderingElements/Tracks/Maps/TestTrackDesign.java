@@ -163,25 +163,28 @@ public class TestTrackDesign implements TrackControllerRequirments{
 				mainUp1,
 				mainUp2);
 		
-		SimulationController.deployMainUpLine = deployMainUpLine;
+		
 		
 		Collections.addAll(deployMainDownLine, 
 				
 				mainDown1,
 				mainDown2);
 		
-		SimulationController.deployMainDownLine = deployMainDownLine;
+		
 		
 		Collections.addAll(upLineStartSignals, 
 				
 				mainUP_1);
 		
-		SimulationController.upLineStartSignals = upLineStartSignals;
+		
 		
 //		Collections.addAll(downLineStartSignals, 
 //				
 //				null);
 		
+		SimulationController.deployMainUpLine = deployMainUpLine;
+		SimulationController.deployMainDownLine = deployMainDownLine;
+		SimulationController.upLineStartSignals = upLineStartSignals;
 		SimulationController.downLineStartSignals = downLineStartSignals;
 		
 	}

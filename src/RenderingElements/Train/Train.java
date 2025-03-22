@@ -27,7 +27,7 @@ public class Train {
 	
 	public TrackSection currentSection; //current track on which train is 
 	
-	public int lineTravelling = 0; // 0 = train should be on up line , 1 = train should be on down line 
+	public int lineTravelling = 0; //0 = train should be on up line , 1 = train should be on down line 
 	
 	public boolean hasHault = true; // if the train should stop at the station or not 
 	
@@ -104,7 +104,7 @@ public class Train {
 		}else {
 			
 			x1 = currentSection.getX2() + Train.deployGap;
-			y1 = currentSection.getY1();
+			y1 = currentSection.getY2();
 			
 		}
 		
@@ -161,9 +161,13 @@ public class Train {
 			
 		
 		
-		
-		x1 = x1 + (currentSpeed * deltaTime/1000000000);
-		
+		if(moveDirection == 0) 
+		{
+			x1 = x1 + (currentSpeed * deltaTime/1000000000);
+		}else {
+			
+			x1 = x1 - (currentSpeed * deltaTime/1000000000);
+		}
 
 	}
 	
@@ -193,60 +197,37 @@ public class Train {
 		
 		if(!listOfSignals.isEmpty()) 
 		{
+			/*
+			 * 	|-----Horizontal Pos Flag----| 
+			 * 
+			 *   1 = up line 
+			 *  -1 = down line 
+			 */
 			Signal signal;
 			
 			for(int j = 0; j < listOfSignals.size(); j++) 
 			{
 				signal = listOfSignals.get(j);
 				
-				//signal is for up line
-				if(signal.getHorizontalPosFlag() == 1) 
+				if(this.moveDirection == 0) 
 				{
-
-					if(signal.detectTrain(trainFrontX, trainFrontY)) 
+					if(signal.getHorizontalPosFlag() == 1) 
 					{
-
-						if(lastClockedSignal == null || lastClockedSignal != signal) 
-						{
-							currentSignalState = signal.getSTATE();
-							
-							lastClockedSignal =  signal;
-							
-							if(currentSignalState != 3) 
-							{
-								signal.clock(0, this);
-								clockCount++;
-							}
-
-						}else 
-							
-						if(lastClockedSignal == signal) 
-						{
-							if(signal.getSTATE() == 2 && currentSignalState == 3) 
-							{
-								currentSignalState = 2;
-								
-							}
-						}
-						
+						//train direction match signal
+						signalClock(signal);
 					}
-					
-					if(signal.detectTrain(trainBackX, trainBackY)) 
-					{
-						if(signal.getSTATE() != 3) 
-						{
-							signal.clock(0, this);
-							clockCount++;
-						}
-					}
-
 				}
 				
 				
-				
-				
-				
-				continue;
+				if(this.moveDirection == 1) 
+				{
+					if(signal.getHorizontalPosFlag() == -1) 
+					{
+						//train direction match signal
+						signalClock(signal);
+					}
+				}
+
 			}
 			
 		}
@@ -254,36 +235,74 @@ public class Train {
 	
 	
 	
-	private void setNextSignal(Signal signal) 
+	private void signalClock(Signal signal) 
 	{
-		this.nextSignal = signal;
+		if(signal.detectTrain(trainFrontX, trainFrontY)) 
+		{
+
+			if(lastClockedSignal == null || lastClockedSignal != signal) 
+			{
+				currentSignalState = signal.getSTATE();
+				
+				lastClockedSignal =  signal;
+				
+				if(currentSignalState != 3) 
+				{
+					signal.clock(0, this);
+					clockCount++;
+				}
+
+			}else 
+				
+			if(lastClockedSignal == signal) 
+			{
+				if(signal.getSTATE() == 2 && currentSignalState == 3) 
+				{
+					currentSignalState = 2;
+					
+				}
+			}
+			
+		}
+		
+		if(signal.detectTrain(trainBackX, trainBackY)) 
+		{
+			if(signal.getSTATE() != 3) 
+			{
+				signal.clock(0, this);
+				clockCount++;
+			}
+		}
 	}
+	
 	
 	
 	public void draw(Graphics2D g2d) 
 	{
+		
+		
 		if(moveDirection == 0) 
 		{
 			x2 = x1 + trainLength;
 			
+			g2d.setColor(Color.pink);
+			g2d.fillOval((int)x1 - 5, (int)y1 - 5, 10, 10);
+			
 		}else {
 			
-			x2 = x1 - trainLength;
+			x2 = x1 + trainLength;
+			
+			g2d.setColor(Color.red);
+			g2d.fillOval((int)trainFrontX - 5, (int)trainFrontY - 5, 10, 10);
 		}
 		
 		y2 = y1;
-		
-		
 		
 		g2d.setColor(Color.white);
 		g2d.setStroke(new BasicStroke(5));
 		g2d.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
 		
-		g2d.setColor(Color.pink);
-		g2d.fillOval((int)x1 - 5, (int)y1 - 5, 10, 10);
-		
-		g2d.setColor(Color.red);
-		g2d.fillOval((int)x2 - 5, (int)y2 - 5, 10, 10);
+	
 		
 		
 	}
@@ -360,49 +379,4 @@ public class Train {
 	}
 	
 	
-	
-//	public void assignSection(TrackSection freeSection) 
-//	{
-//		currentSection = freeSection;
-//		sectionPointLastIndex = currentSection.sectionPoints.size();
-//	}
-//	
-//	
-//	public boolean hasSection() 
-//	{
-//		if(currentSection == null) 
-//		{
-//			return false;
-//		}		
-//		return true;
-//	}
-//	
-//	
-//	
-//	
-//	public void updateTrainPosition() 
-//	{
-//		if(sectionPointIndex < sectionPointLastIndex) 
-//		{
-//			xPos = (int)currentSection.sectionPoints.get((int)sectionPointIndex).getX();
-//			yPos = (int)currentSection.sectionPoints.get((int)sectionPointIndex).getY();
-//			
-//			sectionPointIndex += 0.5;		
-//			return;
-//		}
-//		
-//		reachedSectionEnd = true;
-//	}
-//	
-//	
-//	public void drawTrain(Graphics2D g2d) 
-//	{
-//		if(hasSection()) 
-//		{
-//			g2d.setColor(Color.BLUE);
-//			g2d.fillOval(xPos - 10, yPos - 10 , 20, 20);
-//		}
-//		
-//	}
-
 }

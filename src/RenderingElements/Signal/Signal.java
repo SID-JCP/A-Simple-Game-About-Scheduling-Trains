@@ -112,6 +112,7 @@ public class Signal {
 				if(STATE <= 3 && STATE != 0) {STATE--;}else {STATE = 3;}
 			}else {STATE = 3;}
 			
+			
 		}
 		
 		

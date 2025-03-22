@@ -17,10 +17,9 @@ public interface TrackControllerRequirments {
 	 * 
 	 */
 	
-	// CREATE THESE LISTS 
+	//|--------------------CREATE THESE LISTS-------------------------------|
 	
 	//private List<TrackSection> listOfTrackSections = new ArrayList<>();
-	
 	//private List<Signal> listOfSignals = new ArrayList<>();
 	
 	//private  List<TrackSection> deployMainUpLine = new ArrayList<>();
