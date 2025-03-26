@@ -479,7 +479,7 @@ public class SimulationController {
 							startSignal = downLineStartSignals.get(lineSignalIndex * -1 - 1);
 							startSignalState = startSignal.getSTATE();
 							
-							System.out.println(startSignalState);
+							
 						}
 						
 						

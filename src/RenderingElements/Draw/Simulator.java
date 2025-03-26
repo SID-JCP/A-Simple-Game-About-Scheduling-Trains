@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import RenderingElements.Controller.SimulationController;
+import RenderingElements.Tracks.Maps.Map1;
 import RenderingElements.Tracks.Maps.TestTrackDesign;
 import RenderingElements.Tracks.Maps.TrackStationDesign;
 import RenderingElements.Train.Traffic.Traffic;
@@ -16,6 +17,10 @@ public class Simulator {
 	TestTrackDesign testTrack = new TestTrackDesign();
 	
 	
+	//|-------------------------------ACTUAL MAPS FOR USE--------------------------------------|
+	Map1 map1 = new Map1();
+	
+	
 	
 	//One controller for all trains , points and signals . For all different maps use this only 
 	SimulationController Controller = new SimulationController();
@@ -24,7 +29,7 @@ public class Simulator {
 	
 	
 	
-	private int mapSelected = 0;
+	private int mapSelected = 2;
 	private int trafficSelected = 0;
 	
 	private int WIDTH = 0;
@@ -89,6 +94,13 @@ public class Simulator {
 					testTrack.initializeInterlocking();
 					traffic.addTrafficListToController(trafficSelected);
 
+					break;
+				case 2:
+					
+					map1.addListToController();
+					map1.initializeInterlocking();
+					traffic.addTrafficListToController(trafficSelected);
+					
 					break;
 					
 			}
