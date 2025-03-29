@@ -29,23 +29,23 @@ public class Map1 implements TrackControllerRequirments{
 	
 	
 	//up Direction signals 
-	Signal mainUP_1 = new Signal(signalType.BLOCK , mainUp1 , null , 1 , 1 , -1);
+	Signal mainUP_1 = new Signal(signalType.BLOCK , mainUp1 , null ,    1 , 1 , -1);
 	Signal mainUP_2 = new Signal(signalType.BLOCK , mainUp1 , mainUP_1 , 3 , 1 , -1);
 	
-	Signal mainUP_3 = new Signal(signalType.HOME , mainUp1 , mainUP_2 , 5 , 1 , -1);
-	Signal mainUP_4 = new Signal(signalType.HOME , mainUp1 , mainUP_3 , 8 , 1 , -1);
+	Signal mainUP_3 = new Signal(signalType.HOME , mainUp1 , 6 , 1 , -1 , true);
+	Signal mainUP_4 = new Signal(signalType.HOME , mainUp1 , 10 , 1 , -1 , true);
 	
-	Signal mainUP_5 = new Signal(signalType.BLOCK , mainUp1 , mainUP_4 , 10 , 1 , -1);
-	Signal mainUP_6 = new Signal(signalType.BLOCK , mainUp1 , mainUP_5 , 12 , 1 , -1);
+	Signal mainUP_5 = new Signal(signalType.BLOCK , mainUp1 , mainUP_2 , 13 , 1 , -1);
+	Signal mainUP_6 = new Signal(signalType.BLOCK , mainUp1 , mainUP_5 , 15 , 1 , -1);
 	
 	//down line signals
-	Signal mainDOWN_1 = new Signal(signalType.BLOCK , mainUp1 , null , 12 , -1 , -1);
-	Signal mainDOWN_2 = new Signal(signalType.BLOCK , mainUp1 , mainDOWN_1 , 10 , -1 , -1);
+	Signal mainDOWN_1 = new Signal(signalType.BLOCK , mainUp1 , null , 15 , -1 , -1);
+	Signal mainDOWN_2 = new Signal(signalType.BLOCK , mainUp1 , mainDOWN_1 , 13 , -1 , -1);
 	
-	Signal mainDOWN_3 = new Signal(signalType.HOME , mainUp1 , mainDOWN_2 , 8 , -1 , -1);
-	Signal mainDOWN_4 = new Signal(signalType.HOME , mainUp1 , mainDOWN_3 , 5 , -1 , -1);
+	Signal mainDOWN_3 = new Signal(signalType.HOME , mainUp1  , 10 , -1 , -1 , true);
+	Signal mainDOWN_4 = new Signal(signalType.HOME , mainUp1  , 6 , -1 , -1 , true);
 	
-	Signal mainDOWN_5 = new Signal(signalType.BLOCK , mainUp1 , mainDOWN_4 , 3 , -1 , -1);
+	Signal mainDOWN_5 = new Signal(signalType.BLOCK , mainUp1 , mainDOWN_2 , 3 , -1 , -1);
 	Signal mainDOWN_6 = new Signal(signalType.BLOCK , mainUp1 , mainDOWN_5 , 1 , -1 , -1);
 	
 	

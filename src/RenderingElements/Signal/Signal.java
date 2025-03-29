@@ -41,6 +41,7 @@ public class Signal {
 
 	private int startEndFlag = 0;      //0 = start of the switch from right , 1 = end of switch 
 	
+	private boolean alone = false;    // is the signal is a home signal and is not on any switch 
 	
 	//size of the rectangle
 	public static int containerLength = 28;
@@ -76,7 +77,7 @@ public class Signal {
 	private Train clockTrain;
 	
 	
-	//home signals
+	//use for switches 
 	public Signal(signalType signal , TrackSection track , int horizontalPosFlag , int verticlPosFlag , int startEndFlag) 
 	{
 		this.signal = signal;
@@ -86,7 +87,7 @@ public class Signal {
 		this.startEndFlag = startEndFlag;
 	}
 	
-	
+	//use for block section signals 
 	public Signal(signalType signal , TrackSection track , Signal prevSignal , int blockNo  , int horizontalPosFlag , int verticlPosFlag) 
 	{
 		this.signal = signal;
@@ -95,6 +96,18 @@ public class Signal {
 		this.blockNo = blockNo;
 		this.horizontalPosFlag = horizontalPosFlag;
 		this.verticlPosFlag = verticlPosFlag;
+	}
+	
+	//use for home signals without switches [IMPORTANT THIS IS ONLY TO MAKE ALONE TRUE]
+	public Signal(signalType signal , TrackSection track , int blockNo  , int horizontalPosFlag , int verticlPosFlag , boolean alone) 
+	{
+		this.signal = signal;
+		this.track = track;
+		this.blockNo = blockNo;
+		this.horizontalPosFlag = horizontalPosFlag;
+		this.verticlPosFlag = verticlPosFlag;
+		this.alone = alone;
+		
 	}
 	
 	
@@ -176,17 +189,28 @@ public class Signal {
 		
 		if(signal.equals(signalType.HOME)) 
 		{
-			if(startEndFlag == 0) 
+			if(alone) 
 			{
-			
-				trackX = track.getX1();
+				trackX = (int)(blockNo * blockOffset);
 				trackY = track.getY1();
 				
 			}else {
 				
-				trackX = track.getX2();
-				trackY = track.getY2();
+				if(startEndFlag == 0) 
+				{
+				
+					trackX = track.getX1();
+					trackY = track.getY1();
+					
+				}else {
+					
+					trackX = track.getX2();
+					trackY = track.getY2();
+				}
+				
 			}
+			
+
 		}else {
 			
 			trackX = (int)(blockNo * blockOffset);

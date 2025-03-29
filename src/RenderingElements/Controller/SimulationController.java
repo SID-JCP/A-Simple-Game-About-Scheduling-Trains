@@ -424,10 +424,7 @@ public class SimulationController {
 				
 				signal.isCursorInside(mouseMoveX, mouseMoveY);
 				
-				if(signal.signal.equals(signalType.BLOCK)) 
-				{
-					signal.setBlockOffset(lengthOffset);
-				}
+				signal.setBlockOffset(lengthOffset);
 				
 				signal.draw(g2d);
 			}
