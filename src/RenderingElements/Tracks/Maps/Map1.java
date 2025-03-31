@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import RenderingElements.Controller.SimulationController;
+import RenderingElements.Draw.Simulator;
 import RenderingElements.Signal.Signal;
 import RenderingElements.Signal.Signal.signalType;
 import RenderingElements.Tracks.TrackControllerRequirments;
@@ -147,6 +148,13 @@ public class Map1 implements TrackControllerRequirments{
 		SimulationController.upLineStartSignals = upLineStartSignals;
 		SimulationController.downLineStartSignals = downLineStartSignals;
 		
+	}
+
+	@Override
+	public void createStation() {
+		
+		Simulator.stationGraphicHorizontalPos = 3;
+		Simulator.stationGraphicVerticalPos = 0;
 	}
 
 }

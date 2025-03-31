@@ -18,7 +18,6 @@ public class Signal {
 	}
 
 	
-	
 	/*
 	 * -----------------------size specifications--------------------------
 	 */
@@ -36,13 +35,16 @@ public class Signal {
 	private TrackSection track;
 	
 	private int verticlPosFlag = 1;    // 1 = above the tracks , -1 = below the tracks  
+	
 	private int horizontalPosFlag = 1; // 1 = left of switch for up direction , - 1 = right of switch for down line 
-
 
 	private int startEndFlag = 0;      //0 = start of the switch from right , 1 = end of switch 
 	
 	private boolean alone = false;    // is the signal is a home signal and is not on any switch 
 	
+	private boolean lock = false;     //used for home signals , when switch is active signals are to be locked 
+
+
 	//size of the rectangle
 	public static int containerLength = 28;
 	public static int containerWidth = 12;
@@ -119,11 +121,15 @@ public class Signal {
 		
 		if(signal.equals(signalType.HOME)) 
 		{
-			//gets clicked
-			if(flag == 3) 
+			if(!lock) 
 			{
-				if(STATE <= 3 && STATE != 0) {STATE--;}else {STATE = 3;}
-			}else {STATE = 3;}
+				//gets clicked
+				if(flag == 3) 
+				{
+					if(STATE <= 3 && STATE != 0) {STATE--;}else {STATE = 3;}
+				}else {STATE = 3;}
+			}
+			
 			
 			
 		}
@@ -177,10 +183,7 @@ public class Signal {
 
 		
 	}
-	
-	
-	
-	
+
 	
 	
 	
@@ -540,5 +543,14 @@ public class Signal {
 
 	public void setHorizontalPosFlag(int horizontalPosFlag) {
 		this.horizontalPosFlag = horizontalPosFlag;
+	}
+	
+	
+	public boolean isLock() {
+		return lock;
+	}
+
+	public void setLock(boolean lock) {
+		this.lock = lock;
 	}
 }

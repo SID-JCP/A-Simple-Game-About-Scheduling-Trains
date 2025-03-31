@@ -7,13 +7,14 @@ import RenderingElements.Controller.SimulationController;
 import RenderingElements.Tracks.Maps.Map1;
 import RenderingElements.Tracks.Maps.TestTrackDesign;
 import RenderingElements.Tracks.Maps.TrackStationDesign;
-import RenderingElements.Train.Traffic.Traffic;
+import RenderingElements.Train.TrafficContainer;
 
 public class Simulator {
 
 	//Default Map design 
 	TrackStationDesign defaultStation = new TrackStationDesign();
 	
+	//test map 
 	TestTrackDesign testTrack = new TestTrackDesign();
 	
 	
@@ -25,11 +26,10 @@ public class Simulator {
 	//One controller for all trains , points and signals . For all different maps use this only 
 	SimulationController Controller = new SimulationController();
 	
-	Traffic traffic = new Traffic();
+	TrafficContainer traffic = new TrafficContainer();
 	
 	
-	
-	private int mapSelected = 2;
+	private int mapSelected = 0;
 	private int trafficSelected = 0;
 	
 	private int WIDTH = 0;
@@ -37,6 +37,10 @@ public class Simulator {
 	
 	private int trackOffset = 50;
 	private int blockOffset = 0;
+	
+	
+	public static int stationGraphicVerticalPos;
+	public static int stationGraphicHorizontalPos;
 	
 	
 	/*
@@ -59,7 +63,6 @@ public class Simulator {
 	
 	
 	//Update Controller with the CANVAS THREAD 
-	
 	public void update(long deltaTime , long clockTime , int WIDTH , int HEIGHT , int mouseMoveX , int mouseMoveY , int mouseClickX , int mouseClickY) 
 	{
 		// Case 0 to N where the N is the map number 
@@ -80,7 +83,7 @@ public class Simulator {
 					
 					defaultStation.addListToController();	
 					defaultStation.initializeInterlocking();
-					traffic.addTrafficListToController(trafficSelected);
+					defaultStation.createStation();
 					//..
 					//..
 					//..
@@ -92,20 +95,20 @@ public class Simulator {
 					
 					testTrack.addListToController();
 					testTrack.initializeInterlocking();
-					traffic.addTrafficListToController(trafficSelected);
+					
 
 					break;
 				case 2:
 					
 					map1.addListToController();
 					map1.initializeInterlocking();
-					traffic.addTrafficListToController(trafficSelected);
+					map1.createStation();
 					
 					break;
 					
 			}
 			
-			
+			traffic.addTrafficListToController(trafficSelected);
 			trackElementsCompiled = true;
 		}
 		
@@ -113,7 +116,7 @@ public class Simulator {
 		
 		
 		
-		Controller.update( deltaTime ,clockTime , mouseMoveX , mouseMoveY ,  mouseClickX ,  mouseClickY);
+		Controller.update(deltaTime ,clockTime , mouseMoveX , mouseMoveY ,  mouseClickX ,  mouseClickY);
 		
 		
 		
@@ -147,7 +150,20 @@ public class Simulator {
 
 	}
 	
-	
+	private void drawStation(Graphics2D g2d) 
+	{
+		int gap = 36;
+		
+		int StationXPos  = (xCENTER - stationGraphicHorizontalPos * blockOffset) +  gap;
+		int StationYPos = (yCENTER - stationGraphicVerticalPos * trackOffset) - gap;
+		
+		int StationWidth = 2 *(stationGraphicHorizontalPos * blockOffset -  gap);
+		int StationHeight = 2 * (stationGraphicVerticalPos * trackOffset + gap);
+		
+		g2d.setColor(Color.DARK_GRAY.darker().darker());
+		g2d.fillRoundRect(StationXPos, StationYPos, StationWidth, StationHeight, 20 , 20);
+		
+	}
 	
 	
 	//draw method which will draw the tracks , signals , platform from the provided data 
@@ -158,6 +174,7 @@ public class Simulator {
 		//debug
 //		positionGrid(g2d);
 		
+		drawStation(g2d);
 		
 		
 		Controller.drawTracks(xCENTER , yCENTER , WIDTH , HEIGHT ,  trackOffset , blockOffset ,  g2d);

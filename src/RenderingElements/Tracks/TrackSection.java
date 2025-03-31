@@ -187,6 +187,12 @@ public class TrackSection {
 				Signal_left_down.setSTATE(3);
 				Signal_right_down.setSTATE(3);
 			}
+			
+			
+			Signal_left_up.setLock(true);
+			Signal_right_up.setLock(true);
+			Signal_left_down.setLock(true);
+			Signal_right_down.setLock(true);
 		}
 		
 		
@@ -221,7 +227,24 @@ public class TrackSection {
 			
 			Signal_left_down.setSTATE(2);
 			Signal_right_down.setSTATE(2);
+			
+			
 		} 
+		
+		
+		if(STATE == 1 || STATE == 2) 
+		{
+			Signal_left_up.setLock(true);
+			Signal_right_up.setLock(true);
+			Signal_left_down.setLock(true);
+			Signal_right_down.setLock(true);
+		}else {
+			
+			Signal_left_up.setLock(false);
+			Signal_right_up.setLock(false);
+			Signal_left_down.setLock(false);
+			Signal_right_down.setLock(false);
+		}
 		
 	}
 	

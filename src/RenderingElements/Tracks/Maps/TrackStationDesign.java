@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import RenderingElements.Controller.SimulationController;
+import RenderingElements.Draw.Simulator;
 import RenderingElements.Point.Point;
 import RenderingElements.Point.Point.pointType;
 import RenderingElements.Signal.Signal;
@@ -101,11 +102,13 @@ public  class TrackStationDesign {
 	
 	//MAIN LINES AFTER PLATFORM 
 	
-	Signal Fin_signal_mainUp_mainDown_U_L = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_R , -1 , 1 , 0);
-	Signal Fin_signal_mainUp_mainDown_U_R = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_R , 1 , 1 , 0);
+	Signal Fin_signal_mainUp_mainDown_U_L = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_R , 1 , 1 , 0);
+	Signal Fin_signal_mainUp_mainDown_U_R = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_R , -1 , 1 , 0);
 	
-	Signal Fin_signal_mainUp_mainDown_D_L = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_R , -1 , -1 , 1);
-	Signal Fin_signal_mainUp_mainDown_D_R = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_R , 1 , -1 , 1);
+	
+	Signal Fin_signal_mainUp_mainDown_D_L = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_R , 1 , -1 , 1);
+	Signal Fin_signal_mainUp_mainDown_D_R = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_R , -1 , -1 , 1);
+	
 	
 	
 	
@@ -133,29 +136,33 @@ public  class TrackStationDesign {
 	
 	
 	//loop line up end 
-	Signal signal_loopUp1_mainUp1_U_L = new Signal(Signal.signalType.HOME , switchloopUp1_MainUp1 , -1 , 1 , 0);
-	Signal signal_loopUp1_mainUp1_U_R = new Signal(Signal.signalType.HOME , switchloopUp1_MainUp1 , 1 , 1 , 0);
+	Signal signal_loopUp1_mainUp1_U_L = new Signal(Signal.signalType.HOME , switchloopUp1_MainUp1 , 1 , 1 , 0);
+	Signal signal_loopUp1_mainUp1_U_R = new Signal(Signal.signalType.HOME , switchloopUp1_MainUp1 , -1 , 1 , 0);
 	
-	Signal signal_loopUp1_mainUp1_D_L = new Signal(Signal.signalType.HOME , switchloopUp1_MainUp1 , -1 , -1 , 1);
-	Signal signal_loopUp1_mainUp1_D_R = new Signal(Signal.signalType.HOME , switchloopUp1_MainUp1 , 1 , -1 , 1);
+	
+	Signal signal_loopUp1_mainUp1_D_L = new Signal(Signal.signalType.HOME , switchloopUp1_MainUp1 , 1 , -1 , 1);
+	Signal signal_loopUp1_mainUp1_D_R = new Signal(Signal.signalType.HOME , switchloopUp1_MainUp1 , -1 , -1 , 1);
+	
 	
 	
 	
 	
 	//loop line down start
-	Signal signal_mainDown1_loopDown1_U_L = new Signal(Signal.signalType.HOME , switchMainDown1_LoopDown1 , -1 , 1 , 0);
-	Signal signal_mainDown1_loopDown1_U_R = new Signal(Signal.signalType.HOME , switchMainDown1_LoopDown1 , 1 , 1 , 0);
+	Signal signal_mainDown1_loopDown1_U_L = new Signal(Signal.signalType.HOME , switchMainDown1_LoopDown1 , 1 , 1 , 0);
+	Signal signal_mainDown1_loopDown1_U_R = new Signal(Signal.signalType.HOME , switchMainDown1_LoopDown1 , -1 , 1 , 0);
 	
-	Signal signal_mainDown1_loopDown1_D_L = new Signal(Signal.signalType.HOME , switchMainDown1_LoopDown1 , -1 , -1 , 1);
-	Signal signal_mainDown1_loopDown1_D_R = new Signal(Signal.signalType.HOME , switchMainDown1_LoopDown1 , 1 , -1 , 1);
+	Signal signal_mainDown1_loopDown1_D_L = new Signal(Signal.signalType.HOME , switchMainDown1_LoopDown1 , 1 , -1 , 1);
+	Signal signal_mainDown1_loopDown1_D_R = new Signal(Signal.signalType.HOME , switchMainDown1_LoopDown1 , -1 , -1 , 1);
+	
 	
 	
 	//loop line down end 
-	Signal signal_loopDown1_mainDown1_U_L = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown1 , -1 , -1 , 0);
-	Signal signal_loopDown1_mainDown1_U_R = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown1 , 1 , -1 , 0);
+	Signal signal_loopDown1_mainDown1_D_R = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown1 , 1 , -1 , 0);
+	Signal signal_loopDown1_mainDown1_D_L = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown1 , -1 , -1 , 0);
 	
-	Signal signal_loopDown1_mainDown1_D_L = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown1 , -1 , 1 , 1);
-	Signal signal_loopDown1_mainDown1_D_R = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown1 , 1 , 1 , 1);
+	Signal signal_loopDown1_mainDown1_U_R = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown1 , 1 , 1 , 1);
+	Signal signal_loopDown1_mainDown1_U_L = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown1 , -1 , 1 , 1);
+	
 	
 	
 	private List<TrackSection> getSections() 
@@ -330,6 +337,11 @@ public  class TrackStationDesign {
 	}
 	
 
+	public void createStation() 
+	{
+		Simulator.stationGraphicVerticalPos = 2;
+		Simulator.stationGraphicHorizontalPos = 2;
+	}
 	
 	
 	

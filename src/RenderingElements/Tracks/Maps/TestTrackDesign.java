@@ -40,7 +40,7 @@ public class TestTrackDesign implements TrackControllerRequirments{
 	private  List<TrackSection> deployMainUpLine = new ArrayList<>();
 	private  List<TrackSection> deployMainDownLine = new ArrayList<>();
 	
-	//|-------------------------------First signl of all Up and Down lines ---------------------------------------------------|
+	//|-------------------------------First signal of all Up and Down lines ---------------------------------------------------|
 	private  List<Signal> upLineStartSignals = new ArrayList<>();
 	private  List<Signal> downLineStartSignals = new ArrayList<>();
 	
@@ -186,6 +186,13 @@ public class TestTrackDesign implements TrackControllerRequirments{
 		SimulationController.deployMainDownLine = deployMainDownLine;
 		SimulationController.upLineStartSignals = upLineStartSignals;
 		SimulationController.downLineStartSignals = downLineStartSignals;
+		
+	}
+
+
+	@Override
+	public void createStation() {
+		
 		
 	}
 

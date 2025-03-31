@@ -31,12 +31,14 @@ public interface TrackControllerRequirments {
 	
 	List<TrackSection> getSections();
 	
-	void initialiseDeployList();
-	
 	List<Signal> getSignals();
+	
+	void initialiseDeployList();
 
 	void addListToController();
 	
 	void initializeInterlocking();
+	
+	void createStation();
 	
 }

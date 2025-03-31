@@ -198,7 +198,7 @@ public class Train {
 		if(!listOfSignals.isEmpty()) 
 		{
 			/*
-			 * 	|-----Horizontal Pos Flag----| 
+			 * 	|-----Horizontal Position Flag----| 
 			 * 
 			 *   1 = up line 
 			 *  -1 = down line 
@@ -280,14 +280,13 @@ public class Train {
 	public void draw(Graphics2D g2d) 
 	{
 		
-		
+		//UP line , moving left to right 
 		if(moveDirection == 0) 
 		{
 			x2 = x1 + trainLength;
 			
-			g2d.setColor(Color.pink);
-			g2d.fillOval((int)x1 - 5, (int)y1 - 5, 10, 10);
 			
+		//DOWN line , moving right to left (to remember i have to write same thing everywhere ig)	
 		}else {
 			
 			x2 = x1 + trainLength;
