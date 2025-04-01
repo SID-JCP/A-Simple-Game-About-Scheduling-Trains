@@ -76,6 +76,12 @@ public class Train {
 	//state of the signal which was before the train passed
 	int currentSignalState = 0;
 	
+	//---------------------------SWITCH RELATED DATA------------------------------------|
+	TrackSection newSwitch;
+	
+	private boolean frontMovingOnSwitch =  false;
+	
+	private boolean backMovingOnSwitch =  false;
 	
 	
 
@@ -95,10 +101,11 @@ public class Train {
 	
 	public void initialize() 
 	{
+		//when on up line x2 and Y2 are the front coordinates of the train 
 		if(moveDirection == 0) 
 		{
-			x1 = currentSection.getX1() - Train.deployGap;
-			y1 = currentSection.getY1();
+			x2 = currentSection.getX1() - Train.deployGap;
+			y2 = currentSection.getY1();
 			
 			
 		}else {
@@ -161,13 +168,58 @@ public class Train {
 			
 		
 		
-		if(moveDirection == 0) 
-		{
-			x1 = x1 + (currentSpeed * deltaTime/1000000000);
-		}else {
-			
-			x1 = x1 - (currentSpeed * deltaTime/1000000000);
-		}
+			if(!frontMovingOnSwitch) 
+			{
+				if(moveDirection == 0) 
+				{
+					x2 = x2 + (currentSpeed * deltaTime/1000000000);
+					
+				}else {
+					
+					x1 = x1 - (currentSpeed * deltaTime/1000000000);
+				}
+				
+			}else {
+				
+				//calculate x1 and y1 according to coordinates of track section  
+				
+				if(moveDirection == 0) 
+				{
+					
+					int sX1 = newSwitch.getX1();
+					int sY1 = newSwitch.getY1();
+					
+					int sX2 = newSwitch.getX2();
+					int sY2 = newSwitch.getY2();
+					
+					
+					double directionX = sX2 - sX1;
+					double directionY = sY2 - sY1;
+					
+					double magnitude = Math.sqrt(directionX * directionX + directionY * directionY);
+					
+					
+					
+					double normalDirectionX = directionX / magnitude;
+					double normalDirectionY = directionY / magnitude;
+					
+					
+				
+					
+					//change x2 and y2 to make train move diagonally 
+//					x1 = x1 - (currentSpeed * deltaTime/1000000000);
+					
+					x2 = x2 + (normalDirectionX * currentSpeed * deltaTime / 1000000000);
+				    y2 = y2 + (normalDirectionY * currentSpeed * deltaTime / 1000000000);
+					
+				}else {
+					
+					
+					
+				}
+				
+			}
+		
 
 	}
 	
@@ -234,6 +286,95 @@ public class Train {
 	}
 	
 	
+	public void switchLookout(List<TrackSection> listOfTrackSections) 
+	{
+		if(!listOfTrackSections.isEmpty()) 
+		{
+			for(int i = 0; i < listOfTrackSections.size(); i++) 
+			{
+				TrackSection track = listOfTrackSections.get(i);
+				
+				//check if it is a switch 
+				if(!track.getTrackType().equals(TrackSection.trackType.DOWN) && 
+				   !track.getTrackType().equals(TrackSection.trackType.UP)) 
+				{
+					//left to right -- UP LINE 
+					if(moveDirection == 0) 
+					{
+						//--------------------------Train front entered the switch going UP to UP
+						if(track.detectStartOfUpSwitch(trainFrontX, trainFrontY)) 
+						{
+							
+							if(track.getSTATE() == 0)continue;
+							
+							if(newSwitch == null || newSwitch != track) 
+							{
+								newSwitch = track;
+								frontMovingOnSwitch = true;
+								
+								System.out.println("Entered Switch");
+								continue;
+							}
+											
+						}
+						
+						//-------------------------Train back entered the switch going UP to UP
+						if(track.detectStartOfUpSwitch(trainBackX, trainBackY)) 
+						{
+							if(backMovingOnSwitch)continue;
+							
+							if(newSwitch != null && newSwitch == track) 
+							{
+								backMovingOnSwitch = true;
+								continue;
+							}
+						}
+						
+						//---------------------------front of the train has exited the up switch 
+						if(track.detectEndOfUpSwitch(trainFrontX, trainFrontY))
+						{
+							if(!frontMovingOnSwitch)continue;
+							
+							frontMovingOnSwitch = false;
+							currentSection = track.getS1();
+							continue;
+						}
+						
+						//---------------------------back of train has exited the up switch 
+						if(track.detectEndOfUpSwitch(trainBackX, trainBackY))
+						{
+							if(!backMovingOnSwitch)continue;
+							
+							backMovingOnSwitch = false;
+							continue;
+						}
+						
+						
+					}
+					
+					//right to left -- DOWN LINE 
+					if(moveDirection == 1) 
+					{
+						if(track.detectStartOfDownSwitch(trainFrontX, trainFrontY)) 
+						{
+							if(newSwitch == null || newSwitch != track) 
+							{
+								newSwitch = track;
+								frontMovingOnSwitch = true;
+								continue;
+							}
+							
+																		
+						}
+					} 
+	
+					
+				}
+			}
+		}
+	}
+	
+	
 	
 	private void signalClock(Signal signal) 
 	{
@@ -283,8 +424,8 @@ public class Train {
 		//UP line , moving left to right 
 		if(moveDirection == 0) 
 		{
-			x2 = x1 + trainLength;
-			
+			x1 = x2 - trainLength;
+			y1 = y2;
 			
 		//DOWN line , moving right to left (to remember i have to write same thing everywhere ig)	
 		}else {
@@ -293,9 +434,10 @@ public class Train {
 			
 			g2d.setColor(Color.red);
 			g2d.fillOval((int)trainFrontX - 5, (int)trainFrontY - 5, 10, 10);
+			y2 = y1;
 		}
 		
-		y2 = y1;
+
 		
 		g2d.setColor(Color.white);
 		g2d.setStroke(new BasicStroke(5));

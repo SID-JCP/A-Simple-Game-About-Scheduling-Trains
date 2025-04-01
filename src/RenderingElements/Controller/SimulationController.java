@@ -17,9 +17,7 @@ import RenderingElements.Train.Train;
 
 public class SimulationController {
 	
-	
 
-	
 	
 	public static List<Train> listOfTrainTraffic;
 	public static List<TrackSection> listOfTrackSections;
@@ -131,6 +129,9 @@ public class SimulationController {
 				{
 					//looks at signals and changes speed accordingly
 					train.signalLookout(listOfSignals);
+					train.switchLookout(listOfTrackSections);
+					
+					//detect switches and change section accordingly 
 					
 					train.move(deltaTime);
 					
@@ -154,14 +155,20 @@ public class SimulationController {
 		{
 			TrackSection trackSection;
 			
-			
 			for(int i = 0; i < listOfTrackSections.size(); i++)
 			{
-				
 				
 				trackSection = listOfTrackSections.get(i);
 				
 				int y , x1 , x2;
+				
+				
+				
+				
+				
+				
+				
+				//|-----------------------------------Drawing of Lines----------------------------------|
 				
 				if(trackSection.getTrackType() == TrackSection.trackType.UP) 
 				{
@@ -170,8 +177,7 @@ public class SimulationController {
 					{
 						y = yCenter - (trackOffset * trackSection.getTrackNum());
 						x1 = 0;
-						x2 = width;
-						
+						x2 = width;	
 						
 						trackSection.setX1(x1);
 						trackSection.setY1(y);
@@ -354,16 +360,37 @@ public class SimulationController {
 				}
 				
 				
-				if(trackSection.getTrackType() == TrackSection.trackType.DOWN_END || 
-					trackSection.getTrackType() == TrackSection.trackType.DOWN_START ||
-					trackSection.getTrackType() == TrackSection.trackType.UP_END || 
-					trackSection.getTrackType() == TrackSection.trackType.UP_START) 
+				//|-------------------------------------SWITCH ONLY PROGRAM-----------------------------------------------|
+				
+				if(!trackSection.getTrackType().equals(TrackSection.trackType.DOWN) && 
+				   !trackSection.getTrackType().equals(TrackSection.trackType.UP))  
 				{
+
+					
+					int switchRadius = trackSection.getSwitchRadius()/2;
+					
+					trackSection.setXs(trackSection.getX1() - switchRadius);
+					trackSection.setYs(trackSection.getY1() - switchRadius);
+					
+					trackSection.setXe(trackSection.getX2() - switchRadius);
+					trackSection.setYe(trackSection.getY2() - switchRadius);
+						
+					
+					g2d.setColor(Color.blue);
+					g2d.fillOval(trackSection.getXs(),
+								trackSection.getYs(), 
+								switchRadius * 2, 
+								switchRadius * 2);
+					
+					g2d.setColor(Color.green);
+					g2d.fillOval(trackSection.getXe(),
+							trackSection.getYe(), 
+							switchRadius * 2, 
+							switchRadius * 2);
 					
 					
 					
-					
-					
+					//draw circle on hover inside center of switch
 					if(trackSection.isCursorInside(mouseMoveX, mouseMoveY)) 
 					{
 						g2d.setColor(Color.DARK_GRAY);
@@ -377,8 +404,7 @@ public class SimulationController {
 						
 					}
 					
-					
-					
+					//change in states
 					if(trackSection.getSTATE() == 0) 
 					{
 						g2d.setColor(Color.RED);
@@ -392,8 +418,8 @@ public class SimulationController {
 						
 						g2d.setColor(Color.GRAY);
 					}
-					
-					
+
+
 					
 					g2d.setStroke(new BasicStroke(TrackSection.trackWidth));
 					g2d.drawLine(trackSection.getX1(), 

@@ -60,7 +60,7 @@ public class TrackSection {
 	
 	
 	
-	//---------------ONLY FOR SWITCHES--------------------------
+	//---------------------ONLY FOR SWITCHES--------------------------
 	//start and end straight tracks  , getting connected by the switch
 	private TrackSection s1;
 	private TrackSection s2;
@@ -71,14 +71,19 @@ public class TrackSection {
 	// 0 = means not active train can not change , 1 = train change from Up to Down , 2 = train change from Down to Up
 	private int STATE = 0; 
 	
+	//center of start circle
+	private int Xs , Ys;
 	
+	//center of end circle
+	private int Xe , Ye;
+	
+	private int switchRadius = 10;
 
 
+    //---------------------------For clocking by clicking---------------------
+	
 	//center of the hover area circle
 	private int Xc , Yc = 0;
-	
-	
-
 
 	//hover area circle 
 	private int radius = 20;
@@ -88,13 +93,11 @@ public class TrackSection {
 	//coordinates of start and end of the line which is drawn 
 	private int x1,y1,x2,y2 = 0;
 	
-	
-	
+
 	
 	 
 	//--------------WORKING ELEMENTS-------------------
 	private boolean hover = false;
-	
 	
 	
 	private Signal Signal_left_up;
@@ -126,10 +129,34 @@ public class TrackSection {
 	}
 	
 	
+	//check if train has entered the start of Up switch 
+	public boolean detectStartOfUpSwitch(int trainX , int trainY) 
+	{
+		int distanceSquared = (trainX - x1) * (trainX - x1) + (trainY - y1) * (trainY - y1);
+        return distanceSquared <= switchRadius * switchRadius;
+		
+	}
+	
+	//check if train has reached the end of Up switch 
+	public boolean detectEndOfUpSwitch(int trainX , int trainY) 
+	{
+		int distanceSquared = (trainX - x2) * (trainX - x2) + (trainY - y2) * (trainY - y2);
+        return distanceSquared <= switchRadius * switchRadius;
+	}
+	
+	
+	//check if train has entered the start of DOWN switch 
+	public boolean detectStartOfDownSwitch(int trainX , int trainY) 
+	{
+		int distanceSquared = (trainX - x2) * (trainX - x2) + (trainY - y2) * (trainY - y2);
+        return distanceSquared <= switchRadius * switchRadius;
+		
+	}
+	
+	
 	public boolean isCursorInside(int mouseX , int mouseY) 
 	{
-		
-        
+		        
 		Xc = (int)(x2 + x1)/2;
 		Yc = (int)(y2 + y1)/2;
 		
@@ -188,11 +215,7 @@ public class TrackSection {
 				Signal_right_down.setSTATE(3);
 			}
 			
-			
-			Signal_left_up.setLock(true);
-			Signal_right_up.setLock(true);
-			Signal_left_down.setLock(true);
-			Signal_right_down.setLock(true);
+
 		}
 		
 		
@@ -222,12 +245,11 @@ public class TrackSection {
 		
 		if(STATE == 0) 
 		{
-			Signal_left_up.setSTATE(2);
-			Signal_right_up.setSTATE(2);
+			Signal_left_up.setSTATE(3);
+			Signal_right_up.setSTATE(3);
 			
-			Signal_left_down.setSTATE(2);
-			Signal_right_down.setSTATE(2);
-			
+			Signal_left_down.setSTATE(3);
+			Signal_right_down.setSTATE(3);		
 			
 		} 
 		
@@ -389,6 +411,54 @@ public class TrackSection {
 
 	public void setSTATE(int sTATE) {
 		STATE = sTATE;
+	}
+	
+	public int getXs() {
+		return Xs;
+	}
+
+
+	public void setXs(int xs) {
+		Xs = xs;
+	}
+
+
+	public int getYs() {
+		return Ys;
+	}
+
+
+	public void setYs(int ys) {
+		Ys = ys;
+	}
+
+
+	public int getXe() {
+		return Xe;
+	}
+
+
+	public void setXe(int xe) {
+		Xe = xe;
+	}
+
+
+	public int getYe() {
+		return Ye;
+	}
+
+
+	public void setYe(int ye) {
+		Ye = ye;
+	}
+	
+	public int getSwitchRadius() {
+		return switchRadius;
+	}
+
+
+	public void setSwitchRadius(int switchRadius) {
+		this.switchRadius = switchRadius;
 	}
 
 
