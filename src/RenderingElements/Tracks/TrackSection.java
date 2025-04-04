@@ -77,7 +77,7 @@ public class TrackSection {
 	//center of end circle
 	private int Xe , Ye;
 	
-	private int switchRadius = 10;
+	private int switchRadius = 4;
 
 
     //---------------------------For clocking by clicking---------------------
@@ -151,6 +151,12 @@ public class TrackSection {
 		int distanceSquared = (trainX - x2) * (trainX - x2) + (trainY - y2) * (trainY - y2);
         return distanceSquared <= switchRadius * switchRadius;
 		
+	}
+	
+	public boolean detectEndOfDownSwitch(int trainX , int trainY) 
+	{
+		int distanceSquared = (trainX - x1) * (trainX - x1) + (trainY - y1) * (trainY - y1);
+        return distanceSquared <= switchRadius * switchRadius;
 	}
 	
 	

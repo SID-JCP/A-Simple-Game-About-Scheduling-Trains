@@ -503,6 +503,8 @@ public class SimulationController {
 							startSignalState = startSignal.getSTATE();
 							
 							
+							
+							
 						}
 						
 						
@@ -557,8 +559,6 @@ public class SimulationController {
 			case 3:
 				train.setCurrentSignalState(2);
 				break;
-			
-			
 		}
 		
 		

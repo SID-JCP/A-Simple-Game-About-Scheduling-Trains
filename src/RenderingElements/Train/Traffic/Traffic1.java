@@ -15,7 +15,9 @@ public class Traffic1{
 					//train 1 
 					new Train(0 ,1 , 10 , false),
 					//train 2
-					new Train(1 ,-1 , 20 , false)
+//					new Train(0 ,1 , 40 , false),
+					//train 3
+					new Train(1 ,-1 , 10 , false)
 					
 					)
 			
