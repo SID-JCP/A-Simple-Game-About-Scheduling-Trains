@@ -72,6 +72,11 @@ public class TestTrackDesign implements TrackControllerRequirments{
 	Signal mainUP_5 = new Signal(signalType.BLOCK , mainUp1 , mainUP_4 , 9 , 1 , -1);
 	Signal mainUP_6 = new Signal(signalType.BLOCK , mainUp1 , mainUP_5 , 11 , 1 , -1);
 	Signal mainUP_7 = new Signal(signalType.BLOCK , mainUp1 , mainUP_6 , 13 , 1 , -1);
+	Signal mainUP_8 = new Signal(signalType.BLOCK , mainUp1 , mainUP_7 , 15, 1 , -1);
+	//-------------------------------UP Beyond Signals-------------------------------------
+	Signal mainUP_9 = new Signal(signalType.BLOCK , true,  mainUp1 , mainUP_8 , 17 , 1 , -1);
+	Signal mainUP_10 = new Signal(signalType.BLOCK , true ,  mainUp1 , mainUP_9 , 19 , 1 , -1);
+	Signal mainUP_11 = new Signal(signalType.BLOCK , true ,  mainUp1 , mainUP_10 , 21, 1 , -1);
 	
 	Signal signal_MainUp2_S_L = new Signal(signalType.HOME , switchMainUp2_loopUp1 , -1 , -1 , 0);
 	
@@ -121,6 +126,11 @@ public class TestTrackDesign implements TrackControllerRequirments{
 				mainUP_5,
 				mainUP_6,
 				mainUP_7,
+				mainUP_8,
+				mainUP_9,
+				mainUP_10,
+				mainUP_11,
+				
 				signal_MainUp2_S_L
 
 				);

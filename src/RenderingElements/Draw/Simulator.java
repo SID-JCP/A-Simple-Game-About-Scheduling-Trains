@@ -29,7 +29,7 @@ public class Simulator {
 	TrafficContainer traffic = new TrafficContainer();
 	
 	
-	private int mapSelected = 0;
+	private int mapSelected = 1;
 	private int trafficSelected = 0;
 	
 	private int WIDTH = 0;

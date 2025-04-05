@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -32,7 +34,11 @@ public class SimulationController {
 	public static List<Signal> downLineStartSignals;
 		
 	//train which is just deployed and is occupying the section 
-	private Train deployedTrain;
+	
+	private HashMap<Integer , Train> upLineSet = new HashMap<>();
+	private HashMap<Integer , Train> downLineSet = new HashMap<>();
+	
+	
 	//the start signal of that section 
 	private Signal startSignal;
 	
@@ -484,7 +490,7 @@ public class SimulationController {
 					if(train.getDeployTime()  <= secondsOfDay) 
 					{
 
-							
+						//get switch states and sections
 						if(lineSignalIndex > 0) 
 						{
 							//get the line on which train need to be deployed
@@ -501,38 +507,62 @@ public class SimulationController {
 							//get first down line signal 
 							startSignal = downLineStartSignals.get(lineSignalIndex * -1 - 1);
 							startSignalState = startSignal.getSTATE();
-							
-							
-							
-							
+
 						}
 						
 						
-						if(deployedTrain == null) 
+						
+						//check deployed train for up line 
+						if(lineSignalIndex > 0) 
 						{
-							deployTrain(train , startSignalState);
-							deployedTrain = train;
-							
-						}else 
-							
-						if(deployedTrain.getClockCount() > 0) 
-						{
-							deployTrain(train , startSignalState);
-							deployedTrain = train;
+							if(upLineSet.isEmpty() || !upLineSet.containsKey(train.trackNumber)) 
+							{
+								deployTrain(train , startSignalState);
+								upLineSet.put(train.trackNumber, train);
+								
+							}else {
+								
+								if(upLineSet.get(train.trackNumber).getClockCount() > 0) 
+								{
+									deployTrain(train , startSignalState);
+									upLineSet.put(train.trackNumber, train);
+								}
+								
+							}
 						}
+						
+						
+						//check deployed train for down line 
+						if(lineSignalIndex < 0) 
+						{
+							if(downLineSet.isEmpty() || !downLineSet.containsKey(train.trackNumber)) 
+							{
+								deployTrain(train , startSignalState);
+								downLineSet.put(train.trackNumber, train);
+							}else {
+								
+								if(downLineSet.get(train.trackNumber).getClockCount() > 0) 
+								{
+									deployTrain(train , startSignalState);
+									upLineSet.put(train.trackNumber, train);
+								}
+						}
+						
+						
 
 
 					}
 				}
-
+				
+			}
 				
 				//active train [Draw it]
 				if(train.getDeployState() == 1) {train.draw(g2d);}
 				
 				//passive train [Crossed the screen  , no need to draw ]
 				if(train.getDeployState() == 2) {continue;}
-				
-			}
+			
+		}
 			
 		}
 	}

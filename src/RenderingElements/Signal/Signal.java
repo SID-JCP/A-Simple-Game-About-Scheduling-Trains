@@ -27,7 +27,7 @@ public class Signal {
 	
 	private int trackCircuitDistance = 50; //the gap between signal and train detect area on left or right
 	
-	private int detectBoxSize = 15; //size of the box for visual purpos
+	private int detectBoxSize = 15; //size of the box for visual purpose
 	
 	
 	public signalType signal;
@@ -43,6 +43,8 @@ public class Signal {
 	private boolean alone = false;    // is the signal is a home signal and is not on any switch 
 	
 	private boolean lock = false;     //used for home signals , when switch is active signals are to be locked 
+	
+	private boolean beyond = false;  //if true means . signal is beyond the screen and would clock previous signals 
 
 
 	//size of the rectangle
@@ -100,6 +102,18 @@ public class Signal {
 		this.verticlPosFlag = verticlPosFlag;
 	}
 	
+	//use for beyond signals , beyond home screen 
+	public Signal(signalType signal , boolean beyond ,  TrackSection track , Signal prevSignal , int blockNo  , int horizontalPosFlag , int verticlPosFlag) 
+	{
+		this.signal = signal;
+		this.track = track;
+		this.prevSignal = prevSignal;
+		this.blockNo = blockNo;
+		this.horizontalPosFlag = horizontalPosFlag;
+		this.verticlPosFlag = verticlPosFlag;
+		this.beyond = beyond;
+	}
+	
 	//use for home signals without switches [IMPORTANT THIS IS ONLY TO MAKE ALONE TRUE]
 	public Signal(signalType signal , TrackSection track , int blockNo  , int horizontalPosFlag , int verticlPosFlag , boolean alone) 
 	{
@@ -137,6 +151,22 @@ public class Signal {
 		
 		if(signal.equals(signalType.BLOCK)) 
 		{
+			//signal is a beyond signal . train wont affect it and it will clock previous signal 
+			if(beyond) 
+			{
+				//always green
+				STATE = 0;
+				
+				if(prevSignal != null) 
+				{
+					prevSignal.clock(1  , currectTrain);
+					
+				}
+				
+				return;
+			}
+			
+			
 			//train passes , clocked by a train 
 			if(flag == 0) 
 			{
@@ -552,5 +582,13 @@ public class Signal {
 
 	public void setLock(boolean lock) {
 		this.lock = lock;
+	}
+	
+	public boolean isBeyond() {
+		return beyond;
+	}
+
+	public void setBeyond(boolean beyond) {
+		this.beyond = beyond;
 	}
 }
