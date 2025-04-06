@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 
 import RenderingElements.Controller.SimulationController;
 import RenderingElements.Tracks.Maps.Map1;
+import RenderingElements.Tracks.Maps.Map2;
 import RenderingElements.Tracks.Maps.TestTrackDesign;
 import RenderingElements.Tracks.Maps.TrackStationDesign;
 import RenderingElements.Train.TrafficContainer;
@@ -20,6 +21,7 @@ public class Simulator {
 	
 	//|-------------------------------ACTUAL MAPS FOR USE--------------------------------------|
 	Map1 map1 = new Map1();
+	Map2 map2 = new Map2();
 	
 	
 	
@@ -29,7 +31,7 @@ public class Simulator {
 	TrafficContainer traffic = new TrafficContainer();
 	
 	
-	private int mapSelected = 1;
+	private int mapSelected = 3;
 	private int trafficSelected = 0;
 	
 	private int WIDTH = 0;
@@ -103,6 +105,12 @@ public class Simulator {
 					map1.addListToController();
 					map1.initializeInterlocking();
 					map1.createStation();
+					
+				case 3:
+					
+					map2.addListToController();
+					map2.initializeInterlocking();
+					map2.createStation();
 					
 					break;
 					

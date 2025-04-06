@@ -13,14 +13,14 @@ public class Traffic1{
 			Arrays.asList(
 					
 					//train 1 
-					new Train(0 ,1 , 10 , false),
-					new Train(0 ,1 , 20 , false),
-					new Train(0 ,1 , 25 , false)
+//					new Train(-1 ,1 , 10 , false),
+//					new Train(-1 ,1 , 20 , false),
+//					new Train(-1 ,1 , 25 , false)
 //					//train 2
-////					new Train(0 ,1 , 40 , false),
+////				new Train(0 ,1 , 40 , false),
 //					//train 3
-//					new Train(1 ,-1 , 2 , false),
-//					new Train(1 ,-1 , 15 , false)
+					new Train(1 ,-1 , 2 , false),
+					new Train(1 ,-1 , 15 , false)
 					
 					)
 			

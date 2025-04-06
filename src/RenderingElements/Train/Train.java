@@ -568,7 +568,7 @@ public class Train {
 	
 	public void draw(Graphics2D g2d) 
 	{
-		System.out.println("draw");
+		
 		g2d.setColor(Color.white);
 		g2d.setStroke(new BasicStroke(6));
 		

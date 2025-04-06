@@ -1,0 +1,36 @@
+
+
+################################################ THIS FILE CONTAINS ALL INFO OF ALL  MAPS    ##############################################################
+
+
+------------------------------ MAP 1 --------------------------------------
+
+    Single track ,
+    Single  platfroms ,
+    Handle Light traffic 
+
+------------------------------ MAP 2 --------------------------------------
+
+  Single track ,
+  Two Platforms,
+  Single up Loop line,
+  Handle mulitdirection traffic more frequently 
+
+------------------------------ MAP 3 --------------------------------------
+
+   Two tracks , 
+   Two Platforms ,
+   Switch  at start and end ,
+   Handle light directional traffic 
+
+------------------------------ MAP 4 --------------------------------------
+ 
+  Three tracks ,
+  Three platforms ,
+  Third platfrom goods line track,
+  Switch at start and end on all tracks ,
+  Handle more stoppage 
+  
+
+
+
