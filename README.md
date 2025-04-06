@@ -61,11 +61,31 @@
 	---
 
 - ##   Trains -
+
+	 ### Trains are denoted using white lines , they originate and terminate beyond the screen . The user has to make them move in loop lines to stop or pass the station by controlling the signals . Their speed also changes according to signals the signals , max => green , stop => red .
 	 
 
+	 ![enter image description here](https://raw.githubusercontent.com/SID-JCP/A-Simple-Game-About-Scheduling-Trains/refs/heads/main/docs/images/train%20img.png)
+
+# ``` Build From Source ```
+
+  ##   Requirements
+  
+   - Java  JDK 20 or above , with proper environment variables .
+   
+   - Apache Maven , version 3.9.9 was used in this project .
+  
+  ### Open terminal in the folder named ```A-Simple-Game-About-Scheduling-Trains``` , then run using this command :
+  ```bash
+  mvn clean install 
+  ```
+  
+###  A jar file will be created in the target folder after build , to start the program run this command :
+
+ ```bash
+  java -jar "pathOfJarFile.jar" 
+  ```
  
-
-
 
 
 
