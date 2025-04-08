@@ -1,6 +1,8 @@
 package Window;
 
 import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 
 import javax.swing.JFrame;
 
@@ -11,12 +13,16 @@ public class WindowManager {
 	public static void main(String[] args) {
 		
 		JFrame window = new JFrame();
+		Rectangle r = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+		
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		window.setSize(new Dimension(1500, 600));
+		
+		window.setSize(r.width , r.height);
 		window.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		window.setLocationRelativeTo(null);
-//		window.setResizable(false);
+		window.setUndecorated(true);
+
 		
 		
 		Canvas canvas = new Canvas(window);

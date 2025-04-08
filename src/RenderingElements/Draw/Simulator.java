@@ -32,7 +32,7 @@ public class Simulator {
 	
 	
 	private int mapSelected = 3;
-	private int trafficSelected = 0;
+	private int trafficSelected = 1;
 	
 	private int WIDTH = 0;
 	private int HEIGHT = 0;

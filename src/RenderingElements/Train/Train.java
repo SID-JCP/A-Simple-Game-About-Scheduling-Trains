@@ -570,7 +570,7 @@ public class Train {
 	{
 		
 		g2d.setColor(Color.white);
-		g2d.setStroke(new BasicStroke(6));
+		g2d.setStroke(new BasicStroke(6 , BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER));
 		
 		
 		
