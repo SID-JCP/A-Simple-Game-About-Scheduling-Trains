@@ -4,13 +4,13 @@
 
 
 
-### This program is a simulator for managing arrival and departure for different train traffic for different station  , here the player acts just like a station master . Trains are created at different intervals of time with some metadata , the player is supposed to modify the signals and the switches to stop trains at the station or let them pass without any interruption. The goal will be to prevent delays , achieve maximum throughput and most importantly not cause collisions .
+ This program is a simulator for managing arrival and departure for different train traffic for different station  , here the player acts just like a station master . Trains are created at different intervals of time with some metadata , the player is supposed to modify the signals and the switches to stop trains at the station or let them pass without any interruption. The goal will be to prevent delays , achieve maximum throughput and most importantly not cause collisions .
 
 ![](https://raw.githubusercontent.com/SID-JCP/A-Simple-Game-About-Scheduling-Trains/refs/heads/main/docs/images/Screenshot%202025-03-26%20194626.png)
 
 ---
 
-# ``` Components the Simulation ```
+# ``` Components Of the Simulation ```
 
 
 - ##   Tracks 
@@ -19,15 +19,15 @@
 	
 
 ###  There are 2 types of tracks 
-   #### - UP line -  This is created as light grey colour . Trains on this track are supposed to move from left side of the screen to right side . The location is above centre line of the screen .
+   - UP line -  This is created as light grey colour . Trains on this track are supposed to move from left side of the screen to right side . The location is above centre line of the screen .
 ---
-  #### - DOWN Line - This is created as dark grey colour . Train a are supposed to move from right to left on such tracks . The location is below the centre line of the screen.
+   - DOWN Line - This is created as dark grey colour . Train a are supposed to move from right to left on such tracks . The location is below the centre line of the screen.
 ---
- ###  A station is denoted as a map , each map may have 1 or more UP lines or Down lines . The track section which are the full length of the screen are called **MAIN** Lines .
+  #### A station is denoted as a map , each map may have 1 or more UP lines or Down lines . The track section which are the full length of the screen are called **MAIN** Lines .
 	 
-### Main Lines are the busy tracks on which the traffic flows . They pass through or close to different stations   , loop lines emerge from main lines which are beside platforms and then converge back into it . Trains are usually stopped on the loop lines for boarding and deboarding of passengers.
+#### Main Lines are the busy tracks on which the traffic flows . They pass through or close to different stations   , loop lines emerge from main lines which are beside platforms and then converge back into it . Trains are usually stopped on the loop lines for boarding and deboarding of passengers.
 
-   ### The track section which connect Loop lines to Main lines are denoted by 3 colours which are - red  , light grey and dark grey  , these colours denote the different states of this section .   These track sections are tilted towards the left or the right depending on the type of line (UP/DOWN) they connect. 
+ ####  The track section which connect Loop lines to Main lines are denoted by 3 colours which are - red  , light grey and dark grey  , these colours denote the different states of this section .   These track sections are tilted towards the left or the right depending on the type of line (UP/DOWN) they connect. 
 
 ### The 3 States are - 
 	
@@ -36,21 +36,27 @@
 	   ![Disabled](https://raw.githubusercontent.com/SID-JCP/A-Simple-Game-About-Scheduling-Trains/refs/heads/main/docs/images/Screenshot%202025-03-26%20194800.png)
 ---
  - Down To Up - This is denoted in light grey colour , same as the colour of up line track section . Train moves from down line to up line in this config or up line to the connected loop line which is above.
- ![Down to Up](https://raw.githubusercontent.com/SID-JCP/A-Simple-Game-About-Scheduling-Trains/refs/heads/main/docs/images/Screenshot%202025-03-26%20195334.png)
+
+   ![Down to Up](https://raw.githubusercontent.com/SID-JCP/A-Simple-Game-About-Scheduling-Trains/refs/heads/main/docs/images/Screenshot%202025-03-26%20195334.png)
 
 ---
 
 - Up To Down - This is denoted in dark grey colour , same as down line track section . Train moves from up line to down line in this config or down line to the connected loop line below the main line .   
-![Up to Down](https://raw.githubusercontent.com/SID-JCP/A-Simple-Game-About-Scheduling-Trains/refs/heads/main/docs/images/Screenshot%202025-03-26%20195123.png)
+
+
+	![Up to Down](https://raw.githubusercontent.com/SID-JCP/A-Simple-Game-About-Scheduling-Trains/refs/heads/main/docs/images/Screenshot%202025-03-26%20195123.png)
 
 ---
-### The states can be toggled by clicking the white circle which appears when hovering near the centre of the track section . 
+## The states can be toggled by clicking the white circle which appears when hovering near the centre of the track section . 
+
+   
+   ![enter image description here](https://raw.githubusercontent.com/SID-JCP/A-Simple-Game-About-Scheduling-Trains/refs/heads/main/docs/images/Screenshot%202025-04-09%20144009.png)
 
 - ##   Signals -
 
-	### The signals are used to control the speed of the train or slow them down  . In railways the signals have 4 states , which are green , double yellow , yellow and red . The signals toggled by clicking them to change. 
+	 The signals are used to control the speed of the train or slow them down  . In railways the signals have 4 states , which are green , double yellow , yellow and red . The signals toggled by clicking them to change. 
 
-   ### When a train crosses a signal , the signal turns red. 
+   ### When front of the train crosses  , the signal turns red. 
 
 
 	### There are 2 type of Signals  
@@ -62,7 +68,7 @@
 
 - ##   Trains -
 
-	 ### Trains are denoted using white lines , they originate and terminate beyond the screen . The user has to make them move in loop lines to stop or pass the station by controlling the signals . Their speed also changes according to signals the signals , max => green , stop => red .
+	 Trains are denoted using white lines , they originate and terminate beyond the screen . The user has to make them move in loop lines to stop or pass the station by controlling the signals . Their speed also changes according to signals the signals , max => green , stop => red .
 	 
 
 	 ![enter image description here](https://raw.githubusercontent.com/SID-JCP/A-Simple-Game-About-Scheduling-Trains/refs/heads/main/docs/images/train%20img.png)
@@ -71,19 +77,31 @@
 
   ##   Requirements
   
-   - Java  JDK 20 or above , with proper environment variables .
+   - Java  JDK 20 or above  .
    
-   - Apache Maven , version 3.9.9 was used in this project .
+   - Apache Maven ( Optional as Maven wrapper provided )  .
   
-  ### Open terminal in the folder named ```A-Simple-Game-About-Scheduling-Trains``` , then run using this command :
+  ### Open terminal in the folder named ```A-Simple-Game-About-Scheduling-Trains``` , then run this command if you have **Maven** Installed :
   ```bash
   mvn clean install 
   ```
+ 
+ ### If you don't have maven installed , use the **Maven** wrapper :
+ 
+ - Windows
+ ```bash
+  .\mvnw.cmd package 
+  ```
+   - Linux
+   
+   ```
+    ./mvnw package
+   ```
   
 ###  A jar file will be created in the target folder after build , to start the program run this command :
 
  ```bash
-  java -jar "pathOfJarFile.jar" 
+  java -jar "A-Simple-Game-About-Scheduling-Trains-1.0.0.jar" 
   ```
  
 
