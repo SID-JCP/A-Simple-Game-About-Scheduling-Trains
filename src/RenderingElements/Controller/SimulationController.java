@@ -517,13 +517,14 @@ public class SimulationController {
 						{
 							if(upLineSet.isEmpty() || !upLineSet.containsKey(train.trackNumber)) 
 							{
+								
 								deployTrain(train , startSignalState);
 								upLineSet.put(train.trackNumber, train);
 								
 							}else {
 								
 								if(upLineSet.get(train.trackNumber).getClockCount() > 0) 
-								{
+								{   System.out.println(startSignalState + " " + train.trackNumber);
 									deployTrain(train , startSignalState);
 									upLineSet.put(train.trackNumber, train);
 								}
@@ -579,11 +580,11 @@ public class SimulationController {
 				break;
 			//double yellow 
 			case 1:
-				train.setCurrentSignalState(1);
+				train.setCurrentSignalState(0);
 				break;
 			//yellow
 			case 2:
-				train.setCurrentSignalState(2);
+				train.setCurrentSignalState(1);
 				break;
 			//red 
 			case 3:

@@ -11,7 +11,7 @@ import RenderingElements.Tracks.TrackControllerRequirments;
 import RenderingElements.Tracks.TrackSection;
 import RenderingElements.Tracks.TrackSection.trackType;
 
-public class TestTrackDesign implements TrackControllerRequirments{
+public class Map6 implements TrackControllerRequirments{
 	
 	
 	

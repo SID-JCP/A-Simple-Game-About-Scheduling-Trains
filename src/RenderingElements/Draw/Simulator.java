@@ -6,22 +6,21 @@ import java.awt.Graphics2D;
 import RenderingElements.Controller.SimulationController;
 import RenderingElements.Tracks.Maps.Map1;
 import RenderingElements.Tracks.Maps.Map2;
-import RenderingElements.Tracks.Maps.TestTrackDesign;
-import RenderingElements.Tracks.Maps.TrackStationDesign;
+import RenderingElements.Tracks.Maps.Map3;
+import RenderingElements.Tracks.Maps.Map4;
+import RenderingElements.Tracks.Maps.Map6;
+import RenderingElements.Tracks.Maps.Map5;
 import RenderingElements.Train.TrafficContainer;
 
 public class Simulator {
 
-	//Default Map design 
-	TrackStationDesign defaultStation = new TrackStationDesign();
-	
-	//test map 
-	TestTrackDesign testTrack = new TestTrackDesign();
-	
-	
+
 	//|-------------------------------ACTUAL MAPS FOR USE--------------------------------------|
 	Map1 map1 = new Map1();
 	Map2 map2 = new Map2();
+	Map3 map3 = new Map3();
+	Map4 map4 = new Map4();
+	Map5 map5 = new Map5();
 	
 	
 	
@@ -31,8 +30,8 @@ public class Simulator {
 	TrafficContainer traffic = new TrafficContainer();
 	
 	
-	private int mapSelected = 3;
-	private int trafficSelected = 1;
+	private int mapSelected = 4;
+	private int trafficSelected = 3;
 	
 	private int WIDTH = 0;
 	private int HEIGHT = 0;
@@ -52,8 +51,7 @@ public class Simulator {
 	 *  
 	 *  MAX VERITICAL ELEMENTS SHOULD BE EVEN 
 	 */
-	private int MAX_VERTICAL_ELM =  4;	
-	private int MAX_HORIZONTAL_ELM  = 16;
+	public static int MAX_HORIZONTAL_ELM  = 16; //default 16 , unless changed
 	
 	
 	private int xCENTER;
@@ -83,35 +81,51 @@ public class Simulator {
 			{
 				case 0:
 					
-					defaultStation.addListToController();	
-					defaultStation.initializeInterlocking();
-					defaultStation.createStation();
-					//..
-					//..
-					//..
-						
+//					defaultStation.addListToController();	
+//					defaultStation.initializeInterlocking();
+//					defaultStation.createStation();
+								
 					
 					break;
-				case 1: 
-					
-					
-					testTrack.addListToController();
-					testTrack.initializeInterlocking();
-					
-
-					break;
-				case 2:
+				
+				case 1:
 					
 					map1.addListToController();
 					map1.initializeInterlocking();
 					map1.createStation();
 					
-				case 3:
+					break;
+					
+				case 2:
 					
 					map2.addListToController();
 					map2.initializeInterlocking();
 					map2.createStation();
 					
+					break;
+				case 3:
+					
+					map3.setGrid();
+					map3.addListToController();
+					map3.initializeInterlocking();
+					map3.createStation();
+					
+					break;
+					
+				case 4:
+					
+					map4.addListToController();
+					map4.initializeInterlocking();
+					map4.createStation();
+					
+					break;
+				case 5: 
+					
+					map5.addListToController();
+					map5.initializeInterlocking();
+					map5.createStation();
+					
+
 					break;
 					
 			}

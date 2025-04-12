@@ -170,24 +170,24 @@ public class Canvas extends JPanel implements Runnable
 		 * -----------------------------------------------DEBUG ELEMETS---------------------------
 		 */
 		
-		graphic2D.setColor(Color.red);
-		graphic2D.setFont(new Font("Arial" , Font.BOLD , 24));
-		
-		graphic2D.drawString("MS: " + String.valueOf(deltaTime), 20, 30);		
-		graphic2D.drawString("Mouse X: " + String.valueOf(moveX) + 
-							 " Mouse Y: " + String.valueOf(moveY)
-							, 20, 60);
-		
-		graphic2D.drawString("WIDTH: " + SCREEN_WIDTH + " "+
-							 "HEIGHT: " + SCREEN_HEIGHT, 20, 90);
-		
-		
-		graphic2D.drawString("Mouse X: " + String.valueOf(clickX) + 
-				 " Mouse Y: " + String.valueOf(clickY)
-				, 20, 120);
-		
-		
-		graphic2D.fillOval(moveX, moveY, 10, 10);
+//		graphic2D.setColor(Color.red);
+//		graphic2D.setFont(new Font("Arial" , Font.BOLD , 24));
+//		
+//		graphic2D.drawString("MS: " + String.valueOf(deltaTime), 20, 30);		
+//		graphic2D.drawString("Mouse X: " + String.valueOf(moveX) + 
+//							 " Mouse Y: " + String.valueOf(moveY)
+//							, 20, 60);
+//		
+//		graphic2D.drawString("WIDTH: " + SCREEN_WIDTH + " "+
+//							 "HEIGHT: " + SCREEN_HEIGHT, 20, 90);
+//		
+//		
+//		graphic2D.drawString("Mouse X: " + String.valueOf(clickX) + 
+//				 " Mouse Y: " + String.valueOf(clickY)
+//				, 20, 120);
+//		
+//		
+//		graphic2D.fillOval(moveX, moveY, 10, 10);
 		
 		simulation.draw(graphic2D);
 		

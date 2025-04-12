@@ -7,6 +7,7 @@ import RenderingElements.Controller.SimulationController;
 import RenderingElements.Train.Traffic.Traffic1;
 import RenderingElements.Train.Traffic.Traffic2;
 import RenderingElements.Train.Traffic.Traffic3;
+import RenderingElements.Train.Traffic.Traffic4;
 
 public class TrafficContainer {
 
@@ -24,6 +25,7 @@ public class TrafficContainer {
 		TrafficRequirments.addTrainList(Traffic1.trainList);
 		TrafficRequirments.addTrainList(Traffic2.trainList);
 		TrafficRequirments.addTrainList(Traffic3.trainList);
+		TrafficRequirments.addTrainList(Traffic4.trainList);
 
 		
 	}

@@ -9,7 +9,6 @@ public class KeyBoardInputManager implements KeyListener{
 	public void keyTyped(KeyEvent e) {
 		
 		
-		
 	}
 
 	@Override
