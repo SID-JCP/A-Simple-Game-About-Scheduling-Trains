@@ -148,7 +148,9 @@ public class Map1 implements TrackControllerRequirments{
 		
 		Collections.addAll(upLineStartSignals, 
 				
-				mainUP_1);
+				mainUP_1
+				
+				);
 		
 		
 		

@@ -16,6 +16,7 @@ import InputManager.KeyBoardInputManager;
 import InputManager.MouseInputManager;
 import RenderingElements.Controller.SimulatorClock;
 import RenderingElements.Draw.Simulator;
+import Window.TrainListWindow;
 
 public class Canvas extends JPanel implements Runnable 
 {
@@ -51,12 +52,16 @@ public class Canvas extends JPanel implements Runnable
 	private int SCREEN_HEIGHT = 0;
 	
 	
+	private boolean trainListWindowOpen = false;
+	
 	private JFrame window;
+	
+	private TrainListWindow trainListWindow =  new TrainListWindow();
 	
 		
 	Thread thread = new Thread(this);
 	
-	Simulator simulation = new Simulator();
+	Simulator simulatior = new Simulator();
 	
 	SimulatorClock clock = new SimulatorClock();
 	
@@ -71,7 +76,7 @@ public class Canvas extends JPanel implements Runnable
 		this.setDoubleBuffered(true);
 		this.setPreferredSize(new Dimension(1500,600));
 		
-//		this.addKeyListener(keyInput);
+		this.addKeyListener(keyInput);
 		this.addMouseMotionListener(mouseInput);
 		this.addMouseListener(mouseInput);
 		this.setFocusable(true);
@@ -144,7 +149,25 @@ public class Canvas extends JPanel implements Runnable
 		clickX = mouseInput.getClickX();
 		clickY = mouseInput.getClickY();
 		
-		simulation.update(timeLeftToWait ,SimulatorClock.secondsOfDay , SCREEN_WIDTH , SCREEN_HEIGHT , moveX , moveY , clickX , clickY);
+		//close window on escape key press
+		if(keyInput.keyCode == 27) 
+		{
+			window.dispose();
+		}
+		
+		if(keyInput.keyCode == 79) 
+		{
+			if(!trainListWindowOpen) 
+			{
+				trainListWindow.openWindow();
+				trainListWindowOpen =  true;
+				
+			}
+			
+		}
+		
+		
+		simulatior.update(timeLeftToWait ,SimulatorClock.secondsOfDay , SCREEN_WIDTH , SCREEN_HEIGHT , moveX , moveY , clickX , clickY);
 		clock.update(SCREEN_WIDTH, SCREEN_HEIGHT);
 	}
 	
@@ -163,41 +186,42 @@ public class Canvas extends JPanel implements Runnable
 		
 		clock.drawClock(graphic2D);
 		
+		drawDebug(graphic2D);
 		
-		
-		
-		/*
-		 * -----------------------------------------------DEBUG ELEMETS---------------------------
-		 */
-		
-//		graphic2D.setColor(Color.red);
-//		graphic2D.setFont(new Font("Arial" , Font.BOLD , 24));
-//		
-//		graphic2D.drawString("MS: " + String.valueOf(deltaTime), 20, 30);		
-//		graphic2D.drawString("Mouse X: " + String.valueOf(moveX) + 
-//							 " Mouse Y: " + String.valueOf(moveY)
-//							, 20, 60);
-//		
-//		graphic2D.drawString("WIDTH: " + SCREEN_WIDTH + " "+
-//							 "HEIGHT: " + SCREEN_HEIGHT, 20, 90);
-//		
-//		
-//		graphic2D.drawString("Mouse X: " + String.valueOf(clickX) + 
-//				 " Mouse Y: " + String.valueOf(clickY)
-//				, 20, 120);
-//		
-//		
-//		graphic2D.fillOval(moveX, moveY, 10, 10);
-		
-		simulation.draw(graphic2D);
-		
-
+		simulatior.draw(graphic2D);
 		
 		graphic2D.dispose();
 	}
 
 	
-	
+	private void drawDebug(Graphics2D graphic2D) 
+	{
+		graphic2D.setColor(Color.red);
+		graphic2D.setFont(new Font("Arial" , Font.BOLD , 24));
+		
+		graphic2D.drawString("MS: " + String.valueOf(deltaTime), 20, 30);		
+		graphic2D.drawString("Mouse X: " + String.valueOf(moveX) + 
+							 " Mouse Y: " + String.valueOf(moveY)
+							, 20, 60);
+		
+		graphic2D.drawString("WIDTH: " + SCREEN_WIDTH + " "+
+							 "HEIGHT: " + SCREEN_HEIGHT, 20, 90);
+		
+		
+		graphic2D.drawString("Mouse X: " + String.valueOf(clickX) + 
+				 " Mouse Y: " + String.valueOf(clickY)
+				, 20, 120);
+		
+		graphic2D.drawString("Key Pressed: " + " " + keyInput.keyCode
+				, 20, 150);
+		
+		graphic2D.drawString("Map_Id: " + simulatior.getMapSelected() + " " 	
+							+ "Traffic_Id: " + simulatior.getTrafficSelected()
+							, 20, 180);
+		
+		
+		graphic2D.fillOval(moveX, moveY, 10, 10);
+	}
 	
 	
 	

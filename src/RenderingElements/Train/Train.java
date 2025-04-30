@@ -33,6 +33,12 @@ public class Train {
 	
 	public boolean nextSectionClear = true; // to be used for deployment of the train , check if the train before has passed 
 	
+	public int haultDuration = 0; //time the train is supposed to stop on the platform 
+	
+	public String name = ""; //name of the train 
+	
+	public Color color = null; //optional color provided 
+	
 	//|--------------------------Movement Data--------------------------------|
 	
 	
@@ -100,6 +106,16 @@ public class Train {
 		this.deployTime = deployTime;
 		this.trackNumber = trackNumber;
 		this.hasHault = hault;
+	}
+	
+	public Train(int movingDirection , int trackNumber  , long deployTime  , int haultDuration , String name , Color color)
+	{
+		this.moveDirection = movingDirection;
+		this.deployTime = deployTime;
+		this.trackNumber = trackNumber;
+		this.name = name;
+		this.haultDuration = haultDuration; 
+		this.color = color;
 	}
 	
 	public void initialize() 

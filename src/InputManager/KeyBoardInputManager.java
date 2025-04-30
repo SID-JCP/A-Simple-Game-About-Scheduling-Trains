@@ -4,22 +4,29 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyBoardInputManager implements KeyListener{
+	
+	
+	public int keyCode = 0;
 
 	@Override
-	public void keyTyped(KeyEvent e) {
+	public void keyTyped(KeyEvent e) 
+	{
+			
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) 
+	{
 		
 		
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
+	public void keyReleased(KeyEvent e) 
+	{
 		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
+		keyCode = e.getKeyCode();
 		
 	}
 

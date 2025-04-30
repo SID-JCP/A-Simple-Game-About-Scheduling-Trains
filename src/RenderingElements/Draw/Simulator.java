@@ -11,11 +11,12 @@ import RenderingElements.Tracks.Maps.Map4;
 import RenderingElements.Tracks.Maps.Map6;
 import RenderingElements.Tracks.Maps.Map5;
 import RenderingElements.Train.TrafficContainer;
+import Window.WindowManager;
 
 public class Simulator {
 
 
-	//|-------------------------------ACTUAL MAPS FOR USE--------------------------------------|
+//|---------ACTUAL MAPS FOR USE---------|
 	Map1 map1 = new Map1();
 	Map2 map2 = new Map2();
 	Map3 map3 = new Map3();
@@ -29,9 +30,11 @@ public class Simulator {
 	
 	TrafficContainer traffic = new TrafficContainer();
 	
+//	|------------IMPORTANT DATA------------------|
+	private int mapSelected = WindowManager.mapId;
+	private int trafficSelected = WindowManager.trafficId;
 	
-	private int mapSelected = 4;
-	private int trafficSelected = 3;
+	
 	
 	private int WIDTH = 0;
 	private int HEIGHT = 0;
@@ -145,6 +148,41 @@ public class Simulator {
 	}
 	
 	
+	private void drawStation(Graphics2D g2d) 
+	{
+		int gap = 36;
+		
+		int StationXPos  = (xCENTER - stationGraphicHorizontalPos * blockOffset) +  gap;
+		int StationYPos = (yCENTER - stationGraphicVerticalPos * trackOffset) - gap;
+		
+		int StationWidth = 2 *(stationGraphicHorizontalPos * blockOffset -  gap);
+		int StationHeight = 2 * (stationGraphicVerticalPos * trackOffset + gap);
+		
+		g2d.setColor(Color.DARK_GRAY.darker().darker());
+		g2d.fillRoundRect(StationXPos, StationYPos, StationWidth, StationHeight, 20 , 20);
+		
+	}
+	
+	
+	//draw method which will draw the tracks , signals , platform from the provided data 
+	//into the paint class for the canvas [This is cap is imp fr]
+	
+	public void draw(Graphics2D g2d) 
+	{
+		
+//		positionGrid(g2d);
+		
+		drawStation(g2d);
+		
+		
+		Controller.drawTracks(xCENTER , yCENTER , WIDTH , HEIGHT ,  trackOffset , blockOffset ,  g2d);
+		Controller.drawSignals(g2d , blockOffset);
+		
+		
+		Controller.drawTrain(g2d);
+	}
+	
+	
 	private void positionGrid(Graphics2D g2d) 
 	{
 		
@@ -172,39 +210,24 @@ public class Simulator {
 
 	}
 	
-	private void drawStation(Graphics2D g2d) 
-	{
-		int gap = 36;
-		
-		int StationXPos  = (xCENTER - stationGraphicHorizontalPos * blockOffset) +  gap;
-		int StationYPos = (yCENTER - stationGraphicVerticalPos * trackOffset) - gap;
-		
-		int StationWidth = 2 *(stationGraphicHorizontalPos * blockOffset -  gap);
-		int StationHeight = 2 * (stationGraphicVerticalPos * trackOffset + gap);
-		
-		g2d.setColor(Color.DARK_GRAY.darker().darker());
-		g2d.fillRoundRect(StationXPos, StationYPos, StationWidth, StationHeight, 20 , 20);
-		
+	
+	public int getMapSelected() {
+		return mapSelected;
 	}
-	
-	
-	//draw method which will draw the tracks , signals , platform from the provided data 
-	//into the paint class for the canvas [This is cap is imp fr]
-	
-	public void draw(Graphics2D g2d) 
-	{
-		//debug
-//		positionGrid(g2d);
-		
-		drawStation(g2d);
-		
-		
-		Controller.drawTracks(xCENTER , yCENTER , WIDTH , HEIGHT ,  trackOffset , blockOffset ,  g2d);
-		Controller.drawSignals(g2d , blockOffset);
-		
-		
-		Controller.drawTrain(g2d);
+
+
+	public void setMapSelected(int mapSelected) {
+		this.mapSelected = mapSelected;
 	}
-	
+
+
+	public int getTrafficSelected() {
+		return trafficSelected;
+	}
+
+
+	public void setTrafficSelected(int trafficSelected) {
+		this.trafficSelected = trafficSelected;
+	}
 
 }
