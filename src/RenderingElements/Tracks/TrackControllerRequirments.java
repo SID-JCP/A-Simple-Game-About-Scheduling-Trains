@@ -41,4 +41,6 @@ public interface TrackControllerRequirments {
 	
 	void createStation();
 	
+	void setGrid();
+	
 }

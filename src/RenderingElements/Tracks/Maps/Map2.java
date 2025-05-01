@@ -218,4 +218,11 @@ public class Map2 implements TrackControllerRequirments{
 		
 	}
 
+	@Override
+	public void setGrid() {
+		
+		Simulator.MAX_HORIZONTAL_ELM = 16;
+		
+	}
+
 }

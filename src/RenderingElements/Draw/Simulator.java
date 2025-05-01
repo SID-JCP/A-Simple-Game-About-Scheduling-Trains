@@ -31,9 +31,11 @@ public class Simulator {
 	TrafficContainer traffic = new TrafficContainer();
 	
 //	|------------IMPORTANT DATA------------------|
-	private int mapSelected = WindowManager.mapId;
-	private int trafficSelected = WindowManager.trafficId;
+//	private int mapSelected = WindowManager.mapId;
+//	private int trafficSelected = WindowManager.trafficId;
 	
+	private int mapSelected = 4;
+	private int trafficSelected = 3;
 	
 	
 	private int WIDTH = 0;
@@ -76,7 +78,7 @@ public class Simulator {
 		xCENTER = (int)WIDTH/2;
 		yCENTER = (int)HEIGHT/2;
 		
-		blockOffset = (int)WIDTH/MAX_HORIZONTAL_ELM;
+		blockOffset = (int)WIDTH/(MAX_HORIZONTAL_ELM + 1);
 		
 		if(!trackElementsCompiled) 
 		{
@@ -120,6 +122,7 @@ public class Simulator {
 					map4.addListToController();
 					map4.initializeInterlocking();
 					map4.createStation();
+					map4.setGrid();
 					
 					break;
 				case 5: 
@@ -170,7 +173,7 @@ public class Simulator {
 	public void draw(Graphics2D g2d) 
 	{
 		
-//		positionGrid(g2d);
+		positionGrid(g2d);
 		
 		drawStation(g2d);
 		
@@ -186,9 +189,9 @@ public class Simulator {
 	private void positionGrid(Graphics2D g2d) 
 	{
 		
-		blockOffset = (int)WIDTH/MAX_HORIZONTAL_ELM;
-		int hGap = (int)WIDTH/MAX_HORIZONTAL_ELM;
-		int xPos = 0;
+		
+		double hGap = WIDTH/(MAX_HORIZONTAL_ELM + 1);
+		double xPos = hGap;
 		
 		
 		
@@ -204,7 +207,7 @@ public class Simulator {
 		g2d.setColor(Color.green);
 		for(int j = 0 ; j < MAX_HORIZONTAL_ELM; j++) 
 		{
-			g2d.drawLine(xPos , 0 , xPos, HEIGHT);
+			g2d.drawLine((int)xPos , 0 , (int)xPos, HEIGHT);
 			xPos += hGap;
 		}
 

@@ -140,10 +140,7 @@ public class Map3 implements TrackControllerRequirments{
 	Signal mainDownR_7 = new Signal(signalType.BLOCK , true ,mainDown1 , mainDownR_6 , -3 , -1 , -1);
 	Signal mainDownR_8 = new Signal(signalType.BLOCK , true , mainDown1 , mainDownR_7 , -5 , -1 , -1);
 	
-	public void setGrid() 
-	{
-		Simulator.MAX_HORIZONTAL_ELM = 22;
-	}
+
 
 	@Override
 	public List<TrackSection> getSections() {
@@ -314,6 +311,13 @@ public class Map3 implements TrackControllerRequirments{
 		
 		Simulator.stationGraphicVerticalPos = 1;
 		Simulator.stationGraphicHorizontalPos = 2;
+		
+	}
+
+	@Override
+	public void setGrid() {
+		
+		Simulator.MAX_HORIZONTAL_ELM = 22;
 		
 	}
 	

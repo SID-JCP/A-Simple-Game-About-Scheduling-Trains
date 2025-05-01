@@ -133,12 +133,8 @@ public class SelectionWindow {
 	    JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBackground(Color.black);
-        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-
-        // Add slider and button with spacing
-        panel.add(actionButton);
-        panel.add(slider);
-        panel.add(Box.createRigidArea(new Dimension(0, 10))); // vertical space
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));        
+        panel.add(Box.createRigidArea(new Dimension(0, 30))); // vertical space
         
 	    
 
@@ -146,6 +142,7 @@ public class SelectionWindow {
 	    
 	    panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 	    panel.add(slider, BorderLayout.CENTER);
+	    panel.add(actionButton);
 	    panel.setBackground(Color.black);
 
 	    trafficSelectorWindow.add(panel);

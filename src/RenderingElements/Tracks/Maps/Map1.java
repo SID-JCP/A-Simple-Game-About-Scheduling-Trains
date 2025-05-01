@@ -174,4 +174,11 @@ public class Map1 implements TrackControllerRequirments{
 		Simulator.stationGraphicVerticalPos = 1;
 	}
 
+	@Override
+	public void setGrid() {
+	
+		Simulator.MAX_HORIZONTAL_ELM = 16;
+		
+	}
+
 }

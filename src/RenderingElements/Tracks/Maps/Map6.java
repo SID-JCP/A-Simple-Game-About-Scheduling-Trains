@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import RenderingElements.Controller.SimulationController;
+import RenderingElements.Draw.Simulator;
 import RenderingElements.Signal.Signal;
 import RenderingElements.Signal.Signal.signalType;
 import RenderingElements.Tracks.TrackControllerRequirments;
@@ -203,6 +204,14 @@ public class Map6 implements TrackControllerRequirments{
 	@Override
 	public void createStation() {
 		
+		
+	}
+
+
+	@Override
+	public void setGrid() {
+		
+		Simulator.MAX_HORIZONTAL_ELM = 16;
 		
 	}
 

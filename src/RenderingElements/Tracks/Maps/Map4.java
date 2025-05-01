@@ -15,7 +15,9 @@ import RenderingElements.Tracks.TrackSection.trackType;
 public class Map4 implements TrackControllerRequirments{
 	
 	
-	
+	/*
+	 * ESSENTIALS
+	 */
 	private List<TrackSection> listOfTrackSections = new ArrayList<>();
 	private List<Signal> listOfSignals = new ArrayList<>();
 		
@@ -26,28 +28,37 @@ public class Map4 implements TrackControllerRequirments{
 	private  List<Signal> upLineStartSignals = new ArrayList<>();
 	private  List<Signal> downLineStartSignals = new ArrayList<>();
 	
-	TrackSection mainUp1 = new TrackSection(trackType.UP , 1 , -1);
+//---------------------------------------------------------------------------------------------------
 	
-	TrackSection mainUp2 = new TrackSection(trackType.UP , 2 , -1);
+	TrackSection freightUp1 = new TrackSection(trackType.UP , 4 , -1);
+	
+	TrackSection mainUp1 = new TrackSection(trackType.UP , 1 , -1);
+	TrackSection loopUp1 = new TrackSection(trackType.UP , 2 , 6);
+	TrackSection loopUp2 = new TrackSection(trackType.UP , 3 , 3);
+	
 	
 	TrackSection mainDown1 = new TrackSection(trackType.DOWN , 1 , -1);
 
 	
 	
 	//left and right switches 
-	TrackSection switchMainUp_MainDown_L = new TrackSection(trackType.UP_END , mainUp1 , mainDown1 ,  1);	
+	TrackSection switchMainUp_MainDown_L = new TrackSection(trackType.UP_END , mainUp1 , mainDown1 ,  2);	
 	
-	TrackSection switchMainDown_MainUp_L = new TrackSection(trackType.DOWN_END , mainDown1 ,  mainUp1 , 3);
+	TrackSection switchMainDown_MainUp_L = new TrackSection(trackType.DOWN_END , mainDown1 ,  mainUp1 , 4);
 	
-	TrackSection switchMainUp_MainDown_R = new TrackSection(trackType.UP_END , mainUp1 , mainDown1 ,  12);
+	TrackSection switchMainUp_MainDown_R = new TrackSection(trackType.UP_END , mainUp1 , mainDown1 ,  14);
 	
-	TrackSection switchMainDown_MainUp_R = new TrackSection(trackType.DOWN_END , mainDown1 ,  mainUp1 , 14);
+	TrackSection switchMainDown_MainUp_R = new TrackSection(trackType.DOWN_END , mainDown1 ,  mainUp1 , 16);
+	
+	//loop 1 switch start
+	TrackSection switchMainUp1_LoopUp1 = new TrackSection(trackType.UP_START , mainUp1 , loopUp1 ,  7);	
+	
+	//loop 2 switch start
+	TrackSection switchLoopUp1_LoopUp2 = new TrackSection(trackType.UP_START , loopUp1 , loopUp2 ,  9);	
 	
 	
-	//|-------------------------------------------Signals---------------------------------------------------------------
 	
-	
-	//left switches
+//|||-------------------------------------Main Line Signals---------------------------------------------------------|||
 	Signal signal_mainUp_mainDown_U_L = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_L , 1 , 1 , 0);
 	Signal signal_mainUp_mainDown_U_R = new Signal(Signal.signalType.HOME , switchMainUp_MainDown_L , -1 , 1 , 0);
 	
@@ -81,36 +92,54 @@ public class Map4 implements TrackControllerRequirments{
 	Signal Fin_signal_mainDown_mainUp_D_L = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_R , -1 , -1 , 0);
 	//|---------------DOWN LINE START SIGNAL-------------------------|
 	Signal Fin_signal_mainDown_mainUp_D_R = new Signal(Signal.signalType.HOME , switchMainDown_MainUp_R , 1 , -1 , 0);
-		
+	
+
+//|||-------------------------------------Loop Line Signals---------------------------------------------------------|||	
+	
+	Signal signal_mainUp1_loopUp1_U_L = new Signal(Signal.signalType.HOME , switchMainUp1_LoopUp1 , 1 , 1 , 0);
+	Signal signal_mainUp1_loopUp1_U_R = new Signal(Signal.signalType.HOME , switchMainUp1_LoopUp1 , -1 , 1 , 0);
+	
+	
+	Signal signal_mainUp1_loopUp1_D_R = new Signal(Signal.signalType.HOME , switchMainUp1_LoopUp1 , -1 , -1 , 1);
+	Signal signal_mainUp1_loopUp1_D_L = new Signal(Signal.signalType.HOME , switchMainUp1_LoopUp1 , 1 , -1 , 1);
+	
+	
+	
+	Signal signal_loopUp1_loopUp2_U_L = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2 , 1 , 1 , 0);
+	Signal signal_loopUp1_loopUp2_U_R = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2 , -1 , 1 , 0);
+	
+	Signal signal_loopUp1_loopUp2_D_R = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2 , -1 , -1 , 1);
+	Signal signal_loopUp1_loopUp2_D_L = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2 , 1 , -1 , 1);
+
 	
 	//-------------------------------------------goods line block signals-------------------------------------------------------
-	Signal mainUP_2_1 = new Signal(signalType.BLOCK , mainUp2 , null , 1 , 1 , -1);
-	Signal mainUP_2_2 = new Signal(signalType.BLOCK , mainUp2 , mainUP_2_1 , 3 , 1 , -1);
-	Signal mainUP_2_3 = new Signal(signalType.BLOCK , mainUp2 , mainUP_2_2 , 5 , 1 , -1);
-	Signal mainUP_2_4 = new Signal(signalType.BLOCK , mainUp2 , mainUP_2_3 , 7 , 1 , -1);
-	Signal mainUP_2_5 = new Signal(signalType.BLOCK , mainUp2 , mainUP_2_4 , 9 , 1 , -1);
-	Signal mainUP_2_6 = new Signal(signalType.BLOCK , mainUp2 , mainUP_2_5 , 11 , 1 , -1);
-	Signal mainUP_2_7 = new Signal(signalType.BLOCK , mainUp2 , mainUP_2_6 , 13 , 1 , -1);
-	Signal mainUP_2_8 = new Signal(signalType.BLOCK , mainUp2 , mainUP_2_7 , 15 , 1 , -1);
+	Signal mainUP_2_1 = new Signal(signalType.BLOCK , freightUp1 , null , 1 , 1 , 1);
+	Signal mainUP_2_2 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_1 , 3 , 1 , 1);
+	Signal mainUP_2_3 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_2 , 5 , 1 , 1);
+	Signal mainUP_2_4 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_3 , 7 , 1 , 1);
+	Signal mainUP_2_5 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_4 , 9 , 1 , 1);
+	Signal mainUP_2_6 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_5 , 11 , 1 , 1);
+	Signal mainUP_2_7 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_6 , 13 , 1 , 1);
+	Signal mainUP_2_8 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_7 , 15 , 1 , 1);
 	//------up beyond signals-------
-	Signal mainUP_2_9 = new Signal(signalType.BLOCK , true , mainUp2 , mainUP_2_8 , 17 , 1 , -1);
-	Signal mainUP_2_10 = new Signal(signalType.BLOCK , true , mainUp2 , mainUP_2_9 , 19 , 1 , -1);
-	Signal mainUP_2_11 = new Signal(signalType.BLOCK , true , mainUp2 , mainUP_2_10 , 21 , 1 , -1);
+	Signal mainUP_2_9 = new Signal(signalType.BLOCK , true , freightUp1 , mainUP_2_8 , 17 , 1 , 1);
+	Signal mainUP_2_10 = new Signal(signalType.BLOCK , true , freightUp1 , mainUP_2_9 , 19 , 1 , 1);
+	Signal mainUP_2_11 = new Signal(signalType.BLOCK , true , freightUp1 , mainUP_2_10 , 21 , 1 , 1);
 	
 	
 	
-	Signal mainUPR_2_1 = new Signal(signalType.BLOCK , mainUp2 , null , 15 , -1 , -1);
-	Signal mainUPR_2_2 = new Signal(signalType.BLOCK , mainUp2 , mainUPR_2_1 , 13 , -1 , -1);
-	Signal mainUPR_2_3 = new Signal(signalType.BLOCK , mainUp2 , mainUPR_2_2 , 11 , -1 , -1);
-	Signal mainUPR_2_4 = new Signal(signalType.BLOCK , mainUp2 , mainUPR_2_3 , 9 , -1 , -1);
-	Signal mainUPR_2_5 = new Signal(signalType.BLOCK , mainUp2 , mainUPR_2_4 , 7 , -1 , -1);
-	Signal mainUPR_2_6 = new Signal(signalType.BLOCK , mainUp2 , mainUPR_2_5 , 5 , -1 , -1);
-	Signal mainUPR_2_7 = new Signal(signalType.BLOCK , mainUp2 , mainUPR_2_6 , 3 , -1 , -1);
-	Signal mainUPR_2_8 = new Signal(signalType.BLOCK , mainUp2 , mainUPR_2_7 , 1 , -1 , -1);
+	Signal mainUPR_2_1 = new Signal(signalType.BLOCK , freightUp1 , null , 15 , -1 , 1);
+	Signal mainUPR_2_2 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_1 , 13 , -1 , 1);
+	Signal mainUPR_2_3 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_2 , 11 , -1 , 1);
+	Signal mainUPR_2_4 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_3 , 9 , -1 , 1);
+	Signal mainUPR_2_5 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_4 , 7 , -1 , 1);
+	Signal mainUPR_2_6 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_5 , 5 , -1 , 1);
+	Signal mainUPR_2_7 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_6 , 3 , -1 , 1);
+	Signal mainUPR_2_8 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_7 , 1 , -1 , 1);
 	//-----up reverse beyond signals-----
-	Signal mainUPR_2_9 = new Signal(signalType.BLOCK , mainUp2 , mainUPR_2_8 , -1 , -1 , -1);
-	Signal mainUPR_2_10 = new Signal(signalType.BLOCK , mainUp2 , mainUPR_2_9 , -3 , -1 , -1);
-	Signal mainUPR_2_11 = new Signal(signalType.BLOCK , mainUp2 , mainUPR_2_10 , -5 , -1 , -1);
+	Signal mainUPR_2_9 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_8 , -1 , -1 , 1);
+	Signal mainUPR_2_10 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_9 , -3 , -1 , 1);
+	Signal mainUPR_2_11 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_10 , -5 , -1 , 1);
 	
 	
 	@Override
@@ -118,9 +147,12 @@ public class Map4 implements TrackControllerRequirments{
 	
 		Collections.addAll(listOfTrackSections , 
 				
-				
+				freightUp1,
 				mainUp1,
-				mainUp2,
+				loopUp1,
+				loopUp2,
+				
+				
 				mainDown1,
 			
 				
@@ -128,7 +160,10 @@ public class Map4 implements TrackControllerRequirments{
 				switchMainDown_MainUp_L,
 				
 				switchMainUp_MainDown_R,
-				switchMainDown_MainUp_R
+				switchMainDown_MainUp_R,
+				
+				switchMainUp1_LoopUp1,
+				switchLoopUp1_LoopUp2
 				
 				);
 		
@@ -165,6 +200,16 @@ public class Map4 implements TrackControllerRequirments{
 				Fin_signal_mainDown_mainUp_U_R,
 				Fin_signal_mainDown_mainUp_D_L,
 				Fin_signal_mainDown_mainUp_D_R,
+				
+				signal_mainUp1_loopUp1_U_L,
+				signal_mainUp1_loopUp1_U_R,
+				signal_mainUp1_loopUp1_D_L,
+				signal_mainUp1_loopUp1_D_R,
+				
+				signal_loopUp1_loopUp2_U_L,
+				signal_loopUp1_loopUp2_U_R,
+				signal_loopUp1_loopUp2_D_L,
+				signal_loopUp1_loopUp2_D_R,
 				
 				mainUP_2_1,
 				mainUP_2_2,
@@ -205,7 +250,7 @@ public class Map4 implements TrackControllerRequirments{
 		Collections.addAll(deployMainUpLine, 
 				
 				mainUp1,
-				mainUp2);
+				freightUp1);
 		
 		Collections.addAll(deployMainDownLine, 
 				
@@ -264,6 +309,17 @@ public class Map4 implements TrackControllerRequirments{
 				Fin_signal_mainDown_mainUp_D_L, 
 				Fin_signal_mainDown_mainUp_D_R);
 		
+		switchMainUp1_LoopUp1.setSignals(
+				signal_mainUp1_loopUp1_U_L, 
+				signal_mainUp1_loopUp1_U_R, 
+				signal_mainUp1_loopUp1_D_L, 
+				signal_mainUp1_loopUp1_D_R);
+		
+		switchLoopUp1_LoopUp2.setSignals(
+				signal_loopUp1_loopUp2_U_L, 
+				signal_loopUp1_loopUp2_U_R, 
+				signal_loopUp1_loopUp2_D_L, 
+				signal_loopUp1_loopUp2_D_R);
 	}
 
 	@Override
@@ -271,6 +327,14 @@ public class Map4 implements TrackControllerRequirments{
 		
 		Simulator.stationGraphicVerticalPos = 1;
 		Simulator.stationGraphicHorizontalPos = 2;
+		
+	}
+
+	@Override
+	public void setGrid() {
+		
+		Simulator.MAX_HORIZONTAL_ELM = 22;
+		
 		
 	}
 
