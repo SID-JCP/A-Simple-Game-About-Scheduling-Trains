@@ -9,6 +9,7 @@ import RenderingElements.Tracks.Maps.Map2;
 import RenderingElements.Tracks.Maps.Map3;
 import RenderingElements.Tracks.Maps.Map4;
 import RenderingElements.Tracks.Maps.Map6;
+import RenderingElements.Tracks.Maps.Map7;
 import RenderingElements.Tracks.Maps.Map5;
 import RenderingElements.Train.TrafficContainer;
 import Window.WindowManager;
@@ -22,6 +23,8 @@ public class Simulator {
 	Map3 map3 = new Map3();
 	Map4 map4 = new Map4();
 	Map5 map5 = new Map5();
+	Map6 map6 = new Map6();
+	Map7 newDelhi = new Map7();
 	
 	
 	
@@ -34,7 +37,7 @@ public class Simulator {
 //	private int mapSelected = WindowManager.mapId;
 //	private int trafficSelected = WindowManager.trafficId;
 	
-	private int mapSelected = 4;
+	private int mapSelected = 7;
 	private int trafficSelected = 3;
 	
 	
@@ -136,6 +139,23 @@ public class Simulator {
 
 					break;
 					
+				case 6:
+					
+					map6.addListToController();
+					map6.initializeInterlocking();
+					map6.createStation();
+					
+					break;
+					
+					
+				case 7:
+					
+					newDelhi.setGrid();
+					newDelhi.addListToController();
+					newDelhi.initializeInterlocking();
+					newDelhi.createStation();
+					
+					break;
 			}
 			
 			traffic.addTrafficListToController(trafficSelected);
@@ -176,7 +196,7 @@ public class Simulator {
 	{
 		
 		//graws green lines denoting each section  
-//		positionGrid(g2d);
+		positionGrid(g2d);
 		
 		drawStation(g2d);
 		
