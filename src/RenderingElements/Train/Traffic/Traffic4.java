@@ -16,7 +16,7 @@ public class Traffic4{
 					new Train(0 ,1 , 10 , false),
 					
 					//train 2 , 8:05 am
-					new Train(1 ,-1 , 300 , false),
+					new Train(1 ,-1 , 10 , false),
 					
 					//train 3 , 8:30 am 
 					new Train(1 ,-1 , 1800 , false),

@@ -75,10 +75,12 @@ public class Simulator {
 		this.WIDTH = WIDTH;
 		this.HEIGHT = HEIGHT;
 		
-		xCENTER = (int)WIDTH/2;
+		blockOffset = (int)WIDTH/(MAX_HORIZONTAL_ELM + 1);
+		
+		xCENTER = blockOffset * (MAX_HORIZONTAL_ELM/2 + 1);
 		yCENTER = (int)HEIGHT/2;
 		
-		blockOffset = (int)WIDTH/(MAX_HORIZONTAL_ELM + 1);
+		
 		
 		if(!trackElementsCompiled) 
 		{
@@ -173,7 +175,8 @@ public class Simulator {
 	public void draw(Graphics2D g2d) 
 	{
 		
-		positionGrid(g2d);
+		//graws green lines denoting each section  
+//		positionGrid(g2d);
 		
 		drawStation(g2d);
 		
@@ -196,7 +199,7 @@ public class Simulator {
 		
 		
 		int yCenter = (int)HEIGHT/2;
-		int xCenter = (int)WIDTH/2;
+		int xCenter = (int)hGap * (MAX_HORIZONTAL_ELM/2);
 		
 		
 		//Center Lines 
