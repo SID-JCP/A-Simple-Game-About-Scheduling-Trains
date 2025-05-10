@@ -251,7 +251,7 @@ public class SimulationController {
 				{
 					
 					
-					if(trackSection.getS1().getTrackLength() == -1 && trackSection.getS2().getTrackLength() == -1) 
+					if(trackSection.getS1().getTrackLength() == -1 && trackSection.getS2().getTrackLength() == -1 || trackSection.loopToLoop) 
 					{
 						
 						trackSection.setX1((int)(trackSection.getStartBlockNo() * lengthOffset));
@@ -281,7 +281,7 @@ public class SimulationController {
 				
 				if(trackSection.getTrackType() == TrackSection.trackType.UP_END) 
 				{
-					if(trackSection.getS1().getTrackLength() == -1 && trackSection.getS2().getTrackLength() == -1) 
+					if(trackSection.getS1().getTrackLength() == -1 && trackSection.getS2().getTrackLength() == -1 || trackSection.loopToLoop) 
 					{
 						trackSection.setX1((int)(trackSection.getStartBlockNo() * lengthOffset));
 						trackSection.setY1(  trackSection.getS1().getY1() );
@@ -309,7 +309,7 @@ public class SimulationController {
 				
 				if(trackSection.getTrackType() == TrackSection.trackType.DOWN_START) 
 				{
-					if(trackSection.getS1().getTrackLength() == -1 && trackSection.getS2().getTrackLength() == -1) 
+					if(trackSection.getS1().getTrackLength() == -1 && trackSection.getS2().getTrackLength() == -1 || trackSection.loopToLoop) 
 					{
 						
 						trackSection.setX1((int)(trackSection.getStartBlockNo() * lengthOffset));
@@ -339,7 +339,7 @@ public class SimulationController {
 					
 					
 					
-					if(trackSection.getS1().getTrackLength() == -1 && trackSection.getS2().getTrackLength() == -1) 
+					if(trackSection.getS1().getTrackLength() == -1 && trackSection.getS2().getTrackLength() == -1 || trackSection.loopToLoop) 
 					{
 						
 						trackSection.setX1((int)(trackSection.getStartBlockNo() * lengthOffset));

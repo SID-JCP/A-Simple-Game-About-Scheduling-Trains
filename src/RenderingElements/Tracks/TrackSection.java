@@ -20,6 +20,10 @@ public class TrackSection {
 	 //width of track of switch part 
 	public static int switchTrackWidth = 2;
 	
+	
+	//if switch is from a loop to loop
+	public boolean loopToLoop = false;
+	
 	public static enum trackType
 	{
 		///tracks above center of canvas going from left to right 
@@ -131,6 +135,18 @@ public class TrackSection {
 		this.s1 = s1;
 		this.s2 = s2;
 		this.startBlockNo = startBlockNo;
+		
+		
+	}
+	
+	//For track section of a switch going from a loop to another loop line 
+	public TrackSection(trackType type , TrackSection s1 , TrackSection s2 , int startBlockNo , boolean loopToLoop) 
+	{
+		this.track = type;
+		this.s1 = s1;
+		this.s2 = s2;
+		this.startBlockNo = startBlockNo;
+		this.loopToLoop = loopToLoop;
 		
 	}
 	

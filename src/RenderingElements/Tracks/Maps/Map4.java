@@ -187,27 +187,27 @@ public class Map4 implements TrackControllerRequirments{
 	
 	//-------------------------------------------goods line block signals-------------------------------------------------------
 	Signal mainUP_2_1 = new Signal(signalType.BLOCK , freightUp1 , null , 1 , 1 , 1);
-	Signal mainUP_2_2 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_1 , 3 , 1 , 1);
-	Signal mainUP_2_3 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_2 , 5 , 1 , 1);
-	Signal mainUP_2_4 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_3 , 7 , 1 , 1);
-	Signal mainUP_2_5 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_4 , 9 , 1 , 1);
-	Signal mainUP_2_6 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_5 , 11 , 1 , 1);
-	Signal mainUP_2_7 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_6 , 13 , 1 , 1);
-	Signal mainUP_2_8 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_7 , 15 , 1 , 1);
+	Signal mainUP_2_2 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_1 , 4 , 1 , 1);
+	Signal mainUP_2_3 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_2 , 7 , 1 , 1);
+	Signal mainUP_2_4 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_3 , 10 , 1 , 1);
+	Signal mainUP_2_5 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_4 , 13 , 1 , 1);
+	Signal mainUP_2_6 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_5 , 16 , 1 , 1);
+	Signal mainUP_2_7 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_6 , 19 , 1 , 1);
+	Signal mainUP_2_8 = new Signal(signalType.BLOCK , freightUp1 , mainUP_2_7 , 22 , 1 , 1);
 	//------up beyond signals-------
-	Signal mainUP_2_9 = new Signal(signalType.BLOCK , true , freightUp1 , mainUP_2_8 , 17 , 1 , 1);
-	Signal mainUP_2_10 = new Signal(signalType.BLOCK , true , freightUp1 , mainUP_2_9 , 19 , 1 , 1);
-	Signal mainUP_2_11 = new Signal(signalType.BLOCK , true , freightUp1 , mainUP_2_10 , 21 , 1 , 1);
+	Signal mainUP_2_9 = new Signal(signalType.BLOCK , true , freightUp1 , mainUP_2_8 , 24 , 1 , 1);
+	Signal mainUP_2_10 = new Signal(signalType.BLOCK , true , freightUp1 , mainUP_2_9 , 26 , 1 , 1);
+	Signal mainUP_2_11 = new Signal(signalType.BLOCK , true , freightUp1 , mainUP_2_10 , 28 , 1 , 1);
 	
 	
 	
-	Signal mainUPR_2_1 = new Signal(signalType.BLOCK , freightUp1 , null , 15 , -1 , 1);
-	Signal mainUPR_2_2 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_1 , 13 , -1 , 1);
-	Signal mainUPR_2_3 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_2 , 11 , -1 , 1);
-	Signal mainUPR_2_4 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_3 , 9 , -1 , 1);
-	Signal mainUPR_2_5 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_4 , 7 , -1 , 1);
-	Signal mainUPR_2_6 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_5 , 5 , -1 , 1);
-	Signal mainUPR_2_7 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_6 , 3 , -1 , 1);
+	Signal mainUPR_2_1 = new Signal(signalType.BLOCK , freightUp1 , null , 22 , -1 , 1);
+	Signal mainUPR_2_2 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_1 , 19 , -1 , 1);
+	Signal mainUPR_2_3 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_2 , 16 , -1 , 1);
+	Signal mainUPR_2_4 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_3 , 13 , -1 , 1);
+	Signal mainUPR_2_5 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_4 , 10 , -1 , 1);
+	Signal mainUPR_2_6 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_5 , 7 , -1 , 1);
+	Signal mainUPR_2_7 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_6 , 4 , -1 , 1);
 	Signal mainUPR_2_8 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_7 , 1 , -1 , 1);
 	//-----up reverse beyond signals-----
 	Signal mainUPR_2_9 = new Signal(signalType.BLOCK , freightUp1 , mainUPR_2_8 , -1 , -1 , 1);

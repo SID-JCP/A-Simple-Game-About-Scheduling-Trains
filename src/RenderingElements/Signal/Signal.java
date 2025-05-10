@@ -25,7 +25,7 @@ public class Signal {
 	
 	private int trackX,trackY; //coordinates of the point of the track where it is drawn 
 	
-	private int trackCircuitDistance = 50; //the gap between signal and train detect area on left or right
+	private int trackCircuitDistance = 30; //the gap between signal and train detect area on left or right
 	
 	private int detectBoxSize = 15; //size of the box for visual purpose
 	
