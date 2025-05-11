@@ -60,17 +60,21 @@ public class Map7 implements TrackControllerRequirments{
 	TrackSection switchMainUp1_MainUp2_L_2 = new TrackSection(trackType.UP_START , mainUp1 , mainUp2 ,  8);
 	
 	TrackSection switchMainUp1_MainDown1_L_1 = new TrackSection(trackType.UP_END , mainUp1 , mainDown1 ,  3);
-	TrackSection switchMainUp1_MainDown1_L_2 = new TrackSection(trackType.UP_END , mainUp1 , mainDown1 ,  10);
-	
-	TrackSection switchMainDown1_MainUp1_L_1 = new TrackSection(trackType.UP_START , mainDown1 , mainUp1 ,  18);
-	TrackSection switchMainDown1_MainUp1_L_2 = new TrackSection(trackType.UP_START , mainDown1 , mainUp1 ,  6);
-	
-	
-	//-------RIGHT SWITHCES 
-	
-	TrackSection switchMainUp2_MainUp1_R_1 = new TrackSection(trackType.UP_END , mainUp2 , mainUp1 ,  24);
-	
 		
+	TrackSection switchMainDown1_MainUp1_L_1 = new TrackSection(trackType.UP_START , mainDown1 , mainUp1 ,  6);
+	
+	
+	
+	//-------RIGHT SWITHCES------- 
+	TrackSection switchMainUp2_MainUp1_R_1 = new TrackSection(trackType.UP_END , mainUp2 , mainUp1 ,  24);
+	TrackSection switchMainUp2_MainUp1_R_2 = new TrackSection(trackType.UP_END , mainUp2 , mainUp1 ,  21);
+	
+	
+	TrackSection switchMainUp1_MainUp2_R_1 = new TrackSection(trackType.UP_START , mainUp1 , mainUp2 ,  28);
+	
+	TrackSection switchMainUp1_MainDown1_R_1 = new TrackSection(trackType.UP_END , mainUp1 , mainDown1 ,  24);
+	TrackSection switchMainDown1_MainUp1_R_1 = new TrackSection(trackType.UP_START , mainDown1 , mainUp1 ,  26);
+	
 //|||-------------------------------------UP LOOP LINES Switches---------------------------------------------------------|||
 	
 	
@@ -80,6 +84,13 @@ public class Map7 implements TrackControllerRequirments{
 	TrackSection switchLoopUp1_LoopUp2_1 = new TrackSection(trackType.UP_START , loopUp1 ,loopUp2 ,  10);
 	TrackSection switchLoopUp1_LoopUp2_2 = new TrackSection(trackType.UP_START , loopUp1 ,loopUp2 ,  12 , true);
 	
+	//-----RIGHT------
+	TrackSection switchLoopUp2_LoopUp1_R_1 = new TrackSection(trackType.UP_END , loopUp2 , loopUp1 ,  20);
+	TrackSection switchLoopUp2_LoopUp1_R_2 = new TrackSection(trackType.UP_END , loopUp2 , loopUp1 ,  17 , true);
+	
+	TrackSection switchLoopUp1_MainUp2_R_1 = new TrackSection(trackType.UP_END , loopUp1 , mainUp2 ,  23);
+	TrackSection switchLoopUp1_MainUp2_R_2 = new TrackSection(trackType.UP_END , loopUp1 , mainUp2 ,  19 , true);
+	
 	
 //|||-------------------------------------DOWN MAIN LINES Switches---------------------------------------------------------|||
 	
@@ -87,18 +98,23 @@ public class Map7 implements TrackControllerRequirments{
 	TrackSection switchMainDown1_MainDown2_L_2 = new TrackSection(trackType.DOWN_START , mainDown1 , mainDown2 ,  5);
 	
 	TrackSection switchMainDown2_MainDown1_L_1 = new TrackSection(trackType.DOWN_START , mainDown2 , mainDown1 ,  1);
-
+	
+	//----RIGHT SWITCHES-----
+	TrackSection switchMainDown1_MainDown2_R_1 = new TrackSection(trackType.DOWN_START , mainDown1 , mainDown2 ,  28);
+	TrackSection switchMainDown2_MainDown1_R_1 = new TrackSection(trackType.DOWN_END , mainDown2 , mainDown1 ,  22);
+	
 //|||-------------------------------------DOWN LOOP LINES Switches---------------------------------------------------------|||
 	
 	TrackSection switchMainDown2_LoopDown1_1 = new TrackSection(trackType.DOWN_START , mainDown2 , loopDown1 ,  9);
 	TrackSection switchLoopDown1_LoopDown2_1 = new TrackSection(trackType.DOWN_START , loopDown1 , loopDown2 ,  11 , true);
 	
+	//----RIGHT SWITCHES-----
+	TrackSection switchLoopDown2_LoopDown1_R_1 = new TrackSection(trackType.DOWN_END , loopDown2 , loopDown1 ,  19);
+	
+	TrackSection switchLoopDown1_MainDown2_R_1 = new TrackSection(trackType.DOWN_END , loopDown1 , mainDown2 ,  21);
 	
 	
-	
-	
-	
-//|||-------------------------------------LEFT MAIN LINE SIGNALS---------------------------------------------------------|||
+//|||-------------------------------------MAIN LINE SIGNALS---------------------------------------------------------|||
 	
 	
 	//Up-Up interaction
@@ -124,6 +140,15 @@ public class Map7 implements TrackControllerRequirments{
 	Signal signal_MainUp2_MainUp1_R_1_D_R = new Signal(Signal.signalType.HOME , switchMainUp2_MainUp1_R_1 , -1 , -1 , 1);
 	Signal signal_MainUp2_MainUp1_R_1_D_L = new Signal(Signal.signalType.HOME , switchMainUp2_MainUp1_R_1 , 1 , -1 , 1);
 	
+	Signal signal_MainUp2_MainUp1_R_2_U_L = new Signal(Signal.signalType.HOME , switchMainUp2_MainUp1_R_2 , 1 , 1 , 0);
+	Signal signal_MainUp2_MainUp1_R_2_U_R = new Signal(Signal.signalType.HOME , switchMainUp2_MainUp1_R_2 , -1 , 1 , 0);
+	Signal signal_MainUp2_MainUp1_R_2_D_R = new Signal(Signal.signalType.HOME , switchMainUp2_MainUp1_R_2 , -1 , -1 , 1);
+	Signal signal_MainUp2_MainUp1_R_2_D_L = new Signal(Signal.signalType.HOME , switchMainUp2_MainUp1_R_2 , 1 , -1 , 1);
+	
+	Signal signal_MainUp1_MainUp2_R_1_U_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_R_1 , 1 , -1 , 0);
+	Signal signal_MainUp1_MainUp2_R_1_U_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_R_1 , -1 , -1 , 0);
+	Signal signal_MainUp1_MainUp2_R_1_D_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_R_1 , -1 , 1 , 1);
+	Signal signal_MainUp1_MainUp2_R_1_D_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_R_1 , 1 , 1 , 1);
 	
 	//Up-Down interaction
 	Signal signal_MainUp1_MainDown1_L_1_U_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainDown1_L_1 , 1 , 1 , 0);
@@ -131,20 +156,28 @@ public class Map7 implements TrackControllerRequirments{
 	Signal signal_MainUp1_MainDown1_L_1_D_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainDown1_L_1 , -1 , -1 , 1);
 	Signal signal_MainUp1_MainDown1_L_1_D_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainDown1_L_1 , 1 , -1 , 1);
 	
-	Signal signal_MainUp1_MainDown1_L_2_U_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainDown1_L_2 , 1 , 1 , 0);
-	Signal signal_MainUp1_MainDown1_L_2_U_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainDown1_L_2 , -1 , 1 , 0);
-	Signal signal_MainUp1_MainDown1_L_2_D_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainDown1_L_2 , -1 , -1 , 1);
-	Signal signal_MainUp1_MainDown1_L_2_D_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainDown1_L_2 , 1 , -1 , 1);
 	
 	Signal signal_MainDown1_MainUp1_L_1_U_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_L_1 , 1 , -1 , 0);
 	Signal signal_MainDown1_MainUp1_L_1_U_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_L_1 , -1 , -1 , 0);
 	Signal signal_MainDown1_MainUp1_L_1_D_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_L_1 , -1 , 1 , 1);
 	Signal signal_MainDown1_MainUp1_L_1_D_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_L_1 , 1 , 1 , 1);
 	
-	Signal signal_MainDown1_MainUp1_L_2_U_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_L_2 , 1 , -1 , 0);
-	Signal signal_MainDown1_MainUp1_L_2_U_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_L_2 , -1 , -1 , 0);
-	Signal signal_MainDown1_MainUp1_L_2_D_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_L_2 , -1 , 1 , 1);
-	Signal signal_MainDown1_MainUp1_L_2_D_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_L_2 , 1 , 1 , 1);
+	Signal signal_MainDown1_MainUp1_R_2_U_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_R_1 , 1 , -1 , 0);
+	Signal signal_MainDown1_MainUp1_R_2_U_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_R_1 , -1 , -1 , 0);
+	Signal signal_MainDown1_MainUp1_R_2_D_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_R_1 , -1 , 1 , 1);
+	Signal signal_MainDown1_MainUp1_R_2_D_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_R_1 , 1 , 1 , 1);
+	
+	
+	//-----------RIGHT----------
+	Signal signal_MainUp1_MainDown1_R_1_U_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainDown1_R_1 , 1 , 1 , 0);
+	Signal signal_MainUp1_MainDown1_R_1_U_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainDown1_R_1 , -1 , 1 , 0);
+	Signal signal_MainUp1_MainDown1_R_1_D_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainDown1_R_1 , -1 , -1 , 1);
+	Signal signal_MainUp1_MainDown1_R_1_D_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainDown1_R_1 , 1 , -1 , 1);
+	
+	
+	
+	
+	
 	
 //|||-------------------------------------UP LOOP LINES Signals---------------------------------------------------------|||
 	
@@ -170,6 +203,30 @@ public class Map7 implements TrackControllerRequirments{
 	Signal signal_LoopUp1_LoopUp2_2_D_L = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2_2 , 1 , 1 , 1);
 
 	
+	//-----------------RIGHT SWITCHES----------------
+	Signal signal_LoopUp2_LoopUp1_R_1_U_L = new Signal(Signal.signalType.HOME , switchLoopUp2_LoopUp1_R_1 , 1 , 1 , 0);
+	Signal signal_LoopUp2_LoopUp1_R_1_U_R = new Signal(Signal.signalType.HOME , switchLoopUp2_LoopUp1_R_1 , -1 , 1 , 0);
+	Signal signal_LoopUp2_LoopUp1_R_1_D_R = new Signal(Signal.signalType.HOME , switchLoopUp2_LoopUp1_R_1 , -1 , -1 , 1);
+	Signal signal_LoopUp2_LoopUp1_R_1_D_L = new Signal(Signal.signalType.HOME , switchLoopUp2_LoopUp1_R_1 , 1 , -1 , 1);
+	
+	Signal signal_LoopUp2_LoopUp1_R_2_U_L = new Signal(Signal.signalType.HOME , switchLoopUp2_LoopUp1_R_2 , 1 , 1 , 0);
+	Signal signal_LoopUp2_LoopUp1_R_2_U_R = new Signal(Signal.signalType.HOME , switchLoopUp2_LoopUp1_R_2 , -1 , 1 , 0);
+	Signal signal_LoopUp2_LoopUp1_R_2_D_R = new Signal(Signal.signalType.HOME , switchLoopUp2_LoopUp1_R_2 , -1 , -1 , 1);
+	Signal signal_LoopUp2_LoopUp1_R_2_D_L = new Signal(Signal.signalType.HOME , switchLoopUp2_LoopUp1_R_2 , 1 , -1 , 1);
+	
+	Signal signal_LoopUp1_MainUp2_R_1_U_L = new Signal(Signal.signalType.HOME , switchLoopUp1_MainUp2_R_1 , 1 , 1 , 0);
+	Signal signal_LoopUp1_MainUp2_R_1_U_R = new Signal(Signal.signalType.HOME , switchLoopUp1_MainUp2_R_1 , -1 , 1 , 0);
+	Signal signal_LoopUp1_MainUp2_R_1_D_R = new Signal(Signal.signalType.HOME , switchLoopUp1_MainUp2_R_1 , -1 , -1 , 1);
+	Signal signal_LoopUp1_MainUp2_R_1_D_L = new Signal(Signal.signalType.HOME , switchLoopUp1_MainUp2_R_1 , 1 , -1 , 1);
+	
+	Signal signal_LoopUp1_MainUp2_R_2_U_L = new Signal(Signal.signalType.HOME , switchLoopUp1_MainUp2_R_2 , 1 , 1 , 0);
+	Signal signal_LoopUp1_MainUp2_R_2_U_R = new Signal(Signal.signalType.HOME , switchLoopUp1_MainUp2_R_2 , -1 , 1 , 0);
+	Signal signal_LoopUp1_MainUp2_R_2_D_R = new Signal(Signal.signalType.HOME , switchLoopUp1_MainUp2_R_2 , -1 , -1 , 1);
+	Signal signal_LoopUp1_MainUp2_R_2_D_L = new Signal(Signal.signalType.HOME , switchLoopUp1_MainUp2_R_2 , 1 , -1 , 1);
+	
+	
+	
+	
 	
 //|||-------------------------------------DOWN LOOP LINES Signals---------------------------------------------------------|||
 	
@@ -182,6 +239,11 @@ public class Map7 implements TrackControllerRequirments{
 	Signal signal_LoopDown1_LoopDown2_1_U_R = new Signal(Signal.signalType.HOME , switchLoopDown1_LoopDown2_1 , -1 , 1 , 0);	
 	Signal signal_LoopDown1_LoopDown2_1_D_R = new Signal(Signal.signalType.HOME , switchLoopDown1_LoopDown2_1 , -1 , -1 , 1);
 	Signal signal_LoopDown1_LoopDown2_1_D_L = new Signal(Signal.signalType.HOME , switchLoopDown1_LoopDown2_1 , 1 , -1 , 1);
+	
+	Signal signal_LoopDown2_LoopDown1_R_1_U_L = new Signal(Signal.signalType.HOME , switchLoopDown2_LoopDown1_R_1 , 1 , -1 , 0);
+	Signal signal_LoopDown2_LoopDown1_R_1_U_R = new Signal(Signal.signalType.HOME , switchLoopDown2_LoopDown1_R_1 , -1 , -1 , 0);	
+	Signal signal_LoopDown2_LoopDown1_R_1_D_R = new Signal(Signal.signalType.HOME , switchLoopDown2_LoopDown1_R_1 , -1 , 1 , 1);
+	Signal signal_LoopDown2_LoopDown1_R_1_D_L = new Signal(Signal.signalType.HOME , switchLoopDown2_LoopDown1_R_1 , 1 , 1 , 1);
 	
 
 //|||-------------------------------------DOWN MAIN LINES Signals---------------------------------------------------------|||
@@ -200,6 +262,22 @@ public class Map7 implements TrackControllerRequirments{
 	Signal signal_MainDown2_MainDown1_1_L_U_R = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_L_1 , -1 , -1 , 0);
 	Signal signal_MainDown2_MainDown1_1_L_D_R = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_L_1 , -1 , 1 , 1);
 	Signal signal_MainDown2_MainDown1_1_L_D_L = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_L_1 , 1 , 1 , 1);
+	
+	//----RIGHT----
+	Signal signal_MainDown1_MainDown2_1_R_U_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_R_1 , 1 , 1 , 0);
+	Signal signal_MainDown1_MainDown2_1_R_U_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_R_1 , -1 , 1 , 0);
+	Signal signal_MainDown1_MainDown2_1_R_D_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_R_1 , -1 , -1 , 1);
+	Signal signal_MainDown1_MainDown2_1_R_D_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_R_1 , 1 , -1 , 1);
+	
+	Signal signal_LoopDown1_MainDown2_1_R_U_L = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown2_R_1 , 1 , -1 , 0);
+	Signal signal_LoopDown1_MainDown2_1_R_U_R = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown2_R_1 , -1 , -1 , 0);
+	Signal signal_LoopDown1_MainDown2_1_R_D_R = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown2_R_1 , -1 , 1 , 1);
+	Signal signal_LoopDown1_MainDown2_1_R_D_L = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown2_R_1 , 1 , 1 , 1);
+	
+	Signal signal_MainDown2_MainDown1_1_R_U_L = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_R_1 , 1 , -1 , 0);
+	Signal signal_MainDown2_MainDown1_1_R_U_R = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_R_1 , -1 , -1 , 0);
+	Signal signal_MainDown2_MainDown1_1_R_D_R = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_R_1 , -1 , 1 , 1);
+	Signal signal_MainDown2_MainDown1_1_R_D_L = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_R_1 , 1 , 1 , 1);
 	
 	@Override
 	public List<TrackSection> getSections() {
@@ -223,9 +301,12 @@ public class Map7 implements TrackControllerRequirments{
 				//switches
 				//------------Between Up Main and Down Main-----------------
 				switchMainDown1_MainUp1_L_1,
-				switchMainDown1_MainUp1_L_2,
 				switchMainUp1_MainDown1_L_1,
-				switchMainUp1_MainDown1_L_2,
+				
+				
+				//---RIGHT---
+				switchMainUp1_MainDown1_R_1,
+				switchMainDown1_MainUp1_R_1,
 				
 				
 				
@@ -234,7 +315,10 @@ public class Map7 implements TrackControllerRequirments{
 				switchMainUp1_MainUp2_L_2,
 				switchMainUp2_MainUp1_L_1,
 				
+				//--RIGHT---
 				switchMainUp2_MainUp1_R_1,
+				switchMainUp2_MainUp1_R_2,
+				switchMainUp1_MainUp2_R_1,
 								
 				//-----------Between Up Main and Up Loop--------------
 				switchMainUp2_LoopUp1_1,
@@ -243,6 +327,13 @@ public class Map7 implements TrackControllerRequirments{
 				//-----------Between Up Loop Lines--------------------
 				switchLoopUp1_LoopUp2_1,
 				switchLoopUp1_LoopUp2_2,
+				switchLoopUp1_LoopUp2_2,
+				
+				//--RIGHT--
+				switchLoopUp2_LoopUp1_R_1,
+				switchLoopUp2_LoopUp1_R_2,
+				switchLoopUp1_MainUp2_R_1,
+				switchLoopUp1_MainUp2_R_2,
 				
 				
 				
@@ -251,13 +342,18 @@ public class Map7 implements TrackControllerRequirments{
 				switchMainDown1_MainDown2_L_2,
 				
 				switchMainDown2_MainDown1_L_1,
+				//---RIGHT---
+				switchMainDown1_MainDown2_R_1,
+				switchMainDown2_MainDown1_R_1,
 				
 				//----------Between Down Main and Down Loop-----------
 				switchMainDown2_LoopDown1_1,
+				switchLoopDown1_MainDown2_R_1,
 				
 				//----------Between Down Loop Lines 
-				switchLoopDown1_LoopDown2_1
-				
+				switchLoopDown1_LoopDown2_1,
+				//---RIGHT---
+				switchLoopDown2_LoopDown1_R_1
 				
 				
 				
@@ -279,7 +375,6 @@ public class Map7 implements TrackControllerRequirments{
 		Collections.addAll(listOfSignals , 
 				
 				mainUP_1_1,
-
 				mainDown_1_1,
 				
 				
@@ -309,30 +404,44 @@ public class Map7 implements TrackControllerRequirments{
 				signal_MainDown1_MainUp1_L_1_D_L,
 				signal_MainDown1_MainUp1_L_1_D_R,
 				
-				signal_MainDown1_MainUp1_L_2_U_L,
-				signal_MainDown1_MainUp1_L_2_U_R,
-				signal_MainDown1_MainUp1_L_2_D_L,
-				signal_MainDown1_MainUp1_L_2_D_R,
+				signal_MainDown1_MainUp1_R_2_U_L,
+				signal_MainDown1_MainUp1_R_2_U_R,
+				signal_MainDown1_MainUp1_R_2_D_L,
+				signal_MainDown1_MainUp1_R_2_D_R,
 				
 				signal_MainUp1_MainDown1_L_1_U_L, 
 				signal_MainUp1_MainDown1_L_1_U_R, 
 				signal_MainUp1_MainDown1_L_1_D_L, 
 				signal_MainUp1_MainDown1_L_1_D_R,
 				
-				signal_MainUp1_MainDown1_L_2_U_L, 
-				signal_MainUp1_MainDown1_L_2_U_R, 
-				signal_MainUp1_MainDown1_L_2_D_L, 
-				signal_MainUp1_MainDown1_L_2_D_R,
+				signal_MainUp1_MainDown1_R_1_U_L, 
+				signal_MainUp1_MainDown1_R_1_U_R, 
+				signal_MainUp1_MainDown1_R_1_D_L, 
+				signal_MainUp1_MainDown1_R_1_D_R,
+				
+				
 				
 				signal_MainUp2_MainUp1_L_1_U_L,
 				signal_MainUp2_MainUp1_L_1_U_R,
 				signal_MainUp2_MainUp1_L_1_D_R,
 				signal_MainUp2_MainUp1_L_1_D_L,
 				
-				signal_MainUp2_MainUp1_R_1_U_L, 
-				signal_MainUp2_MainUp1_R_1_U_R, 
-				signal_MainUp2_MainUp1_R_1_D_L, 
+				signal_MainUp2_MainUp1_R_1_U_L,
+				signal_MainUp2_MainUp1_R_1_U_R,
 				signal_MainUp2_MainUp1_R_1_D_R,
+				signal_MainUp2_MainUp1_R_1_D_L,
+				
+				signal_MainUp2_MainUp1_R_2_U_L, 
+				signal_MainUp2_MainUp1_R_2_U_R, 
+				signal_MainUp2_MainUp1_R_2_D_L, 
+				signal_MainUp2_MainUp1_R_2_D_R,
+				
+				signal_MainUp1_MainUp2_R_1_U_L, 
+				signal_MainUp1_MainUp2_R_1_U_R, 
+				signal_MainUp1_MainUp2_R_1_D_L, 
+				signal_MainUp1_MainUp2_R_1_D_R,
+				
+				
 				
 				signal_LoopUp1_LoopUp2_1_U_L, 
 				signal_LoopUp1_LoopUp2_1_U_R, 
@@ -344,6 +453,25 @@ public class Map7 implements TrackControllerRequirments{
 				signal_LoopUp1_LoopUp2_2_D_L, 
 				signal_LoopUp1_LoopUp2_2_D_R,
 				
+				signal_LoopUp2_LoopUp1_R_1_U_L,
+				signal_LoopUp2_LoopUp1_R_1_U_R,
+				signal_LoopUp2_LoopUp1_R_1_D_R,
+				signal_LoopUp2_LoopUp1_R_1_D_L,
+				
+				signal_LoopUp2_LoopUp1_R_2_U_L,
+				signal_LoopUp2_LoopUp1_R_2_U_R,
+				signal_LoopUp2_LoopUp1_R_2_D_R,
+				signal_LoopUp2_LoopUp1_R_2_D_L,
+				
+				signal_LoopUp1_MainUp2_R_1_U_L,
+				signal_LoopUp1_MainUp2_R_1_U_R,
+				signal_LoopUp1_MainUp2_R_1_D_R,
+				signal_LoopUp1_MainUp2_R_1_D_L,
+				
+				signal_LoopUp1_MainUp2_R_2_U_L,
+				signal_LoopUp1_MainUp2_R_2_U_R,
+				signal_LoopUp1_MainUp2_R_2_D_R,
+				signal_LoopUp1_MainUp2_R_2_D_L,
 				
 //---------------------------------------------------------DOWN------------------------------------------------------------
 				
@@ -370,8 +498,30 @@ public class Map7 implements TrackControllerRequirments{
 				signal_MainDown2_MainDown1_1_L_U_L,
 				signal_MainDown2_MainDown1_1_L_U_R,
 				signal_MainDown2_MainDown1_1_L_D_R,
-				signal_MainDown2_MainDown1_1_L_D_L
-
+				signal_MainDown2_MainDown1_1_L_D_L,
+				
+				signal_MainDown1_MainDown2_1_R_U_L,
+				signal_MainDown1_MainDown2_1_R_U_R,
+				signal_MainDown1_MainDown2_1_R_D_R,
+				signal_MainDown1_MainDown2_1_R_D_L,
+				
+				
+				
+				signal_LoopDown2_LoopDown1_R_1_U_L,
+				signal_LoopDown2_LoopDown1_R_1_U_R,	
+		 		signal_LoopDown2_LoopDown1_R_1_D_R,
+		 		signal_LoopDown2_LoopDown1_R_1_D_L,
+		 		
+		 		signal_LoopDown1_MainDown2_1_R_U_L,
+		 		signal_LoopDown1_MainDown2_1_R_U_R,
+				signal_LoopDown1_MainDown2_1_R_D_R,
+				signal_LoopDown1_MainDown2_1_R_D_L,
+		 		
+				signal_MainDown2_MainDown1_1_R_U_L,
+				signal_MainDown2_MainDown1_1_R_U_R,
+				signal_MainDown2_MainDown1_1_R_D_R,
+				signal_MainDown2_MainDown1_1_R_D_L
+				
 				);
 		
 		
@@ -405,11 +555,6 @@ public class Map7 implements TrackControllerRequirments{
 				signal_MainUp1_MainDown1_L_1_D_L, 
 				signal_MainUp1_MainDown1_L_1_D_R);
 		
-		switchMainUp1_MainDown1_L_2.setSignals(
-				signal_MainUp1_MainDown1_L_2_U_L, 
-				signal_MainUp1_MainDown1_L_2_U_R, 
-				signal_MainUp1_MainDown1_L_2_D_L, 
-				signal_MainUp1_MainDown1_L_2_D_R);
 		
 	
 		switchMainDown1_MainUp1_L_1.setSignals(
@@ -418,11 +563,11 @@ public class Map7 implements TrackControllerRequirments{
 				signal_MainDown1_MainUp1_L_1_D_L,
 				signal_MainDown1_MainUp1_L_1_D_R);
 		
-		switchMainDown1_MainUp1_L_2.setSignals(
-				signal_MainDown1_MainUp1_L_2_U_L,
-				signal_MainDown1_MainUp1_L_2_U_R,
-				signal_MainDown1_MainUp1_L_2_D_L,
-				signal_MainDown1_MainUp1_L_2_D_R);
+		switchMainDown1_MainUp1_R_1.setSignals(
+				signal_MainDown1_MainUp1_R_2_U_L,
+				signal_MainDown1_MainUp1_R_2_U_R,
+				signal_MainDown1_MainUp1_R_2_D_L,
+				signal_MainDown1_MainUp1_R_2_D_R);
 		
 		switchMainUp2_LoopUp1_1.setSignals(
 				signal_mainUp2_loopUp1_1_U_L, 
@@ -448,6 +593,21 @@ public class Map7 implements TrackControllerRequirments{
 				signal_LoopUp1_LoopUp2_2_D_L, 
 				signal_LoopUp1_LoopUp2_2_D_R);
 		
+		switchLoopUp2_LoopUp1_R_1.setSignals(
+				signal_LoopUp2_LoopUp1_R_1_U_L,
+				signal_LoopUp2_LoopUp1_R_1_U_R,
+				signal_LoopUp2_LoopUp1_R_1_D_R,
+				signal_LoopUp2_LoopUp1_R_1_D_L
+				);
+		
+		switchLoopUp2_LoopUp1_R_2.setSignals(
+				signal_LoopUp2_LoopUp1_R_2_U_L,
+				signal_LoopUp2_LoopUp1_R_2_U_R,
+				signal_LoopUp2_LoopUp1_R_2_D_R,
+				signal_LoopUp2_LoopUp1_R_2_D_L
+				);
+		
+		
 		switchMainUp2_MainUp1_L_1.setSignals(
 				signal_MainUp2_MainUp1_L_1_U_L, 
 				signal_MainUp2_MainUp1_L_1_U_R, 
@@ -459,6 +619,18 @@ public class Map7 implements TrackControllerRequirments{
 				signal_MainUp2_MainUp1_R_1_U_R, 
 				signal_MainUp2_MainUp1_R_1_D_L, 
 				signal_MainUp2_MainUp1_R_1_D_R);
+		
+		switchMainUp2_MainUp1_R_2.setSignals(
+				signal_MainUp2_MainUp1_R_2_U_L, 
+				signal_MainUp2_MainUp1_R_2_U_R, 
+				signal_MainUp2_MainUp1_R_2_D_L, 
+				signal_MainUp2_MainUp1_R_2_D_R);
+		
+		switchMainUp1_MainUp2_R_1.setSignals(
+				signal_MainUp1_MainUp2_R_1_U_L, 
+				signal_MainUp1_MainUp2_R_1_U_R, 
+				signal_MainUp1_MainUp2_R_1_D_L, 
+				signal_MainUp1_MainUp2_R_1_D_R);
 		
 		switchMainUp1_MainUp2_L_1.setSignals(
 				signal_MainUp1_MainUp2_L_1_U_L, 
@@ -472,6 +644,26 @@ public class Map7 implements TrackControllerRequirments{
 				signal_MainUp1_MainUp2_L_2_D_L, 
 				signal_MainUp1_MainUp2_L_2_D_R);
 		
+		switchLoopUp1_MainUp2_R_1.setSignals(
+				signal_LoopUp1_MainUp2_R_1_U_L,
+				signal_LoopUp1_MainUp2_R_1_U_R,
+				signal_LoopUp1_MainUp2_R_1_D_R,
+				signal_LoopUp1_MainUp2_R_1_D_L
+				);
+		switchLoopUp1_MainUp2_R_2.setSignals(
+				signal_LoopUp1_MainUp2_R_2_U_L,
+				signal_LoopUp1_MainUp2_R_2_U_R,
+				signal_LoopUp1_MainUp2_R_2_D_R,
+				signal_LoopUp1_MainUp2_R_2_D_L
+				);
+		
+		switchMainUp1_MainDown1_R_1.setSignals(
+				signal_MainUp1_MainDown1_R_1_U_L, 
+				signal_MainUp1_MainDown1_R_1_U_R, 
+				signal_MainUp1_MainDown1_R_1_D_L, 
+				signal_MainUp1_MainDown1_R_1_D_R
+				);
+		
 //---------------------------------------------------------DOWN------------------------------------------------------------
 		
 		switchMainDown1_MainDown2_L_1.setSignals(
@@ -479,6 +671,12 @@ public class Map7 implements TrackControllerRequirments{
 				signal_MainDown1_MainDown2_1_L_U_R,
 				signal_MainDown1_MainDown2_1_L_D_R,
 				signal_MainDown1_MainDown2_1_L_D_L);
+		
+		switchMainDown1_MainDown2_R_1.setSignals(
+				signal_MainDown1_MainDown2_1_R_U_L,
+				signal_MainDown1_MainDown2_1_R_U_R,
+				signal_MainDown1_MainDown2_1_R_D_R,
+				signal_MainDown1_MainDown2_1_R_D_L);
 		
 		switchMainDown1_MainDown2_L_2.setSignals(
 				signal_MainDown1_MainDown2_2_L_U_L,
@@ -504,6 +702,27 @@ public class Map7 implements TrackControllerRequirments{
 				signal_LoopDown1_LoopDown2_1_U_R,
 				signal_LoopDown1_LoopDown2_1_D_R,
 				signal_LoopDown1_LoopDown2_1_D_L);
+		
+		switchLoopDown2_LoopDown1_R_1.setSignals(
+				signal_LoopDown2_LoopDown1_R_1_U_L,
+				signal_LoopDown2_LoopDown1_R_1_U_R,	
+		 		signal_LoopDown2_LoopDown1_R_1_D_R,
+		 		signal_LoopDown2_LoopDown1_R_1_D_L
+				);
+		
+		switchLoopDown1_MainDown2_R_1.setSignals(
+				signal_LoopDown1_MainDown2_1_R_U_L,
+		 		signal_LoopDown1_MainDown2_1_R_U_R,
+				signal_LoopDown1_MainDown2_1_R_D_R,
+				signal_LoopDown1_MainDown2_1_R_D_L
+				);
+		
+		switchMainDown2_MainDown1_R_1.setSignals(
+				signal_MainDown2_MainDown1_1_R_U_L,
+				signal_MainDown2_MainDown1_1_R_U_R,
+				signal_MainDown2_MainDown1_1_R_D_R,
+				signal_MainDown2_MainDown1_1_R_D_L
+				);
 	}
 
 
@@ -560,10 +779,6 @@ public class Map7 implements TrackControllerRequirments{
 		Simulator.MAX_HORIZONTAL_ELM = 29;
 		
 	}
-
-	
-
-	
 
 	
 

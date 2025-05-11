@@ -196,7 +196,7 @@ public class Simulator {
 	{
 		
 		//graws green lines denoting each section  
-		positionGrid(g2d);
+//		positionGrid(g2d);
 		
 		drawStation(g2d);
 		
