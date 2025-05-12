@@ -71,6 +71,7 @@ public class TrackSection {
 	
 	
 	//---------------------ONLY FOR SWITCHES--------------------------
+	
 	//start and end straight tracks  , getting connected by the switch
 	private TrackSection s1;
 	private TrackSection s2;
@@ -87,7 +88,8 @@ public class TrackSection {
 	//center of end circle
 	private int Xe , Ye;
 	
-	private int switchRadius = 4;
+	//area where if train enters then its switch point 
+	private int switchRadius = 2;
 
 
     //---------------------------For clocking by clicking---------------------
@@ -152,33 +154,36 @@ public class TrackSection {
 	
 	
 	//check if train has entered the start of Up switch 
-	public boolean detectStartOfUpSwitch(int trainX , int trainY) 
+	public boolean detectStartUpSwitchForUpTrain(int trainX , int trainY) 
 	{
-		int distanceSquared = (trainX - x1) * (trainX - x1) + (trainY - y1) * (trainY - y1);
-        return distanceSquared <= switchRadius * switchRadius;
+		if(Math.abs(trainX - x1) < 2  && Math.abs(trainY - y1) < 2) {return true;}
 		
+		return false;
 	}
 	
 	//check if train has reached the end of Up switch 
-	public boolean detectEndOfUpSwitch(int trainX , int trainY) 
+	public boolean detectEndUpSwitchForUpTrain(int trainX , int trainY) 
 	{
-		int distanceSquared = (trainX - x2) * (trainX - x2) + (trainY - y2) * (trainY - y2);
-        return distanceSquared <= switchRadius * switchRadius;
+		if(Math.abs(trainX - x2) < 2 && Math.abs(trainY - y2) < 2) {return true;}
+		
+        return false;
 	}
 	
 	
 	//check if train has entered the start of DOWN switch 
 	public boolean detectStartOfDownSwitch(int trainX , int trainY) 
 	{
-		int distanceSquared = (trainX - x2) * (trainX - x2) + (trainY - y2) * (trainY - y2);
-        return distanceSquared <= switchRadius * switchRadius;
+		if(Math.abs(trainX - x2) < 2 && Math.abs(trainY - y2) < 2) {return true;}
+		
+        return false;
 		
 	}
 	
 	public boolean detectEndOfDownSwitch(int trainX , int trainY) 
 	{
-		int distanceSquared = (trainX - x1) * (trainX - x1) + (trainY - y1) * (trainY - y1);
-        return distanceSquared <= switchRadius * switchRadius;
+		if(Math.abs(trainX - x1) < 2  && Math.abs(trainY - y1) < 2) {return true;}
+		
+		return false;
 	}
 	
 	

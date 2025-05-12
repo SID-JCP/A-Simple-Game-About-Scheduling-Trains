@@ -37,7 +37,7 @@ public class Simulator {
 //	private int mapSelected = WindowManager.mapId;
 //	private int trafficSelected = WindowManager.trafficId;
 	
-	private int mapSelected = 7;
+	private int mapSelected = 4;
 	private int trafficSelected = 3;
 	
 	

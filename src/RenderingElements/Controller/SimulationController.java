@@ -383,16 +383,16 @@ public class SimulationController {
 						
 					
 					g2d.setColor(Color.blue);
-					g2d.fillOval(trackSection.getXs(),
-								trackSection.getYs(), 
-								switchRadius * 2, 
-								switchRadius * 2);
+					g2d.fillOval(trackSection.getX1() - 6,
+								trackSection.getY1() - 6, 
+								trackSection.getSwitchRadius() * 2, 
+								trackSection.getSwitchRadius() * 2);
 					
 					g2d.setColor(Color.green);
-					g2d.fillOval(trackSection.getXe(),
-							trackSection.getYe(), 
-							switchRadius * 2, 
-							switchRadius * 2);
+					g2d.fillOval(trackSection.getX2() -  6,
+							trackSection.getY2() - 6, 
+							trackSection.getSwitchRadius() * 2, 
+							trackSection.getSwitchRadius() * 2);
 					
 					
 					

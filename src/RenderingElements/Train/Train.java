@@ -103,10 +103,10 @@ public class Train {
 	
 	
 	//stores the points to draw train when different parts on different switches 
-	Queue<Point> switchPointsQueue = new LinkedList<>();
+	private Queue<Point> switchPointsQueue = new LinkedList<>();
 	
 	
-	int switchStartPointX  = -1, switchStartPointY = -1, switchEndPointX  = -1, switchEndPointY = -1;
+	
 	
 	
 	
@@ -136,7 +136,7 @@ public class Train {
 	
 	public void initialize() 
 	{
-		//x1 is left side of the train , y2 is right side of the train 
+		//x1 is left side of the train , x2 is right side of the train 
 		if(moveDirection == 0) 
 		{
 			x2 = currentSection.getX1() - Train.deployGap;
@@ -272,7 +272,7 @@ public class Train {
 			//calculate x1 and y1 according to coordinates of track section  
 			if(moveDirection == 0) 
 			{
-				if(!frontMovingOnSwitch && !backMovingOnSwitch) 
+				if(!frontMovingOnSwitch && !backMovingOnSwitch && switchPointsQueue.isEmpty())
 				{
 					x2 = x2 + (currentSpeed * deltaTime/1000000000);
 					x1 = x2 - trainLength;
@@ -344,7 +344,7 @@ public class Train {
 			if(moveDirection == 1) 
 			{
 				
-				if(!frontMovingOnSwitch && !backMovingOnSwitch) 
+				if(!frontMovingOnSwitch && !backMovingOnSwitch && switchPointsQueue.isEmpty()) 
 				{
 					x1 = x1 - (currentSpeed * deltaTime/1000000000);
 					x2 = x1 + trainLength;
@@ -432,156 +432,158 @@ public class Train {
 				if(!track.getTrackType().equals(TrackSection.trackType.DOWN) && 
 				   !track.getTrackType().equals(TrackSection.trackType.UP)) 
 				{
-					
+					//switch is off, making train go straight
+					if(track.getSTATE() == 0)continue;
 					
 					//left to right -- UP LINE 
 					if(moveDirection == 0) 
 					{
 						
-						if(track.detectStartOfUpSwitch(trainFrontX, trainFrontY)) 
+						if(track.detectStartUpSwitchForUpTrain(trainFrontX, trainFrontY)) 
 						{
-							//switch is off, making train go straight
-							if(track.getSTATE() == 0)continue;
 							
-							if(newSwitch != track || newSwitch == null) 
+							if(!frontMovingOnSwitch) 
 							{
-								newSwitch = track;
-								
 								frontMovingOnSwitch = true;
 								
+								newSwitch = track;
+															
 								switchPointsQueue.add(new Point(newSwitch.getX1() , newSwitch.getY1()));
 								
-								continue;
+								
 							}
 											
 						}
 						
 						
-						if(track.detectStartOfUpSwitch(trainBackX, trainBackY)) 
+						if(track.detectStartUpSwitchForUpTrain(trainBackX, trainBackY)) 
 						{
-							if(track.getSTATE() == 0)continue;
+	
 							
-							if(backMovingOnSwitch)continue;
-							
-							if(oldSwitch != track || oldSwitch == null) 
+							if(!backMovingOnSwitch) 
 							{
 								oldSwitch = track;
 								backMovingOnSwitch = true;
 								
 								if(!switchPointsQueue.isEmpty())switchPointsQueue.remove();
 
-								continue;
+								
 							}
 						}
 						
-						//---------------------------front of the train has exited the up switch 
-						if(track.detectEndOfUpSwitch(trainFrontX, trainFrontY))
+						
+						 
+						if(track.detectEndUpSwitchForUpTrain(trainFrontX, trainFrontY))
 						{
-							if(!frontMovingOnSwitch)continue;
+							if(frontMovingOnSwitch) 
+							{
+								frontMovingOnSwitch = false;
+								
+								switchPointsQueue.add(new Point(newSwitch.getX2() , newSwitch.getY2()));
+								
+								y2 = track.getY2();
+								
+								newSwitch = null;
+							}
 							
-							frontMovingOnSwitch = false;
-							currentSection = track.getS1();
-							
-							y2 = newSwitch.getY2();
-							
-							switchPointsQueue.add(new Point(newSwitch.getX2() , newSwitch.getY2()));
-							
-							newSwitch = null;
-							
-							continue;
 						}
 						
-						//---------------------------back of train has exited the up switch 
-						if(track.detectEndOfUpSwitch(trainBackX, trainBackY))
+						if(track.detectEndUpSwitchForUpTrain(trainBackX, trainBackY))
 						{
-							if(!backMovingOnSwitch)continue;
 							
-							backMovingOnSwitch = false;
-							oldSwitch = null;
 							
-							y1 = track.getY2();
+							if(backMovingOnSwitch) 
+							{
+								backMovingOnSwitch = false;
+								
+								if(!switchPointsQueue.isEmpty())switchPointsQueue.remove();
+								
+								y1 = track.getY2();
+								
+								oldSwitch = null;
+								
+								System.out.println(switchPointsQueue + " " + frontMovingOnSwitch +  " " + backMovingOnSwitch);
+								
+								
+							}
+
+						}
 	
-							if(!switchPointsQueue.isEmpty())switchPointsQueue.remove();
-							
-							continue;
-						}
-						
 						
 					}
 					
 //-------------------------------------------------------Down Line--------------------------------------------------------------------			
 					
-					//right to left -- DOWN LINE 
+					
 					if(moveDirection == 1) 
 					{
 						//--------------------------Train front entered the switch going down to UP or down to down 
 						if(track.detectStartOfDownSwitch(trainFrontX, trainFrontY)) 
 						{
-							if(track.getSTATE() == 0)continue;
 							
-							// && !backMovingOnSwitch
-							if(newSwitch == null || newSwitch != track) 
+							if(!frontMovingOnSwitch) 
 							{
 								newSwitch = track;
+								
 								frontMovingOnSwitch = true;
 								
 								switchPointsQueue.add(new Point(newSwitch.getX2() , newSwitch.getY2()));
 								
-								continue;
 							}
 										
 						}
+						
 						
 						if(track.detectStartOfDownSwitch(trainBackX, trainBackY)) 
 						{
 							
-							
-							if(track.getSTATE() == 0)continue;
-							
-							if(backMovingOnSwitch)continue;
-							
-							if(oldSwitch != track || oldSwitch == null) 
+							if(!backMovingOnSwitch) 
 							{
 								oldSwitch = track;
+								
 								backMovingOnSwitch = true;
 								
 								if(!switchPointsQueue.isEmpty())switchPointsQueue.remove();
 
-								continue;
 							}
 										
 						}
 						
+						
 						//----------------------------Train front exited the switch----------------------------
 						if(track.detectEndOfDownSwitch(trainFrontX, trainFrontY))
 						{
-							if(!frontMovingOnSwitch)continue;
-							
-							frontMovingOnSwitch = false;
-							currentSection = track.getS1();
-							
-							switchPointsQueue.add(new Point(newSwitch.getX1() , newSwitch.getY1()));
-							
-							y1 = newSwitch.getY1();
-							
-							newSwitch = null;
-							
-							continue;
+							if(frontMovingOnSwitch) 
+							{
+								
+								frontMovingOnSwitch = false;
+								
+								switchPointsQueue.add(new Point(newSwitch.getX1() , newSwitch.getY1()));
+								
+								y1 = newSwitch.getY1();
+								
+								newSwitch = null;
+							}
+		
 						}
 						
 						//----------------------------Train back exited the switch----------------------------
 						if(track.detectEndOfDownSwitch(trainBackX, trainBackY))
 						{
-							if(!backMovingOnSwitch)continue;
 							
-							backMovingOnSwitch = false;
-							oldSwitch = null;
 							
-							y2 = track.getY1();
-	
-							if(!switchPointsQueue.isEmpty())switchPointsQueue.remove();
+							if(backMovingOnSwitch) 
+							{
+								backMovingOnSwitch = false;
+								oldSwitch = null;
+								
+								y2 = track.getY1();
+		
+								if(!switchPointsQueue.isEmpty())switchPointsQueue.remove();
+								
+								System.out.println(switchPointsQueue + " " + frontMovingOnSwitch +  " " + backMovingOnSwitch);
+							}
 							
-							continue;
 							
 						}
 						
@@ -641,13 +643,22 @@ public class Train {
 	
 	public void draw(Graphics2D g2d) 
 	{
-		g2d.setColor(Color.blue);
+		if(frontMovingOnSwitch) 
+		{
+			g2d.setColor(Color.blue);
+			
+			g2d.fillOval(trainFrontX - 5, trainFrontY - 5, 10, 10);
+		}
 		
-		g2d.fillOval(trainFrontX - 5, trainFrontY - 5, 10, 10);
 		
-		g2d.setColor(Color.green);
+		if(backMovingOnSwitch) 
+		{
+			g2d.setColor(Color.green);
+			
+			g2d.fillOval(trainBackX - 5, trainBackY - 5, 10, 10);
+		}
 		
-		g2d.fillOval(trainBackX - 5, trainBackY - 5, 10, 10);
+		
 		
 		
 //--------------------------------------------------------------------------------------------
