@@ -140,15 +140,21 @@ public class Train {
 		if(moveDirection == 0) 
 		{
 			x2 = currentSection.getX1() - Train.deployGap;
+			x1 = x2 - Train.deployGap;
 			y2 = currentSection.getY1();
 			y1  = y2;
 			
 			
 		}else {
 			
+			
+			
 			x1 = currentSection.getX2() + Train.deployGap;
+			x2 = x1 + Train.deployGap;
 			y1 = currentSection.getY2();
 			y2 = y1;	
+			
+			
 			
 		}
 		

@@ -122,15 +122,15 @@ public class Map7 implements TrackControllerRequirments{
 	Signal signal_MainUp2_MainUp1_L_1_D_R = new Signal(Signal.signalType.HOME , switchMainUp2_MainUp1_L_1 , -1 , -1 , 1);
 	Signal signal_MainUp2_MainUp1_L_1_D_L = new Signal(Signal.signalType.HOME , switchMainUp2_MainUp1_L_1 , 1 , -1 , 1);
 	
-	Signal signal_MainUp1_MainUp2_L_1_U_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_L_1 , 1 , -1 , 0);
-	Signal signal_MainUp1_MainUp2_L_1_U_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_L_1 , -1 , -1 , 0);
-	Signal signal_MainUp1_MainUp2_L_1_D_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_L_1 , -1 , 1 , 1);
-	Signal signal_MainUp1_MainUp2_L_1_D_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_L_1 , 1 , 1 , 1);
+	Signal signal_MainUp1_MainUp2_L_1_U_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_L_1 , -1 , 1 , 1);
+	Signal signal_MainUp1_MainUp2_L_1_U_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_L_1 , 1 , 1 , 1);
+	Signal signal_MainUp1_MainUp2_L_1_D_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_L_1 , 1 , -1 , 0);
+	Signal signal_MainUp1_MainUp2_L_1_D_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_L_1 , -1 , -1 , 0);
 	
-	Signal signal_MainUp1_MainUp2_L_2_U_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_L_2 , 1 , -1 , 0);
-	Signal signal_MainUp1_MainUp2_L_2_U_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_L_2 , -1 , -1 , 0);
-	Signal signal_MainUp1_MainUp2_L_2_D_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_L_2 , -1 , 1 , 1);
-	Signal signal_MainUp1_MainUp2_L_2_D_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_L_2 , 1 , 1 , 1);
+	Signal signal_MainUp1_MainUp2_L_2_U_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_L_2 , -1 , 1 , 1);
+	Signal signal_MainUp1_MainUp2_L_2_U_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_L_2 , 1 , 1 , 1);
+	Signal signal_MainUp1_MainUp2_L_2_D_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_L_2 , 1 , -1 , 0);
+	Signal signal_MainUp1_MainUp2_L_2_D_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_L_2 , -1 , -1 , 0);
 	
 	//-----RIGHT---------
 	
@@ -144,10 +144,10 @@ public class Map7 implements TrackControllerRequirments{
 	Signal signal_MainUp2_MainUp1_R_2_D_R = new Signal(Signal.signalType.HOME , switchMainUp2_MainUp1_R_2 , -1 , -1 , 1);
 	Signal signal_MainUp2_MainUp1_R_2_D_L = new Signal(Signal.signalType.HOME , switchMainUp2_MainUp1_R_2 , 1 , -1 , 1);
 	
-	Signal signal_MainUp1_MainUp2_R_1_U_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_R_1 , 1 , -1 , 0);
-	Signal signal_MainUp1_MainUp2_R_1_U_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_R_1 , -1 , -1 , 0);
-	Signal signal_MainUp1_MainUp2_R_1_D_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_R_1 , -1 , 1 , 1);
-	Signal signal_MainUp1_MainUp2_R_1_D_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_R_1 , 1 , 1 , 1);
+	Signal signal_MainUp1_MainUp2_R_1_U_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_R_1 , -1 , 1 , 1);
+	Signal signal_MainUp1_MainUp2_R_1_U_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_R_1 , 1 , 1 , 1);
+	Signal signal_MainUp1_MainUp2_R_1_D_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_R_1 , 1 , -1 , 0);
+	Signal signal_MainUp1_MainUp2_R_1_D_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainUp2_R_1 , -1 , -1 , 0);
 	
 	//Up-Down interaction
 	Signal signal_MainUp1_MainDown1_L_1_U_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainDown1_L_1 , 1 , 1 , 0);
@@ -161,16 +161,16 @@ public class Map7 implements TrackControllerRequirments{
 	Signal signal_MainDown1_MainUp1_L_1_D_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_L_1 , -1 , -1 , 0);
 	Signal signal_MainDown1_MainUp1_L_1_D_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_L_1 , 1 , -1 , 0);
 	
-	Signal signal_MainDown1_MainUp1_R_1_U_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_R_1 , 1 , -1 , 0);
-	Signal signal_MainDown1_MainUp1_R_1_U_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_R_1 , -1 , -1 , 0);
-	Signal signal_MainDown1_MainUp1_R_1_D_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_R_1 , -1 , 1 , 1);
-	Signal signal_MainDown1_MainUp1_R_1_D_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_R_1 , 1 , 1 , 1);
+	Signal signal_MainDown1_MainUp1_R_1_U_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_R_1 , -1 , 1 , 1);
+	Signal signal_MainDown1_MainUp1_R_1_U_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_R_1 , 1 , 1 , 1);
+	Signal signal_MainDown1_MainUp1_R_1_D_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_R_1 , 1 , -1 , 0);
+	Signal signal_MainDown1_MainUp1_R_1_D_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainUp1_R_1 , -1 , -1 , 0);
 	
 	
 	//-----------RIGHT----------
 	Signal signal_MainUp1_MainDown1_R_1_U_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainDown1_R_1 , 1 , 1 , 0);
 	Signal signal_MainUp1_MainDown1_R_1_U_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainDown1_R_1 , -1 , 1 , 0);
-	Signal signal_MainUp1_MainDown1_R_1_D_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainDown1_R_1 , -1 , -1 , 1);
+	Signal signal_MainUp1_MainDown1_R_1_D_R = new Signal(Signal.signalType.HOME , switchMainUp1_MainDown1_R_1 , -1 , 1 , 1);
 	Signal signal_MainUp1_MainDown1_R_1_D_L = new Signal(Signal.signalType.HOME , switchMainUp1_MainDown1_R_1 , 1 , -1 , 1);
 	
 	
@@ -180,48 +180,48 @@ public class Map7 implements TrackControllerRequirments{
 	
 //|||-------------------------------------UP LOOP LINES Signals---------------------------------------------------------|||
 	
-	Signal signal_mainUp2_loopUp1_1_U_L = new Signal(Signal.signalType.HOME , switchMainUp2_LoopUp1_1 , 1 , -1 , 0);
-	Signal signal_mainUp2_loopUp1_1_U_R = new Signal(Signal.signalType.HOME , switchMainUp2_LoopUp1_1 , -1 , -1 , 0);	
-	Signal signal_mainUp2_loopUp1_1_D_R = new Signal(Signal.signalType.HOME , switchMainUp2_LoopUp1_1 , -1 , 1 , 1);
-	Signal signal_mainUp2_loopUp1_1_D_L = new Signal(Signal.signalType.HOME , switchMainUp2_LoopUp1_1 , 1 , 1 , 1);
+	Signal signal_mainUp2_loopUp1_1_U_L = new Signal(Signal.signalType.HOME , switchMainUp2_LoopUp1_1 , -1 , 1 , 1);
+	Signal signal_mainUp2_loopUp1_1_U_R = new Signal(Signal.signalType.HOME , switchMainUp2_LoopUp1_1 , 1 , 1 , 1);	
+	Signal signal_mainUp2_loopUp1_1_D_R = new Signal(Signal.signalType.HOME , switchMainUp2_LoopUp1_1 , 1 , -1 , 0);
+	Signal signal_mainUp2_loopUp1_1_D_L = new Signal(Signal.signalType.HOME , switchMainUp2_LoopUp1_1 , -1 , -1 , 0);
 	
-	Signal signal_mainUp2_loopUp1_2_U_L = new Signal(Signal.signalType.HOME , switchMainUp2_LoopUp1_2 , 1 , -1 , 0);
-	Signal signal_mainUp2_loopUp1_2_U_R = new Signal(Signal.signalType.HOME , switchMainUp2_LoopUp1_2 , -1 , -1 , 0);	
-	Signal signal_mainUp2_loopUp1_2_D_R = new Signal(Signal.signalType.HOME , switchMainUp2_LoopUp1_2 , -1 , 1 , 1);
-	Signal signal_mainUp2_loopUp1_2_D_L = new Signal(Signal.signalType.HOME , switchMainUp2_LoopUp1_2 , 1 , 1 , 1);
+	Signal signal_mainUp2_loopUp1_2_U_L = new Signal(Signal.signalType.HOME , switchMainUp2_LoopUp1_2 , -1 , 1 , 1);
+	Signal signal_mainUp2_loopUp1_2_U_R = new Signal(Signal.signalType.HOME , switchMainUp2_LoopUp1_2 , 1 , 1 , 1);	
+	Signal signal_mainUp2_loopUp1_2_D_R = new Signal(Signal.signalType.HOME , switchMainUp2_LoopUp1_2 , 1 , -1 , 0);
+	Signal signal_mainUp2_loopUp1_2_D_L = new Signal(Signal.signalType.HOME , switchMainUp2_LoopUp1_2 , -1 , -1 , 0);
 	
 	
-	Signal signal_LoopUp1_LoopUp2_1_U_L = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2_1 , 1 , -1 , 0);
-	Signal signal_LoopUp1_LoopUp2_1_U_R = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2_1 , -1 , -1 , 0);	
-	Signal signal_LoopUp1_LoopUp2_1_D_R = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2_1 , -1 , 1 , 1);
-	Signal signal_LoopUp1_LoopUp2_1_D_L = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2_1 , 1 , 1 , 1);
+	Signal signal_LoopUp1_LoopUp2_1_U_L = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2_1 , -1 , 1 , 1);
+	Signal signal_LoopUp1_LoopUp2_1_U_R = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2_1 , 1 , 1 , 1);	
+	Signal signal_LoopUp1_LoopUp2_1_D_R = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2_1 , 1 , -1 , 0);
+	Signal signal_LoopUp1_LoopUp2_1_D_L = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2_1 , -1 , -1 , 0);
 	
-	Signal signal_LoopUp1_LoopUp2_2_U_L = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2_2 , 1 , -1 , 0);
-	Signal signal_LoopUp1_LoopUp2_2_U_R = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2_2 , -1 , -1 , 0);	
-	Signal signal_LoopUp1_LoopUp2_2_D_R = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2_2 , -1 , 1 , 1);
-	Signal signal_LoopUp1_LoopUp2_2_D_L = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2_2 , 1 , 1 , 1);
+	Signal signal_LoopUp1_LoopUp2_2_U_L = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2_2 , -1 , 1 , 1);
+	Signal signal_LoopUp1_LoopUp2_2_U_R = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2_2 , 1 , 1 , 1);	
+	Signal signal_LoopUp1_LoopUp2_2_D_R = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2_2 , 1 , -1 , 0);
+	Signal signal_LoopUp1_LoopUp2_2_D_L = new Signal(Signal.signalType.HOME , switchLoopUp1_LoopUp2_2 , -1 , -1 , 0);
 
 	
 	//-----------------RIGHT SWITCHES----------------
 	Signal signal_LoopUp2_LoopUp1_R_1_U_L = new Signal(Signal.signalType.HOME , switchLoopUp2_LoopUp1_R_1 , 1 , 1 , 0);
 	Signal signal_LoopUp2_LoopUp1_R_1_U_R = new Signal(Signal.signalType.HOME , switchLoopUp2_LoopUp1_R_1 , -1 , 1 , 0);
-	Signal signal_LoopUp2_LoopUp1_R_1_D_R = new Signal(Signal.signalType.HOME , switchLoopUp2_LoopUp1_R_1 , -1 , -1 , 1);
-	Signal signal_LoopUp2_LoopUp1_R_1_D_L = new Signal(Signal.signalType.HOME , switchLoopUp2_LoopUp1_R_1 , 1 , -1 , 1);
+	Signal signal_LoopUp2_LoopUp1_R_1_D_R = new Signal(Signal.signalType.HOME , switchLoopUp2_LoopUp1_R_1 , 1 , -1 , 1);
+	Signal signal_LoopUp2_LoopUp1_R_1_D_L = new Signal(Signal.signalType.HOME , switchLoopUp2_LoopUp1_R_1 , -1 , -1 , 1);
 	
 	Signal signal_LoopUp2_LoopUp1_R_2_U_L = new Signal(Signal.signalType.HOME , switchLoopUp2_LoopUp1_R_2 , 1 , 1 , 0);
 	Signal signal_LoopUp2_LoopUp1_R_2_U_R = new Signal(Signal.signalType.HOME , switchLoopUp2_LoopUp1_R_2 , -1 , 1 , 0);
-	Signal signal_LoopUp2_LoopUp1_R_2_D_R = new Signal(Signal.signalType.HOME , switchLoopUp2_LoopUp1_R_2 , -1 , -1 , 1);
-	Signal signal_LoopUp2_LoopUp1_R_2_D_L = new Signal(Signal.signalType.HOME , switchLoopUp2_LoopUp1_R_2 , 1 , -1 , 1);
+	Signal signal_LoopUp2_LoopUp1_R_2_D_R = new Signal(Signal.signalType.HOME , switchLoopUp2_LoopUp1_R_2 , 1 , -1 , 1);
+	Signal signal_LoopUp2_LoopUp1_R_2_D_L = new Signal(Signal.signalType.HOME , switchLoopUp2_LoopUp1_R_2 , -1 , -1 , 1);
 	
 	Signal signal_LoopUp1_MainUp2_R_1_U_L = new Signal(Signal.signalType.HOME , switchLoopUp1_MainUp2_R_1 , 1 , 1 , 0);
 	Signal signal_LoopUp1_MainUp2_R_1_U_R = new Signal(Signal.signalType.HOME , switchLoopUp1_MainUp2_R_1 , -1 , 1 , 0);
-	Signal signal_LoopUp1_MainUp2_R_1_D_R = new Signal(Signal.signalType.HOME , switchLoopUp1_MainUp2_R_1 , -1 , -1 , 1);
-	Signal signal_LoopUp1_MainUp2_R_1_D_L = new Signal(Signal.signalType.HOME , switchLoopUp1_MainUp2_R_1 , 1 , -1 , 1);
+	Signal signal_LoopUp1_MainUp2_R_1_D_R = new Signal(Signal.signalType.HOME , switchLoopUp1_MainUp2_R_1 , 1 , -1 , 1);
+	Signal signal_LoopUp1_MainUp2_R_1_D_L = new Signal(Signal.signalType.HOME , switchLoopUp1_MainUp2_R_1 , -1 , -1 , 1);
 	
 	Signal signal_LoopUp1_MainUp2_R_2_U_L = new Signal(Signal.signalType.HOME , switchLoopUp1_MainUp2_R_2 , 1 , 1 , 0);
 	Signal signal_LoopUp1_MainUp2_R_2_U_R = new Signal(Signal.signalType.HOME , switchLoopUp1_MainUp2_R_2 , -1 , 1 , 0);
-	Signal signal_LoopUp1_MainUp2_R_2_D_R = new Signal(Signal.signalType.HOME , switchLoopUp1_MainUp2_R_2 , -1 , -1 , 1);
-	Signal signal_LoopUp1_MainUp2_R_2_D_L = new Signal(Signal.signalType.HOME , switchLoopUp1_MainUp2_R_2 , 1 , -1 , 1);
+	Signal signal_LoopUp1_MainUp2_R_2_D_R = new Signal(Signal.signalType.HOME , switchLoopUp1_MainUp2_R_2 , 1 , -1 , 1);
+	Signal signal_LoopUp1_MainUp2_R_2_D_L = new Signal(Signal.signalType.HOME , switchLoopUp1_MainUp2_R_2 , -1 , -1 , 1);
 	
 	
 	
@@ -231,52 +231,52 @@ public class Map7 implements TrackControllerRequirments{
 	
 	Signal signal_MainDown2_LoopDown1_1_U_L = new Signal(Signal.signalType.HOME , switchMainDown2_LoopDown1_1 , 1 , 1 , 0);
 	Signal signal_MainDown2_LoopDown1_1_U_R = new Signal(Signal.signalType.HOME , switchMainDown2_LoopDown1_1 , -1 , 1 , 0);	
-	Signal signal_MainDown2_LoopDown1_1_D_R = new Signal(Signal.signalType.HOME , switchMainDown2_LoopDown1_1 , -1 , -1 , 1);
-	Signal signal_MainDown2_LoopDown1_1_D_L = new Signal(Signal.signalType.HOME , switchMainDown2_LoopDown1_1 , 1 , -1 , 1);
+	Signal signal_MainDown2_LoopDown1_1_D_R = new Signal(Signal.signalType.HOME , switchMainDown2_LoopDown1_1 , 1 , -1 , 1);
+	Signal signal_MainDown2_LoopDown1_1_D_L = new Signal(Signal.signalType.HOME , switchMainDown2_LoopDown1_1 , -1 , -1 , 1);
 	
 	Signal signal_LoopDown1_LoopDown2_1_U_L = new Signal(Signal.signalType.HOME , switchLoopDown1_LoopDown2_1 , 1 , 1 , 0);
 	Signal signal_LoopDown1_LoopDown2_1_U_R = new Signal(Signal.signalType.HOME , switchLoopDown1_LoopDown2_1 , -1 , 1 , 0);	
-	Signal signal_LoopDown1_LoopDown2_1_D_R = new Signal(Signal.signalType.HOME , switchLoopDown1_LoopDown2_1 , -1 , -1 , 1);
-	Signal signal_LoopDown1_LoopDown2_1_D_L = new Signal(Signal.signalType.HOME , switchLoopDown1_LoopDown2_1 , 1 , -1 , 1);
+	Signal signal_LoopDown1_LoopDown2_1_D_R = new Signal(Signal.signalType.HOME , switchLoopDown1_LoopDown2_1 , 1 , -1 , 1);
+	Signal signal_LoopDown1_LoopDown2_1_D_L = new Signal(Signal.signalType.HOME , switchLoopDown1_LoopDown2_1 , -1 , -1 , 1);
 	
-	Signal signal_LoopDown2_LoopDown1_R_1_U_L = new Signal(Signal.signalType.HOME , switchLoopDown2_LoopDown1_R_1 , 1 , -1 , 0);
-	Signal signal_LoopDown2_LoopDown1_R_1_U_R = new Signal(Signal.signalType.HOME , switchLoopDown2_LoopDown1_R_1 , -1 , -1 , 0);	
-	Signal signal_LoopDown2_LoopDown1_R_1_D_R = new Signal(Signal.signalType.HOME , switchLoopDown2_LoopDown1_R_1 , -1 , 1 , 1);
-	Signal signal_LoopDown2_LoopDown1_R_1_D_L = new Signal(Signal.signalType.HOME , switchLoopDown2_LoopDown1_R_1 , 1 , 1 , 1);
+	Signal signal_LoopDown2_LoopDown1_R_1_U_L = new Signal(Signal.signalType.HOME , switchLoopDown2_LoopDown1_R_1 , -1 , 1 , 1);
+	Signal signal_LoopDown2_LoopDown1_R_1_U_R = new Signal(Signal.signalType.HOME , switchLoopDown2_LoopDown1_R_1 , 1 , 1 , 1);	
+	Signal signal_LoopDown2_LoopDown1_R_1_D_R = new Signal(Signal.signalType.HOME , switchLoopDown2_LoopDown1_R_1 , -1 , -1 , 0);
+	Signal signal_LoopDown2_LoopDown1_R_1_D_L = new Signal(Signal.signalType.HOME , switchLoopDown2_LoopDown1_R_1 , 1 , -1 , 0);
 	
 
 //|||-------------------------------------DOWN MAIN LINES Signals---------------------------------------------------------|||
 	
 	Signal signal_MainDown1_MainDown2_1_L_U_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_L_1 , 1 , 1 , 0);
 	Signal signal_MainDown1_MainDown2_1_L_U_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_L_1 , -1 , 1 , 0);
-	Signal signal_MainDown1_MainDown2_1_L_D_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_L_1 , -1 , -1 , 1);
-	Signal signal_MainDown1_MainDown2_1_L_D_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_L_1 , 1 , -1 , 1);
+	Signal signal_MainDown1_MainDown2_1_L_D_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_L_1 , 1 , -1 , 1);
+	Signal signal_MainDown1_MainDown2_1_L_D_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_L_1 , -1 , -1 , 1);
 	
 	Signal signal_MainDown1_MainDown2_2_L_U_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_L_2 , 1 , 1 , 0);
 	Signal signal_MainDown1_MainDown2_2_L_U_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_L_2 , -1 , 1 , 0);
-	Signal signal_MainDown1_MainDown2_2_L_D_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_L_2 , -1 , -1 , 1);
-	Signal signal_MainDown1_MainDown2_2_L_D_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_L_2 , 1 , -1 , 1);
+	Signal signal_MainDown1_MainDown2_2_L_D_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_L_2 , 1 , -1 , 1);
+	Signal signal_MainDown1_MainDown2_2_L_D_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_L_2 , -1 , -1 , 1);
 	
-	Signal signal_MainDown2_MainDown1_1_L_U_L = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_L_1 , 1 , -1 , 0);
-	Signal signal_MainDown2_MainDown1_1_L_U_R = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_L_1 , -1 , -1 , 0);
-	Signal signal_MainDown2_MainDown1_1_L_D_R = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_L_1 , -1 , 1 , 1);
-	Signal signal_MainDown2_MainDown1_1_L_D_L = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_L_1 , 1 , 1 , 1);
+	Signal signal_MainDown2_MainDown1_1_L_U_L = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_L_1 , -1 , 1 , 1);
+	Signal signal_MainDown2_MainDown1_1_L_U_R = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_L_1 , 1 , 1 , 1);
+	Signal signal_MainDown2_MainDown1_1_L_D_R = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_L_1 , -1 , -1 , 0);
+	Signal signal_MainDown2_MainDown1_1_L_D_L = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_L_1 , 1 , -1 , 0);
 	
 	//----RIGHT----
 	Signal signal_MainDown1_MainDown2_1_R_U_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_R_1 , 1 , 1 , 0);
 	Signal signal_MainDown1_MainDown2_1_R_U_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_R_1 , -1 , 1 , 0);
-	Signal signal_MainDown1_MainDown2_1_R_D_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_R_1 , -1 , -1 , 1);
-	Signal signal_MainDown1_MainDown2_1_R_D_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_R_1 , 1 , -1 , 1);
+	Signal signal_MainDown1_MainDown2_1_R_D_R = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_R_1 , 1 , -1 , 1);
+	Signal signal_MainDown1_MainDown2_1_R_D_L = new Signal(Signal.signalType.HOME , switchMainDown1_MainDown2_R_1 , -1 , -1 , 1);
 	
-	Signal signal_LoopDown1_MainDown2_1_R_U_L = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown2_R_1 , 1 , -1 , 0);
-	Signal signal_LoopDown1_MainDown2_1_R_U_R = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown2_R_1 , -1 , -1 , 0);
-	Signal signal_LoopDown1_MainDown2_1_R_D_R = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown2_R_1 , -1 , 1 , 1);
-	Signal signal_LoopDown1_MainDown2_1_R_D_L = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown2_R_1 , 1 , 1 , 1);
+	Signal signal_LoopDown1_MainDown2_1_R_U_L = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown2_R_1 , -1 , 1 , 1);
+	Signal signal_LoopDown1_MainDown2_1_R_U_R = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown2_R_1 , 1 , 1 , 1);
+	Signal signal_LoopDown1_MainDown2_1_R_D_R = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown2_R_1 , -1 , -1 , 0);
+	Signal signal_LoopDown1_MainDown2_1_R_D_L = new Signal(Signal.signalType.HOME , switchLoopDown1_MainDown2_R_1 , 1 , -1 , 0);
 	
-	Signal signal_MainDown2_MainDown1_1_R_U_L = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_R_1 , 1 , -1 , 0);
-	Signal signal_MainDown2_MainDown1_1_R_U_R = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_R_1 , -1 , -1 , 0);
-	Signal signal_MainDown2_MainDown1_1_R_D_R = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_R_1 , -1 , 1 , 1);
-	Signal signal_MainDown2_MainDown1_1_R_D_L = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_R_1 , 1 , 1 , 1);
+	Signal signal_MainDown2_MainDown1_1_R_U_L = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_R_1 , -1 , 1 , 1);
+	Signal signal_MainDown2_MainDown1_1_R_U_R = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_R_1 , 1 , 1 , 1);
+	Signal signal_MainDown2_MainDown1_1_R_D_R = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_R_1 , -1 , -1 , 0);
+	Signal signal_MainDown2_MainDown1_1_R_D_L = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_R_1 , 1 , -1 , 0);
 	
 	@Override
 	public List<TrackSection> getSections() {
