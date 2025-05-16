@@ -508,6 +508,7 @@ public class SimulationController {
 							//get first down line signal 
 							startSignal = downLineStartSignals.get(lineSignalIndex * -1 - 1);
 							startSignalState = startSignal.getSTATE();
+							
 
 						}
 						
@@ -525,7 +526,7 @@ public class SimulationController {
 							}else {
 								
 								if(upLineSet.get(train.trackNumber).getClockCount() > 0) 
-								{   System.out.println(startSignalState + " " + train.trackNumber);
+								{   
 									deployTrain(train , startSignalState);
 									upLineSet.put(train.trackNumber, train);
 								}
@@ -546,7 +547,7 @@ public class SimulationController {
 								if(downLineSet.get(train.trackNumber).getClockCount() > 0) 
 								{
 									deployTrain(train , startSignalState);
-									upLineSet.put(train.trackNumber, train);
+									downLineSet.put(train.trackNumber, train);
 								}
 						}
 						

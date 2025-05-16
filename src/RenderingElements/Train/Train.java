@@ -729,7 +729,7 @@ public class Train {
 	public void draw(Graphics2D g2d) 
 	{
 		
-		debugFrontBackOnSwitch(g2d);
+//		debugFrontBackOnSwitch(g2d);
 		
 		
 		
