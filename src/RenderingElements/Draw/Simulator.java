@@ -34,6 +34,7 @@ public class Simulator {
 	TrafficContainer traffic = new TrafficContainer();
 	
 //	|------------IMPORTANT DATA------------------|
+	
 //	private int mapSelected = WindowManager.mapId;
 //	private int trafficSelected = WindowManager.trafficId;
 	
@@ -175,7 +176,7 @@ public class Simulator {
 	
 	private void drawStation(Graphics2D g2d) 
 	{
-		int gap = 36;
+		int gap = 26;
 		
 		int StationXPos  = (xCENTER - stationGraphicHorizontalPos * blockOffset) +  gap;
 		int StationYPos = (yCENTER - stationGraphicVerticalPos * trackOffset) - gap;

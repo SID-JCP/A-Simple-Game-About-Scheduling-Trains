@@ -8,6 +8,9 @@ import RenderingElements.Train.Traffic.Traffic1;
 import RenderingElements.Train.Traffic.Traffic2;
 import RenderingElements.Train.Traffic.Traffic3;
 import RenderingElements.Train.Traffic.Traffic4;
+import RenderingElements.Xml.Viewer;
+import RenderingElements.Xml.XmlDoc;
+import RenderingElements.Xml.Loader.Loader;
 
 public class TrafficContainer {
 
@@ -30,9 +33,22 @@ public class TrafficContainer {
 		
 	}
 	
+	
+	public void loadTrafficFromFile() 
+	{
+		XmlDoc doc = new XmlDoc();
+		
+		
+		Loader.load(doc , "./Maps/train.xml");
+		
+		
+		Viewer.displayAsList(doc);
+	}
+	
 	//index specify to choose the traffic from traffic list 
 	public void addTrafficListToController(int index) 
 	{
+		loadTrafficFromFile();
 		createTraffic();
 
 		SimulationController.listOfTrainTraffic = TrafficList.get(index);

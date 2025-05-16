@@ -19,8 +19,8 @@ public class Traffic1{
 //					//train 2
 ////				new Train(0 ,1 , 40 , false),
 //					//train 3
-					new Train(1 ,-1 , 2 , false),
-					new Train(1 ,-1 , 15 , false)
+					new Train(Train.UP_LINE ,-1 , 2 , false),
+					new Train(Train.DOWN_LINE ,-1 , 15 , false)
 					
 					)
 			

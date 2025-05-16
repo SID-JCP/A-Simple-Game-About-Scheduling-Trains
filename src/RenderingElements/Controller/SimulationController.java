@@ -381,18 +381,19 @@ public class SimulationController {
 					trackSection.setXe(trackSection.getX2() - switchRadius);
 					trackSection.setYe(trackSection.getY2() - switchRadius);
 						
+//			|----------DEBUG TO VIEW SWITCH FRONT AND BACK---------------|
 					
-					g2d.setColor(Color.blue);
-					g2d.fillOval(trackSection.getX1() - 6,
-								trackSection.getY1() - 6, 
-								trackSection.getSwitchRadius() * 2, 
-								trackSection.getSwitchRadius() * 2);
-					
-					g2d.setColor(Color.green);
-					g2d.fillOval(trackSection.getX2() -  6,
-							trackSection.getY2() - 6, 
-							trackSection.getSwitchRadius() * 2, 
-							trackSection.getSwitchRadius() * 2);
+//					g2d.setColor(Color.blue);
+//					g2d.fillOval(trackSection.getX1() - 6,
+//								trackSection.getY1() - 6, 
+//								trackSection.getSwitchRadius() * 2, 
+//								trackSection.getSwitchRadius() * 2);
+//					
+//					g2d.setColor(Color.green);
+//					g2d.fillOval(trackSection.getX2() -  6,
+//							trackSection.getY2() - 6, 
+//							trackSection.getSwitchRadius() * 2, 
+//							trackSection.getSwitchRadius() * 2);
 					
 					
 					
@@ -558,7 +559,12 @@ public class SimulationController {
 			}
 				
 				//active train [Draw it]
-				if(train.getDeployState() == 1) {train.draw(g2d);}
+				if(train.getDeployState() == 1) 
+				{
+					train.draw(g2d);
+					train.isCursorInside(mouseMoveX, mouseMoveY);
+					
+				}
 				
 				//passive train [Crossed the screen  , no need to draw ]
 				if(train.getDeployState() == 2) {continue;}

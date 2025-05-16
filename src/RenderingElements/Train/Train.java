@@ -2,6 +2,7 @@ package RenderingElements.Train;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.geom.Point2D;
@@ -18,6 +19,10 @@ import RenderingElements.Tracks.TrackSection;
 public class Train {
 	
 	
+	public static final int UP_LINE = 0;
+	
+	public static final int DOWN_LINE = 1;
+	
 	public static final double deployGap = 150.0; // the distance before a signal where the train is to be spawned 
 	
 	public int deployState = 0;   // 0 = not deployed , 1 = deployed , 2 = deployment done and exited screen , 3 = in wait queue
@@ -32,15 +37,9 @@ public class Train {
 	
 	public int lineTravelling = 0; //0 = train should be on up line , 1 = train should be on down line 
 	
-	public boolean hasHault = true; // if the train should stop at the station or not 
-	
 	public boolean nextSectionClear = true; // to be used for deployment of the train , check if the train before has passed 
 	
-	public int haultDuration = 0; //time the train is supposed to stop on the platform 
 	
-	public String name = ""; //name of the train 
-	
-	public Color color = null; //optional color provided 
 	
 	//|--------------------------Movement Data--------------------------------|
 	
@@ -72,7 +71,7 @@ public class Train {
 	private int trainFrontX , trainFrontY , trainBackX , trainBackY;
 	
 	
-	//reverse queue unload , use at line 675
+	//reverse queue unload , used at line 700
 	private List<Point> pointsList = new ArrayList<>();
 	
 	//--------------------------SIGNAL AND SECTION related data----------------------|
@@ -106,7 +105,28 @@ public class Train {
 	private Queue<Point> switchPointsQueue = new LinkedList<>();
 	
 	
+	//---------------------------TRAIN META DATA---------------------------------|
 	
+	public boolean hasHault = true; // if the train should stop at the station or not 
+	
+	public int departureTime = 0; //time the train is supposed to depart 
+	
+	public String name = ""; //name of the train 
+	
+	public Color color = null; //optional color provided 
+	
+	public int pltformNumber = 0; //the platform the train is supposed to stop at 
+	
+	
+	//---------------------------TRAIN CENTER CIRCLE DATA---------------------------------|
+	
+	private int circleRadius =  20;
+	
+	private int centerX = 0;
+	
+	private int centerY = 0;
+	
+	private boolean hover = false;
 	
 	
 	
@@ -124,14 +144,15 @@ public class Train {
 		this.hasHault = hault;
 	}
 	
-	public Train(int movingDirection , int trackNumber  , long deployTime  , int haultDuration , String name , Color color)
+	public Train(int movingDirection , int trackNumber  , long deployTime  , int departureTime , String name , Color color)
 	{
 		this.moveDirection = movingDirection;
 		this.deployTime = deployTime;
 		this.trackNumber = trackNumber;
 		this.name = name;
-		this.haultDuration = haultDuration; 
+		this.departureTime = departureTime; 
 		this.color = color;
+		this.hasHault = true;
 	}
 	
 	public void initialize() 
@@ -266,6 +287,25 @@ public class Train {
 				currentSpeed += 0.3;
 			}else {currentSpeed = Gspeed;}
 		} 
+	}
+	
+	
+	public void isCursorInside(int mouseX , int mouseY) 
+	{
+		centerX = (int)(x1 + x2) / 2;
+        centerY = (int)(y1 + y2) / 2;
+        
+        int dx = mouseX - centerX;
+		int dy = mouseY - centerY;
+		int distanceSquared = dx * dx + dy * dy;
+		
+		if( distanceSquared <= circleRadius * circleRadius)
+        {
+        	hover = true;
+
+        }else {hover = false;}
+		
+		
 	}
 	
 	
@@ -646,8 +686,7 @@ public class Train {
 	}
 	
 	
-	
-	public void draw(Graphics2D g2d) 
+	private void debugFrontBackOnSwitch(Graphics2D g2d) 
 	{
 		if(frontMovingOnSwitch) 
 		{
@@ -663,14 +702,48 @@ public class Train {
 			
 			g2d.fillOval(trainBackX - 5, trainBackY - 5, 10, 10);
 		}
+	}
+	
+	private void drawMetaData(Graphics2D g2d) 
+	{
+		int width = 80;
+		int height = 50;
 		
+		int x = centerX - 40;
+		int y = centerY - 60;
+		
+		
+		g2d.setColor(Color.DARK_GRAY.darker());
+		g2d.fillRoundRect(x, y, width, height, 10, 10);
+		
+		g2d.setColor(Color.white);
+		g2d.setFont(new Font("Arial" , Font.BOLD , 9));
+		
+		g2d.drawString("N : " + name ,  x + 5 , y + 10);
+		g2d.drawString("H : " + hasHault ,  x + 5 , y + 23);
+		g2d.drawString("P : " + pltformNumber ,  x + 5 , y + 35);
+		g2d.drawString("T D : " + departureTime ,  x + 5 , y + 48);
+		
+	}
+	
+	public void draw(Graphics2D g2d) 
+	{
+		
+		debugFrontBackOnSwitch(g2d);
 		
 		
 		
 //--------------------------------------------------------------------------------------------
+		
+		
+		if(hover) 
+		{
+			g2d.setColor(Color.GRAY.darker());
+			g2d.fillOval(centerX - circleRadius, centerY - circleRadius, circleRadius * 2, circleRadius * 2);
+		}
+		
 		g2d.setColor(Color.white);
 		g2d.setStroke(new BasicStroke(6 , BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER));
-		
 		
 		if(!switchPointsQueue.isEmpty()) 
 		{
@@ -725,6 +798,11 @@ public class Train {
 		}
 
 
+		if(hover) 
+		{
+			drawMetaData(g2d);
+
+		}
 		
 	}
 	

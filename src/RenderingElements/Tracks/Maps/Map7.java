@@ -278,6 +278,30 @@ public class Map7 implements TrackControllerRequirments{
 	Signal signal_MainDown2_MainDown1_1_R_D_R = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_R_1 , -1 , -1 , 0);
 	Signal signal_MainDown2_MainDown1_1_R_D_L = new Signal(Signal.signalType.HOME , switchMainDown2_MainDown1_R_1 , 1 , -1 , 0);
 	
+//|||-------------------------------------STARTER SIGNAL UP DIRECTION---------------------------------------------------------|||
+	
+	
+	
+	Signal left_loop_up_1 = new Signal(Signal.signalType.HOME , loopUp1 , 13 , -1 , -1 , true);
+	Signal left_main_up_2 = new Signal(Signal.signalType.HOME , mainUp2 , 13 , -1 , -1 , true);
+	Signal left_main_up_1 = new Signal(Signal.signalType.HOME , mainUp1 , 13 , -1 , -1 , true);
+	
+	Signal left_loop_down_2 = new Signal(Signal.signalType.HOME , loopDown2 , 13 , -1 , -1 , true);
+	Signal left_loop_down_1 = new Signal(Signal.signalType.HOME , loopDown1 , 13 , -1 , -1 , true);
+	Signal left_main_down_2 = new Signal(Signal.signalType.HOME , mainDown2 , 13 , -1 , -1 , true);
+	Signal left_main_down_1 = new Signal(Signal.signalType.HOME , mainDown1 , 13 , -1 , -1 , true);
+	
+	
+	
+	Signal right_loop_up_1 = new Signal(Signal.signalType.HOME , loopUp1 , 17 , 1 , -1 , true);
+	Signal right_main_up_2 = new Signal(Signal.signalType.HOME , mainUp2 , 17 , 1 , -1 , true);
+	Signal right_main_up_1 = new Signal(Signal.signalType.HOME , mainUp1 , 17 , 1 , -1 , true);
+	
+	Signal right_loop_down_2 = new Signal(Signal.signalType.HOME , loopDown2 , 17 , 1 , -1 , true);
+	Signal right_loop_down_1 = new Signal(Signal.signalType.HOME , loopDown1 , 17 , 1 , -1 , true);
+	Signal right_main_down_2 = new Signal(Signal.signalType.HOME , mainDown2 , 17 , 1 , -1 , true);
+	Signal right_main_down_1 = new Signal(Signal.signalType.HOME , mainDown1 , 17 , 1 , -1 , true);
+	
 	@Override
 	public List<TrackSection> getSections() {
 		
@@ -519,7 +543,30 @@ public class Map7 implements TrackControllerRequirments{
 				signal_MainDown2_MainDown1_1_R_U_L,
 				signal_MainDown2_MainDown1_1_R_U_R,
 				signal_MainDown2_MainDown1_1_R_D_R,
-				signal_MainDown2_MainDown1_1_R_D_L
+				signal_MainDown2_MainDown1_1_R_D_L,
+				
+			
+				left_loop_up_1,
+				left_main_up_2,
+				left_main_up_1,
+				
+				left_loop_down_2,
+				left_loop_down_1,
+				left_main_down_2,
+				left_main_down_1,
+				
+				
+				right_loop_up_1,
+				right_main_up_2,
+				right_main_up_1,
+				
+				right_loop_down_2,
+				right_loop_down_1,
+				right_main_down_2,
+				right_main_down_1
+				
+				
+				
 				
 				);
 		
