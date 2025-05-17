@@ -48,7 +48,7 @@ public class TrafficContainer {
 	//index specify to choose the traffic from traffic list 
 	public void addTrafficListToController(int index) 
 	{
-		loadTrafficFromFile();
+//		loadTrafficFromFile();
 		createTraffic();
 
 		SimulationController.listOfTrainTraffic = TrafficList.get(index);
