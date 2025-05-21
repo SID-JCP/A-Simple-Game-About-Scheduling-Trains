@@ -1,4 +1,4 @@
-<Map sections = 26>
+<Map sections = "21">
 
 	<lines>
 		<track type = "UP" number = "1" length = "-1" deploy = "true">mainUp1</track>
@@ -11,21 +11,60 @@
 
 	<switches>
 
-		<track type = "UP_START" start = "mainUp1" end = "loopUp1" position = "7">
-			<signal P = "end" H = "right" V = "up" F = "UP">1</signal>
+		<track type = "UP_START" start = "mainUp1" end = "loopUp1" position = "9">
+			<signal P = "end" H = "right" V = "up">1</signal>
 			<signal P = "end" H = "left" V = "up">2</signal>
 			<signal P = "start" H = "right" V = "down">3</signal>
 			<signal P = "start" H = "left" V = "down">4</signal>
 		</track>
 
-		<track type = "UP_END" start = "loopUp1" end = "mainUp1" position = "11">
+		<track type = "UP_END" start = "loopUp1" end = "mainUp1" position = "13">
 			<signal P = "start" H = "left" V = "up"></signal>
 			<signal P = "start" H = "right" V = "up"></signal>
 			<signal P = "end" H = "left" V = "down"></signal>
-			<signal P = "end" H = "right" V = "down" F = "DOWN"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
 		</track>
 
 	</switches>
+
+	<signals>
+		<block>
+
+			<signal track = "mainUp1" previous = ""         position = "1" 	H = "left" 	V = "top" 	F = "UP">b1</signal>
+
+			<signal track = "mainUp1" previous = "b1" 	position = "3" 	H = "left"	V = "top">b2</signal>
+			<signal track = "mainUp1" previous = "b2" 	position = "5" 	H = "left"	V = "top">b3</signal>
+			<signal track = "mainUp1"  previous = "b3" 	position = "15"     H = "left" 	V = "top5"	alone = "true" >b4</signal>
+			<signal track = "mainUp1"  previous = "b4" 	position = "17"     H = "left" 	V = "top">b5</signal>
+			<signal track = "mainUp1"  previous = "b5" 	position = "19"     H = "left" 	V = "top">b6</signal>
+			<signal track = "mainUp1"  previous = "b6" 	position = "21"     H = "left" 	V = "top">b7</signal>
+
+			<signal track = "mainUp1"  previous = "b7" 	position = "23"     H = "left" 	V = "top" alone = "true">b8</signal>
+			<signal track = "mainUp1"  previous = "b8" 	position = "25"     H = "left" 	V = "top" alone = "true">b9</signal>
+			<signal track = "mainUp1"  previous = "b9" 	position = "27"     H = "left" 	V = "top" alone = "true">b10</signal>
+
+			<signal track = "mainUp1" previous = "" position = "21" H = "right" V = "top" F = "DOWN" >c1</signal>
+			
+			<signal track = "mainUp1" previous = "c1" position = "19" H = "right" V = "top">c2</signal>
+			<signal track = "mainUp1" previous = "c2" position = "17" H = "right" V = "top">c3</signal>
+			<signal track = "mainUp1" previous = "c3" position = "7" H = "right" V = "top" alone = "true">c4</signal>
+			<signal track = "mainUp1" previous = "c4" position = "5" H = "right" V = "top">c5</signal>
+			<signal track = "mainUp1" previous = "c5" position = "3" H = "right" V = "top">c6</signal>
+			<signal track = "mainUp1"  previous = "c6" position = "1" H = "right" V = "top">c7</signal>
+			
+			<signal track = "mainUp1"  previous = "c7" position = "-1" H = "right" V = "top" alone = "true">c8</signal>
+			<signal track = "mainUp1"  previous = "c8" position = "-3" H = "right" V = "top" alone = "true">c9</signal>
+			<signal track = "mainUp1"  previous = "c9" position = "-5" H = "right" V = "top" alone = "true">c10</signal>
+
+
+		</block>
+
+		<home>
+			<signal track = "mainUp1"  position = "7" H = "left" V = "top">h1</signal>
+			<signal track = "mainUp1"  position = "15" H = "right" V = "top">h2</signal>
+
+		</home>
+	</signals>
 
 </Map>
 

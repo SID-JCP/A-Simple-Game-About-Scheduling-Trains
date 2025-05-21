@@ -34,21 +34,12 @@ public class TrafficContainer {
 	}
 	
 	
-	public void loadTrafficFromFile() 
-	{
-		XmlDoc doc = new XmlDoc();
-		
-		
-		XmlLoader.load(doc , "./Maps/map_1.xml");
-		
-		
-		Viewer.displayAsList(doc);
-	}
+	
 	
 	//index specify to choose the traffic from traffic list 
 	public void addTrafficListToController(int index) 
 	{
-		loadTrafficFromFile();
+		
 		createTraffic();
 
 		SimulationController.listOfTrainTraffic = TrafficList.get(index);

@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import RenderingElements.Signal.Signal;
+import RenderingElements.Signal.Signal.signalType;
 import RenderingElements.Tracks.TrackSection;
 import RenderingElements.Tracks.TrackSection.trackType;
+import RenderingElements.Tracks.Maps.CustomMap;
 import RenderingElements.Xml.Node.Node;
 import RenderingElements.Xml.Node.NodeAttribute;
 
@@ -21,6 +23,7 @@ public class MapLoader {
 	private  List<Signal> upLineStartSignals;
 	private  List<Signal> downLineStartSignals;
 	
+
 	
 	private List<Signal> tempSignalHolder = new ArrayList<>();
 	
@@ -29,6 +32,8 @@ public class MapLoader {
 	private Integer signalVPos = 1;
 	
 	private TrackSection s;
+	private Signal prevSignal;
+	private Signal blockSignal;
 	
 	public MapLoader(List<TrackSection> listOfTrackSections, List<Signal> listOfSignals,
 			List<TrackSection> deployMainUpLine, List<TrackSection> deployMainDownLine, List<Signal> upLineStartSignals,
@@ -56,28 +61,33 @@ public class MapLoader {
 	{
 		
 
-		if(!node.attributes.isEmpty()) 
-		{
-			List<NodeAttribute> nodeAttributeList = node.attributes;
-			
 			//later load map data also 
 			if(node.getTag().equals("Map")) 
 			{
-				nodeAttributeList.forEach(a -> {
-					System.out.println(a.getKey());
+				node.attributes.forEach(a -> {
+					if("sections".equals(a.getKey())) 
+					{
+						CustomMap.gridGap = Integer.parseInt(a.getValue());
+					}
 				});
 				
 			}
 			
 			//get all lines which are track sections 
-			if(node.getTag().equals("lines") || node.getTag().equals("switches")) 
+			if(node.getTag().equals("lines") || 
+			   node.getTag().equals("switches") || 
+			   node.getTag().equals("signals")) 
 			{
+				
+				
 				List<Node> nodeList = node.children;
 				
 				for(int i = 0; i < nodeList.size(); i++) 
 				{
 					recursiveDescent(nodeList.get(i));
 				}
+				
+				
 				
 				return;
 			}
@@ -90,8 +100,8 @@ public class MapLoader {
 				{
 					String type =  node.attributes.get(0).getValue();
 					
-					int trackNumber = Integer.parseInt(nodeAttributeList.get(1).getValue());
-					int length= Integer.parseInt(nodeAttributeList.get(2).getValue());
+					int trackNumber = Integer.parseInt(node.attributes.get(1).getValue());
+					int length= Integer.parseInt(node.attributes.get(2).getValue());
 
 					if(type.equals("UP")) 
 					{
@@ -234,20 +244,160 @@ public class MapLoader {
 
 			}
 			
-			if(node.getTag().equals("signals")) {return;}
+			
 			
 			//block signals
-			if(node.getTag().equals("block")) {return;}
+			if(node.getTag().equals("block")) 
+			{
+				
+				node.children.forEach(signal -> 
+				{
+					if(!signal.getTag().equals("signal")) 
+					{
+						
+						//throw exception
+					}
+					
+					signal.attributes.forEach(a -> 
+					{
+						if("track".equals(a.getKey()))
+						{
+									s =  listOfTrackSections.stream().filter((TrackSection t) -> 
+									
+										a.getValue().equals(t.getId())
+									
+									).findFirst().orElseThrow();
+						}
+						
+						if("previous".equals(a.getKey())) 
+						{
+							
+							prevSignal = listOfSignals.stream().filter((Signal s) -> 
+								
+								a.getValue().equals(s.getId())
+								
+								).findFirst().orElse(null);
+
+						}
+						
+						if("position".equals(a.getKey())) 
+						{
+							signalPos = Integer.parseInt(a.getValue());
+						}
+						
+						if("H".equals(a.getKey())) 
+						{
+							if(a.getValue().equals("left")) {signalHPos = 1;}else {signalHPos = -1;}
+						}
+						
+						if("V".equals(a.getKey())) 
+						{
+							if(a.getValue().equals("up")) {signalVPos = 1;}else {signalVPos = -1;}
+						}
+						
+						
+					});
+					
+					
+					
+					if(signal.attributes.stream().anyMatch(n -> "alone".equals(n.getKey()) && "true".equals(n.getValue()))) 
+					{
+						blockSignal = new Signal(signalType.BLOCK , true ,  s , prevSignal  ,  signalPos , signalHPos , signalVPos);
+					}else {
+						
+						blockSignal = new Signal(signalType.BLOCK ,  s , prevSignal  ,  signalPos , signalHPos , signalVPos);
+					}
+					
+					
+					blockSignal.setId(signal.getText());
+					
+					if(signal.attributes.stream().anyMatch(n -> "F".equals(n.getKey()) && "UP".equals(n.getValue()))) 
+					{
+						upLineStartSignals.add(blockSignal);
+					}
+					
+					if(signal.attributes.stream().anyMatch(n -> "F".equals(n.getKey()) && "DOWN".equals(n.getValue()))) 
+					{
+						downLineStartSignals.add(blockSignal);
+					}
+					
+					listOfSignals.add(blockSignal);
+					
+					
+				});
+
+				
+				
+				
+				
+			
+			}
+			
 			
 			//alone home signals 
-			if(node.getTag().equals("home")) {return;}
-			
+			if(node.getTag().equals("home")) 
+			{
 				
-		}
-		
-		
-		
-	
+				node.children.forEach(signal -> 
+				{
+					
+					if(!signal.getTag().equals("signal")) 
+					{
+						//throw exception
+					}
+					
+					signal.attributes.forEach(a -> 
+					{
+						if("track".equals(a.getKey()))
+						{
+									s =  listOfTrackSections.stream().filter((TrackSection t) -> 
+									
+										a.getValue().equals(t.getId())
+									
+									).findFirst().orElseThrow();
+						}
+						
+						if("position".equals(a.getKey())) 
+						{
+							signalPos = Integer.parseInt(a.getValue());
+						}
+						
+						if("H".equals(a.getKey())) 
+						{
+							if(a.getValue().equals("left")) {signalHPos = 1;}else {signalHPos = -1;}
+						}
+						
+						if("V".equals(a.getKey())) 
+						{
+							if(a.getValue().equals("up")) {signalVPos = 1;}else {signalVPos = -1;}
+						}
+						
+					});
+					
+					Signal homeSignal = new Signal(signalType.HOME , s , signalPos , signalHPos , signalVPos , true);
+					homeSignal.setId(signal.getText());
+					
+					if(signal.attributes.stream().anyMatch(n -> "F".equals(n.getKey()) && "UP".equals(n.getValue()))) 
+					{
+						upLineStartSignals.add(homeSignal);
+					}
+					
+					if(signal.attributes.stream().anyMatch(n -> "F".equals(n.getKey()) && "DOWN".equals(n.getValue()))) 
+					{
+						downLineStartSignals.add(homeSignal);
+					}
+					
+					listOfSignals.add(homeSignal);
+					
+					
+				});
+				
+				
+				
+				return;
+				
+			}
+			
 
 		
 		if(node.children.isEmpty()) 

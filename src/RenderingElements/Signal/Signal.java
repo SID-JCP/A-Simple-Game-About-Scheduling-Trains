@@ -29,7 +29,8 @@ public class Signal {
 	
 	private int detectBoxSize = 15; //size of the box for visual purpose
 	
-	
+	private String id; //name of signal , used in custom map or for debug 
+
 	public signalType signal;
 	
 	private TrackSection track;
@@ -590,5 +591,13 @@ public class Signal {
 
 	public void setBeyond(boolean beyond) {
 		this.beyond = beyond;
+	}
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 }
