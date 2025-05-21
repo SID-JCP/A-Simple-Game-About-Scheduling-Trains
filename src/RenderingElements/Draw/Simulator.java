@@ -41,8 +41,12 @@ public class Simulator {
 //	private int mapSelected = WindowManager.mapId;
 //	private int trafficSelected = WindowManager.trafficId;
 	
-	private int mapSelected = 0;
-	private int trafficSelected = 1;
+	private int mapSelected = 7;
+	private int trafficSelected = 3;
+	
+	//used only when user chooses custom map or traffic or both 
+	private String mapFilePath = "";
+	private String trafficFilePaath = "";
 	
 	
 	private int WIDTH = 0;
@@ -199,7 +203,7 @@ public class Simulator {
 	{
 		
 		//graws green lines denoting each section  
-		positionGrid(g2d);
+//		positionGrid(g2d);
 		
 		drawStation(g2d);
 		

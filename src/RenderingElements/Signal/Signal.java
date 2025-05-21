@@ -405,19 +405,24 @@ public class Signal {
 			g2d.fillRoundRect(sigX - 2 , sigY - 2, containerLength + 4, containerWidth + 3, 15 ,15);
 		}
 		
-		//up line signal 
-		if(horizontalPosFlag == 1) 
+		if(signal.equals(signalType.HOME)) 
 		{
-			g2d.setColor(Color.GRAY);
-			g2d.fillRoundRect(sigX, sigY, containerLength, containerWidth , 10 ,10);
+			
+			g2d.setColor(Color.ORANGE.darker().darker());
 			
 			
 		}else {
 			
-			g2d.setColor(Color.GRAY.darker());
-			g2d.fillRoundRect(sigX, sigY, containerLength, containerWidth , 10 ,10);
+			if(horizontalPosFlag == 1) 
+			{
+				g2d.setColor(Color.GRAY);
+								
+			}else {g2d.setColor(Color.GRAY.darker());}
 			
 		}
+		
+		
+		g2d.fillRoundRect(sigX, sigY, containerLength, containerWidth , 10 ,10);
 		
 		
 		
