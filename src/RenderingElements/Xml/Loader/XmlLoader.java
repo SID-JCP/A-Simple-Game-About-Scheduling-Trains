@@ -9,7 +9,7 @@ import RenderingElements.Xml.XmlDoc;
 
 
 
-public class Loader {
+public class XmlLoader {
 	
 	
 	static StringBuilder string = new StringBuilder();

@@ -21,9 +21,7 @@ public class Viewer {
 	private static void recursiveDescent(Node node , String gap) 
 	{
 		
-		
-		
-		
+
 		StringBuilder attr = new StringBuilder("");
 		
 		if(!node.attributes.isEmpty()) 
@@ -59,9 +57,6 @@ public class Viewer {
 		
 	}
 	
-	public static void writeAsList(XmlDoc doc) 
-	{
-		
-	}
+	
 
 }

@@ -1,0 +1,31 @@
+<Map sections = 26>
+
+	<lines>
+		<track type = "UP" number = "1" length = "-1" deploy = "true">mainUp1</track>
+		<track type = "UP" number = "2" length = "3">loopUp1</track>
+		
+		<track type = "DOWN" number = "1" length = "-1" deploy = "true">mainDown1</track>
+		<track type = "DOWN" number = "2" length = "-1" deploy = "true">mainDown1</track>
+	</lines>
+
+
+	<switches>
+
+		<track type = "UP_START" start = "mainUp1" end = "loopUp1" position = "7">
+			<signal P = "end" H = "right" V = "up" F = "UP">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+
+		<track type = "UP_END" start = "loopUp1" end = "mainUp1" position = "11">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down" F = "DOWN"></signal>
+		</track>
+
+	</switches>
+
+</Map>
+

@@ -11,10 +11,8 @@ public class Node
 	// <tag>
 	String tag;
 
-
 	//<tag> text </tag>
 	String text;
-	
 	
 	//<tag key = "value" key2 = "value2">
 	public List<NodeAttribute> attributes = new ArrayList<>();

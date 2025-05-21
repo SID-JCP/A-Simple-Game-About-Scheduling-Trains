@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import RenderingElements.Controller.SimulationController;
+import RenderingElements.Tracks.Maps.CustomMap;
 import RenderingElements.Tracks.Maps.Map1;
 import RenderingElements.Tracks.Maps.Map2;
 import RenderingElements.Tracks.Maps.Map3;
@@ -18,6 +19,8 @@ public class Simulator {
 
 
 //|---------ACTUAL MAPS FOR USE---------|
+	CustomMap map = new CustomMap();
+	
 	Map1 map1 = new Map1();
 	Map2 map2 = new Map2();
 	Map3 map3 = new Map3();
@@ -38,8 +41,8 @@ public class Simulator {
 //	private int mapSelected = WindowManager.mapId;
 //	private int trafficSelected = WindowManager.trafficId;
 	
-	private int mapSelected = 7;
-	private int trafficSelected = 3;
+	private int mapSelected = 0;
+	private int trafficSelected = 1;
 	
 	
 	private int WIDTH = 0;
@@ -92,9 +95,8 @@ public class Simulator {
 			{
 				case 0:
 					
-//					defaultStation.addListToController();	
-//					defaultStation.initializeInterlocking();
-//					defaultStation.createStation();
+					map.loadData();
+					map.addListToController();
 								
 					
 					break;

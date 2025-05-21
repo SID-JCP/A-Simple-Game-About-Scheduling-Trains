@@ -24,6 +24,12 @@ public class TrackSection {
 	//if switch is from a loop to loop
 	public boolean loopToLoop = false;
 	
+	
+	private String id = "";
+	
+	
+
+
 	public static enum trackType
 	{
 		///tracks above center of canvas going from left to right 
@@ -494,5 +500,12 @@ public class TrackSection {
 		this.switchRadius = switchRadius;
 	}
 
+	public String getId() {
+		return id;
+	}
 
+
+	public void setId(String id) {
+		this.id = id;
+	}
 }
