@@ -115,7 +115,7 @@ public class Train {
 	
 	public Color color = null; //optional color provided 
 	
-	public int pltformNumber = 0; //the platform the train is supposed to stop at 
+	public int platformNumber = 0; //the platform the train is supposed to stop at 
 	
 	
 	//---------------------------TRAIN CENTER CIRCLE DATA---------------------------------|
@@ -144,7 +144,7 @@ public class Train {
 		this.hasHault = hault;
 	}
 	
-	public Train(int movingDirection , int trackNumber  , long deployTime  , int departureTime , String name , Color color)
+	public Train(int movingDirection , int trackNumber  , long deployTime  , int departureTime , String name , int platformNumber , Color color)
 	{
 		this.moveDirection = movingDirection;
 		this.deployTime = deployTime;
@@ -153,6 +153,7 @@ public class Train {
 		this.departureTime = departureTime; 
 		this.color = color;
 		this.hasHault = true;
+		this.platformNumber = platformNumber;
 	}
 	
 	public void initialize() 
@@ -721,7 +722,7 @@ public class Train {
 		
 		g2d.drawString("N : " + name ,  x + 5 , y + 10);
 		g2d.drawString("H : " + hasHault ,  x + 5 , y + 23);
-		g2d.drawString("P : " + pltformNumber ,  x + 5 , y + 35);
+		g2d.drawString("P : " + platformNumber ,  x + 5 , y + 35);
 		g2d.drawString("T D : " + departureTime ,  x + 5 , y + 48);
 		
 	}

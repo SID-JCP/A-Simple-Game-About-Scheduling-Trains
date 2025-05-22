@@ -1,0 +1,12 @@
+<Trains startHour = "4:00">
+
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "4:00"  	departure = "5:10" 	name = "express" ></train>
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "4:03"  	departure = "5:10" 	name = "express" ></train>
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "4:06"  	departure = "5:10" 	name = "express" ></train>
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "4:09"  	departure = "5:10" 	name = "express" ></train>
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "4:12"  	departure = "5:10" 	name = "express" ></train>
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "4:15"  	departure = "5:10" 	name = "express" ></train>
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "4:18"  	departure = "5:10" 	name = "express" ></train>
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "4:21"  	departure = "5:10" 	name = "express" ></train>
+	
+</Trains>

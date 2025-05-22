@@ -27,9 +27,9 @@ public class CustomMap {
 	private XmlDoc doc = new XmlDoc();
 	
 	
-	public void loadData() 
+	public void loadData(String mapFilePath) 
 	{
-		XmlLoader.load(doc , "./Maps/map_1.xml");
+		XmlLoader.load(doc , mapFilePath);
 		
 		MapLoader mapLoader = new MapLoader(
 									listOfTrackSections , 

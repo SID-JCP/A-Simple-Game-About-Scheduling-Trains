@@ -55,7 +55,7 @@ public class SimulationController {
 		
 		
 		
-		//---------------------------- Get Click Position----------------------------------
+		//---------------------------- Get Click Position ----------------------------------
 		
 		this.mouseMoveX = mouseMoveX;
 		this.mouseMoveY = mouseMoveY;

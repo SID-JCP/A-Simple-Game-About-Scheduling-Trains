@@ -64,8 +64,9 @@ public class SimulatorClock implements Runnable{
 	
 	private double timeLeftToWait = 0;	
 	
-	private int HOUR = 8;	//start everyday at morning 8'O clock 
-	private int MINUTES = 0;
+	//time at which the clock , starts (default 8 or set in custom traffic file)
+	public static int HOUR = 8;	
+	public static int MINUTES = 0;
 	
 	//UI elements 
 	private int horizontalCenter = 0;

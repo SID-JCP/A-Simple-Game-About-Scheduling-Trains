@@ -13,6 +13,7 @@ import RenderingElements.Tracks.Maps.Map6;
 import RenderingElements.Tracks.Maps.Map7;
 import RenderingElements.Tracks.Maps.Map5;
 import RenderingElements.Train.TrafficContainer;
+import RenderingElements.Xml.TrainLoader;
 import Window.WindowManager;
 
 public class Simulator {
@@ -35,18 +36,19 @@ public class Simulator {
 	SimulationController Controller = new SimulationController();
 	
 	TrafficContainer traffic = new TrafficContainer();
+	TrainLoader loader = new TrainLoader();
 	
 //	|------------IMPORTANT DATA------------------|
 	
-//	private int mapSelected = WindowManager.mapId;
-//	private int trafficSelected = WindowManager.trafficId;
+	private int mapSelected = WindowManager.mapId;
+	private int trafficSelected = WindowManager.trafficId;
 	
-	private int mapSelected = 7;
-	private int trafficSelected = 3;
+
+//	private int trafficSelected = 3;
 	
 	//used only when user chooses custom map or traffic or both 
-	private String mapFilePath = "";
-	private String trafficFilePaath = "";
+	public static String mapFilePath = "";
+	public static String trafficFilePath = "";
 	
 	
 	private int WIDTH = 0;
@@ -99,7 +101,7 @@ public class Simulator {
 			{
 				case 0:
 					
-					map.loadData();
+					map.loadData(mapFilePath);
 					map.addListToController();
 					map.setGrid();
 					
@@ -165,17 +167,21 @@ public class Simulator {
 					break;
 			}
 			
-			traffic.addTrafficListToController(trafficSelected);
+			if(trafficSelected != 0) 
+			{
+				traffic.addTrafficListToController(trafficSelected);
+				
+			}else {
+				
+				SimulationController.listOfTrainTraffic = loader.loadTraffic(trafficFilePath);
+			}
+			
 			trackElementsCompiled = true;
 		}
 		
 		
-		
-		
-		
 		Controller.update(deltaTime ,clockTime , mouseMoveX , mouseMoveY ,  mouseClickX ,  mouseClickY);
-		
-		
+
 		
 	}
 	

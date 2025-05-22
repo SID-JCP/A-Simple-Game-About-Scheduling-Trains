@@ -25,9 +25,9 @@ public class Traffic2{
 					//train 4
 					new Train(0 ,1 , 250 , false),
 					//train 5
-					new Train(1 ,1 , 4550 , false),
+					new Train(-1 ,1 , 4550 , false),
 					//train 6
-					new Train(1 ,1 , 4580 , false)
+					new Train(-1 ,1 , 4580 , false)
 					
 					)
 			

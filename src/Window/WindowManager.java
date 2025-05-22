@@ -33,9 +33,9 @@ public class WindowManager {
 		window.setUndecorated(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-//		selectorWindow.openMapWindow();
+		selectorWindow.openMapWindow();
 		
-		startSimulation();
+
 
 		
 
