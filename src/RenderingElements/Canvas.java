@@ -26,6 +26,8 @@ public class Canvas extends JPanel implements Runnable
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	public static boolean debug = false;
+	
 	private long deltaTime = 0l;	
 	private long timeStart = 0l;
 	private long timeEnd = 0l;
@@ -186,7 +188,11 @@ public class Canvas extends JPanel implements Runnable
 		
 		clock.drawClock(graphic2D);
 		
-		drawDebug(graphic2D);
+		if(debug) 
+		{
+			drawDebug(graphic2D);
+		}
+		
 		
 		simulatior.draw(graphic2D);
 		

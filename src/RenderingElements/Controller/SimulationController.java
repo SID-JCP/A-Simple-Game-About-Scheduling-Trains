@@ -562,6 +562,11 @@ public class SimulationController {
 				//active train [Draw it]
 				if(train.getDeployState() == 1) 
 				{
+					if(train.departureTime >= secondsOfDay) 
+					{
+						train.setReadToDepart(true);
+					}
+					
 					train.draw(g2d);
 					train.isCursorInside(mouseMoveX, mouseMoveY);
 					

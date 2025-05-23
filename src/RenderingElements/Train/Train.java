@@ -39,10 +39,12 @@ public class Train {
 	
 	public boolean nextSectionClear = true; // to be used for deployment of the train , check if the train before has passed 
 	
-	
+	public boolean readToDepart = false; //when train ready to depart , would be set true by controller , used to draw green circle in front of train  
 	
 	//|--------------------------Movement Data--------------------------------|
 	
+	
+
 	
 
 	//left side of the train
@@ -729,10 +731,14 @@ public class Train {
 	
 	public void draw(Graphics2D g2d) 
 	{
+		if(Canvas.debug)debugFrontBackOnSwitch(g2d);
 		
-//		debugFrontBackOnSwitch(g2d);
-		
-		
+		if(this.isReadToDepart()) 
+		{
+			g2d.setColor(Color.green);
+			
+			g2d.fillOval(trainFrontX - 8, trainFrontY - 8, 16, 18);
+		}
 		
 //--------------------------------------------------------------------------------------------
 		
@@ -878,5 +884,12 @@ public class Train {
 		this.lastClockedSignal = lastClockedSignal;
 	}
 	
+	public boolean isReadToDepart() {
+		return readToDepart;
+	}
+
+	public void setReadToDepart(boolean readToDepart) {
+		this.readToDepart = readToDepart;
+	}
 	
 }

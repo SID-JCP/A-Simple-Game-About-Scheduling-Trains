@@ -1,5 +1,558 @@
-<Map sections = "31">
+<Map sections = "41"  platfromWidth = "3" platfromHeight = "8" debug = "false">
 	<lines>
+		<track type = "UP" number = "1" length = "-1" deploy = "true">mainUp1</track>
+		<track type = "UP" number = "2" length = "-1" deploy = "true">mainUp2</track>
 		
+		<track type = "UP" number = "3" length = "32">loopUp1</track>
+		<track type = "UP" number = "4" length = "26">loopUp2</track>
+		<track type = "UP" number = "5" length = "20">loopUp3</track>
+		<track type = "UP" number = "6" length = "16">loopUp4</track>
+		<track type = "UP" number = "7" length = "13">loopUp5</track>
+		<track type = "UP" number = "8" length = "5">loopUp6</track>
+
+		<track type = "DOWN" number = "1" length = "-1" deploy = "true">mainDown1</track>
+		<track type = "DOWN" number = "2" length = "-1" deploy = "true">mainDown2</track>
+
+		<track type = "DOWN" number = "3" length = "35">loopDown1</track>
+		<track type = "DOWN" number = "4" length = "30">loopDown2</track>
+		<track type = "DOWN" number = "5" length = "20">loopDown3</track>
+		<track type = "DOWN" number = "6" length = "15">loopDown4</track>
+		<track type = "DOWN" number = "7" length = "10">loopDown5</track>
+		<track type = "DOWN" number = "8" length = "5">loopDown6</track>
+
 	</lines>
+
+	<switches>
+
+		<track type = "UP_START" start = "mainDown1" end = "mainUp1" position = "5">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+
+		<track type = "UP_START" start = "mainDown1" end = "mainUp1" position = "13">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+	
+		<track type = "DOWN_START" start = "mainUp1" end = "mainDown1" position = "3">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "down">2</signal>
+			<signal P = "start" H = "right" V = "up">3</signal>
+			<signal P = "start" H = "left" V = "up">4</signal>
+		</track>
+
+		<track type = "DOWN_START" start = "mainUp1" end = "mainDown1" position = "10">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "down">2</signal>
+			<signal P = "start" H = "right" V = "up">3</signal>
+			<signal P = "start" H = "left" V = "up">4</signal>
+		</track>
+
+		<track type = "DOWN_START" start = "mainUp2" end = "mainUp1" position = "1">
+			<signal P = "end" H = "right" V = "down">1</signal>
+			<signal P = "end" H = "left" V = "down">2</signal>
+			<signal P = "start" H = "right" V = "up">3</signal>
+			<signal P = "start" H = "left" V = "up">4</signal>
+		</track>
+
+
+		<track type = "UP_START" start = "mainUp1" end = "mainUp2" position = "4">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+
+		<track type = "UP_START" start = "mainUp1" end = "mainUp2" position = "11">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+
+		<track type = "UP_START" start = "mainUp1" end = "mainUp2" position = "15">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+
+		<track type = "UP_START" start = "mainUp1" end = "mainUp2" position = "35">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+
+		<track type = "UP_START" start = "mainUp2" end = "loopUp1" position = "4">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+		
+		<track type = "UP_START" start = "mainUp2" end = "loopUp1" position = "7" loopToLoop = "true">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+	
+		<track type = "UP_START" start = "mainUp2" end = "loopUp1" position = "13"  loopToLoop = "true">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+
+		<track type = "DOWN_START" start = "mainUp2" end = "mainUp1" position = "8">
+			<signal P = "end" H = "right" V = "down">1</signal>
+			<signal P = "end" H = "left" V = "down">2</signal>
+			<signal P = "start" H = "right" V = "up">3</signal>
+			<signal P = "start" H = "left" V = "up">4</signal>
+		</track>
+		
+		
+		
+		
+	
+		<track type = "UP_START" start = "loopUp1" end = "loopUp2" position = "7" loopToLoop = "true">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+		
+		<track type = "UP_START" start = "loopUp1" end = "loopUp2" position = "10" loopToLoop = "true">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+		
+		<track type = "UP_START" start = "loopUp1" end = "loopUp2" position = "15" loopToLoop = "true">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+
+		<track type = "UP_START" start = "loopUp2" end = "loopUp3" position = "10" loopToLoop = "true">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+		
+		<track type = "UP_START" start = "loopUp2" end = "loopUp3" position = "12" loopToLoop = "true">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+	
+		<track type = "UP_START" start = "loopUp3" end = "loopUp4" position = "12" loopToLoop = "true">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+
+		<track type = "UP_START" start = "loopUp3" end = "loopUp4" position = "14" loopToLoop = "true">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+
+		<track type = "UP_START" start = "loopUp4" end = "loopUp5" position = "14" loopToLoop = "true">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+		
+		<track type = "UP_START" start = "loopUp4" end = "loopUp5" position = "16" loopToLoop = "true">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+
+		<track type = "UP_START" start = "loopUp5" end = "loopUp6" position = "18" loopToLoop = "true">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+
+
+		
+		
+		<track type = "UP_START" start = "mainDown2" end = "mainDown1" position = "1">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+
+		<track type = "UP_START" start = "mainDown2" end = "mainDown1" position = "9">
+			<signal P = "end" H = "right" V = "up">1</signal>
+			<signal P = "end" H = "left" V = "up">2</signal>
+			<signal P = "start" H = "right" V = "down">3</signal>
+			<signal P = "start" H = "left" V = "down">4</signal>
+		</track>
+
+
+		<track type = "DOWN_START" start = "mainDown1" end = "mainDown2" position = "6">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		<track type = "DOWN_START" start = "mainDown1" end = "mainDown2" position = "12">
+			<signal P = "start" H = "left" V = "down"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		<track type = "DOWN_START" start = "mainDown2" end = "loopDown1" position = "3" >
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		<track type = "DOWN_START" start = "mainDown2" end = "loopDown1" position = "8" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+			
+		<track type = "DOWN_START" start = "mainDown2" end = "loopDown1" position = "14" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+			
+		<track type = "DOWN_START" start = "loopDown1" end = "loopDown2" position = "5" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+		
+		<track type = "DOWN_START" start = "loopDown1" end = "loopDown2" position = "10" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+		
+		<track type = "DOWN_START" start = "loopDown1" end = "loopDown2" position = "16" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		<track type = "DOWN_START" start = "loopDown2" end = "loopDown3" position = "12" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		
+
+		<track type = "DOWN_START" start = "loopDown3" end = "loopDown4" position = "14" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+		
+		<track type = "DOWN_START" start = "loopDown4" end = "loopDown5" position = "16" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		<track type = "DOWN_START" start = "loopDown5" end = "loopDown6" position = "18" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+
+
+		<track type = "UP_END" start = "loopUp6" end = "loopUp5" position = "23" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		<track type = "UP_END" start = "loopUp5" end = "loopUp4" position = "27" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		<track type = "UP_END" start = "loopUp5" end = "loopUp4" position = "25" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		<track type = "UP_END" start = "loopUp4" end = "loopUp3" position = "29" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		<track type = "UP_END" start = "loopUp4" end = "loopUp3" position = "27" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		<track type = "UP_END" start = "loopUp3" end = "loopUp2" position = "31" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		<track type = "UP_END" start = "loopUp3" end = "loopUp2" position = "29" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		<track type = "UP_END" start = "loopUp2" end = "loopUp1" position = "27" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		<track type = "UP_END" start = "loopUp2" end = "loopUp1" position = "31" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		<track type = "UP_END" start = "loopUp2" end = "loopUp1" position = "34" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		
+
+		<track type = "UP_END" start = "loopUp1" end = "mainUp2" position = "29" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		<track type = "UP_END" start = "loopUp1" end = "mainUp2" position = "33" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		<track type = "UP_END" start = "loopUp1" end = "mainUp2" position = "36" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		
+
+		<track type = "UP_END" start = "mainUp2" end = "mainUp1" position = "38">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		<track type = "UP_END" start = "mainUp2" end = "mainUp1" position = "31">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+
+		<track type = "UP_END" start = "mainUp1" end = "mainDown1" position = "34">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+
+		<track type = "UP_END" start = "mainUp1" end = "mainDown1" position = "40">
+			<signal P = "start" H = "left" V = "up"></signal>
+			<signal P = "start" H = "right" V = "up"></signal>
+			<signal P = "end" H = "left" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		<track type = "DOWN_END" start = "mainDown1" end = "mainUp1" position = "37">
+			<signal P = "start" H = "left" V = "down"></signal>
+			<signal P = "start" H = "right" V = "down"></signal>
+			<signal P = "end" H = "left" V = "up"></signal>
+			<signal P = "end" H = "right" V = "up"></signal>
+		</track>
+
+		<track type = "DOWN_END" start = "mainDown1" end = "mainUp1" position = "32">
+			<signal P = "start" H = "left" V = "down"></signal>
+			<signal P = "start" H = "right" V = "down"></signal>
+			<signal P = "end" H = "left" V = "up"></signal>
+			<signal P = "end" H = "right" V = "down"></signal>
+		</track>
+
+		<track type = "DOWN_END" start = "loopDown6" end = "loopDown5" position = "23" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "down"></signal>
+			<signal P = "start" H = "right" V = "down"></signal>
+			<signal P = "end" H = "left" V = "up"></signal>
+			<signal P = "end" H = "right" V = "up"></signal>
+		</track>
+
+		<track type = "DOWN_END" start = "loopDown5" end = "loopDown4" position = "25" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "down"></signal>
+			<signal P = "start" H = "right" V = "down"></signal>
+			<signal P = "end" H = "left" V = "up"></signal>
+			<signal P = "end" H = "right" V = "up"></signal>
+		</track>
+
+		<track type = "DOWN_END" start = "loopDown4" end = "loopDown3" position = "27" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "down"></signal>
+			<signal P = "start" H = "right" V = "down"></signal>
+			<signal P = "end" H = "left" V = "up"></signal>
+			<signal P = "end" H = "right" V = "up"></signal>
+		</track>
+
+		<track type = "DOWN_END" start = "loopDown3" end = "loopDown2" position = "29" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "down"></signal>
+			<signal P = "start" H = "right" V = "down"></signal>
+			<signal P = "end" H = "left" V = "up"></signal>
+			<signal P = "end" H = "right" V = "up"></signal>
+		</track>
+		
+		<track type = "DOWN_END" start = "loopDown2" end = "loopDown1" position = "26" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "down"></signal>
+			<signal P = "start" H = "right" V = "down"></signal>
+			<signal P = "end" H = "left" V = "up"></signal>
+			<signal P = "end" H = "right" V = "up"></signal>
+		</track>
+
+		<track type = "DOWN_END" start = "loopDown2" end = "loopDown1" position = "31" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "down"></signal>
+			<signal P = "start" H = "right" V = "down"></signal>
+			<signal P = "end" H = "left" V = "up"></signal>
+			<signal P = "end" H = "right" V = "up"></signal>
+		</track>
+
+		<track type = "DOWN_END" start = "loopDown2" end = "loopDown1" position = "36" loopToLoop = "true">
+			<signal P = "start" H = "left" V = "down"></signal>
+			<signal P = "start" H = "right" V = "down"></signal>
+			<signal P = "end" H = "left" V = "up"></signal>
+			<signal P = "end" H = "right" V = "up"></signal>
+		</track>
+
+		
+
+		<track type = "DOWN_END" start = "loopDown1" end = "mainDown2" position = "33"  loopToLoop = "true">
+			<signal P = "start" H = "left" V = "down"></signal>
+			<signal P = "start" H = "right" V = "down"></signal>
+			<signal P = "end" H = "left" V = "up"></signal>
+			<signal P = "end" H = "right" V = "up"></signal>
+		</track>
+		
+		<track type = "DOWN_END" start = "loopDown1" end = "mainDown2" position = "28"  loopToLoop = "true">
+			<signal P = "start" H = "left" V = "down"></signal>
+			<signal P = "start" H = "right" V = "down"></signal>
+			<signal P = "end" H = "left" V = "up"></signal>
+			<signal P = "end" H = "right" V = "up"></signal>
+		</track>
+
+		<track type = "DOWN_END" start = "loopDown1" end = "mainDown2" position = "38"  loopToLoop = "true">
+			<signal P = "start" H = "left" V = "down"></signal>
+			<signal P = "start" H = "right" V = "down"></signal>
+			<signal P = "end" H = "left" V = "up"></signal>
+			<signal P = "end" H = "right" V = "up"></signal>
+		</track>
+
+		<track type = "DOWN_END" start = "mainDown2" end = "mainDown1" position = "30">
+			<signal P = "start" H = "left" V = "down"></signal>
+			<signal P = "start" H = "right" V = "down"></signal>
+			<signal P = "end" H = "left" V = "up"></signal>
+			<signal P = "end" H = "right" V = "up"></signal>
+		</track>
+
+		<track type = "DOWN_END" start = "mainDown2" end = "mainDown1" position = "35">
+			<signal P = "start" H = "left" V = "down"></signal>
+			<signal P = "start" H = "right" V = "down"></signal>
+			<signal P = "end" H = "left" V = "up"></signal>
+			<signal P = "end" H = "right" V = "up"></signal>
+		</track>
+
+	</switches>
+	
+	<signals>
+		<home>
+			<signal track = "mainUp1"  position = "19" H = "left" V = "top">h1</signal>
+			<signal track = "mainUp2"  position = "19" H = "left" V = "top">h2</signal>
+			<signal track = "loopUp1"  position = "19" H = "left" V = "top">h3</signal>
+			<signal track = "loopUp2"  position = "19" H = "left" V = "top">h4</signal>
+			<signal track = "loopUp3"  position = "19" H = "left" V = "top">h5</signal>
+			<signal track = "loopUp4"  position = "19" H = "left" V = "top">h6</signal>
+
+			<signal track = "mainUp1"  position = "23" H = "right" V = "top">b1</signal>
+			<signal track = "mainUp2"  position = "23" H = "right" V = "top">b2</signal>
+			<signal track = "loopUp1"  position = "23" H = "right" V = "top">b3</signal>
+			<signal track = "loopUp2"  position = "23" H = "right" V = "top">b5</signal>
+			<signal track = "loopUp3"  position = "23" H = "right" V = "top">b6</signal>
+			<signal track = "loopUp4"  position = "23" H = "right" V = "top">b7</signal>
+
+			<signal track = "mainDown1"  position = "19" H = "left" V = "top">h7</signal>
+			<signal track = "mainDown2"  position = "19" H = "left" V = "top">h8</signal>
+			<signal track = "loopDown1"  position = "19" H = "left" V = "top">h9</signal>
+			<signal track = "loopDown2"  position = "19" H = "left" V = "top">h10</signal>
+			<signal track = "loopDown3"  position = "19" H = "left" V = "top">h11</signal>
+			<signal track = "loopDown4"  position = "19" H = "left" V = "top">h12</signal>
+
+			<signal track = "mainDown1"  position = "23" H = "right" V = "top">b8</signal>
+			<signal track = "mainDown2"  position = "23" H = "right" V = "top">b9</signal>
+			<signal track = "loopDown1"  position = "23" H = "right" V = "top">b10</signal>
+			<signal track = "loopDown2"  position = "23" H = "right" V = "top">b11</signal>
+			<signal track = "loopDown3"  position = "23" H = "right" V = "top">b12</signal>
+			<signal track = "loopDown4"  position = "23" H = "right" V = "top">b13</signal>
+
+		</home>
+	</signals>
 </Map>

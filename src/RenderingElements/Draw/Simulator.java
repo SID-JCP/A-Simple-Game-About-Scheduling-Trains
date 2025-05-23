@@ -3,6 +3,7 @@ package RenderingElements.Draw;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import RenderingElements.Canvas;
 import RenderingElements.Controller.SimulationController;
 import RenderingElements.Tracks.Maps.CustomMap;
 import RenderingElements.Tracks.Maps.Map1;
@@ -209,7 +210,10 @@ public class Simulator {
 	{
 		
 		//graws green lines denoting each section  
-//		positionGrid(g2d);
+		if(Canvas.debug) 
+		{
+			positionGrid(g2d);
+		}	
 		
 		drawStation(g2d);
 		

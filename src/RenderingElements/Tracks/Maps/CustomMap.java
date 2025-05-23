@@ -27,6 +27,7 @@ public class CustomMap {
 	private XmlDoc doc = new XmlDoc();
 	
 	
+	
 	public void loadData(String mapFilePath) 
 	{
 		XmlLoader.load(doc , mapFilePath);
@@ -38,8 +39,9 @@ public class CustomMap {
 									deployMainDownLine ,
 									upLineStartSignals, 
 									downLineStartSignals
-
-									);
+		);
+		
+		
 		mapLoader.loadMap(doc);
 	}
 	
@@ -64,4 +66,6 @@ public class CustomMap {
 	{
 		Simulator.MAX_HORIZONTAL_ELM = CustomMap.gridGap;
 	}
+	
+	
 }

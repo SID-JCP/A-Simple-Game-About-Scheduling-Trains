@@ -3,6 +3,8 @@ package RenderingElements.Xml;
 import java.util.ArrayList;
 import java.util.List;
 
+import RenderingElements.Canvas;
+import RenderingElements.Draw.Simulator;
 import RenderingElements.Signal.Signal;
 import RenderingElements.Signal.Signal.signalType;
 import RenderingElements.Tracks.TrackSection;
@@ -32,6 +34,7 @@ public class MapLoader {
 	private Integer signalVPos = 1;
 	
 	private TrackSection s;
+	private boolean loopToLoopSwitch =  false;
 	private Signal prevSignal;
 	private Signal blockSignal;
 	
@@ -69,6 +72,25 @@ public class MapLoader {
 					{
 						CustomMap.gridGap = Integer.parseInt(a.getValue());
 					}
+					
+					if("debug".equals(a.getKey())  && "true".equals(a.getValue())) 
+					{
+						Canvas.debug = true;
+					}
+					
+					if("platfromWidth".equals(a.getKey())) 
+					{
+						Simulator.stationGraphicHorizontalPos = Integer.parseInt(a.getValue());
+					}
+					
+					if("platfromHeight".equals(a.getKey())) 
+					{
+						Simulator.stationGraphicVerticalPos = Integer.parseInt(a.getValue());
+					}
+					
+					
+					
+					
 				});
 				
 			}
@@ -139,6 +161,12 @@ public class MapLoader {
 					String endLine = node.attributes.get(2).getValue();
 					Integer position = Integer.parseInt(node.attributes.get(3).getValue());
 					
+					if(node.attributes.stream()
+								.anyMatch(n -> n.getKey().equals("loopToLoop") && n.getValue().equals("true"))) 
+					{
+						loopToLoopSwitch = true;
+					}else {loopToLoopSwitch = false;}
+					
 					TrackSection startSection = listOfTrackSections.stream().filter((TrackSection t) -> 
 						t.getId().equals(startLine)
 					).findFirst().orElse(null);
@@ -156,19 +184,19 @@ public class MapLoader {
 					switch(type) 
 					{
 						case "UP_START":
-							s = new TrackSection(trackType.UP_START , startSection , endSection , position);
+							s = new TrackSection(trackType.UP_START , startSection , endSection , position  , loopToLoopSwitch);
 							break;
 							
 						case "UP_END":
-							s = new TrackSection(trackType.UP_END , startSection , endSection , position);
+							s = new TrackSection(trackType.UP_END , startSection , endSection , position , loopToLoopSwitch);
 							break;
 							
 						case "DOWN_START":
-							s = new TrackSection(trackType.DOWN_START , startSection , endSection , position);
+							s = new TrackSection(trackType.DOWN_START , startSection , endSection , position , loopToLoopSwitch);
 							break;
 							
 						case "DOWN_END":
-							s = new TrackSection(trackType.UP_END , startSection , endSection , position);
+							s = new TrackSection(trackType.UP_END , startSection , endSection , position , loopToLoopSwitch);
 							break;
 						default:
 							//throw error 

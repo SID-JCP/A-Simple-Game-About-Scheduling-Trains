@@ -72,6 +72,7 @@ public class SimulatorClock implements Runnable{
 	private int horizontalCenter = 0;
 	private int clockBannerWidth = 0;
 	private int clockBannerHeight = 0;
+	private int screenWidth = 0;
 	
 	
 
@@ -167,6 +168,7 @@ public class SimulatorClock implements Runnable{
 		horizontalCenter = screenWidth/2;
 		clockBannerWidth = screenWidth/5;
 		clockBannerHeight = screenHeight/8;
+		this.screenWidth = screenWidth;
 	}
 	
 	
@@ -175,7 +177,7 @@ public class SimulatorClock implements Runnable{
 	public void drawClock(Graphics2D g2) 
 	{
 		g2.setColor(Color.DARK_GRAY);
-		g2.fillRoundRect(horizontalCenter - clockBannerWidth/2 , 20, clockBannerWidth, clockBannerHeight , 100 ,100);		
+		g2.fillRoundRect(screenWidth - clockBannerWidth , 20, clockBannerWidth, clockBannerHeight , 60 ,60);		
 		
 		g2.setColor(Color.WHITE);
 		
@@ -186,7 +188,7 @@ public class SimulatorClock implements Runnable{
 		if(MINUTES < 10) {mins +=  "0" + MINUTES;}else {mins += MINUTES;}
 		
 		g2.setFont(new Font("Arial" , Font.BOLD , 50));
-		g2.drawString(hour + ":" + mins, horizontalCenter - 62, clockBannerHeight - clockBannerHeight/6);		
+		g2.drawString(hour + ":" + mins, screenWidth - clockBannerWidth + (clockBannerWidth/2) - 50 , clockBannerHeight - clockBannerHeight/6);		
 		
 		
 		
