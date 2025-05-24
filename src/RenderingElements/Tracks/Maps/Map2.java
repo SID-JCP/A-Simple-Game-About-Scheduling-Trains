@@ -33,10 +33,10 @@ public class Map2 implements TrackControllerRequirments{
 	TrackSection loopUp1 = new TrackSection(trackType.UP , 2 , 3);
 	
 	//switch from main UP line to loop 
-	TrackSection switchMainUp1_loopUp1 = new TrackSection(trackType.UP_START , mainUp1 , loopUp1 , 6);
+	TrackSection switchMainUp1_loopUp1 = new TrackSection(trackType.UP_START , mainUp1 , loopUp1 , 7);
 		
 	//switch from loop to main Up line 
-	TrackSection switchloopUp1_MainUp1 = new TrackSection(trackType.UP_END , loopUp1 , mainUp1 , 10);
+	TrackSection switchloopUp1_MainUp1 = new TrackSection(trackType.UP_END , loopUp1 , mainUp1 , 11);
 	
 	//--------------------------------Signals -----------------------------------------------------
 	
@@ -46,15 +46,15 @@ public class Map2 implements TrackControllerRequirments{
 	
 	//alone home signal
 	Signal mainUP_3 = new Signal(signalType.HOME , mainUp1 , 5 , 1 , -1 , true);
-	Signal mainUP_4 = new Signal(signalType.HOME , mainUp1 , 11 , 1 , -1 , true);
+	Signal mainUP_4 = new Signal(signalType.HOME , mainUp1 , 13 , 1 , -1 , true);
 	
-	Signal mainUP_5 = new Signal(signalType.BLOCK , mainUp1 , mainUP_2 , 13 , 1 , -1);
+	Signal mainUP_5 = new Signal(signalType.BLOCK , mainUp1 , mainUP_2 , 19 , 1 , -1);
 	Signal mainUP_6 = new Signal(signalType.BLOCK , mainUp1 , mainUP_5 , 15 , 1 , -1);
 	
 	//-------------------------------UP Beyond Signals-------------------------------------
-	Signal mainUP_7 = new Signal(signalType.BLOCK , true , mainUp1 , mainUP_6 , 17 , 1 , -1);
-	Signal mainUP_8 = new Signal(signalType.BLOCK , true , mainUp1 , mainUP_7 , 19 , 1 , -1);
-	Signal mainUP_9 = new Signal(signalType.BLOCK , true ,mainUp1 , mainUP_8 , 21 , 1 , -1);
+	Signal mainUP_7 = new Signal(signalType.BLOCK , true , mainUp1 , mainUP_6 , 21 , 1 , -1);
+	Signal mainUP_8 = new Signal(signalType.BLOCK , true , mainUp1 , mainUP_7 , 23 , 1 , -1);
+	Signal mainUP_9 = new Signal(signalType.BLOCK , true ,mainUp1 , mainUP_8 , 25 , 1 , -1);
 	
 	
 	//loop line signals 
@@ -72,11 +72,11 @@ public class Map2 implements TrackControllerRequirments{
 	
 	
 	//down line block signals 
-	Signal mainDOWN_1 = new Signal(signalType.BLOCK , mainUp1 , null , 15 , -1 , -1);
-	Signal mainDOWN_2 = new Signal(signalType.BLOCK , mainUp1 , mainDOWN_1 , 13 , -1 , -1);
+	Signal mainDOWN_1 = new Signal(signalType.BLOCK , mainUp1 , null , 19 , -1 , -1);
+	Signal mainDOWN_2 = new Signal(signalType.BLOCK , mainUp1 , mainDOWN_1 , 15 , -1 , -1);
 	
 	//alone home signal
-	Signal mainDOWN_3 = new Signal(signalType.HOME , mainUp1 , 11 , -1 , -1 , true);
+	Signal mainDOWN_3 = new Signal(signalType.HOME , mainUp1 , 13 , -1 , -1 , true);
 	Signal mainDOWN_4 = new Signal(signalType.HOME , mainUp1 , 5 , -1 , -1 , true);
 	
 	Signal mainDOWN_5 = new Signal(signalType.BLOCK , mainUp1 , mainDOWN_2 , 3 , -1 , -1);
@@ -221,7 +221,7 @@ public class Map2 implements TrackControllerRequirments{
 	@Override
 	public void setGrid() {
 		
-		Simulator.MAX_HORIZONTAL_ELM = 16;
+		Simulator.MAX_HORIZONTAL_ELM = 17;
 		
 	}
 

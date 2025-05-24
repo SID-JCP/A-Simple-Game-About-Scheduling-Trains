@@ -54,9 +54,9 @@
 
 		<track type = "DOWN_START" start = "mainUp2" end = "mainUp1" position = "1">
 			<signal P = "end" H = "right" V = "down">1</signal>
-			<signal P = "end" H = "left" V = "down">2</signal>
+			<signal P = "end" H = "left" V = "down" F = "UP" >2</signal>
 			<signal P = "start" H = "right" V = "up">3</signal>
-			<signal P = "start" H = "left" V = "up">4</signal>
+			<signal P = "start" H = "left" V = "up" F = "UP">4</signal>
 		</track>
 
 
@@ -418,7 +418,7 @@
 			<signal P = "start" H = "left" V = "up"></signal>
 			<signal P = "start" H = "right" V = "up"></signal>
 			<signal P = "end" H = "left" V = "down"></signal>
-			<signal P = "end" H = "right" V = "down"></signal>
+			<signal P = "end" H = "right" V = "down" F= "DOWN"></signal>
 		</track>
 
 		<track type = "DOWN_END" start = "mainDown1" end = "mainUp1" position = "37">
@@ -504,7 +504,7 @@
 			<signal P = "start" H = "left" V = "down"></signal>
 			<signal P = "start" H = "right" V = "down"></signal>
 			<signal P = "end" H = "left" V = "up"></signal>
-			<signal P = "end" H = "right" V = "up"></signal>
+			<signal P = "end" H = "right" V = "up" F = "DOWN" ></signal>
 		</track>
 
 		<track type = "DOWN_END" start = "mainDown2" end = "mainDown1" position = "30">

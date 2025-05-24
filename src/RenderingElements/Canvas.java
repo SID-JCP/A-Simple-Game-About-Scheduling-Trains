@@ -16,7 +16,7 @@ import InputManager.KeyBoardInputManager;
 import InputManager.MouseInputManager;
 import RenderingElements.Controller.SimulatorClock;
 import RenderingElements.Draw.Simulator;
-import Window.TrainListWindow;
+
 
 public class Canvas extends JPanel implements Runnable 
 {
@@ -54,11 +54,11 @@ public class Canvas extends JPanel implements Runnable
 	private int SCREEN_HEIGHT = 0;
 	
 	
-	private boolean trainListWindowOpen = false;
+	
 	
 	private JFrame window;
 	
-	private TrainListWindow trainListWindow =  new TrainListWindow();
+	
 	
 		
 	Thread thread = new Thread(this);
@@ -155,16 +155,12 @@ public class Canvas extends JPanel implements Runnable
 		if(keyInput.keyCode == 27) 
 		{
 			window.dispose();
+			System.exit(0);
 		}
 		
 		if(keyInput.keyCode == 79) 
 		{
-			if(!trainListWindowOpen) 
-			{
-				trainListWindow.openWindow();
-				trainListWindowOpen =  true;
-				
-			}
+
 			
 		}
 		

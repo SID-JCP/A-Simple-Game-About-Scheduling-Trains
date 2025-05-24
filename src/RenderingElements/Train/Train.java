@@ -41,6 +41,8 @@ public class Train {
 	
 	public boolean readToDepart = false; //when train ready to depart , would be set true by controller , used to draw green circle in front of train  
 	
+	public Color trainColor = Color.white; //default color of the train 
+	
 	//|--------------------------Movement Data--------------------------------|
 	
 	
@@ -153,7 +155,7 @@ public class Train {
 		this.trackNumber = trackNumber;
 		this.name = name;
 		this.departureTime = departureTime; 
-		this.color = color;
+		this.trainColor = color;
 		this.hasHault = true;
 		this.platformNumber = platformNumber;
 	}
@@ -737,7 +739,7 @@ public class Train {
 		{
 			g2d.setColor(Color.green);
 			
-			g2d.fillOval(trainFrontX - 8, trainFrontY - 8, 16, 18);
+			g2d.fillOval(trainFrontX - 7, trainFrontY - 7, 14, 14);
 		}
 		
 //--------------------------------------------------------------------------------------------
@@ -749,7 +751,7 @@ public class Train {
 			g2d.fillOval(centerX - circleRadius, centerY - circleRadius, circleRadius * 2, circleRadius * 2);
 		}
 		
-		g2d.setColor(Color.white);
+		g2d.setColor(trainColor);
 		g2d.setStroke(new BasicStroke(6 , BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER));
 		
 		if(!switchPointsQueue.isEmpty()) 

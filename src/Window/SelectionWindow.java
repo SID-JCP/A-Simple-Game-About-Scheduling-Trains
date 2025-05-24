@@ -229,7 +229,7 @@ public class SelectionWindow {
 		headingLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
 		
-		JSlider slider = new JSlider(0, 5, 0); 
+		JSlider slider = new JSlider(1, 5, 1); 
 		slider.setFont(new Font("Arial", Font.BOLD, 24)); // Bigger labels
 	    slider.setMajorTickSpacing(1);
 	    slider.setPaintTicks(true);
@@ -237,12 +237,12 @@ public class SelectionWindow {
 	    
 	    
 	    JButton actionButton = new JButton("Start");
-        actionButton.setBackground(Color.WHITE);
+        actionButton.setBackground(Color.BLACK);
         actionButton.setFocusPainted(false);
         actionButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    
-        JButton fileButton = new JButton("Load File");
-        fileButton.setBackground(Color.WHITE);
+        JButton fileButton = new JButton("Load Traffic File");
+        fileButton.setBackground(Color.BLACK);
         fileButton.setFocusPainted(false);
         fileButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         

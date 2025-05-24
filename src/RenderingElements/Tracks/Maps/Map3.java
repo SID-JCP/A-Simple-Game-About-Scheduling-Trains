@@ -309,8 +309,8 @@ public class Map3 implements TrackControllerRequirments{
 	@Override
 	public void createStation() {
 		
-		Simulator.stationGraphicVerticalPos = 1;
-		Simulator.stationGraphicHorizontalPos = 2;
+//		Simulator.stationGraphicVerticalPos = 1;
+//		Simulator.stationGraphicHorizontalPos = 2;
 		
 	}
 

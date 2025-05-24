@@ -30,6 +30,15 @@ public class TrainLoader {
 	private String name = "";
 	private int platform = 0;
 	
+	private Color colorBlue = Color.blue;
+	private Color colorRed = Color.red;
+	private Color colorOrange = Color.orange;
+	private Color colorGray = Color.gray;
+	
+	private Color choosenColor = Color.white;
+	
+	
+	
 	private List<Train> listOfTrainTraffic = new ArrayList<>();
 	
 	private XmlDoc doc = new XmlDoc();
@@ -61,7 +70,7 @@ public class TrainLoader {
 	{
 		
 
-			//later load map data also 
+			
 			if(node.getTag().equals("Trains")) 
 			{
 				node.attributes.forEach(a -> {
@@ -119,12 +128,37 @@ public class TrainLoader {
 							platform = Integer.parseInt(a.getValue());
 						}
 						
-						
+						if("color".equals(a.getKey())) 
+						{
+							switch(a.getValue())
+							{
+								case "red":
+									
+									choosenColor = colorRed;
+									break;
+									
+								case "blue":
+									
+									choosenColor = colorBlue;
+									break;
+									
+								case "orange":
+									
+									choosenColor = colorOrange;
+									break;
+									
+								case "gray":
+									
+									choosenColor = colorGray;
+									break;
+							}
+						}
 						
 					});
 					
 					
-					Train train = new Train(movingDirection , trackNumber , arrivalTime  , departureTime , name , platform , Color.white);
+					
+					Train train = new Train(movingDirection , trackNumber , arrivalTime  , departureTime , name , platform , choosenColor);
 					listOfTrainTraffic.add(train);
 					
 					

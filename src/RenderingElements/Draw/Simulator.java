@@ -151,19 +151,21 @@ public class Simulator {
 					
 				case 6:
 					
-					map6.addListToController();
-					map6.initializeInterlocking();
-					map6.createStation();
+					newDelhi.setGrid();
+					newDelhi.addListToController();
+					newDelhi.initializeInterlocking();
+					newDelhi.createStation();
+					
+					
 					
 					break;
 					
 					
 				case 7:
 					
-					newDelhi.setGrid();
-					newDelhi.addListToController();
-					newDelhi.initializeInterlocking();
-					newDelhi.createStation();
+					map6.addListToController();
+					map6.initializeInterlocking();
+					map6.createStation();
 					
 					break;
 			}
