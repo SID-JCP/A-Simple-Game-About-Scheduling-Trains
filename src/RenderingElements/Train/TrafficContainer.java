@@ -8,6 +8,7 @@ import RenderingElements.Train.Traffic.Traffic1;
 import RenderingElements.Train.Traffic.Traffic2;
 import RenderingElements.Train.Traffic.Traffic3;
 import RenderingElements.Train.Traffic.Traffic4;
+import RenderingElements.Train.Traffic.Traffic5;
 import RenderingElements.Xml.Viewer;
 import RenderingElements.Xml.XmlDoc;
 import RenderingElements.Xml.Loader.XmlLoader;
@@ -29,7 +30,7 @@ public class TrafficContainer {
 		TrafficRequirments.addTrainList(Traffic2.trainList);
 		TrafficRequirments.addTrainList(Traffic3.trainList);
 		TrafficRequirments.addTrainList(Traffic4.trainList);
-
+		TrafficRequirments.addTrainList(Traffic5.trainList);
 		
 	}
 	

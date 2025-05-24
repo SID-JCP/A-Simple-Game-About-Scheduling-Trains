@@ -229,7 +229,7 @@ public class SelectionWindow {
 		headingLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
 		
-		JSlider slider = new JSlider(1, 5, 1); 
+		JSlider slider = new JSlider(1, 4, 1); 
 		slider.setFont(new Font("Arial", Font.BOLD, 24)); // Bigger labels
 	    slider.setMajorTickSpacing(1);
 	    slider.setPaintTicks(true);

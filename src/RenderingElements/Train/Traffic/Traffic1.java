@@ -12,15 +12,16 @@ public class Traffic1{
 			
 			Arrays.asList(
 					
-					//train 1 
-//					new Train(-1 ,1 , 10 , false),
-//					new Train(-1 ,1 , 20 , false),
-//					new Train(-1 ,1 , 25 , false)
-//					//train 2
-////				new Train(0 ,1 , 40 , false),
-//					//train 3
-					new Train(Train.UP_LINE ,-1 , 2 , false),
-					new Train(Train.DOWN_LINE ,-1 , 15 , false)
+
+					new Train(Train.UP_LINE ,1 , 2 , false),
+					
+					new Train(Train.UP_LINE ,1 , 100 , false),
+					
+					
+					new Train(Train.DOWN_LINE ,1 , 300 , false),
+					
+					
+					new Train(Train.DOWN_LINE ,1 , 400 , false)
 					
 					)
 			
