@@ -1,0 +1,92 @@
+<Map sections = "30"  platfromWidth = "3" platfromHeight = "1" debug = "false">
+	<lines>
+		<track type = "UP" number = "1" length = "-1" deploy = "true">mainUp1</track>
+		<track type = "UP" number = "2" length = "-1" deploy = "true">mainUp2</track>
+
+		<track type = "DOWN" number = "1" length = "-1" deploy = "true">mainDown1</track>
+		<track type = "DOWN" number = "2" length = "-1" deploy = "true">mainDown2</track>
+
+	</lines>
+
+	<switches>
+
+	</switches>
+	
+	<signals>
+		<block>
+
+			<signal track = "mainUp1"  position = "2" H = "left" V = "top" previous = ""  F = "UP">b1</signal>
+			<signal track = "mainUp1"  position = "5" H = "left" V = "top" previous = "b1">b2</signal>
+			<signal track = "mainUp1"  position = "8" H = "left" V = "top" previous = "b2">b3</signal>
+			<signal track = "mainUp1"  position = "11" H = "left" V = "top" previous = "b3">b4</signal>
+			<signal track = "mainUp1"  position = "21" H = "left" V = "top" previous = "b4" alone = "true" >b5</signal>
+			<signal track = "mainUp1"  position = "24" H = "left" V = "top" previous = "b5">b6</signal>
+			<signal track = "mainUp1"  position = "27" H = "left" V = "top" previous = "b6">b7</signal>
+			<signal track = "mainUp1"  position = "30" H = "left" V = "top" previous = "b7">b8</signal>
+
+			<signal track = "mainUp1"  position = "34" H = "left" V = "top" previous = "b8" alone = "true" >b9</signal>
+			<signal track = "mainUp1"  position = "37" H = "left" V = "top" previous = "b9" alone = "true" >b10</signal>
+			<signal track = "mainUp1"  position = "41" H = "left" V = "top" previous = "b10" alone = "true" >b11</signal>
+			
+
+			<signal track = "mainUp2"  position = "2" H = "left" V = "top" previous = ""  F =  "UP">bb1</signal>
+			<signal track = "mainUp2"  position = "5" H = "left" V = "top" previous = "bb1">bb2</signal>
+			<signal track = "mainUp2"  position = "8" H = "left" V = "top" previous = "bb2">bb3</signal>
+			<signal track = "mainUp2"  position = "11" H = "left" V = "top" previous = "bb3">bb4</signal>
+			<signal track = "mainUp2"  position = "14" H = "left" V = "top" previous = "bb4">bb5</signal>
+			<signal track = "mainUp2"  position = "17" H = "left" V = "top" previous = "bb5">bb6</signal>
+			<signal track = "mainUp2"  position = "20" H = "left" V = "top" previous = "bb6">bb7</signal>
+			<signal track = "mainUp2"  position = "23" H = "left" V = "top" previous = "bb7">bb8</signal>
+			<signal track = "mainUp2"  position = "26" H = "left" V = "top" previous = "bb8">bb9</signal>
+			<signal track = "mainUp2"  position = "29" H = "left" V = "top" previous = "bb9">bb10</signal>
+			
+			<signal track = "mainUp2"  position = "34" H = "left" V = "top" previous = "bb10" alone = "true">bb11</signal>
+			<signal track = "mainUp2"  position = "37" H = "left" V = "top" previous = "bb11" alone = "true">bb12</signal>
+			<signal track = "mainUp2"  position = "42" H = "left" V = "top" previous = "bb12" alone = "true">bb13</signal>
+
+
+
+			<signal track = "mainDown1"  position = "30" H = "right" V = "top" previous = "" F = "DOWN">d1</signal>
+			<signal track = "mainDown1"  position = "27" H = "right" V = "top" previous = "d1">d2</signal>
+			<signal track = "mainDown1"  position = "24" H = "right" V = "top" previous = "d2">d3</signal>
+			<signal track = "mainDown1"  position = "21" H = "right" V = "top" previous = "d3">d4</signal>
+			<signal track = "mainDown1"  position = "11" H = "right" V = "top" previous = "d4" alone = "true">d5</signal>
+			<signal track = "mainDown1"  position = "8" H = "right" V = "top" previous = "d5">d6</signal>
+			<signal track = "mainDown1"  position = "5" H = "right" V = "top" previous = "d6">d7</signal>
+			<signal track = "mainDown1"  position = "2" H = "right" V = "top" previous = "d7">d8</signal>
+
+			<signal track = "mainDown1"  position = "-2" H = "right" V = "top" previous = "d8" alone = "true">d9</signal>
+			<signal track = "mainDown1"  position = "-5" H = "right" V = "top" previous = "d9" alone = "true">d10</signal>
+			<signal track = "mainDown1"  position = "-9" H = "right" V = "top" previous = "d10" alone = "true">d11</signal>
+
+
+			<signal track = "mainDown2"  position = "29" H = "right" V = "top" previous = "" F = "DOWN">dd1</signal>
+			<signal track = "mainDown2"  position = "26" H = "right" V = "top" previous = "dd1">dd2</signal>
+			<signal track = "mainDown2"  position = "23" H = "right" V = "top" previous = "dd2">dd3</signal>
+			<signal track = "mainDown2"  position = "20" H = "right" V = "top" previous = "dd3">dd4</signal>
+			<signal track = "mainDown2"  position = "17" H = "right" V = "top" previous = "dd4">dd5</signal>
+			<signal track = "mainDown2"  position = "14" H = "right" V = "top" previous = "dd5">dd6</signal>
+			<signal track = "mainDown2"  position = "11" H = "right" V = "top" previous = "dd6">dd7</signal>
+			<signal track = "mainDown2"  position = "8" H = "right" V = "top" previous = "dd7">dd8</signal>
+			<signal track = "mainDown2"  position = "5" H = "right" V = "top" previous = "dd8">dd9</signal>
+			<signal track = "mainDown2"  position = "2" H = "right" V = "top" previous = "dd9">dd10</signal>
+
+			<signal track = "mainDown2"  position = "-1" H = "right" V = "top" previous = "dd10" alone = "true">dd11</signal>
+			<signal track = "mainDown2"  position = "-5" H = "right" V = "top" previous = "dd11" alone = "true">dd12</signal>
+			<signal track = "mainDown2"  position = "-9" H = "right" V = "top" previous = "dd12" alone = "true">dd13</signal>
+
+		</block>
+
+		<home>
+			<signal track = "mainUp1"  position = "14" H = "left" V = "top">uh1</signal>
+			<signal track = "mainUp1"  position = "18" H = "left" V = "top">uh2</signal>
+			<signal track = "mainUp1"  position = "14" H = "right" V = "top">dh1</signal>
+			<signal track = "mainUp1"  position = "18" H = "right" V = "top">dh2</signal>
+
+			<signal track = "mainDown1"  position = "14" H = "left" V = "top">uh1</signal>
+			<signal track = "mainDown1"  position = "18" H = "left" V = "top">uh2</signal>
+			<signal track = "mainDown1"  position = "14" H = "right" V = "top">dh1</signal>
+			<signal track = "mainDown1"  position = "18" H = "right" V = "top">dh2</signal>
+		</home>
+	</signals>
+</Map>

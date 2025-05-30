@@ -1,0 +1,146 @@
+<Trains startHour = "8:00">
+
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "8:01"  	departure = "8:10" 	name = "express"  platform = "1" ></train>
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "8:16"  	departure = "8:25" 	name = "express"  platform = "1" ></train>
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "8:32"  	departure = "8:45" 	name = "express"  platform = "1" ></train>
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "8:51"  	departure = "9:05" 	name = "express"  platform = "1" ></train>
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "9:13"  	departure = "9:25" 	name = "express"  platform = "1" ></train>
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "9:13"  	departure = "9:25" 	name = "express"  platform = "1" ></train>
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "9:36"  	departure = "9:50" 	name = "express"  platform = "1" ></train>
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "10:08"  departure = "10:17" 	name = "express"  platform = "1" ></train>
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "10:22"  departure = "10:30" 	name = "express"  platform = "1" ></train>
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "10:35"  departure = "10:43" 	name = "express"  platform = "1" ></train>
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "10:55"  departure = "11:10" 	name = "express"  platform = "1" ></train>
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "11:10"  departure = "11:20" 	name = "express"  platform = "1" ></train>
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "11:30"  departure = "11:43" 	name = "express"  platform = "1" ></train>
+	<train direction = "UP" 	trackNumber = "1" 	 arrival = "12:50"  departure = "13:00" 	name = "express"  platform = "1" ></train>
+	
+
+
+	
+	
+	<train direction = "UP" 	trackNumber = "2" 	 arrival = "9:05"  	departure = "23:59" 	name = "express"  ></train>
+	<train direction = "UP" 	trackNumber = "2" 	 arrival = "9:08"  	departure = "23:59" 	name = "express"  ></train>
+	<train direction = "UP" 	trackNumber = "2" 	 arrival = "9:11"  	departure = "23:59" 	name = "express"  ></train>
+	<train direction = "UP" 	trackNumber = "2" 	 arrival = "9:15"  	departure = "23:59" 	name = "express"  ></train>
+	<train direction = "UP" 	trackNumber = "2" 	 arrival = "9:17"  	departure = "23:59" 	name = "express"  ></train>
+	<train direction = "UP"  trackNumber = "2"  arrival = "9:35"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "9:38"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "9:42"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "9:45"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "9:47"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "9:50"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "9:53"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "9:56"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:00"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:03"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:06"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:10"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:13"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:17"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:20"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:24"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:27"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:30"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:34"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:37"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:41"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:44"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:47"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:50"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:53"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:56"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "11:00"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:41"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:44"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:47"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:50"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:53"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "10:56"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "11:00"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "11:05"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "11:11"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "11:18"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "11:25"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "11:30"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "11:38"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "11:46"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "11:53"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "12:00"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "12:07"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "12:13"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "12:20"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "12:28"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "12:35"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "12:42"  departure = "23:59"  name = "express"></train>
+<train direction = "UP"  trackNumber = "2"  arrival = "12:50"  departure = "23:59"  name = "express"></train>
+
+
+
+
+	
+
+
+
+		
+	<train direction = "DOWN"   trackNumber = "-1"   arrival = "8:03"   departure = "8:12"  name = "express"  platform = "1" ></train>
+<train direction = "DOWN"   trackNumber = "-1"   arrival = "8:18"   departure = "8:27"  name = "express"  platform = "1" ></train>
+<train direction = "DOWN"   trackNumber = "-1"   arrival = "8:34"   departure = "8:47"  name = "express"  platform = "1" ></train>
+<train direction = "DOWN"   trackNumber = "-1"   arrival = "8:53"   departure = "9:07"  name = "express"  platform = "1" ></train>
+<train direction = "DOWN"   trackNumber = "-1"   arrival = "9:15"   departure = "9:27"  name = "express"  platform = "1" ></train>
+<train direction = "DOWN"   trackNumber = "-1"   arrival = "9:15"   departure = "9:27"  name = "express"  platform = "1" ></train>
+<train direction = "DOWN"   trackNumber = "-1"   arrival = "9:38"   departure = "9:52"  name = "express"  platform = "1" ></train>
+<train direction = "DOWN"   trackNumber = "-1"   arrival = "10:10"  departure = "10:19"     name = "express"  platform = "1" ></train>
+<train direction = "DOWN"   trackNumber = "-1"   arrival = "10:24"  departure = "10:32"     name = "express"  platform = "1" ></train>
+<train direction = "DOWN"   trackNumber = "-1"   arrival = "10:37"  departure = "10:45"     name = "express"  platform = "1" ></train>
+<train direction = "DOWN"   trackNumber = "-1"   arrival = "10:57"  departure = "11:12"     name = "express"  platform = "1" ></train>
+<train direction = "DOWN"   trackNumber = "-1"   arrival = "11:12"  departure = "11:22"     name = "express"  platform = "1" ></train>
+<train direction = "DOWN"   trackNumber = "-1"   arrival = "11:32"  departure = "11:45"     name = "express"  platform = "1" ></train>
+<train direction = "DOWN"   trackNumber = "-1"   arrival = "12:52"  departure = "13:02"     name = "express"  platform = "1" ></train>
+<train direction = "DOWN"   trackNumber = "-1"   arrival = "13:12"  departure = "13:27"     name = "express"  platform = "1" ></train>
+<train direction = "DOWN"   trackNumber = "-1"   arrival = "13:33"  departure = "13:44"     name = "express"  platform = "1" ></train>
+<train direction = "DOWN"   trackNumber = "-1"   arrival = "13:40"  departure = "14:02"     name = "express"  platform = "1" ></train>
+
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "08:00"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "08:05"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "08:10"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "08:16"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "08:21"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "08:28"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "08:35"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "08:42"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "08:50"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "08:58"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "09:05"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "09:11"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "09:17"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "09:24"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "09:30"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "09:36"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "09:42"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "09:48"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "09:54"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "10:00"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "10:06"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "10:12"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "10:18"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "10:24"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "10:30"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "10:36"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "10:42"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "10:48"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "10:54"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "11:00"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "11:08"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "11:16"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "11:24"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "11:32"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "11:40"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "11:50"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "11:55"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "12:15"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "12:22"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "12:32"  departure = "23:59"  name = "express"></train>
+<train direction = "DOWN"  trackNumber = "-2"  arrival = "12:45"  departure = "23:59"  name = "express"></train>
+
+</Trains>
